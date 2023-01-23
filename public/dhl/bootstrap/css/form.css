@@ -1,0 +1,248 @@
+body{
+	font-family:'Open Sans', sans-serif !important;
+    font-size: 12px;
+    color: #000;
+	background-color:#f9f9f9!important;}
+form {
+    border: 0px solid #f1f1f1;    background: white;
+	    box-shadow: rgba(0, 0, 0, 0.32) -1px 2px 3px;    padding: 16px;
+	        overflow: auto;
+	}
+label{font-weight:500!important;}
+
+.col-centered{
+    float: none !important;
+    margin: 0 auto;
+}
+.col-md-12{width:100%;float:left;}
+.col-md-6{width:50%;float:left;}
+.clear-fix{clear:both;}
+.red{
+    color: #259bf9;font-size: 18px;
+    font-weight: bold;}
+.text-dange{color:#ff0500;}
+.margin-top-none{margin-top:0 !important;}
+.margin-top{margin-top:20px !important;}
+
+
+
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;    font-size: 20px;
+    color: rgb(173, 173, 173);
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;    border-radius: 10px;
+    outline: none;
+}
+
+button {
+       background-color: #259bf9;
+   color: white !important;
+    font-size: 23px !important;
+	    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.43);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    padding-top: 0px;
+}
+.regist{width:44%;margin-top:10px;padding:10px}
+.regist p{margin:0;font-weight:bold;}
+#ll {
+    margin-bottom: 20px;
+    min-width: 960px;
+	    margin-top: 45px;
+}
+#ll-content, #ll-title {
+    padding: 0;
+    margin: 0 auto;
+    vertical-align: baseline;
+    position: relative;
+    overflow: hidden;
+}
+#ll-title {
+    margin-bottom: 20px;
+	color: #c60;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ll-grey {
+    border-right: 1px solid #dfdfdf;
+    border-left: 1px solid #dfdfdf;
+    background: #f9f9f9;
+    background: -moz-linear-gradient(top, rgba(230,230,230,0) 0%, rgba(230,230,230,1) 20%, rgba(230,230,230,1) 50%, rgba(230,230,230,0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(230,230,230,0)), color-stop(20%,rgba(230,230,230,1)), color-stop(50%,rgba(230,230,230,1)), color-stop(100%,rgba(230,230,230,0)));
+    background: -webkit-linear-gradient(top, rgba(230,230,230,0) 0%,rgba(230,230,230,1) 20%,rgba(230,230,230,1) 50%,rgba(230,230,230,0) 100%);
+    background: -ms-linear-gradient(top, rgba(230,230,230,0) 0%,rgba(230,230,230,1) 20%,rgba(230,230,230,1) 50%,rgba(230,230,230,0) 100%);
+    background: linear-gradient(top, rgba(230,230,230,0) 0%,rgba(230,230,230,1) 20%,rgba(230,230,230,1) 50%,rgba(230,230,230,0) 100%);
+}
+.ll-item {
+    display: block;
+    float: left;
+    padding: 5px 1% 570px 1%;
+    margin-bottom: -404px;
+    width: 23%;
+}
+.ll-item p{font-size:15px;}
+#ll h3 {
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;margin:0;
+}
+.ll-item .learn-more-flags {
+    margin-left: 10px;
+    font-weight: bold;
+    bottom: 0px;
+}
+.ll-item .learn-more-button, .ll-item .learn-more-flags {
+    display: block;
+    position: absolute;
+    height: 160px;
+    line-height: 21px;
+}
+.ll-item .learn-more-flags ul {
+    margin: 0px;
+    padding: 1px 0px 0px 10px;
+    list-style-type: none;
+}
+ul li {
+    background-image: url(https://images-na.ssl-images-amazon.com/images/G/01/webservices/orange_bullet.png);
+    background-position: 0 0.5em;
+    background-repeat: no-repeat;
+    list-style-type: none;
+    margin-bottom: 0.5em;
+    padding-left: 10px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown .dropbtn{font-size: 16px !important;}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #1c84d6;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+@media (max-width:780px){
+.col-md-6{width:90%;float:none;}
+#ll{min-width:100%;}
+.ll-item {width:50%;}
+.regist{width:94%;}
+#ll-content, #ll-title{width:100%;float:none;}
+}
+
+
+@media (max-width:480px){
+.col-md-6{width:90%;float:none;}
+#ll{min-width:100%;}
+.ll-item {width:100%;}
+.regist{width:94%;}
+#ll-content, #ll-title{width:100%;float:none;}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}

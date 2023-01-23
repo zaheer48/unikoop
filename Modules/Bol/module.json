@@ -1,0 +1,11 @@
+{
+    "name": "Bol",
+    "alias": "bol",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Bol\\Providers\\BolServiceProvider"
+    ],
+    "files": []
+}
