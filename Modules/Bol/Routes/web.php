@@ -25,10 +25,22 @@ Route::prefix('bol')->group(function() {
     Route::get('/invoice', 'OrderController@invoice2');
     Route::post('/check_invoice2/', 'OrderController@check_invoice2')->middleware('auth');
 
+    // Download PDF
+    Route::get('/download-packinglist-pdf/{id}', 'UserPacklistTemplatesController@downloadInvoice')->middleware('auth');
+    Route::get('/download-invoice-pdf/{id}', 'UserInvoiceTemplatesController@downloadInvoice');
+    Route::post('/invoice_submit2', 'OrderController@invoice_submit2');
+    Route::get('/download', function(){
+        return view('bol::download');
+    })->middleware('auth');
+    Route::post('/label_download', 'OrderController@downloadLabel');
+    Route::get('/account-report', 'NotificationController@accountReport');
+    Route::get('/orders_emails/{id}', 'OrderController@ordersEmails')->middleware('auth');
+
+
+
 
 
     Route::get('/orders/{id}', 'OrderController@orders')->middleware('auth');
-    Route::get('/orders_emails/{id}', 'OrderController@ordersEmails')->middleware('auth');
     Route::post('/orders_emails_send', 'OrderController@ordersEmailsSend')->middleware('auth');
     Route::post('/fetch/{id}', 'OrderController@fetch')->middleware('auth');
     Route::get('/fetch/select/{id}', 'OrderController@fetchSelect')->middleware('auth');
@@ -45,21 +57,16 @@ Route::prefix('bol')->group(function() {
 
     Route::get('/invoice2', function () {return view('template/gold/dhl/bol_invoice');});
     Route::post('/invoice_submit', 'OrderController@invoice_submit');
-
-    Route::post('/invoice_submit2', 'OrderController@invoice_submit2');
     Route::get('/create_invoice_2/{order_id}', 'OrderController@create_invoice_2');
     Route::get('/create_invoice_3/{order_id}', 'OrderController@create_invoice_3');
     Route::get('/create_packing_list/{order_id}', 'OrderController@create_packing_list');
     Route::get('/download_packing_list/{id}', 'OrderController@download_packing_list')->name('bol.packlist');
 
-    Route::post('/label_download', 'OrderController@downloadLabel');
+
 
     Route::get('/bolexport/{recid}',[
         "uses" => 'CustomerController@getExport',
         "as" => 'bolexport'])->middleware('auth');
-
-    Route::post('/label_download', 'OrderController@downloadLabel');
-
 
     // Not confirmed
     Route::get('/Exportqty/{recid}',[
@@ -68,6 +75,14 @@ Route::prefix('bol')->group(function() {
     Route::get('/Exportcsv/{recid}',[
         "uses" => 'CsvexportController@getExport',
         "as" => 'Exportcsv'])->middleware('auth');
+
+    /** Download PDF **/
+    Route::get('/download-pdf/{type}/order/{id}', 'OrderController@labelDownload');
+
+
+    Route::get('/wallet-invoice/{id}', 'MollieController@walletInvoice')->middleware('auth');
+    Route::get('/download-custom-label','CustomOrderController@downloadCustomLabel')->middleware('auth');
+    Route::get('/unikoop/payment-invoice/{id}','UnikoopController@paymentInvoice');
 });
 
 

@@ -35,14 +35,6 @@ class BolRetailerController extends Controller
 		$platforms = User::find(Auth::id())->platforms->where('site', $site)->first();
 		$client->authenticate($platforms->platform_client_id, $platforms->platform_client_secret);
 
-		dd($client->getInventory());
-        // if($site == 'bol_nl')
-        // {
-		// 	$client->authenticate($user->bol_client_id, $user->bol_client_secret);
-        // } else if($site == 'bol_be') {
-		// 	$client->authenticate($user->bol_be_client_id, $user->bol_be_client_secret);           
-        // }    
-
 		$reducedOrders_arr = array();
 		
 		for($a=1; $a<=4; $a++)
@@ -236,29 +228,6 @@ class BolRetailerController extends Controller
 
 			}
 		}
-            // printf(
-            //     "Ordered by \"%s %s\":\n",
-            //     $order->customerDetails->billingDetails->firstName,
-            //     $order->customerDetails->billingDetails->surName
-            // );
-
-            // foreach ($order->orderItems as $orderItem) {
-            //     // printf(
-            //     //     "\t%s:\t%s (%dx) à € %.2f\n",
-            //     //     $orderItem->orderItemId,
-            //     //     $orderItem->title,
-            //     //     $orderItem->quantity,
-            //     //     $orderItem->offerPrice
-            //     // );
-            //     // echo "<br><br>";
-            //     echo "<pre>";
-
-            //     print_r($orderItem);
-
-            //     exit;
-            // }
-
         return redirect('/bol/all_orders');
-
     }
 }

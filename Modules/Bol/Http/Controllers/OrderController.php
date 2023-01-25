@@ -52,14 +52,14 @@ class OrderController extends Controller
             if ($pdf_file || $bol_data->trackerCode) {
                 $isExists = 1;
                 $request->session()->flash('alert-danger', 'Record found!');
-                return View::make('download')->with('pdf_file', $pdf_file)->with('bol_trackerCode', $bol_data->trackerCode)->with('exists', $isExists);
+                return View::make('bol::download')->with('pdf_file', $pdf_file)->with('bol_trackerCode', $bol_data->trackerCode)->with('exists', $isExists);
             } else {
                 $request->session()->flash('alert-danger', 'No Record found!');
-                return View::make('download');
+                return View::make('bol::download');
             }
         } else {
             $request->session()->flash('alert-danger', 'No Record found!');
-            return View::make('download');
+            return View::make('bol::download');
         }
     }
 
@@ -67,8 +67,8 @@ class OrderController extends Controller
     {
         $userId = Auth::id();
         $bol_rec = DB::table('bol_rec')->where('user_id', $userId)->orderBy('id', 'DESC')->paginate(10);
-        
-        return view('bol::dashboard', compact('bol_rec'));
+        $totalRecords = DB::table('bol_rec')->where('user_id', $userId)->count();
+        return view('bol::dashboard', compact('bol_rec', 'totalRecords'));
     }
 
     public function orders($id)
@@ -90,11 +90,6 @@ class OrderController extends Controller
 
         $dist_number = $ret_str;
         $returns = '';
-        // $this->db->from('bol_data');
-        // $this->db->where_in('id', $dist_number);
-        // $this->db->where('bol_rec_id', $id);
-        // $query=$this->db->get();
-        // $result=$query->result();
 
         $result = DB::table('bol_data')->where('bol_rec_id', $id)->whereIn('id', $dist_number)->orderBy('id', 'ASC')->get()->toArray();
         foreach ($result as $row) {
@@ -116,16 +111,6 @@ class OrderController extends Controller
             $best_date_exp = explode("T", $besteldatum);
             $best_date = $best_date_exp[0];
             $producttitel = $row->producttitel;
-
-            // $cus_rows=$this->get_customer_orders($id,$bestelnummer);
-
-            // $this->db->from('bol_data');
-            // $this->db->select("id,EAN,aantal ,producttitel,prijs,referentie");
-            // $this->db->where('bestelnummer', $bestelnummer);
-            // $this->db->where('bol_rec_id', $id);
-
-            // $sql=$this->db->get();
-            // $result=$sql->result();
 
             $cus_rows = DB::table('bol_data')->select("id", "EAN", "aantal", "producttitel", "prijs", "referentie")->where('bestelnummer', $bestelnummer)->where('bol_rec_id', $id)->get()->toArray();
             $torder = count($cus_rows);
@@ -227,7 +212,6 @@ class OrderController extends Controller
 
     public function ordersEmails($id)
     {
-
         $array = DB::table('bol_data')->distinct()->where('bol_rec_id', $id)->orderBy('id', 'ASC')->get()->toArray();
 
         $temp = array_unique(array_column($array, 'bestelnummer'));
@@ -250,13 +234,9 @@ class OrderController extends Controller
         $result = DB::table('bol_data')->where('bol_rec_id', $id)->whereIn('id', $dist_number)->orderBy('id', 'ASC')->get()->toArray();
 
         foreach ($result as $row) {
-
             $bedrijfsnaam_verzending = $row->bedrijfsnaam_verzending;
-
             if (($bedrijfsnaam_verzending != "")) {
-
                 $id2 = $row->id;
-
                 if (isset($id)) {
                     $id = $id;
                 } else {
@@ -283,43 +263,11 @@ class OrderController extends Controller
                 $returns .= ('<td height="30">');
                 $returns .= $row->bol_rec_id;
                 $returns .= ('</td>');
-
-                //$returns.=('<td height="30">');
-
-                /*if(is_array($cus_rows)){
-						foreach ($cus_rows as $cus_row ) {
-
-							# code...
-
-			        	//$EAN=$cus_row[$j]['EAN'];
-						//$aantal=$cus_row[$j]['aantal'];
-						$producttitel=$cus_row->producttitel;
-						$EAN=$cus_row->EAN;
-						//$referentie=$cus_row[$j]['referentie'];
-						$returns.=("<b>EAN</b>:".$EAN."<br />");
-						$returns.=("<b>Prijs</b>:".$cus_row->prijs."<br />");
-						$returns.=("<b>Referentie</b>:".$cus_row->referentie."<br />");
-
-						$returns.=("<b>Product</b>:".$producttitel."<br />");
-						$returns.=("<b>Aantal</b>:".$cus_row->aantal);
-
-
-			      	 }
-
-			  		 }*/
-                //$returns.=(' </td>');
-
-
                 $returns .= ('<td height="30" style="word-break: break-all;"> ' . $row->bestelnummer . ' </td>');
-
                 $returns .= ('<td height="30"> ' . date("d-m-Y H:i:s", strtotime($bol_date_row[0]->date)) . ' </td>');
-
                 $returns .= ('<td height="30"> ' . $torder . ' </td>');
-
                 $returns .= ('<td height="30"> ' . $row->voornaam_verzending . ' ' . $row->achternaam_verzending . ' </td>');
-
                 $returns .= ('<td height="30"> ' . $row->bedrijfsnaam_verzending . ' </td>');
-
                 $returns .= ('<td height="30"> ' . $row->emailadres . ' </td>');
 
                 if ($row->email_status == 0)
@@ -329,46 +277,21 @@ class OrderController extends Controller
 
                 // order_no::TrackCode::DHL:bol_rec_id::db_id
                 $returns .= ('<td height="30">');
-
                 //if($trackerCode != "")
                 $returns .= ('<input type="checkbox" name="click1" value="' . $id2 . '"> ');
-
                 $returns .= ('</td>');
-
-
                 $returns .= ('</tr>');
             }
         }
-
-
-        // echo "<pre>";
-
-        // echo $returns;
-
-        // exit;
-
         $result = DB::getSchemaBuilder()->getColumnListing('bol_data');
-
-        // print_r($result);
-
-        // exit;
-
-        //$this->db->field_data('bol_data');
-
-        //$data = array();
-
         $rows = $returns;
-
         $fields = $result;
-
         $bol_rec = DB::table('bol_rec')->where('id', $id)->get()->toArray();
-
-        return View::make("template/gold/dhl/orders_email_list", compact(array('rows', 'fields', 'bol_rec')));
+        return View::make("emails.orders_email_list", compact(array('rows', 'fields', 'bol_rec')));
     }
 
     public function updateOrders(Request $request)
     {
-
         $site = $request->site;
         $client = new \Picqer\BolRetailerV8\Client();
 		$userId = Auth::id();
@@ -387,104 +310,28 @@ class OrderController extends Controller
         foreach ($orders as $order) {
 
             $order_arr = explode("::", $order);
-          //dd($order_arr);
 
             // Next thing: we need to fetch an order to create a shipment for.
             $order = $client->getOrder($order_arr[0]);
 
             for ($i = 0; $i < count($order->orderItems); $i++) {
-               
-       		
-           //$shipmentRequest = new \Picqer\BolRetailerV8\Model\ShipmentRequest;
-            //$shipmentRequest->addTransportData(
-             //   $order_arr[2],
-              //  $order_arr[1]
-            //);
-            //$shipmentRequest->addOrderItemId($order->orderItems[$i]->orderItemId);
-              
-          $processStatus = $client->shipOrderItem([
-                  	
-                'orderItems' => [
-                    'orderItemId' => $order->orderItems[$i]->orderItemId
-                ],
-                //"shipmentReference" => $order_arr[0],
-                //"shippingLabelId"=> $order_arr[1],
-                'transport' => [
-                    'transporterCode' => $order_arr[2],
-                    'trackAndTrace' => $order_arr[1]
-                ]
-            ]
-            );
-              
+                $processStatus = $client->shipOrderItem([
+                    'orderItems' => [
+                        'orderItemId' => $order->orderItems[$i]->orderItemId
+                    ],
+                    'transport' => [
+                        'transporterCode' => $order_arr[2],
+                        'trackAndTrace' => $order_arr[1]
+                    ]
+                ]);              
             }
-            
-
-            // [
-            //     'orderItems' => [
-            //         'orderItemId' => $order->orderItems[$i]->orderItemId
-            //     ],
-            //     'shipmentReference' => '',
-            //     'shippingLabelId' => '',
-            //     'transport' => [
-            //         'transporterCode' => $order_arr[2],
-            //         'trackAndTrace' => $order_arr[1]
-            // ]
-
-            /*
-
-                Demo return
-
-                Picqer\BolRetailer\ProcessStatus Object
-                (
-                    [data:protected] => Array
-                        (
-                            [id] => 1
-                            [entityId] => 6042823871
-                            [eventType] => CONFIRM_SHIPMENT
-                            [description] => Confirm shipment for order item 6042823871.
-                            [status] => PENDING
-                            [createTimestamp] => 2020-03-31T20:41:13+02:00
-                            [links] => Array
-                                (
-                                    [0] => Array
-                                        (
-                                            [rel] => self
-                                            [href] => http://api.bol.com/retailer-demo/process-status/1
-                                            [method] => GET
-                                        )
-                                )
-                        )
-                )
-            */
-                
-            // if ($processStatus->status == 'Sent') {
-                DB::table('bol_data')
-                    ->where('id', $order_arr[4])
-                    ->update(['bol_update_status' => $processStatus->status]);
-            // }
-
+                       
+            DB::table('bol_data')
+                ->where('id', $order_arr[4])
+                ->update(['bol_update_status' => $processStatus->status]);
         }
 
         return redirect('/bol/all_orders');
-
-        // You can now choose to wait until the process completes:
-        //
-        // ```php
-        // $processStatus->waitUntilComplete(20, 3);
-        // ```
-        //
-        // Since the demo API of Bol.com does not support dynamic process statuses, we will not wait.
-
-        // printf("Waiting for process with ID \"%s\"\n", $processStatus->id);
-
-        // exit;
-
-        // $userId = Auth::id();
-
-        // $bol_rec = DB::table('bol_rec')->where('user_id', $userId)->orderBy('id', 'DESC')->paginate(10);
-
-        // return View::make("template/gold/bol/dashboard", compact(array('bol_rec')));
-
     }
 
     public function ordersEmailsSend(Request $request)
@@ -497,66 +344,49 @@ class OrderController extends Controller
             $bol_data_row = DB::table('bol_data')->where('id', $order_id)->get();
 
             $email_to = "sajid@leywood.nl";//$bol_data_row[0]->emailadres;
-
             $bestelnummer = $bol_data_row[0]->bestelnummer;
-
             $paths = public_path() . "/";
-
-            //$bestelnummer = $request->post('bestelnummer');
-
-            //$email_to = $request->post('email');
-
-
             $str_html = $this->viewinivoice2($bestelnummer);
-
             $str_html2 = $this->viewpdf2($bestelnummer);
 
             if ($str_html == "" or $str_html2 == "") {
                 $request->session()->flash('alert-warning', 'No Record found!');
-
                 return redirect('/bol/invoice2');
-
                 exit;
             }
 
             $data = array();
 
-                //invoice pdf
-                $preview = DB::table('user_invoice_previews')
-                    ->select('*')
-                    ->join('invoice_previews', 'invoice_previews.id', '=', 'user_invoice_previews.invoice_preview_id')
-                    ->where('user_invoice_previews.user_id', \Auth::id())
-                    ->where('user_invoice_previews.as_default', 1)
-                    ->first();
-                if (!$preview) {
-                    Session::flash('alert-warning', 'Please configure Invoice template in Settings tab area.');
-                    return redirect('/bol/invoice2');
-                }
-                $servicebanks = DB::table('servicebank')->where('user_id', Auth::id())->first();
-                $record = DB::table('bol_data')->where('bestelnummer', $bestelnummer)->first();
-                $pdf1 = \PDF::loadView('template.gold.dhl.invoice-templates.download_invoice', compact('record', 'preview','servicebanks'));
+            //invoice pdf
+            $preview = DB::table('user_invoice_previews')
+                ->select('*')
+                ->join('invoice_previews', 'invoice_previews.id', '=', 'user_invoice_previews.invoice_preview_id')
+                ->where('user_invoice_previews.user_id', \Auth::id())
+                ->where('user_invoice_previews.as_default', 1)
+                ->first();
+            if (!$preview) {
+                Session::flash('alert-warning', 'Please configure Invoice template in Settings tab area.');
+                return redirect('/bol/invoice2');
+            }
+            $servicebanks = DB::table('servicebank')->where('user_id', Auth::id())->first();
+            $record = DB::table('bol_data')->where('bestelnummer', $bestelnummer)->first();
+            $pdf1 = \PDF::loadView('bol::invoice.download_invoice', compact('record', 'preview','servicebanks'));
 
-                //packing list pdf
-                $preview = DB::table('user_packlist_previews')
-                    ->select('*')
-                    ->join('packinglist_previews', 'packinglist_previews.id', '=', 'user_packlist_previews.packlist_preview_id')
-                    ->where('user_packlist_previews.user_id', Auth::id())
-                    ->where('user_packlist_previews.as_default', 1)
-                    ->first();
-                if (!$preview) {
-                    Session::flash('alert-warning', 'Please configure packing list template in Settings tab area.');
-                    return redirect('/bol/invoice2');
-                }
-                $record = DB::table('bol_data')->where('bestelnummer', $bestelnummer)->first();
-                $pdf2 = \PDF::loadView('template.gold.dhl.packinglist-templates.download_packlist', compact('record', 'preview'));
-
-
-
-
+            //packing list pdf
+            $preview = DB::table('user_packlist_previews')
+                ->select('*')
+                ->join('packinglist_previews', 'packinglist_previews.id', '=', 'user_packlist_previews.packlist_preview_id')
+                ->where('user_packlist_previews.user_id', Auth::id())
+                ->where('user_packlist_previews.as_default', 1)
+                ->first();
+            if (!$preview) {
+                Session::flash('alert-warning', 'Please configure packing list template in Settings tab area.');
+                return redirect('/bol/invoice2');
+            }
+            $record = DB::table('bol_data')->where('bestelnummer', $bestelnummer)->first();
+            $pdf2 = \PDF::loadView('bol::packinglist-templates.download_packlist', compact('record', 'preview'));
             $bol_data = DB::table('bol_data')->select("bestelnummer", "voornaam_verzending", "achternaam_verzending", "bedrijfsnaam_verzending", "bol_rec_id")->where('bestelnummer', $bestelnummer)->first();
-
             $bol_rec = DB::table('bol_rec')->select("date")->where('id', $bol_data->bol_rec_id)->first();
-
 
             if (!$pdf1)
                 $pdf1 = "";
@@ -581,43 +411,21 @@ class OrderController extends Controller
             });
 
             DB::table('bol_data')->where('id', $order_id)->update(['email_status' => 1, 'email_datetime' => date("Y-m-d H:i:s")]);
-
         }
-
         return redirect('/bol/all_orders');
-
         exit;
-
     }
 
     public function dhl_csv($site, $id)
     {
-        $site = urldecode($site);
-        //$this->load->model('dhl/bol');
-        //$generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
-
-        //$row=$this->bol->select_all_data2($id);
-
-        /*	$dist_number=$this->select_distinct_bol_data($id);
-
-					$this->db->from('bol_data');
-					$this->db->where_in('id', $dist_number);
-					$this->db->where('bol_rec_id', $id);
-					$query=$this->db->get();
-					$result=$query->result();
-
-					return $result;		*/
-
+        $site = urldecode($site);        
         $dist_number = $this->select_distinct_bol_data($id);
-
         $row = DB::table('bol_data')->where('bol_rec_id', $id)->whereIn('id', $dist_number)->get()->toArray();
-
         $fileName = "file.csv";
         header('Content-Type: application/csv');
         header('Content-Disposition: attachement; filename="' . $fileName . '";');
 
         $handle = fopen('php://output', 'w');
-
         if (count($row) > 0) {
             //concatenation string
             $stringData = '';
@@ -670,42 +478,17 @@ class OrderController extends Controller
     public function packing_list($site, $id)
     {
         $str_html = $this->viewpdf($site, $id);
-        // $this->load->library('DoomPdf');
-        // $this->doompdf->loadHtml($str_html);
-        // $this->doompdf->setPaper('A4', 'portrait');
-
-        // header('Content-Type: application/pdf');
-
-        // $this->doompdf->render();
-        // $this->doompdf->stream('welcomeg.pdf',array("Attachment"=>0));
-
         $bol_rec = DB::table('bol_rec')->select("date")->where('id', $id)->first();
-
         $pdf = PDF::loadHTML($str_html)->setPaper('a4', 'portrait');
-
-        /*if($bol_data->bedrijfsnaam_verzending != "")
-			$name = $bol_data->bedrijfsnaam_verzending;
-		else
-			$name = $bol_data->voornaam_verzending." ".$bol_data->achternaam_verzending;*/
-
         return $pdf->download('Packing_list BOL ' . date("d-m-Y", strtotime($bol_rec->date)) . '.pdf');
     }
 
     public function viewpdf($site, $id)
     {
         $site = urldecode($site);
-
-        // $this->load->model('dhl/bol');
-        // $row=$this->bol->select_all_data2($id);
-
         $dist_number = $this->select_distinct_bol_data($id);
 
         $row = DB::table('bol_data')->where('bol_rec_id', $id)->whereIn('id', $dist_number)->get()->toArray();
-
-        // $path2="/opt/bitnami/apache2/htdocs/";
-        // $paths=$path2.$this->theme->active_theme_path();
-        // $paths=$this->theme->active_theme_path();
-
         $paths = public_path() . "/";
 
         $str_html = '
@@ -757,7 +540,6 @@ class OrderController extends Controller
      			
      			<div id="logo" style="float:left">';
 
-
                 // header logos
                 $log = $paths . "dhl/images/homee_logo.jpg";
 
@@ -789,7 +571,6 @@ class OrderController extends Controller
                 $str_html .= '</div></div>';
 
                 $str_html .= '<h2 class="name2" style="padding-top:30px; padding-bottom:10px">Pakbon</h2>';
-
 
                 $str_html .= '<table cellspacing="0" cellpadding="0" style="margin-top:5px" class="packing_list">
 			        <thead>
@@ -921,13 +702,7 @@ class OrderController extends Controller
 
     public function create_invoice($site, $id)
     {
-
-     // $path2="/opt/bitnami/apache2/htdocs/";
-        // $paths=$path2.$this->theme->active_theme_path();
-        //$paths=$this->theme->active_theme_path();
-
         $paths = public_path() . "/";
-
         $str_html = $this->viewinivoice($site, $id);
 
         if ($str_html == "") {
@@ -935,13 +710,6 @@ class OrderController extends Controller
 
             exit;
         }
-
-        // $this->load->library('DoomPdf');
-
-        // $this->doompdf->loadHtml($str_html);
-        // $this->doompdf->setPaper('A4', 'portrait');
-        // header('Content-Type: application/pdf');
-        // $this->doompdf->render();
 
         $bol_rec = DB::table('bol_rec')->select("date")->where('id', $id)->first();
 
@@ -957,165 +725,136 @@ class OrderController extends Controller
 
         $content = $pdf->output();
 
-        file_put_contents($path, $content);
-
-        // $this->doompdf->stream();
-
-        /*if($bol_data->bedrijfsnaam_verzending != "")
-			$name = $bol_data->bedrijfsnaam_verzending;
-		else
-			$name = $bol_data->voornaam_verzending." ".$bol_data->achternaam_verzending;*/
-
+        file_put_contents($path, $content);        
         return $pdf->download('Invoice BOL ' . date("d-m-Y", strtotime($bol_rec->date)) . '.pdf');
     }
 
-  public function money_format($formato, $valor) { 
+    public function money_format($formato, $valor) { 
+        if (setlocale(LC_MONETARY, 0) == 'C') { 
+            return number_format($valor, 2); 
+        }
 
+        $locale = localeconv(); 
 
-    if (setlocale(LC_MONETARY, 0) == 'C') { 
-        return number_format($valor, 2); 
-    }
+        $regex = '/^'.             // Inicio da Expressao 
+                '%'.              // Caractere % 
+                '(?:'.            // Inicio das Flags opcionais 
+                '\=([\w\040])'.   // Flag =f 
+                '|'. 
+                '([\^])'.         // Flag ^ 
+                '|'. 
+                '(\+|\()'.        // Flag + ou ( 
+                '|'. 
+                '(!)'.            // Flag ! 
+                '|'. 
+                '(-)'.            // Flag - 
+                ')*'.             // Fim das flags opcionais 
+                '(?:([\d]+)?)'.   // W  Largura de campos 
+                '(?:#([\d]+))?'.  // #n Precisao esquerda 
+                '(?:\.([\d]+))?'. // .p Precisao direita 
+                '([in%])'.        // Caractere de conversao 
+                '$/';             // Fim da Expressao 
 
-    $locale = localeconv(); 
-
-    $regex = '/^'.             // Inicio da Expressao 
-             '%'.              // Caractere % 
-             '(?:'.            // Inicio das Flags opcionais 
-             '\=([\w\040])'.   // Flag =f 
-             '|'. 
-             '([\^])'.         // Flag ^ 
-             '|'. 
-             '(\+|\()'.        // Flag + ou ( 
-             '|'. 
-             '(!)'.            // Flag ! 
-             '|'. 
-             '(-)'.            // Flag - 
-             ')*'.             // Fim das flags opcionais 
-             '(?:([\d]+)?)'.   // W  Largura de campos 
-             '(?:#([\d]+))?'.  // #n Precisao esquerda 
-             '(?:\.([\d]+))?'. // .p Precisao direita 
-             '([in%])'.        // Caractere de conversao 
-             '$/';             // Fim da Expressao 
-
-    if (!preg_match($regex, $formato, $matches)) { 
-        trigger_error('Formato invalido: '.$formato, E_USER_WARNING); 
-        return $valor; 
-    } 
-
-    $opcoes = array( 
-        'preenchimento'   => ($matches[1] !== '') ? $matches[1] : ' ', 
-        'nao_agrupar'     => ($matches[2] == '^'), 
-        'usar_sinal'      => ($matches[3] == '+'), 
-        'usar_parenteses' => ($matches[3] == '('), 
-        'ignorar_simbolo' => ($matches[4] == '!'), 
-        'alinhamento_esq' => ($matches[5] == '-'), 
-        'largura_campo'   => ($matches[6] !== '') ? (int)$matches[6] : 0, 
-        'precisao_esq'    => ($matches[7] !== '') ? (int)$matches[7] : false, 
-        'precisao_dir'    => ($matches[8] !== '') ? (int)$matches[8] : $locale['int_frac_digits'], 
-        'conversao'       => $matches[9] 
-    ); 
-
-    if ($opcoes['usar_sinal'] && $locale['n_sign_posn'] == 0) { 
-        $locale['n_sign_posn'] = 1; 
-    } elseif ($opcoes['usar_parenteses']) { 
-        $locale['n_sign_posn'] = 0; 
-    } 
-    if ($opcoes['precisao_dir']) { 
-        $locale['frac_digits'] = $opcoes['precisao_dir']; 
-    } 
-    if ($opcoes['nao_agrupar']) { 
-        $locale['mon_thousands_sep'] = ''; 
-    } 
-
-    $tipo_sinal = $valor >= 0 ? 'p' : 'n'; 
-    if ($opcoes['ignorar_simbolo']) { 
-        $simbolo = ''; 
-    } else { 
-        $simbolo = $opcoes['conversao'] == 'n' ? $locale['currency_symbol'] 
-                                               : $locale['int_curr_symbol']; 
-    } 
-    $numero = number_format(abs($valor), $locale['frac_digits'], $locale['mon_decimal_point'], $locale['mon_thousands_sep']); 
-
-
-    $sinal = $valor >= 0 ? $locale['positive_sign'] : $locale['negative_sign']; 
-    $simbolo_antes = $locale[$tipo_sinal.'_cs_precedes']; 
-
-    $espaco1 = $locale[$tipo_sinal.'_sep_by_space'] == 1 ? ' ' : ''; 
-
-    $espaco2 = $locale[$tipo_sinal.'_sep_by_space'] == 2 ? ' ' : ''; 
-
-    $formatado = ''; 
-    switch ($locale[$tipo_sinal.'_sign_posn']) { 
-    case 0: 
-        if ($simbolo_antes) { 
-            $formatado = '('.$simbolo.$espaco1.$numero.')'; 
-        } else { 
-            $formatado = '('.$numero.$espaco1.$simbolo.')'; 
+        if (!preg_match($regex, $formato, $matches)) { 
+            trigger_error('Formato invalido: '.$formato, E_USER_WARNING); 
+            return $valor; 
         } 
-        break; 
-    case 1: 
-        if ($simbolo_antes) { 
-            $formatado = $sinal.$espaco2.$simbolo.$espaco1.$numero; 
-        } else { 
-            $formatado = $sinal.$numero.$espaco1.$simbolo; 
+
+        $opcoes = array( 
+            'preenchimento'   => ($matches[1] !== '') ? $matches[1] : ' ', 
+            'nao_agrupar'     => ($matches[2] == '^'), 
+            'usar_sinal'      => ($matches[3] == '+'), 
+            'usar_parenteses' => ($matches[3] == '('), 
+            'ignorar_simbolo' => ($matches[4] == '!'), 
+            'alinhamento_esq' => ($matches[5] == '-'), 
+            'largura_campo'   => ($matches[6] !== '') ? (int)$matches[6] : 0, 
+            'precisao_esq'    => ($matches[7] !== '') ? (int)$matches[7] : false, 
+            'precisao_dir'    => ($matches[8] !== '') ? (int)$matches[8] : $locale['int_frac_digits'], 
+            'conversao'       => $matches[9] 
+        ); 
+
+        if ($opcoes['usar_sinal'] && $locale['n_sign_posn'] == 0) { 
+            $locale['n_sign_posn'] = 1; 
+        } elseif ($opcoes['usar_parenteses']) { 
+            $locale['n_sign_posn'] = 0; 
         } 
-        break; 
-    case 2: 
-        if ($simbolo_antes) { 
-            $formatado = $simbolo.$espaco1.$numero.$sinal; 
-        } else { 
-            $formatado = $numero.$espaco1.$simbolo.$espaco2.$sinal; 
+        if ($opcoes['precisao_dir']) { 
+            $locale['frac_digits'] = $opcoes['precisao_dir']; 
         } 
-        break; 
-    case 3: 
-        if ($simbolo_antes) { 
-            $formatado = $sinal.$espaco2.$simbolo.$espaco1.$numero; 
-        } else { 
-            $formatado = $numero.$espaco1.$sinal.$espaco2.$simbolo; 
+        if ($opcoes['nao_agrupar']) { 
+            $locale['mon_thousands_sep'] = ''; 
         } 
-        break; 
-    case 4: 
-        if ($simbolo_antes) { 
-            $formatado = $simbolo.$espaco2.$sinal.$espaco1.$numero; 
+
+        $tipo_sinal = $valor >= 0 ? 'p' : 'n'; 
+        if ($opcoes['ignorar_simbolo']) { 
+            $simbolo = ''; 
         } else { 
-            $formatado = $numero.$espaco1.$simbolo.$espaco2.$sinal; 
+            $simbolo = $opcoes['conversao'] == 'n' ? $locale['currency_symbol'] 
+                                                : $locale['int_curr_symbol']; 
         } 
-        break; 
+        $numero = number_format(abs($valor), $locale['frac_digits'], $locale['mon_decimal_point'], $locale['mon_thousands_sep']); 
+
+
+        $sinal = $valor >= 0 ? $locale['positive_sign'] : $locale['negative_sign']; 
+        $simbolo_antes = $locale[$tipo_sinal.'_cs_precedes']; 
+
+        $espaco1 = $locale[$tipo_sinal.'_sep_by_space'] == 1 ? ' ' : ''; 
+
+        $espaco2 = $locale[$tipo_sinal.'_sep_by_space'] == 2 ? ' ' : ''; 
+
+        $formatado = ''; 
+        switch ($locale[$tipo_sinal.'_sign_posn']) { 
+        case 0: 
+            if ($simbolo_antes) { 
+                $formatado = '('.$simbolo.$espaco1.$numero.')'; 
+            } else { 
+                $formatado = '('.$numero.$espaco1.$simbolo.')'; 
+            } 
+            break; 
+        case 1: 
+            if ($simbolo_antes) { 
+                $formatado = $sinal.$espaco2.$simbolo.$espaco1.$numero; 
+            } else { 
+                $formatado = $sinal.$numero.$espaco1.$simbolo; 
+            } 
+            break; 
+        case 2: 
+            if ($simbolo_antes) { 
+                $formatado = $simbolo.$espaco1.$numero.$sinal; 
+            } else { 
+                $formatado = $numero.$espaco1.$simbolo.$espaco2.$sinal; 
+            } 
+            break; 
+        case 3: 
+            if ($simbolo_antes) { 
+                $formatado = $sinal.$espaco2.$simbolo.$espaco1.$numero; 
+            } else { 
+                $formatado = $numero.$espaco1.$sinal.$espaco2.$simbolo; 
+            } 
+            break; 
+        case 4: 
+            if ($simbolo_antes) { 
+                $formatado = $simbolo.$espaco2.$sinal.$espaco1.$numero; 
+            } else { 
+                $formatado = $numero.$espaco1.$simbolo.$espaco2.$sinal; 
+            } 
+            break; 
+        } 
+
+        if ($opcoes['largura_campo'] > 0 && strlen($formatado) < $opcoes['largura_campo']) { 
+            $alinhamento = $opcoes['alinhamento_esq'] ? STR_PAD_RIGHT : STR_PAD_LEFT; 
+            $formatado = str_pad($formatado, $opcoes['largura_campo'], $opcoes['preenchimento'], $alinhamento); 
+        } 
+
+        return $formatado; 
     } 
 
-    if ($opcoes['largura_campo'] > 0 && strlen($formatado) < $opcoes['largura_campo']) { 
-        $alinhamento = $opcoes['alinhamento_esq'] ? STR_PAD_RIGHT : STR_PAD_LEFT; 
-        $formatado = str_pad($formatado, $opcoes['largura_campo'], $opcoes['preenchimento'], $alinhamento); 
-    } 
-
-    return $formatado; 
-} 
     public function viewinivoice($site, $id)
     {
-        //$generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
-
-        //$generator = \Picqer\Barcode\BarcodeGeneratorPNG::;
-
-        // $path2="/opt/bitnami/apache2/htdocs/";
-        // $paths=$path2.$this->theme->active_theme_path();
-        // $paths=$this->theme->active_theme_path();
-
         $paths = public_path() . "/";
-
         $site = urldecode($site);
-
-        // $this->load->model('dhl/bol');
-
-        // $row=$this->bol->select_all_data2($id);
-
         $dist_number = $this->select_distinct_bol_data($id);
-
         $row = DB::table('bol_data')->where('bol_rec_id', $id)->whereIn('id', $dist_number)->get()->toArray();
-
-
-        // echo "<pre>";
-        //  print_r($row);
-        //  echo "</pre>";
         $str_html = '
 		<!DOCTYPE html>
 		<html>
@@ -1125,19 +864,13 @@ class OrderController extends Controller
 		<title> Admin - Home </title></head>';
 
         if (!empty($row)) {
-
             $invoice_check = 0;
-
             foreach ($row as $key) {
                 $bedrijfsnaam_verzending = $key->bedrijfsnaam_verzending;
-
-
                 if (($bedrijfsnaam_verzending != "")) {
                     $invoice_check++;
-
                     $bestelnummer = $key->bestelnummer;
                     //$cus_row=$this->bol->get_customer_orders($id,$bestelnummer);
-
                     $cus_row = DB::table('bol_data')->select("id", "EAN", "aantal", "producttitel", "prijs", "referentie")->where('bestelnummer', $bestelnummer)->where('bol_rec_id', $id)->get()->toArray();
 
                     // create invoice id
@@ -1162,8 +895,6 @@ class OrderController extends Controller
                     $dt = date("d-m-Y");
                     $besteldatum = $exp_datum[0];
                     // prijs
-
-
                     // solution code
                     $aanhef_verzending = $key->aanhef_verzending;
 
@@ -1265,18 +996,13 @@ class OrderController extends Controller
                     $total_btw_all = 0;
                     $stukprijs_tot_btw_all = 0;
                     $stukprijs_tot_all = 0;
-
-
                     foreach ($cus_row as $value) {
-
                         $EAN = $value->EAN;
                         $aantal = $value->aantal;
                         $producttitel = $value->producttitel;
                         $referentie = $value->referentie;
                         $prijs_with_btw = $value->prijs;
                         $prijs_with_btw = $prijs_with_btw / $aantal;
-
-
                         $per_121 = (121 / 100);
                         $per_21 = (21 / 100);
 
@@ -1288,14 +1014,10 @@ class OrderController extends Controller
 
                         $stukprijs_tot = $stukprijs * $aantal;
                         $stukprijs_tot_all += $stukprijs * $aantal;
-
-
                         $total_btw = $stukprijs_tot * $per_21;
                         $total_btw_all += $stukprijs_tot * $per_21;
                         $stukprijs_tot_btw = $stukprijs_tot + $total_btw;
                         $stukprijs_tot_btw_all += $stukprijs_tot + $total_btw;
-
-
                         setlocale(LC_MONETARY, 'nl_NL.UTF-8');
                         $stukprijs2 = $this->money_format('%(#1n', $stukprijs);
 
@@ -1435,8 +1157,6 @@ class OrderController extends Controller
 
 		<div class="clear:both;"></div>
 		<hr style="">
-		
-
 				<table border="0" cellspacing="0" cellpadding="0" width="100%">
 					<tr>
 						<th class="desc" width="20%"><img src="' . $paths . 'dhl/images/homee_logo-2.jpg" width="120"/></th>
@@ -1457,36 +1177,24 @@ class OrderController extends Controller
 
             if ($invoice_check == 0) {
                 return "";
-
                 exit;
             }
-
         } else {
             return "";
-
             exit;
         }
 
         $str_html .= '
 		</html>';
-
         return $str_html;
     }
 
     public function delete($site, $id)
     {
-        // $this->load->model('dhl/bol');
-
-        // $this->bol->delete($id);
-
-        // $this->db->where('id', $id);
-        // $this->db->delete('bol_rec');
-
         DB::table('bol_rec')->where('id', $id)->delete();
 
         // $this->db->where('bol_rec_id', $id);
         // $this->db->delete('bol_data');
-
         DB::table('bol_data')->where('bol_rec_id', $id)->delete();
 
         // $this->session->set_flashdata('smg', 'Record Delete Successfully');
@@ -1497,7 +1205,6 @@ class OrderController extends Controller
 
     public function get_country_code($country_name)
     {
-
         $countries = array(
             'AF' => 'AFGHANISTAN',
             'AL' => 'ALBANIA',
@@ -1994,7 +1701,6 @@ class OrderController extends Controller
 
     public function generate_uuid()
     {
-
         return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
             mt_rand(0, 0xffff), mt_rand(0, 0xffff),
             mt_rand(0, 0xffff),
@@ -2006,42 +1712,16 @@ class OrderController extends Controller
 
     public function select_distinct_bol_data($id)
     {
-
-        // $this->db->distinct();
-        // $this->db->select("bestelnummer,id");
-        // $this->db->from('bol_data');
-        // $this->db->where('bol_rec_id',$id);
-        // // $this->db->group_by("bestelnummer");
-        // $this->db->order_by('id','ASC');
-        // $query=$this->db->get();
-        // $array=$query->result();
-
         $array = DB::table('bol_data')->distinct()->select("bestelnummer", "id")->where('bol_rec_id', $id)->orderBy('id', 'ASC')->get()->toArray();
-
-        // echo $this->db->last_query();
-        // echo "<pre>";
-        // print_r($array);
-        // echo "</pre>";
-
         $temp = array_unique(array_column($array, 'bestelnummer'));
         $resp = array_intersect_key($array, $temp);
-
-        // echo "<pre>";
-        // print_r($resp);
-        // echo "</pre>";
-
-
         $ret_str = array();
         if (count($resp) > 0) {
             foreach ($resp as $res) {
-
                 $bestelnummer = $res->id;
-
                 $ret_str[] = $bestelnummer;
-
             }
         }
-
         return $ret_str;
     }
 
@@ -2066,9 +1746,7 @@ class OrderController extends Controller
         $returns = '';
         $result = DB::table('bol_data')->where('bol_rec_id', $id)->where('logistiek', null)->whereIn('id', $dist_number)->orderBy('id', 'ASC')->get()->toArray();
         foreach ($result as $row) {
-
             $id2 = $row->id;
-
             if (isset($id)) {
                 $id = $id;
             } else {
@@ -2097,61 +1775,28 @@ class OrderController extends Controller
 
             if (is_array($cus_rows)) {
                 foreach ($cus_rows as $cus_row) {
-
-                    # code...
-
-                    //$EAN=$cus_row[$j]['EAN'];
-                    //$aantal=$cus_row[$j]['aantal'];
                     $producttitel = $cus_row->producttitel;
                     $EAN = $cus_row->EAN;
-                    //$referentie=$cus_row[$j]['referentie'];
                     $returns .= ("<b>EAN</b>:" . $EAN . "<br />");
                     $returns .= ("<b>Prijs</b>:" . $cus_row->prijs . "<br />");
-						// $returns.=("<b>Referentie</b>:".$cus_row->referentie."<br />");
-
                     $returns .= ("<b>Product</b>:" . $producttitel . "<br />");
-						// $returns.=("<b>Aantal</b>:".$cus_row->aantal);
-
-
                 }
-
             }
             $returns .= (' </td>');
-
-
             $returns .= ('<td height="30" style="word-break: break-all;"> ' . $row->bestelnummer . ' </td>');
             $returns .= ('<td height="30"> ' . $row->postcode_verzending . ' </td>');
-
             $returns .= ('<td height="30"> ' . $row->voornaam_verzending . ' </td>');
             $returns .= ('<td height="30"> ' . $row->achternaam_verzending . ' </td>');
-
             $returns .= ('<td height="30"> ' . $dt . ' </td>');
-
             $returns .= ('<td height="30"> ' . $torder . ' </td>');
-
             //$returns.=('<td height="30"> '.$row->bol_update_status.'</td>');
             $returns .= ('<td height="30"><select class="select_class" name="' . $row->id . '" id="select_' . $row->id . '"><option value="">--Select--</option><option value="dhl">DHL</option><option value="dpd">DPD</option><option value="dhl_today">DHL Today</option></select></td>');
-
-
             // order_no::TrackCode::DHL:bol_rec_id::db_id
             $returns .= ('<td height="30">');
-
-
             $returns .= ('<input type="checkbox" name="click1" onclick="unCheckCheckAll()" class="order_products" id="' . $row->id . '" value="' . $bestelnummer . '::' . $trackerCode . '::DHL' . '::' . $id . '::' . $id2 . '"> ');
-
             $returns .= ('</td>');
-
-
             $returns .= ('</tr>');
-
         }
-
-
-        // echo "<pre>";
-
-        // echo $returns;
-
-        // exit;
 
         $result = DB::getSchemaBuilder()->getColumnListing('bol_data');
 
@@ -3528,31 +3173,30 @@ class OrderController extends Controller
 
 	public function invoice_submit2(Request $request)
 	{
-          $file1 = '';
-          $pdf1 = '';
-          $file2 = '';
-          $pdf2 = '';
-      //		$paths = public_path()."/";
-	     $bestelnummer = $request->post('o_no');
-		 $email_to = $request->post('email');
+        $file1 = '';
+        $pdf1 = '';
+        $file2 = '';
+        $pdf2 = '';
+        $bestelnummer = $request->post('o_no');
+		$email_to = $request->post('email');
 
-   if($request->post('sinvoice_input') == 'yes') {
-       //invoice pdf
-       $preview = DB::table('user_invoice_previews')
-           ->select('*')
-           ->join('invoice_previews', 'invoice_previews.id', '=', 'user_invoice_previews.invoice_preview_id')
-           ->where('user_invoice_previews.user_id', \Auth::id())
-           ->where('user_invoice_previews.as_default', 1)
-           ->first();
-       if (!$preview) {
-           Session::flash('danger', 'Please configure Invoice template in Settings tab area.');
-           return redirect('/bol/invoice');
-       }
+        if($request->post('sinvoice_input') == 'yes') {
+            //invoice pdf
+            $preview = DB::table('user_invoice_previews')
+                ->select('*')
+                ->join('invoice_previews', 'invoice_previews.id', '=', 'user_invoice_previews.invoice_preview_id')
+                ->where('user_invoice_previews.user_id', \Auth::id())
+                ->where('user_invoice_previews.as_default', 1)
+                ->first();
+            if (!$preview) {
+                Session::flash('danger', 'Please configure Invoice template in Settings tab area.');
+                return redirect('/bol/invoice');
+            }
 
-       $record = DB::table('bol_data')->where('bestelnummer', $bestelnummer)->first();
-       $pdf1 = \PDF::loadView('template.gold.dhl.invoice-templates.download_invoice', compact('record', 'preview'));
-       $file1 = $record->voornaam_verzending . ' ' . $record->achternaam_verzending . ' Invoice bestelnummer #' . $bestelnummer . '.pdf';
-   }
+            $record = DB::table('bol_data')->where('bestelnummer', $bestelnummer)->first();
+            $pdf1 = \PDF::loadView('bol::invoice.download_invoice', compact('record', 'preview'));
+            $file1 = $record->voornaam_verzending . ' ' . $record->achternaam_verzending . ' Invoice bestelnummer #' . $bestelnummer . '.pdf';
+        }
         if($request->post('tpackinglist_input') == 'yes') {
             //packing list pdf
             $preview = DB::table('user_packlist_previews')
@@ -3566,7 +3210,7 @@ class OrderController extends Controller
                 return redirect('/bol/invoice');
             }
             $record = DB::table('bol_data')->where('bestelnummer', $bestelnummer)->first();
-            $pdf2 = \PDF::loadView('template.gold.dhl.packinglist-templates.download_packlist', compact('record', 'preview'));
+            $pdf2 = \PDF::loadView('bol::packinglist-templates.download_packlist', compact('record', 'preview'));
             $file2 = $record->voornaam_verzending . ' ' . $record->achternaam_verzending . ' Invoice bestelnummer #' . $bestelnummer . '.pdf';
         }
         if($request->post('finvoice_input') && $request->post('fpackinglist_input') == 'yes') {
@@ -3583,7 +3227,7 @@ class OrderController extends Controller
             }
             $servicebanks = DB::table('servicebank')->where('user_id', Auth::id())->first();
             $record = DB::table('bol_data')->where('bestelnummer', $bestelnummer)->first();
-            $pdf1 = \PDF::loadView('template.gold.dhl.invoice-templates.download_invoice', compact('record', 'preview','servicebanks'));
+            $pdf1 = \PDF::loadView('bol::invoice.download_invoice', compact('record', 'preview','servicebanks'));
             $file1 = $record->voornaam_verzending . ' ' . $record->achternaam_verzending . ' Invoice bestelnummer #' . $bestelnummer . '.pdf';
 
             //packing list pdf
@@ -3598,38 +3242,9 @@ class OrderController extends Controller
                 return redirect('/bol/invoice');
             }
             $record = DB::table('bol_data')->where('bestelnummer', $bestelnummer)->first();
-            $pdf2 = \PDF::loadView('template.gold.dhl.packinglist-templates.download_packlist', compact('record', 'preview'));
+            $pdf2 = \PDF::loadView('bol::packinglist-templates.download_packlist', compact('record', 'preview'));
             $file2 = $record->voornaam_verzending . ' ' . $record->achternaam_verzending . ' Invoice bestelnummer #' . $bestelnummer . '.pdf';
         }
-
-//		$str_html=$this->viewinivoice2($bestelnummer);
-
-//		$str_html2=$this->viewpdf2($bestelnummer);
-//        $request->session()->flash('str_html', $str_html);
-//        $request->session()->flash('str_html2', $str_html2);
-
-//		$data = array(
-//			);
-
-//		$bol_data = DB::table('bol_data')->select("bestelnummer", "voornaam_verzending", "achternaam_verzending", "bedrijfsnaam_verzending", "bol_rec_id")->where('bestelnummer', $bestelnummer)->first();
-
-//		$bol_rec = DB::table('bol_rec')->select("date")->where('id', $bol_data->bol_rec_id)->first();
-
-
-//		if($str_html != "")
-//			$pdf = PDF::loadHTML($str_html)->setPaper('a4', 'portrait');
-//		else
-//			$pdf = "";
-//
-//		if($str_html2 != "")
-//			$pdf2 = PDF::loadHTML($str_html2)->setPaper('a4', 'portrait');
-//		else
-//			$pdf2 = "";
-//
-//		if($bol_data->bedrijfsnaam_verzending != "")
-//			$name = $bol_data->bedrijfsnaam_verzending;
-//		else
-//			$name = $bol_data->voornaam_verzending." ".$bol_data->achternaam_verzending;
 
         $cc = explode(',', $request->cc);
         $message = $request->content;
@@ -3642,15 +3257,14 @@ class OrderController extends Controller
           'pdf2' => $pdf2,
         );
         if($cc[0] == ''){
-    	Mail::to($email_to)->bcc('online@unikoop.nl')->send(new MyDemoMail($data));
-        $request->session()->flash('success', 'email Sent Successfully!');
-         return redirect('/bol/invoice');
-     }
-    else {
-        Mail::to($email_to)->cc($cc)->bcc('online@unikoop.nl')->send(new MyDemoMail($data));
-         $request->session()->flash('success', 'email Sent Successfully!');
-         return redirect('/bol/invoice');
-    }
+            Mail::to($email_to)->bcc('online@unikoop.nl')->send(new MyDemoMail($data));
+            $request->session()->flash('success', 'email Sent Successfully!');
+            return redirect('/bol/invoice');
+        } else {
+            Mail::to($email_to)->cc($cc)->bcc('online@unikoop.nl')->send(new MyDemoMail($data));
+            $request->session()->flash('success', 'email Sent Successfully!');
+            return redirect('/bol/invoice');
+        }
     }
 
 	public function viewinivoice3($bestelnummer)
