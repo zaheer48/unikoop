@@ -50,7 +50,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     @include('layouts/header')
-    @include('layouts/sidebar')
 
 </head>
 <body>

@@ -18,8 +18,92 @@
             <!-- ============================================================== -->
             <div class="content-page">
                 <div class="content">
+
+                      <!-- start page title -->
+                      <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <form class="d-flex align-items-center mb-3">
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control border" id="dash-daterange">
+                                            <span class="input-group-text bg-blue border-blue text-white">
+                                                <i class="mdi mdi-calendar-range"></i>
+                                            </span>
+                                        </div>
+                                        <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-2">
+                                            <i class="mdi mdi-autorenew"></i>
+                                        </a>
+                                        <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
+                                            <i class="mdi mdi-filter-variant"></i>
+                                        </a>
+                                    </form>
+                                </div>
+                                <h4 class="page-title">Product List</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                       <div class="findarticle border">
+                        <h4>Find Article</h4>
+
+                            <div class="card m-4">
+                                <div class="card-body  border-bottom">
+                                    <div class="row">
+                                        <form action="" method="">
+                                            <div class="col-12 col-sm-8 col-md-6 col-lg-6">
+                                                <div class="input-group mt-3">
+                                                    <label for="" class="fw-bold">Find your article</label>
+
+                                                    <div class="input-group ">
+                                                        <input type="search" id="EAN" name="EAN"
+                                                            class="col-sm-6 col-xs-6 form-control " placeholder="Search by EAN ISBN ,title etc " />
+
+                                                            <button>
+                                                                <i class="fa-solid fa-magnifying-glass"></i>
+
+                                                            </button>
+
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card m-4">
+
+                                <div class="card border-start border-primary border-4 bg-soft-info col-12 col-sm-8 col-md-6 col-lg-12 p-2">
+
+                                                        {{-- <div class="card-body col-12 col-sm-8 col-md-6 col-lg-6 "> --}}
+                                                        <div class="info ">
+                                                        <p>Good to know</p>
+                                                        <div class="d-flex">
+                                                            <p ><i class="fa-solid fa-circle-info "></i>
+                                                            <div
+                                                            class="mx-2" >
+                                                            On bol products are sold by several partners.it is therefore possible that the product you want to sell is already in our catalogue.Therefore first search for the item you want to sell.if your article is not listed,we do not yet know the article and you can add it!</div></p>
+                                                        </div>
+                                                        </div>
+
+                                                        {{-- </div> --}}
+                                </div>
+                            </div>
+
+                    </div>
+
+
+
+
+
                     <!-- Start Content-->
-                    <div class="container-fluid">
+
+
+                    <div class="container-fluid mt-3">
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
@@ -31,7 +115,7 @@
                                             <li class="breadcrumb-item active">Responsive Table</li>
                                         </ol>
                                     </div> -->
-                                    <h4 class="page-title">Product Lists</h4>
+                                    {{-- <h4 class="page-title">Product Lists</h4> --}}
                                 </div>
                                 <div data-simplebar class="h-100">
                                     <!-- Nav tabs -->
