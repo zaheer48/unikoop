@@ -39,3 +39,32 @@ Route::resource('/email-templates', 'UserEmailTemplatesController');
 Route::resource('/invoice-templates', 'UserInvoiceTemplatesController');
 Route::resource('/packinglist-templates', 'UserPacklistTemplatesController')->middleware('auth');
 Route::get('/payment-history', function () {return view('template.gold.dhl.payment-history.index');})->name('payment.history');
+
+//////
+Route::view('dashboard','layouts/dashboard');
+Route::view('header','layouts/header');
+Route::view('footer','layouts/footer');
+// Route::view('dashboard','layouts/dashboard');
+
+//Product Route
+Route::view('AddProduct','layouts/Product/AddProduct');
+Route::view('ProductList','layouts/Product/ProductList');
+Route::view('UpdateProduct','layouts/Product/UpdateProduct');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

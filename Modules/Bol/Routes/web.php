@@ -17,7 +17,7 @@ Route::prefix('bol')->group(function() {
     Route::get('/all_orders', 'OrderController@allOrders')
         ->middleware('auth');
     Route::get('/apidata/{site}', [
-            'uses' => 'BolRetailerController@getOpenOrders', 
+            'uses' => 'BolRetailerController@getOpenOrders',
             'as' => 'apidata'
         ])
         ->middleware('auth');
@@ -25,7 +25,7 @@ Route::prefix('bol')->group(function() {
     Route::get('/invoice', 'OrderController@invoice2');
     Route::post('/check_invoice2/', 'OrderController@check_invoice2')->middleware('auth');
 
-    
+
 
     Route::get('/orders/{id}', 'OrderController@orders')->middleware('auth');
     Route::get('/orders_emails/{id}', 'OrderController@ordersEmails')->middleware('auth');
@@ -33,19 +33,19 @@ Route::prefix('bol')->group(function() {
     Route::post('/fetch/{id}', 'OrderController@fetch')->middleware('auth');
     Route::get('/fetch/select/{id}', 'OrderController@fetchSelect')->middleware('auth');
     Route::post('/fetch/select/next', 'OrderController@fetchSelectNext')->middleware('auth');
-    
+
     Route::post('/update_orders', 'OrderController@updateOrders')->middleware('auth');
     Route::get('/packing_list/{site}/{id}', 'OrderController@packing_list')->middleware('auth');
     Route::get('/dhl_csv/{site}/{id}', 'OrderController@dhl_csv')->middleware('auth');
     Route::get('/delete/{site}/{id}', 'OrderController@delete')->middleware('auth');
     Route::get('/create_invoice/{site}/{id}', 'OrderController@create_invoice')->middleware('auth');
-    Route::post('/check_invoice/', 'OrderController@check_invoice')->middleware('auth');    
+    Route::post('/check_invoice/', 'OrderController@check_invoice')->middleware('auth');
     Route::post('/check_in1/{id}', 'OrderController@check_in1')->middleware('auth');
     Route::post('/print_invoice/', 'OrderController@print_invoice')->middleware('auth');
 
     Route::get('/invoice2', function () {return view('template/gold/dhl/bol_invoice');});
     Route::post('/invoice_submit', 'OrderController@invoice_submit');
-    
+
     Route::post('/invoice_submit2', 'OrderController@invoice_submit2');
     Route::get('/create_invoice_2/{order_id}', 'OrderController@create_invoice_2');
     Route::get('/create_invoice_3/{order_id}', 'OrderController@create_invoice_3');
@@ -69,3 +69,6 @@ Route::prefix('bol')->group(function() {
         "uses" => 'CsvexportController@getExport',
         "as" => 'Exportcsv'])->middleware('auth');
 });
+
+
+
