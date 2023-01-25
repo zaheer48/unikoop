@@ -64,7 +64,7 @@
             </div>
             <div class="btn-group">
               <span class="text_16 badge badge-primary">
-                Total Orders {{ count($bol_rec) }}</span>
+                Total Orders {{ $totalRecords }}</span>
                 <span class="text_16 badge badge-primary">
                 Active Orders 1696</span>
                 <span class="text_16 badge badge-primary">
