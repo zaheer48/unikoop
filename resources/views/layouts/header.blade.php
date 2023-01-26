@@ -223,9 +223,39 @@
                             </div>
 
                              item
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="fe-user"></i>
                                 <span>My Account</span>
+                            </a> -->
+
+                            <a href="{{ route('my.wallet')}}" class="dropdown-item notify-item">
+                                <i class="fe-user"></i>
+                                <span>My Wallet</span>
+                            </a>
+
+                            <a href="{{ route('my.profile')}}" class="dropdown-item notify-item">
+                                <i class="fe-user"></i>
+                                <span>My Profile</span>
+                            </a>
+
+                            <a href="{{ route('email-templates.index')}}" class="dropdown-item notify-item">
+                                <i class="fe-user"></i>
+                                <span>Email Templates</span>
+                            </a>
+
+                            <a href="{{ route('invoice-templates.index')}}" class="dropdown-item notify-item">
+                                <i class="fe-user"></i>
+                                <span>Invoice Templates</span>
+                            </a>
+
+                            <a href="{{ route('packinglist-templates.index')}}" class="dropdown-item notify-item">
+                                <i class="fe-user"></i>
+                                <span>Packing List Templates</span>
+                            </a>
+
+                            <a href="{{ route('payment.history')}}" class="dropdown-item notify-item">
+                                <i class="fe-user"></i>
+                                <span>Payment History</span>
                             </a>
 
                             <!-- item-->
