@@ -13,13 +13,15 @@
         <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link href="{{ URL::asset('assets/css/images/favicon.ico') }}" rel="shortcut icon"   />
+
 
 
     <!-- Bootstrap css -->
     <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App css -->
     {{-- <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" /> --}}
-    <link href="{{ URL::asset('assets/css//app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{ URL::asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
     <!-- icons -->
     {{-- <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" /> --}}
     <link href="{{ URL::asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />

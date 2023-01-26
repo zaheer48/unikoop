@@ -15,7 +15,7 @@ Route::prefix('bol')->group(function() {
     Route::get('/', 'BolController@index');
 
     Route::get('/all_orders', 'OrderController@allOrders')
-        ->middleware('auth');
+        ->middleware('auth')->name('allorder');
     Route::get('/apidata/{site}', [
             'uses' => 'BolRetailerController@getOpenOrders',
             'as' => 'apidata'
