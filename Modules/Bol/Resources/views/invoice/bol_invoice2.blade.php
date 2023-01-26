@@ -114,19 +114,24 @@
 
     <div class="col-md-10 bg-blue middlecontainer">
         <p class="alert alert-info">
-            You can set templates for <a href="{{ route('invoice-templates.index') }}" style="text-decoration: underline;">Invoice</a>, <a href="{{ route('email-templates.index') }}" style="text-decoration: underline;">Email</a>, <a href="{{ route('packinglist-templates.index') }}" style="text-decoration: underline;">Packing List</a> by going to settings tab.
+            You can set templates for <a href="{{ route('invoice-templates.index') }}" style="text-decoration: underline;">Invoice</a>, 
+            <a href="{{ route('email-templates.index') }}" style="text-decoration: underline;">Email</a>, 
+            <a href="{{ route('packinglist-templates.index') }}" style="text-decoration: underline;">Packing List</a> by going to settings tab.
         </p>
         @if(Session::has('success'))
             <p class="alert alert-success">{{ Session::get('success') }}
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </p>
         @endif
         @if(Session::has('alert-warning'))
             <p class="alert alert-warning">{{ Session::get('alert-warning') }}
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </p>
         @endif
         @if(Session::has('danger'))
             <p class="alert alert-warning">{{ Session::get('danger') }}
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </p>
         @endif
 
             <div class="panel panel-info" style="padding: 20px; padding-bottom: 10px;">
@@ -230,8 +235,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <button class="btn btn-primary btn-block" id="s_email"
-                                                style="padding: 9px;">
+                                        <button class="btn btn-primary btn-block" id="s_email" style="padding: 9px;">
                                             Send Email
                                         </button>
                                     </div>
@@ -328,7 +332,7 @@
                             var check_invoice_orderID = data.check_invoice_orderID;
                             // $("#f_anchor").attr("href", "/bol/create_invoice_2/" + check_invoice_orderID);
                             $("#f_anchor").attr("href", "/download-invoice-pdf/" + check_invoice_orderID);
-                            $("#sf_anchor").attr("href", "/download-packinglist-pdf/" + check_invoice_orderID);
+                            $("#sf_anchor").attr("href", "/bol/download-packinglist-pdf/" + check_invoice_orderID);
                             $("#tpackinglist_input").attr("value", "");
                             $("#sinvoice_input").attr("value", "");
                             $("#finvoice_input").attr("value", "yes");
