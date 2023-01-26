@@ -51,8 +51,7 @@
     <title>@yield('title')</title>
     @include('layouts/header')
 
-</head>
-<body>
+
 <div class="main">
     @yield('content')
 

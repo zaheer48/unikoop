@@ -88,15 +88,21 @@ Route::get('/searching', 'SiteController@searching')->name('site.search');
 
 
 //////
-Route::view('dashboard','layouts/dashboard');
+Route::view('dashboard','layouts/dashboard')->name('dashboard');
 Route::view('header','layouts/header');
 Route::view('footer','layouts/footer');
 // Route::view('dashboard','layouts/dashboard');
 
 //Product Route
-Route::view('AddProduct','layouts/Product/AddProduct');
-Route::view('ProductList','layouts/Product/ProductList');
-Route::view('UpdateProduct','layouts/Product/UpdateProduct');
+Route::view('AddProduct','layouts/Product/AddProduct')->name('AddProduct');
+Route::view('ProductList','layouts/Product/ProductList')->name('ProductList');
+Route::view('UpdateProduct','layouts/Product/UpdateProduct')->name('UpdateProduct');
+Route::view('createinvoice','layouts/createinvoice')->name('createinvoice');
+Route::view('allTransaction','layouts/allTransaction')->name('allTransaction');
+Route::view('downloadLabel','layouts/downloadLabel')->name('downloadLabel');
+Route::view('uploadBolSheet','layouts/uploadBolSheet')->name('uploadBolSheet');
+Route::view('allBolSheet','layouts/allBolSheet')->name('allBolSheet');
+// Route::view('allorder','layouts/allorder')->name('allorder');
 
 
 

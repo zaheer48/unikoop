@@ -1,40 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
 
-    <head>
-
-        <meta charset="utf-8" />
-        <title>@yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        {{-- <link rel="shortcut icon" href="assets/images/favicon.ico"> --}}
+        <link href=" {{ URL::asset('assets/images/favicon.ico') }}" rel="shortcut icon"  />
+
+
+        <!-- Responsive Table css -->
+        <link href="{{URL::asset('assets/libs/admin-resources/rwd-table/rwd-table.min.css')}}" rel="stylesheet" type="text/css" />
+
+
+
+        <!-- third party css -->
+        <link href="{{URL::asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{URL::asset('assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
         <!-- Font Awsome  -->
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        {{-- <link href=" {{ URL::asset('assets/libs/images/favicon.ico') }}" rel="stylesheet"  /> --}}
 
         <!-- Plugins css -->
-        <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
+        {{-- <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" /> --}}
+        <link href=" {{ URL::asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
+
+        {{-- <link href="assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" /> --}}
+        <link href=" {{ URL::asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- Bootstrap css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <!-- App css -->
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/>
-        <!-- icons -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <!-- Head js -->
-        <script src="assets/js/head.js"></script>
+        {{-- <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> --}}
+        <link href=" {{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 
-    </head>
-         <style>
-  .table-responsive {
+        <!-- App css -->
+        {{-- <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style"/> --}}
+        <link href=" {{ URL::asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+
+        <!-- icons -->
+        {{-- <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" /> --}}
+        <link href=" {{ URL::asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
+        <!-- Head js -->
+        {{-- <script src="asset/js/head.js"></script> --}}
+        <script src="{{URL::asset('assets/js/head.js')}}"></script>
+
+
+
+<style>
+    .table-responsive {
     overflow-x: scroll;
 
 
-}
+      }
 
 
             .has-details {
@@ -125,7 +143,7 @@
                                         <!-- item-->
                                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                                             <div class="d-flex align-items-start">
-                                                <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-2.jpg" alt="Generic placeholder image" height="32">
+                                                <img class="d-flex me-2 rounded-circle" src="{{URL::asset('assets/images/users/user-2.jpg')}}" alt="Generic placeholder image" height="32">
                                                 <div class="w-100">
                                                     <h5 class="m-0 font-14">Erwin E. Brown</h5>
                                                     <span class="font-12 mb-0">UI Designer</span>
@@ -136,7 +154,7 @@
                                         <!-- item-->
                                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                                             <div class="d-flex align-items-start">
-                                                <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-5.jpg" alt="Generic placeholder image" height="32">
+                                                <img class="d-flex me-2 rounded-circle" src="{{URL::asset('assets/images/users/user-5.jpg')}}" alt="Generic placeholder image" height="32">
                                                 <div class="w-100">
                                                     <h5 class="m-0 font-14">Jacob Deo</h5>
                                                     <span class="font-12 mb-0">Developer</span>
@@ -158,28 +176,32 @@
 
                     <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                         <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="assets/images/flags/us.jpg" alt="user-image" height="16">
+                            <img src="{{URL::asset('assets/images/flags/us.jpg')}}" alt="user-image" height="16">
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+                                <img src="{{URL::asset('assets/images/flags/germany.jpg')}}" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+
+
+                                <img src="{{URL::asset('assets/images/flags/italy.jpg')}}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
+
+                                <img src="{{URL::asset('assets/images/flags/spain.jpg')}}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+
+                                <img src="{{URL::asset('assets/images/flags/russia.jpg')}}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
                             </a>
 
                         </div>
@@ -189,7 +211,7 @@
 
                     <li class="dropdown notification-list topbar-dropdown">
                         <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+                            <img src="{{URL::asset('assets/images/users/user-1.jpg')}}" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ms-1">
                                 Geneva <i class="mdi mdi-chevron-down"></i>
                             </span>
@@ -249,21 +271,21 @@
                 <div class="logo-box">
                     <a href="index.html" class="logo logo-dark text-center">
                         <span class="logo-sm">
-                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                            <img src="{{URL::asset('assets/images/logo-sm.png')}}" alt="" height="22">
                             <!-- <span class="logo-lg-text-light">UBold</span> -->
                         </span>
                         <span class="logo-lg">
-                            <img src="assets/images/logo-dark.png" alt="" height="20">
+                            <img src=" {{URL::asset('assets/images/logo-dark.png')}}"  alt="" height="20">
                             <!-- <span class="logo-lg-text-light">U</span> -->
                         </span>
                     </a>
 
                     <a href="index.html" class="logo logo-light text-center">
                         <span class="logo-sm">
-                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                            <img src="{{URL::asset('assets/images/logo-sm.png')}}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="assets/images/logo-light.png" alt="" height="20">
+                            <img src="{{URL:: asset('assets/images/logo-light.png')}}" alt="" height="20">
                         </span>
                     </a>
                 </div>
@@ -303,7 +325,7 @@
 
                 <!-- User box -->
                 <div class="user-box text-center">
-                    <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
+                    <img src="{{URL::asset('assets/images/users/user-1.jpg')}}" alt="user-img" title="Mat Helme"
                         class="rounded-circle avatar-md">
                     <div class="dropdown">
                         <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
@@ -362,18 +384,43 @@
                             <div class="collapse" id="sidebarDashboards">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="dashboard">Dashboard</a>
+                                        <a href="{{ route('dashboard') }}">Dashboard</a>
                                     </li>
 
                                 </ul>
                             </div>
                         </li>
 
-
-
-
-
                         <li>
+                            <a href="#sidebarCrm" data-bs-toggle="collapse">
+                                <i data-feather="users"></i>
+                                <span> Orders</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarCrm">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="{{route('allorder')}}">All Orders</a>
+                                    </li>
+                                    {{-- <li>
+                                        <a href="Invoice-tempelate.html">Invoice Tempelate</a>
+                                    </li>
+                                    <li>
+                                        <a href="Invoice.html">invoice</a>
+                                    </li>
+                                    <li>
+                                        <a href="Payment.html">Payment</a>
+                                    </li>
+                                    <li>
+                                        <a href="mywallet.html">My Wallet</a>
+                                    </li> --}}
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+                        {{-- <li>
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                                 <i data-feather="shopping-cart"></i>
                                 <span> Ecommerce </span>
@@ -397,8 +444,8 @@
 
                                 </ul>
                             </div>
-                        </li>
-                        <li>
+                        </li> --}}
+                        {{-- <li>
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                                 <i data-feather="shopping-cart"></i>
                                 <span> Products </span>
@@ -420,9 +467,103 @@
 
                                 </ul>
                             </div>
-                        </li>
-
+                        </li> --}}
                         <li>
+                            <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                                <i data-feather="shopping-cart"></i>
+                                <span> Download Label </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEcommerce">
+                                <ul class="nav-second-level">
+
+                                    <li>
+                                        <a href="{{route('downloadLabel')}}">Download Label</a>
+                                    </li>
+                                    {{-- <li>
+                                        <a href="CategoryList">See All Label</a>
+                                    </li> --}}
+
+                                    {{-- <li>
+                                        <a href="AddCategory.html">Add Category</a>
+                                    </li>
+                                    <li>
+                                        <a href="UpdateCategory.html">Update Category</a>
+                                    </li> --}}
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                                <i data-feather="shopping-cart"></i>
+                                <span> Upload Bol Sheets </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEcommerce">
+                                <ul class="nav-second-level">
+
+                                    <li>
+                                        <a href="{{'uploadBolSheet'}}">See All</a>
+                                    </li>
+
+                                    {{-- <li>
+                                        <a href="AddCategory.html">Add Category</a>
+                                    </li>
+                                    <li>
+                                        <a href="UpdateCategory.html">Update Category</a>
+                                    </li> --}}
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                                <i data-feather="shopping-cart"></i>
+                                <span> All Bol Sheets</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEcommerce">
+                                <ul class="nav-second-level">
+
+                                    <li>
+                                        <a href="{{route('allBolSheet')}}">See All</a>
+                                    </li>
+
+                                    {{-- <li>
+                                        <a href="AddCategory.html">Add Category</a>
+                                    </li>
+                                    <li>
+                                        <a href="UpdateCategory.html">Update Category</a>
+                                    </li> --}}
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                                <i data-feather="shopping-cart"></i>
+                                <span> Transaction Report</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEcommerce">
+                                <ul class="nav-second-level">
+
+                                    <li>
+                                        <a href="{{route('allTransaction')}}">See All</a>
+                                    </li>
+
+                                    {{-- <li>
+                                        <a href="AddCategory.html">Add Category</a>
+                                    </li>
+                                    <li>
+                                        <a href="UpdateCategory.html">Update Category</a>
+                                    </li> --}}
+
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- <li>
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                                 <i data-feather="shopping-cart"></i>
                                 <span> Cateogory </span>
@@ -444,7 +585,7 @@
 
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
 
                         <li>
                             <a href="#sidebarCrm" data-bs-toggle="collapse">
@@ -455,9 +596,9 @@
                             <div class="collapse" id="sidebarCrm">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="create-invoice.html">Create Invoice</a>
+                                        <a href="{{route('createinvoice')}}">Create Invoice</a>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a href="Invoice-tempelate.html">Invoice Tempelate</a>
                                     </li>
                                     <li>
@@ -468,7 +609,7 @@
                                     </li>
                                     <li>
                                         <a href="mywallet.html">My Wallet</a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </li>
@@ -548,3 +689,4 @@
 
             </div>
         <!-- Left Sidebar End -->
+    </div>

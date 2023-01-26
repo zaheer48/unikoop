@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Add Product')
+@section('title', 'Add Product  | Unikoop')
 @section('content')
     <!-- ============================================================== -->
     <!-- Start Page Content here -->

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Update Product')
+@section('title','Update Product | Unikoop')
 @section('content')
 
 
