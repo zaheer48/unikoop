@@ -1,0 +1,101 @@
+@extends('layouts.service_dashboard')
+@section('title','Invoice templates')
+@section('content')
+    <style>
+        .invalid-feedback {
+            color: red;
+        }
+        .close {
+            transform: translate(0%, -50%);
+            opacity: 1;
+            color: red;
+        }
+    </style>
+    <div class="col-md-10 bg-blue middlecontainer">
+        @if(Session::has('success'))
+            <p class="alert alert-success">{{ Session::get('success') }}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </p>
+        @endif
+        @if(Session::has('alert-warning'))
+            <p class="alert alert-warning">{{ Session::get('alert-warning') }}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </p>
+        @endif
+
+        <div class="panel panel-info">
+            <div class="row" style="margin-top: 8px;">
+                <div class="col-md-12">
+                    <h3 style="padding: 20px;">Invoice Templates
+                        <a href="{{route('invoice-templates.index')}}" class="btn btn-primary" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+                    </h3>
+                    <hr>
+                    <div class="row" style="padding: 20px;">
+                        <div class="col-md-7">
+                            <form action="{{ url('/invoice-templates',$preview->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label for="">Logo 1</label>
+                                        <input type="file" name="logo_1" class="form-control">
+                                        @error('logo_1')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="">Logo 2</label>
+                                        <input type="file" name="logo_2" class="form-control">
+                                        @error('logo_2')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label for="">Footer Logo(s)</label>
+                                        <small style="color: red;"> * Select max 5 logos.</small>
+                                        <input type="file" name="footer_logos[]" id="file_input" class="form-control">
+                                        @error('footer_logos')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <button class="btn btn-md btn-primary">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-5 form-group">
+                            <h4 class="text-center">Template Sample</h4>
+                            <img src="{{ asset('portal/'.$preview->preview) }}" style="border: 1px solid #999;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+@section('js')
+
+    <script src="{{url('/dhl')}}/js/jquery.multifile.js"></script>
+    <script type="text/javascript">
+        jQuery(function () {
+            $('#file_input').multifile();
+        });
+    </script>
+
+@endsection

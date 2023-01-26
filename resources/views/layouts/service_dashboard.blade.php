@@ -168,8 +168,8 @@
                             <i class="fa fa-cog" aria-hidden="true" style="font-size: 24px;"></i>
                         </a>
                         <ul class="dropdown-menu pull-right" id="settings-drop" aria-labelledby="settings">
-                            <li><a href="{{ url('my-wallet')}}">My Wallet</a></li>
-                            <li><a href="{{ url('myprofile-index')}}">My Profile</a></li>
+                            <li><a href="{{ route('my.wallet')}}">My Wallet</a></li>
+                            <li><a href="{{ route('my.profile')}}">My Profile</a></li>
                             <li><a href="{{ route('email-templates.index') }}">Email Templates</a></li>
                             <li><a href="{{ route('invoice-templates.index') }}">Invoice Templates</a></li>
                             <li><a href="{{ route('packinglist-templates.index') }}">Packing List Templates</a></li>

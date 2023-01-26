@@ -37,6 +37,8 @@ class BolRetailerController extends Controller
 
 		$reducedOrders_arr = array();
 		
+		// dd($client->getInventory());
+
 		for($a=1; $a<=4; $a++)
 		{
 			$reducedOrders_arr[] = $client->getOrders($a);
@@ -44,7 +46,6 @@ class BolRetailerController extends Controller
 		}
 		
 		$bol_rec_id = 0;
-
 		$order_check = 1;
 
 		foreach($reducedOrders_arr as $reducedOrders)

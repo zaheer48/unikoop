@@ -26,7 +26,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username', 
         'password',
+        'status', 
+        'password_hint',
+        'create_by',
     ];
 
     /**
@@ -68,4 +72,8 @@ class User extends Authenticatable
     // {
     //     return $this->hasOne(Tenant::class);
     // }
+    
+    function bol_records() {
+        return $this->hasMany(Bol_rec::class);
+    }
 }
