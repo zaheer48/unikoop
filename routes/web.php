@@ -26,9 +26,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
 });
 // Wallet
 Route::get('/my-wallet', function () {
@@ -88,7 +86,7 @@ Route::get('/searching', 'SiteController@searching')->name('site.search');
 
 
 //////
-Route::view('dashboard','layouts/dashboard')->name('dashboard');
+// Route::view('dashboard','layouts/dashboard')->name('dashboard');
 Route::view('header','layouts/header');
 Route::view('footer','layouts/footer');
 // Route::view('dashboard','layouts/dashboard');
@@ -102,7 +100,6 @@ Route::view('allTransaction','layouts/allTransaction')->name('allTransaction');
 Route::view('downloadLabel','layouts/downloadLabel')->name('downloadLabel');
 Route::view('uploadBolSheet','layouts/uploadBolSheet')->name('uploadBolSheet');
 Route::view('allBolSheet','layouts/allBolSheet')->name('allBolSheet');
-// Route::view('allorder','layouts/allorder')->name('allorder');
 
 
 

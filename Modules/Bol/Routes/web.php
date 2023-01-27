@@ -12,7 +12,7 @@
 */
 
 Route::prefix('bol')->group(function() {
-    Route::get('/', 'BolController@index');
+    Route::get('/', 'BolController@index')->name('bol');
 
     Route::get('/all_orders', 'OrderController@allOrders')
         ->middleware('auth')->name('allorder');
