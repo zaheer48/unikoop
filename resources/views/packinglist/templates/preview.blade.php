@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="{{asset('dhl/css/pdfstyle.css')}}" media="all" />
-    <title>Packing list Preview</title></head>
-<body>
+@extends('layouts.app')
+@section('title', 'Add Product  | Unikoop')
+@section('content')
 <style>
     .alert-info {
         color: #31708f;
@@ -17,6 +14,42 @@
         border-radius: 4px;
     }
 </style>
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+                  <!-- start page title -->
+                  <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <form class="d-flex align-items-center mb-3">
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control border" id="dash-daterange">
+                                        <span class="input-group-text bg-blue border-blue text-white">
+                                            <i class="mdi mdi-calendar-range"></i>
+                                        </span>
+                                    </div>
+                                    <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-2">
+                                        <i class="mdi mdi-autorenew"></i>
+                                    </a>
+                                    <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
+                                        <i class="mdi mdi-filter-variant"></i>
+                                    </a>
+                                </form>
+                            </div>
+                            <h4 class="page-title">Preview Packing List Templates</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
 @if($preview->as_complete != 1)
     <p class="alert alert-info">
         You are viewing default template design please configure your own by editing template.
@@ -601,6 +634,9 @@
         </tr>
     </table>
     <div class="clear:both;"></div>
-@endif
-</body>
-</html>
+    @endif
+    </div>
+        </div>
+    </div>
+
+@endsection
