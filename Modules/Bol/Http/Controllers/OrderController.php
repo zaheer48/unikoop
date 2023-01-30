@@ -3173,7 +3173,8 @@ class OrderController extends Controller
 	public function invoice2()
 	{
         $default = EmailTemplate::where('user_id',Auth::id())->where('email_type','Order Invoice')->where('status',1)->first();
-		return View::make("bol::invoice/bol_invoice2", compact('default'));
+		// return View::make("bol::invoice/bol_invoice2", compact('default'));
+        return View::make("layouts/createinvoice", compact('default'));
 	}
 
 	public function invoice_submit2(Request $request)
