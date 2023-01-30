@@ -1,54 +1,35 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 @section('title', 'Preview Product  | Unikoop')
-@section('content')
+@section('content') --}}
     <!-- ============================================================== -->
     <!-- Start Page Content here -->
     <!-- ============================================================== -->
-    <style>
-        .alert-info {
-            color: #31708f;
-            background-color: #d9edf7;
-            border-color: #bce8f1;
-        }
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Preview | Unikoop</title>
+        <style>
+            .alert-info {
+                color: #31708f;
+                background-color: #d9edf7;
+                border-color: #bce8f1;
+            }
 
-        .alert {
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-        }
-    </style>
-    <div class="content-page">
-        <div class="content">
+            .alert {
+                padding: 15px;
+                margin-bottom: 20px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+            }
+        </style>
+    </head>
+    <body>
 
 
-            <!-- Start Content-->
-            <div class="container-fluid">
-                  <!-- start page title -->
-                  <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box">
-                            <div class="page-title-right">
-                                <form class="d-flex align-items-center mb-3">
-                                    <div class="input-group input-group-sm">
-                                        <input type="text" class="form-control border" id="dash-daterange">
-                                        <span class="input-group-text bg-blue border-blue text-white">
-                                            <i class="mdi mdi-calendar-range"></i>
-                                        </span>
-                                    </div>
-                                    <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-2">
-                                        <i class="mdi mdi-autorenew"></i>
-                                    </a>
-                                    <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
-                                        <i class="mdi mdi-filter-variant"></i>
-                                    </a>
-                                </form>
-                            </div>
-                            <h4 class="page-title">Add Product</h4>
-                        </div>
-                    </div>
-                </div>
-                <!-- end page title -->
+
 
                 @if($preview->as_complete != 1)
                     <p class="alert alert-info">
@@ -166,7 +147,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <table border="0" cellspacing="0" cellpadding="0">
+                <table border="0" cellspacing="0" cellpadding="0" class="my-3">
                     <tr>
                         <th class="desc" style="color:blue" width="66%">Unikoop HomeShopping B.V.
                         </td>
@@ -808,4 +789,6 @@
             </div>
         </div>
     </div>
-@endsection
+</body>
+</html>
+

@@ -276,15 +276,15 @@
                                                         </a>
                                                         <button type="button" class="btn btn-info rounded-pill waves-effect waves-light">Toal Records {{ $totalRecords }}</button>
 
-                                                        <button type="button" class="btn btn-info rounded-pill waves-effect waves-light">Active Orders1696</button>
+                                                        <button type="button" class="btn btn-info rounded-pill waves-effect waves-light">Active Orders 1696 </button>
 
 
 
-                                                        <button type="button" class="btn btn-info rounded-pill waves-effect waves-light">Pending Orders3446</button>
+                                                        <button type="button" class="btn btn-info rounded-pill waves-effect waves-light">Pending Orders 3446</button>
 
 
 
-                                                        <button type="button" class="btn btn-danger rounded-pill waves-effect waves-light">Failure Orders10</button>
+                                                        <button type="button" class="btn btn-danger rounded-pill waves-effect waves-light">Failure Orders 10</button>
 
 
                                                     </div>

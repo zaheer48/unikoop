@@ -1,54 +1,54 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 @section('title', 'Add Product  | Unikoop')
-@section('content')
-<style>
-    .alert-info {
-        color: #31708f;
-        background-color: #d9edf7;
-        border-color: #bce8f1;
-    }
-    .alert {
-        padding: 15px;
-        margin-bottom: 20px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-    }
-</style>
-    <!-- ============================================================== -->
-    <!-- Start Page Content here -->
-    <!-- ============================================================== -->
+ @section('content') --}}
 
-    <div class="content-page">
-        <div class="content">
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Preview | Unikoop</title>
+    <style>
+        .alert-info {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    {{-- <style>
+        .alert-info {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+    </style> --}}
+ <div class="content-page">
+    <div class="content">
 
 
-            <!-- Start Content-->
-            <div class="container-fluid">
-                  <!-- start page title -->
-                  <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box">
-                            <div class="page-title-right">
-                                <form class="d-flex align-items-center mb-3">
-                                    <div class="input-group input-group-sm">
-                                        <input type="text" class="form-control border" id="dash-daterange">
-                                        <span class="input-group-text bg-blue border-blue text-white">
-                                            <i class="mdi mdi-calendar-range"></i>
-                                        </span>
-                                    </div>
-                                    <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-2">
-                                        <i class="mdi mdi-autorenew"></i>
-                                    </a>
-                                    <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
-                                        <i class="mdi mdi-filter-variant"></i>
-                                    </a>
-                                </form>
-                            </div>
-                            <h4 class="page-title">Preview Packing List Templates</h4>
-                        </div>
-                    </div>
-                </div>
-                <!-- end page title -->
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+
 
 @if($preview->as_complete != 1)
     <p class="alert alert-info">
@@ -73,9 +73,9 @@
          </div>
          <div id="logo2" style="float:right">
              @if ($preview->logo_2)
-             <img src="{{ asset('images/'.$preview->logo_2) }}" width="200" style="margin-top: -36px;" />
+             <img src="{{ asset('images/'.$preview->logo_2) }}" width="200"/>
                  @else
-                 <img src="{{asset('dhl/images/bol_logo-2.png')}}" width="200" style="margin-top: -36px;" />
+                 <img src="{{asset('dhl/images/bol_logo-2.png')}}" width="200"/>
              @endif
         </div>
   </header>
@@ -215,9 +215,9 @@
         </div><br>
         <div id="logo2" style="float: left;margin-top: 45px;margin-right: 309px;">
             @if ($preview->logo_2)
-                <img src="{{ asset('images/'.$preview->logo_2) }}" width="200" style="margin-top: -36px;" />
+                <img src="{{ asset('images/'.$preview->logo_2) }}" width="200" />
             @else
-            <img src="{{asset('dhl/images/bol_logo-2.png')}}" width="200" style="margin-top: -36px;" />
+            <img src="{{asset('dhl/images/bol_logo-2.png')}}" width="200"/>
                 @endif
         </div>
         <div style="float:right; margin-top: -120px;" ><h2 class="" style="font-weight: bold; font-style: italic"> Bedankt voor je bestelling</h2>
@@ -635,8 +635,11 @@
     </table>
     <div class="clear:both;"></div>
     @endif
-    </div>
+
         </div>
     </div>
+ </div>
+</body>
+</html>
 
-@endsection
+{{-- @endsection --}}

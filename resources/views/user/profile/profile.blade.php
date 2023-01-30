@@ -26,7 +26,7 @@
         }
     }
 </style>
-{{-- 
+{{--
 <div class="content-page">
     <div class="content">
           <!-- start page title -->
@@ -190,7 +190,7 @@
                                 <li class="breadcrumb-item active">Invoice</li>
                             </ol>
                         </div> --}}
-                        <h4 class="page-title">My Profile</h4>
+                        <h4 class="page-title" style="color: blue;">My Profile</h4>
                     </div>
                 </div>
             </div>

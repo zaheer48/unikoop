@@ -87,7 +87,7 @@
             <div class="col-12">
                 <div class="page-title-box">
                     <div class="page-title-right">
-                        <form class="d-flex align-items-center mb-3">
+                        {{-- <form class="d-flex align-items-center mb-3">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control border" id="dash-daterange">
                                 <span class="input-group-text bg-blue border-blue text-white">
@@ -100,21 +100,21 @@
                             <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
                                 <i class="mdi mdi-filter-variant"></i>
                             </a>
-                        </form>
+                        </form> --}}
                     </div>
-                    <h4 class="page-title">Change Password</h4>
+                    <h4 class="page-title" style="color:blue;">Change Password</h4>
                 </div>
             </div>
         </div>
         <!-- end page title -->
-        <div class="col-md-10 bg-blue middlecontainer">
+        <div class="col-md-10 card middlecontainer">
             <div class="card card-profile shadow">
                 <div class="card-body">
                     <div class="row page-titles">
                         <div class="col-md-12">
                             <ol class="breadcrumb">
 
-                                <li class="breadcrumb-item" style="color:white;"><a>update profile</a></li>
+                                {{-- <li class="breadcrumb-item" ><a>Change password</a></li> --}}
                             </ol>
                         </div>
                     </div>

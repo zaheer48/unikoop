@@ -189,7 +189,7 @@
                         <div class="col-12">
                             <div class="page-title-box">
                                 <div class="page-title-right">
-                                    <form class="d-flex align-items-center mb-3">
+                                    {{-- <form class="d-flex align-items-center mb-3">
                                         <div class="input-group input-group-sm">
                                             <input type="text" class="form-control border" id="dash-daterange">
                                             <span class="input-group-text bg-blue border-blue text-white">
@@ -202,9 +202,9 @@
                                         <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
                                             <i class="mdi mdi-filter-variant"></i>
                                         </a>
-                                    </form>
+                                    </form> --}}
                                 </div>
-                                <h4 class="page-title">My Wallet</h4>
+                                <h4 class="page-title" style="color: blue;">My Wallet</h4>
                             </div>
                         </div>
                     </div>
