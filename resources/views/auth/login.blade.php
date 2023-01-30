@@ -133,7 +133,7 @@
                                      </div> --}}
                                      <div class="block mt-4">
                                         <label for="remember_me" class="flex items-center">
-                                            <x-jet-checkbox id="remember_me" name="remember" />
+                                            <x-jet-checkbox id="remember_me" name="remember" class="form-check-input" id="checkbox-signin" checked />
                                             <span class="ml-2 underline text-sm text-gray-600 hover:text-gray-900">{{ __('Remember me') }}</span>
                                         </label>
                                     </div>

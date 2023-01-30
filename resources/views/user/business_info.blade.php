@@ -1,15 +1,43 @@
-@extends('layouts.service_dashboard')
-@section('title','Bussiness Info')
+@extends('layouts.app')
+@section('title','Bussiness Info | Unikoop')
 @section('content')
 
+<div class="content-page">
+    <div class="content">
+          <!-- start page title -->
+          <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <form class="d-flex align-items-center mb-3">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control border" id="dash-daterange">
+                                <span class="input-group-text bg-blue border-blue text-white">
+                                    <i class="mdi mdi-calendar-range"></i>
+                                </span>
+                            </div>
+                            <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-2">
+                                <i class="mdi mdi-autorenew"></i>
+                            </a>
+                            <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
+                                <i class="mdi mdi-filter-variant"></i>
+                            </a>
+                        </form>
+                    </div>
+                    <h4 class="page-title">Update Bussiness Info</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
 <div class="col-md-10 bg-blue middlecontainer">
     <div class="card card-profile shadow">
         <div class="card-body">
             <div class="row page-titles">
                 <div class="col-md-12">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item" style="color:white;"><a>update Bussiness Info</a></li>
-                    </ol>
+                    {{-- <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a>Update Bussiness Info</a></li>
+                    </ol> --}}
+                    <h3 class="breadcrumb-item">Update Bussiness Info</h3>
                 </div>
             </div>
             <hr class="my-4">
@@ -55,7 +83,7 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-5">
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="Postcode">Postcode</label>
                             <small style="color: red;"> *</small>
                             <input type="text" name="postcode"
@@ -70,7 +98,7 @@
                     </div>
 
                     <div class="col-md-5">
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="name">Stad / plaats:</label>
                             <small style="color: red;"> *</small>
                             <input type="text" name="citytown"
@@ -89,7 +117,7 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-5">
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="county">Provincie </label>
                             <small style="color: red;"> *</small>
                             <input type="text" name="county"
@@ -104,7 +132,7 @@
                     </div>
 
                     <div class="col-md-5">
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="name">land </label>
                             <small style="color: red;"> *</small>
                             <select class="form-control" id="kycBusinessInfo_Country" name="kycBusinessInfo_Country" required>
@@ -119,7 +147,7 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-5">
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="pnumber">Telefoonnummer </label>
                             <small style="color: red;"> *</small>
                             <input type="text" name="pnumber"
@@ -134,7 +162,7 @@
                     </div>
 
                     <div class="col-md-5">
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="wnumber">Work Phone:</label>
                             <small style="color: red;"> *</small>
                             <input type="text" name="wnumber"
@@ -153,7 +181,7 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-5">
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="mnumber">Mobile number:</label>
                             <small style="color: red;"> *</small>
                             <input type="text" name="mnumber"
@@ -168,7 +196,7 @@
                     </div>
 
                     <div class="col-md-5">
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="emailadmin">Email admin:</label>
                             <small style="color: red;"> *</small>
                             <input type="email" name="emailadmin"
@@ -187,7 +215,7 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-5">
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="email_sale">Email sales:</label>
                             <small style="color: red;"> *</small>
                             <input type="email" name="email_sale"
@@ -203,10 +231,10 @@
                     <div class="col-md-1"></div>
                 </div>
 
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-md-1"></div>
                     <div class="col-md-10">
-                        <div class="form-group" id="adding-form">
+                        <div class="form-group mt-2" id="adding-form">
                             <button type="submit" class="btn btn-md btn-primary" style="height: 38px;padding: 7px;">
                                 Update Info
                             </button>
