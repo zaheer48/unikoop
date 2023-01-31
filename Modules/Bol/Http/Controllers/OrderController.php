@@ -85,11 +85,8 @@ class OrderController extends Controller
         $ret_str = array();
         if (count($resp) > 0) {
             foreach ($resp as $res) {
-
                 $bestelnummer = $res->id;
-
                 $ret_str[] = $bestelnummer;
-
             }
         }
 
@@ -98,15 +95,12 @@ class OrderController extends Controller
 
         $result = DB::table('bol_data')->where('bol_rec_id', $id)->whereIn('id', $dist_number)->orderBy('id', 'ASC')->get()->toArray();
         foreach ($result as $row) {
-
             $id2 = $row->id;
-
             if (isset($id)) {
                 $id = $id;
             } else {
                 $id = $row->bol_rec_id;
             }
-
             $trackerCode = $row->trackerCode;
             //$site=$row[$i]['site'];
             $bestelnummer = $row->bestelnummer;
@@ -130,89 +124,44 @@ class OrderController extends Controller
 
             if (is_array($cus_rows)) {
                 foreach ($cus_rows as $cus_row) {
-
-                    # code...
-
-                    //$EAN=$cus_row[$j]['EAN'];
-                    //$aantal=$cus_row[$j]['aantal'];
                     $producttitel = $cus_row->producttitel;
                     $EAN = $cus_row->EAN;
                     //$referentie=$cus_row[$j]['referentie'];
                     $returns .= ("<b>EAN</b>:" . $EAN . "<br />");
                     $returns .= ("<b>Prijs</b>:" . $cus_row->prijs . "<br />");
                     $returns .= ("<b>Referentie</b>:" . $cus_row->referentie . "<br />");
-
                     $returns .= ("<b>Product</b>:" . $producttitel . "<br />");
                     $returns .= ("<b>Aantal</b>:" . $cus_row->aantal);
-
-
                 }
-
             }
             $returns .= (' </td>');
-
-
             $returns .= ('<td height="30" style="word-break: break-all;"> ' . $row->bestelnummer . ' </td>');
             $returns .= ('<td height="30"> ' . $row->postcode_verzending . ' </td>');
-
             $returns .= ('<td height="30"> ' . $row->voornaam_verzending . ' </td>');
             $returns .= ('<td height="30"> ' . $row->achternaam_verzending . ' </td>');
-
             $returns .= ('<td height="30"> ' . $dt . ' </td>');
-
             $uit_dt = "";
             $uiterste_leverdatum = $row->uiterste_leverdatum;
             if ($uiterste_leverdatum != "")
                 $uit_dt = date("F j, Y, g:i a", strtotime($uiterste_leverdatum));
             $returns .= ('<td height="30"> ' . $uit_dt . ' </td>');
-
             $returns .= ('<td height="30" style="word-break: break-all;"> ' . $row->trackerCode . ' </td>');
-
-
             $returns .= ('<td height="30"> ' . $torder . ' </td>');
-
             $returns .= ('<td height="30"> ' . $row->bol_update_status . '</td>');
-
-
-            // order_no::TrackCode::DHL:bol_rec_id::db_id
             $returns .= ('<td height="30">');
-
             if ($trackerCode != "")
                 if ($logistics == 'DHL Today')
                     $logistics = 'DHL';
                 $returns .= ('<input type="checkbox" name="click1" value="' . $bestelnummer . '::' . $trackerCode . '::'. $logistics . '::' . $id . '::' . $id2 . '"> ');
-
             $returns .= ('</td>');
-
-
             $returns .= ('</tr>');
-
         }
-
-
-        // echo "<pre>";
-
-        // echo $returns;
-
-        // exit;
-
         $result = DB::getSchemaBuilder()->getColumnListing('bol_data');
-
-        // print_r($result);
-
-        // exit;
-
-        //$this->db->field_data('bol_data');
-
-        //$data = array();
-
         $rows = $returns;
-
         $fields = $result;
         $order_id = $id;
         $bol_rec = DB::table('bol_rec')->where('id', $id)->get()->toArray();
-
-        return View::make("template/gold/dhl/orders_list", compact(array('rows', 'fields', 'bol_rec', 'order_id')));
+        return View::make("bol::orders_list", compact(array('rows', 'fields', 'bol_rec', 'order_id')));
     }
 
     public function ordersEmails($id)
