@@ -48,7 +48,7 @@
                   </div>
                  <!-- end page title -->
 
-                    <div class="col-md-10 card middlecontainer">
+                    <div class="col-md-12 card middlecontainer">
                         @if(Session::has('success'))
                             <p class="alert alert-success">{{ Session::get('success') }}
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

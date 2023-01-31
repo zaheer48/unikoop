@@ -70,47 +70,49 @@
                                     ?>
 
                                     <div id="show_file_table" class=" panel-body panel-body-multi">
-                                        <div class="row col-md-12 my-3">
-                                            <div class="col-6 search">
-                                                <!-- <form id="search-form"> -->
-                                                <form action="" method="post" class="form-inline">
-                                                    <label>
-                                                        <select class="form-control " name="category">
-                                                            <?php
-                                                                    foreach($fields as $field) {
-                                                                    $fname=$field;
-                                                                    if($fname!='id'&&$fname!='date_added'&&$fname!='bol_rec_id')
-                                                                    {
-                                                                ?>
-                                                                                                        <option value="<?= $field ?>"><?= $field ?></option>
-                                                                                                        <?php
+                                    <div class="row my-3">
+
+                                                <div class="col-lg-9 col-md-8 col-sm-12 search ">
+                                                    <!-- <form id="search-form"> -->
+                                                    <form action="" method="post" class="form-inline">
+                                                        <label>
+                                                            <select class="form-control " name="category">
+                                                                <?php
+                                                                        foreach($fields as $field) {
+                                                                        $fname=$field;
+                                                                        if($fname!='id'&&$fname!='date_added'&&$fname!='bol_rec_id')
+                                                                        {
+                                                                    ?>
+                                                                                                            <option value="<?= $field ?>"><?= $field ?></option>
+                                                                                                            <?php
+                                                                        }
                                                                     }
-                                                                }
-                                                                ?>
-                                                        </select>
+                                                                    ?>
+                                                            </select>
 
-                                                    </label>
+                                                        </label>
 
-                                                    <input type="text" class="form-control" value="Search..."
-                                                        name="search" onfocus="this.value = '';"
-                                                        onblur="if (this.value == '') {this.value = 'Search...';}"
-                                                        required="">
+                                                        <input type="text" class="form-control" value="Search..."
+                                                            name="search" onfocus="this.value = '';"
+                                                            onblur="if (this.value == '') {this.value = 'Search...';}"
+                                                            required="">
 
-                                                    <!-- <input type="image" src="<?php echo url('/'); ?>/dhl/images/search.png" border="0" alt="Submit" /> -->
-                                                    <button type="submit" class="btn btn-info button-search mx-n1">
-                                                        <span class="fa fa-search"></span>
-                                                    </button>
+                                                        <!-- <input type="image" src="<?php echo url('/'); ?>/dhl/images/search.png" border="0" alt="Submit" /> -->
+                                                        <button type="submit" class="btn btn-info button-search ">
+                                                            <span class="fa fa-search"></span>
+                                                        </button>
 
 
-                                                </form>
+                                                    </form>
 
-                                            </div>
-                                            <div class="col-6 text-end">
-                                                <button class="btn btn-primary" onclick="get_all_checked()">Send</button>
-                                                Check all <input type="checkbox" id="checking" onclick="check_all('click1');"
-                                                    value="Get" />
-                                            </div>
-                                        </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4 col-sm-12 text-end">
+                                                    <button class="btn btn-primary" onclick="get_all_checked()">Send</button>
+                                                    Check all <input type="checkbox" id="checking" onclick="check_all('click1');"
+                                                        value="Get" />
+                                                </div>
+
+                                    </div>
 
 
 

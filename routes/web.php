@@ -17,6 +17,9 @@ use App\Http\Controllers;
 Route::get('/', function () {
     return view('auth.login');
 });
+// Route::get('/', function () {
+//     return view('logout');
+// });
 
 Route::get('/test', [Controllers\TestController::class, 'test']
     )->name('test');
@@ -101,6 +104,7 @@ Route::view('allTransaction','layouts/allTransaction')->name('allTransaction');
 Route::view('downloadLabel','layouts/downloadLabel')->name('downloadLabel');
 Route::view('uploadBolSheet','layouts/uploadBolSheet')->name('uploadBolSheet');
 Route::view('allBolSheet','layouts/allBolSheet')->name('allBolSheet');
+Route::view('lockScreen','layouts/lockScreen')->name('lockScreen');
 
 
 

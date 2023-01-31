@@ -147,9 +147,9 @@
 
 
                                                     <div class="row" >
-                                                        <div class="col-4"></div>
-                                                        <div class="col-4"></div>
-                                                        <div class="col-4" >
+                                                        <div class="col-lg-4"></div>
+                                                        <div class="col-lg-3"></div>
+                                                        <div class="col-lg-5 col-md-6" >
                                                             <div class="input-group" >
                                                                 <div class="form-outline" style="margin-left: 70px;">
                                                                   <input type="search" id="form1" class="form-control" />

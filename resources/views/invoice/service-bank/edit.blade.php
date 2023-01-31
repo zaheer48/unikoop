@@ -38,7 +38,7 @@
                 </div>
                 <!-- end page title -->
 
-                <div class="col-md-10 card middlecontainer">
+                <div class="col-md-12 card middlecontainer">
                     <div class="card card-profile shadow">
                         <div class="card-body">
                             <div class="row page-titles">

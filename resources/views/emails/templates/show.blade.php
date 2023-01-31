@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <!-- end page title -->
-                <div class="col-md-10 card middlecontainer">
+                <div class="col-md-12 card middlecontainer">
                     <div class="panel panel-info">
                         <div class="row" style="margin-top: 8px;">
                             <div class="col-md-12">
