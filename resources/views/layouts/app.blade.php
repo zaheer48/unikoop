@@ -49,16 +49,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
+     @yield('css')
+
     @include('layouts/header')
+
+
 
 
 <div class="main">
     @yield('content')
 
 </div>
+    @include('layouts/rightsidebar')
+    @yield('js')
 
     @include('layouts/footer')
-@yield('js')
 
 </body>
 </html>

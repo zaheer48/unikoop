@@ -1,16 +1,47 @@
-@extends('layouts.service_dashboard')
-@section('title','Fetched Labels')
+@extends('layouts.app')
+@section('title','Fetched Labels | Unikoop')
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{URL:: asset('assets/css/datatables.min.css') }}">
 @endsection
 @section('content')
+<div class="content-page">
+    <div class="content">
 
-    <div class="col-md-10 bg-blue middlecontainer">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+              <!-- start page title -->
+              <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            {{-- <form class="d-flex align-items-center mb-3">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control border" id="dash-daterange">
+                                    <span class="input-group-text bg-blue border-blue text-white">
+                                        <i class="mdi mdi-calendar-range"></i>
+                                    </span>
+                                </div>
+                                <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-2">
+                                    <i class="mdi mdi-autorenew"></i>
+                                </a>
+                                <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
+                                    <i class="mdi mdi-filter-variant"></i>
+                                </a>
+                            </form> --}}
+                        </div>
+                        {{-- <h4 class="page-title" style="color: blue">Fetched Label</h4> --}}
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+    <div class="col-12 col-md-12 card middlecontainer">
         <div class="panel panel-info">
             <div class="row" style="margin-top: 8px;">
                 <div class="col-md-12">
                     <div class="container">
-                        <h3 style="padding: 20px;">Fetched Labels</h3>
+                        <h3 style="padding: 20px;color: blue"">Fetched Labels</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel panel-default" id="main_section">
@@ -36,7 +67,7 @@
                                                         <td height="30">{{ $row->id }}</td>
                                                         <td height="30">
                                                             @php
-                                                            $products = \DB::table('bol_data')->select("id", "EAN", "aantal", "producttitel", "prijs", "referentie")->where('bestelnummer', $row->bestelnummer)->get();                                                            
+                                                            $products = \DB::table('bol_data')->select("id", "EAN", "aantal", "producttitel", "prijs", "referentie")->where('bestelnummer', $row->bestelnummer)->get();
                                                             @endphp
                                                             @foreach($products as $product)
                                                             <b>EAN</b>: {{ $product->EAN }}<br />
@@ -61,7 +92,7 @@
                                                         <td height="30">
                                                             <a target="_blank" href="{{ asset('pdf_files/'.$row->lable_pdf) }}"
                                                                class="btn btn-sm btn-primary">
-                                                                <i class="fa fa-file-pdf-o"></i> PDF
+                                                                <i class="fe-file-plus"></i> PDF
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -78,11 +109,13 @@
             </div>
         </div>
     </div>
-
+        </div>
+    </div>
+</div>
 @endsection
 @section('js')
 
-    <script src="{{ asset('css/datatables.min.js') }}"></script>
+    <script src="{{URL:: asset('assets/js/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('#myTable').DataTable({

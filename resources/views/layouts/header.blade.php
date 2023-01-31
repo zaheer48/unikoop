@@ -46,6 +46,8 @@
         {{-- <script src="asset/js/head.js"></script> --}}
         <script src="{{URL::asset('assets/js/head.js')}}"></script>
 
+        
+
 
 
 <style>
