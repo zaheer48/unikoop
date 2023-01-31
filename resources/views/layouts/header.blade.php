@@ -17,10 +17,11 @@
         <link href="{{URL::asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{URL::asset('assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- third party css end -->
-        <!-- Font Awsome  -->
 
+        <!-- Font Awsome  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        {{-- <link href=" {{ URL::asset('assets/libs/images/favicon.ico') }}" rel="stylesheet"  /> --}}
+
+        <link href=" {{ URL::asset('assets/libs/images/favicon.ico') }}" rel="stylesheet"  />
 
         <!-- Plugins css -->
         {{-- <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" /> --}}
@@ -228,35 +229,7 @@
                                 <span>My Account</span>
                             </a> -->
 
-                            <a href="{{ route('my.wallet')}}" class="dropdown-item notify-item">
-                                <i class="fe-user"></i>
-                                <span>My Wallet</span>
-                            </a>
 
-                            <a href="{{ route('my.profile')}}" class="dropdown-item notify-item">
-                                <i class="fe-user"></i>
-                                <span>My Profile</span>
-                            </a>
-
-                            <a href="{{ route('email-templates.index')}}" class="dropdown-item notify-item">
-                                <i class="fe-user"></i>
-                                <span>Email Templates</span>
-                            </a>
-
-                            <a href="{{ route('invoice-templates.index')}}" class="dropdown-item notify-item">
-                                <i class="fe-user"></i>
-                                <span>Invoice Templates</span>
-                            </a>
-
-                            <a href="{{ route('packinglist-templates.index')}}" class="dropdown-item notify-item">
-                                <i class="fe-user"></i>
-                                <span>Packing List Templates</span>
-                            </a>
-
-                            <a href="{{ route('payment.history')}}" class="dropdown-item notify-item">
-                                <i class="fe-user"></i>
-                                <span>Payment History</span>
-                            </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
@@ -423,7 +396,8 @@
 
                         <li>
                             <a href="#sidebarCrm" data-bs-toggle="collapse">
-                                <i data-feather="users"></i>
+                                <i data-feather="shopping-cart"></i>
+
                                 <span> Orders</span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -446,6 +420,43 @@
                                     </li> --}}
                                 </ul>
                             </div>
+                        </li>
+                        <li>
+                            <a href="{{ route('my.wallet')}}" class="dropdown-item notify-item">
+                                <i class="fa-solid fa-wallet"></i>
+                                <span>My Wallet</span>
+                            </a>
+                        </li>
+                        <li>
+
+                            <a href="{{ route('my.profile')}}" class="dropdown-item notify-item">
+                                <i class="fe-user"></i>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('email-templates.index')}}" class="dropdown-item notify-item">
+                                <i class="fa-solid fa-envelope-open-text"></i>
+                                <span>Email Templates</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('invoice-templates.index')}}" class="dropdown-item notify-item">
+                                <i class="fa-solid fa-file-invoice"></i>
+                                <span>Invoice Templates</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('packinglist-templates.index')}}" class="dropdown-item notify-item">
+                                <i class="fa-sharp fa-solid fa-list-ul"></i>
+                                <span>Packing List Templates</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('payment.history')}}" class="dropdown-item notify-item">
+                                <i class="fa-solid fa-money-check-dollar"></i>
+                                <span>Payment History</span>
+                            </a>
                         </li>
 
 
@@ -500,7 +511,9 @@
                         </li> --}}
                         <li>
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                                <i data-feather="shopping-cart"></i>
+                                {{-- <i class="fa-light fa-download"></i> --}}
+                                <i class="fa-solid fa-download"></i>
+                                {{-- <i data-feather="shopping-cart"></i> --}}
                                 <span> Download Label </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -526,7 +539,7 @@
                         </li>
                         <li>
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                                <i data-feather="shopping-cart"></i>
+                                <i class="fa-solid fa-arrow-up-from-bracket"></i>
                                 <span> Upload Bol Sheets </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -572,7 +585,7 @@
                         </li>
                         <li>
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                                <i data-feather="shopping-cart"></i>
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
                                 <span> Transaction Report</span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -619,7 +632,8 @@
 
                         <li>
                             <a href="#sidebarCrm" data-bs-toggle="collapse">
-                                <i data-feather="users"></i>
+                                <i class="fa-solid fa-file-invoice"></i>
+
                                 <span> Invoice</span>
                                 <span class="menu-arrow"></span>
                             </a>

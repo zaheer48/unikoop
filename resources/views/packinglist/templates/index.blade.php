@@ -244,12 +244,14 @@
                                                             @endif
                                                         </td>
                                                         <td class=" " >
-                                                            <a href="{{ route('packinglist-templates.edit',$template->id) }}" class="btn btn-sm btn-primary d-flex mx-2 my-1">
-                                                                Edit
-                                                            </a>
-                                                            <a href="{{ url('/packlist-template-preview',$template->id) }}" target="_blank" class="btn btn-sm btn-primary  d-flex mx-2 my-1">
-                                                                Preview
-                                                            </a>
+                                                            <div class="d-flex">
+                                                                <a href="{{ route('packinglist-templates.edit',$template->id) }}" class="btn btn-sm btn-primary d-flex mx-2 my-1">
+                                                                    Edit
+                                                                </a>
+                                                                <a href="{{ url('/packlist-template-preview',$template->id) }}" target="_blank" class="btn btn-sm btn-primary  d-flex mx-2 my-1">
+                                                                    Preview
+                                                                </a>
+                                                        </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach

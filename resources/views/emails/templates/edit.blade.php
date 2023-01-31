@@ -19,7 +19,7 @@
                     <div class="col-12">
                         <div class="page-title-box">
                             <div class="page-title-right">
-                                <form class="d-flex align-items-center mb-3">
+                                {{-- <form class="d-flex align-items-center mb-3">
                                     <div class="input-group input-group-sm">
                                         <input type="text" class="form-control border" id="dash-daterange">
                                         <span class="input-group-text bg-blue border-blue text-white">
@@ -32,9 +32,9 @@
                                     <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
                                         <i class="mdi mdi-filter-variant"></i>
                                     </a>
-                                </form>
+                                </form> --}}
                             </div>
-                            <h4 class="page-title">Edit Email Template</h4>
+                            <h4 class="page-title" style="color:blue;">Edit Email Template</h4>
                         </div>
                     </div>
                 </div>
@@ -61,8 +61,8 @@
                                 <form class="form-horizontal mx-5 " action="{{ url('/email-templates',$template->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="blood_group_display_name">Email Type <small style="color:red;">*</small></label>
+                                    <div class="form-group mb-3">
+                                        <label class="control-label col-sm-2 mb-1" for="blood_group_display_name">Email Type <small style="color:red;">*</small></label>
                                         <div class="col-sm-8">
                                             <select name="email_type" id="blood_group_display_name" class="form-control" required style="height: 36px;">
                                                 <option value="Order Invoice">
@@ -72,15 +72,15 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-sm-2" for="blood_group_slug">Email Body <small style="color:red;">*</small></label>
+                                        <label class="control-label col-sm-2 mb-1" for="blood_group_slug">Email Body <small style="color:red;">*</small></label>
                                         <div class="col-sm-8">
                                             <textarea class="form-control" name="email_body" id="edit_profile_description" rows="18" style="resize: vertical;" placeholder="Enter Faq Description">
                                                 {!! $template->email_body !!}
                                             </textarea>
                                         </div>
                                     </div>
-                                    <hr>
-                                    <div class="form-group add-product-footer text-start my-2">
+
+                                    <div class="form-group add-product-footer text-start my-2 mb-4">
                                         <button name="addProduct_btn" type="submit" class="btn btn-primary product-btn">
                                             Update Email Template
                                         </button>

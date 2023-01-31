@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Invoice templates | Unikoop')
+@section('title','Edit Invoice templates | Unikoop')
 @section('content')
     <style>
         .invalid-feedback {
@@ -27,7 +27,7 @@
                     <div class="col-12">
                         <div class="page-title-box">
                             <div class="page-title-right">
-                                <form class="d-flex align-items-center mb-3">
+                                {{-- <form class="d-flex align-items-center mb-3">
                                     <div class="input-group input-group-sm">
                                         <input type="text" class="form-control border" id="dash-daterange">
                                         <span class="input-group-text bg-blue border-blue text-white">
@@ -40,90 +40,90 @@
                                     <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
                                         <i class="mdi mdi-filter-variant"></i>
                                     </a>
-                                </form>
+                                </form> --}}
                             </div>
-                            <h4 class="page-title">Edit Invoice</h4>
+                            <h4 class="page-title" style="color:blue;">Edit Invoice</h4>
                         </div>
                     </div>
-                </div>
-                <!-- end page title -->
+                  </div>
+                 <!-- end page title -->
 
-                <div class="col-md-10 card middlecontainer">
-                    @if(Session::has('success'))
-                        <p class="alert alert-success">{{ Session::get('success') }}
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        </p>
-                    @endif
-                    @if(Session::has('alert-warning'))
-                        <p class="alert alert-warning">{{ Session::get('alert-warning') }}
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        </p>
-                    @endif
+                    <div class="col-md-10 card middlecontainer">
+                        @if(Session::has('success'))
+                            <p class="alert alert-success">{{ Session::get('success') }}
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            </p>
+                        @endif
+                        @if(Session::has('alert-warning'))
+                            <p class="alert alert-warning">{{ Session::get('alert-warning') }}
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            </p>
+                        @endif
 
-                    <div class="panel panel-info">
-                        <div class="row" style="margin-top: 8px;">
-                            <div class="col-md-12">
-                                <h3 style="padding: 20px;">Invoice Templates
-                                    <a href="{{route('invoice-templates.index')}}" class="btn btn-primary" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
-                                </h3>
-                                <hr>
-                                <div class="row" style="padding: 20px;">
-                                    <div class="col-md-7">
-                                        <form action="{{ url('/invoice-templates',$preview->id) }}" method="POST" enctype="multipart/form-data">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="row">
-                                                <div class="col-md-6 form-group">
-                                                    <label for="">Logo 1</label>
-                                                    <input type="file" name="logo_1" class="form-control">
-                                                    @error('logo_1')
+                        <div class="panel panel-info">
+                            <div class="row" style="margin-top: 8px;">
+                                <div class="col-md-12">
+                                    <h3 style="padding: 20px;">Invoice Templates
+                                        <a href="{{route('invoice-templates.index')}}" class="btn btn-primary" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+                                    </h3>
+                                    <hr>
+                                    <div class="row" style="padding: 20px;">
+                                        <div class="col-md-7">
+                                            <form action="{{ url('/invoice-templates',$preview->id) }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="row">
+                                                    <div class="col-md-6 form-group">
+                                                        <label for="">Logo 1</label>
+                                                        <input type="file" name="logo_1" class="form-control">
+                                                        @error('logo_1')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label for="">Logo 2</label>
+                                                        <input type="file" name="logo_2" class="form-control">
+                                                        @error('logo_2')
                                                         <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-6 form-group">
-                                                    <label for="">Logo 2</label>
-                                                    <input type="file" name="logo_2" class="form-control">
-                                                    @error('logo_2')
-                                                    <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-12 form-group">
+                                                        <label for="">Footer Logo(s)</label>
+                                                        <small style="color: red;"> * Select max 5 logos.</small>
+                                                        <input type="file" name="footer_logos[]" id="file_input" class="form-control">
+                                                        @error('footer_logos')
+                                                        <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-12 form-group">
-                                                    <label for="">Footer Logo(s)</label>
-                                                    <small style="color: red;"> * Select max 5 logos.</small>
-                                                    <input type="file" name="footer_logos[]" id="file_input" class="form-control">
-                                                    @error('footer_logos')
-                                                    <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-12 form-group">
+                                                        <button class="btn btn-md btn-primary">
+                                                            Submit
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-12 form-group">
-                                                    <button class="btn btn-md btn-primary">
-                                                        Submit
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-5 form-group">
-                                        <h4 class="text-center">Template Sample</h4>
-                                        <img src="{{ asset('portal/'.$preview->preview) }}" style="border: 1px solid #999;height:12%">
+                                            </form>
+                                        </div>
+                                        <div class="col-md-5 form-group">
+                                            <h4 class="text-center">Template Sample</h4>
+                                            <img src="{{ asset('portal/'.$preview->preview) }}" class="mx-3" style="border: 1px solid #999;height:420px">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>

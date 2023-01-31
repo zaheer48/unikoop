@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="page-title-box">
                     <div class="page-title-right">
-                        <form class="d-flex align-items-center mb-3">
+                        {{-- <form class="d-flex align-items-center mb-3">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control border" id="dash-daterange">
                                 <span class="input-group-text bg-blue border-blue text-white">
@@ -22,14 +22,14 @@
                             <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
                                 <i class="mdi mdi-filter-variant"></i>
                             </a>
-                        </form>
+                        </form> --}}
                     </div>
-                    <h4 class="page-title">Update Bussiness Info</h4>
+                    <h4 class="page-title" style="color:blue;">Update Bussiness Info</h4>
                 </div>
             </div>
         </div>
         <!-- end page title -->
-<div class="col-md-10 bg-blue middlecontainer">
+<div class="col-md-10 card middlecontainer">
     <div class="card card-profile shadow">
         <div class="card-body">
             <div class="row page-titles">
@@ -37,10 +37,10 @@
                     {{-- <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a>Update Bussiness Info</a></li>
                     </ol> --}}
-                    <h3 class="breadcrumb-item">Update Bussiness Info</h3>
+                    {{-- <h3 class="breadcrumb-item" >Update Bussiness Info</h3> --}}
                 </div>
             </div>
-            <hr class="my-4">
+            {{-- <hr class="my-4"> --}}
             <?php  $user = \Auth::user();
             $user_address = \DB::table('bussiness_address')->where('register_id', $user->id)->first();
             ?>
