@@ -18,6 +18,7 @@
         "mollie/laravel-mollie": "^2.21",
         "nwidart/laravel-modules": "^9.0",
         "picqer/bol-retailer-php-client": "^8",
+        "picqer/php-barcode-generator": "^2.2",
         "stancl/tenancy": "^3.6"
     },
     "require-dev": {

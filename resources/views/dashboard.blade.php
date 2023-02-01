@@ -188,7 +188,7 @@
                                             for people to lease or rent..
                                         </p>
                                         <div class="text-center">
-                                            <a href="@if(Route::has('bol')){{ route('bol') }}@endif" class="btn btn-sm btn-light">View more info</a>
+                                            <a href="@if(Route::has('bol')){{ route('all.orders') }}@endif" class="btn btn-sm btn-light">View more info</a>
                                         </div>
 
                                         <div class="row mt-4 text-center">

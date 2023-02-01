@@ -15,19 +15,20 @@ Route::prefix('bol')->group(function() {
     Route::get('/', 'BolController@index')->name('bol');
 
     Route::get('/all_orders', 'OrderController@allOrders')
-        ->middleware('auth')->name('allorder');
+        ->middleware('auth')->name('all.orders');
     Route::get('/apidata/{site}', [
             'uses' => 'BolRetailerController@getOpenOrders',
             'as' => 'apidata'
         ])
         ->middleware('auth');
-    Route::get('/fetched/labels/{id}', 'OrderController@fetchedLabels')->middleware('auth');
-    Route::get('/invoice', 'OrderController@invoice2');
+    Route::get('/fetched/labels/{id}', 'OrderController@fetchedLabels')->name('fetched.labels')->middleware('auth');
+    Route::get('/invoice', 'OrderController@invoice2')->name('invoice');
     Route::post('/check_invoice2/', 'OrderController@check_invoice2')->middleware('auth');
 
     // Download PDF
+    Route::get('/download-pdf/{type}/order/{id}', 'OrderController@labelDownload')->name('download.pdf.order');
     Route::get('/download-packinglist-pdf/{id}', 'UserPacklistTemplatesController@downloadInvoice')->middleware('auth');
-    Route::get('/download-invoice-pdf/{id}', 'UserInvoiceTemplatesController@downloadInvoice');
+    Route::get('/download-invoice-pdf/{id}', 'UserInvoiceTemplatesController@downloadInvoice')->name('download.invoice.pdf');
     Route::post('/invoice_submit2', 'OrderController@invoice_submit2');
     Route::get('/download', function(){
         return view('bol::download');
@@ -75,9 +76,7 @@ Route::prefix('bol')->group(function() {
     Route::get('/Exportcsv/{recid}',[
         "uses" => 'CsvexportController@getExport',
         "as" => 'Exportcsv'])->middleware('auth');
-
-    /** Download PDF **/
-    Route::get('/download-pdf/{type}/order/{id}', 'OrderController@labelDownload');
+  
 
 
     Route::get('/wallet-invoice/{id}', 'MollieController@walletInvoice')->middleware('auth');

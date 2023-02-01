@@ -249,43 +249,118 @@ class OrderController extends Controller
         $site = $request->site;
         $client = new \Picqer\BolRetailerV8\Client();
 		$userId = Auth::id();
-
+               
         $user = DB::table('users')->where('id', $userId)->first();
 
         if($site == 'bol_nl')
         {
 			$client->authenticate($user->bol_client_id, $user->bol_client_secret);
         } else if($site == 'bol_be') {
-			$client->authenticate($user->bol_be_client_id, $user->bol_be_client_secret);
-        }
+			$client->authenticate($user->bol_be_client_id, $user->bol_be_client_secret);           
+        }   
 
         $orders = explode(",", $request->post('all_checked'));
 
         foreach ($orders as $order) {
 
             $order_arr = explode("::", $order);
+          //dd($order_arr);
 
             // Next thing: we need to fetch an order to create a shipment for.
             $order = $client->getOrder($order_arr[0]);
 
             for ($i = 0; $i < count($order->orderItems); $i++) {
-                $processStatus = $client->shipOrderItem([
-                    'orderItems' => [
-                        'orderItemId' => $order->orderItems[$i]->orderItemId
-                    ],
-                    'transport' => [
-                        'transporterCode' => $order_arr[2],
-                        'trackAndTrace' => $order_arr[1]
-                    ]
-                ]);
+               
+       		
+           //$shipmentRequest = new \Picqer\BolRetailerV8\Model\ShipmentRequest;
+            //$shipmentRequest->addTransportData(
+             //   $order_arr[2],
+              //  $order_arr[1]
+            //);
+            //$shipmentRequest->addOrderItemId($order->orderItems[$i]->orderItemId);
+              
+          $processStatus = $client->shipOrderItem([
+                  	
+                'orderItems' => [
+                    'orderItemId' => $order->orderItems[$i]->orderItemId
+                ],
+                //"shipmentReference" => $order_arr[0],
+                //"shippingLabelId"=> $order_arr[1],
+                'transport' => [
+                    'transporterCode' => $order_arr[2],
+                    'trackAndTrace' => $order_arr[1]
+                ]
+            ]
+            );
+              
             }
+            
 
-            DB::table('bol_data')
-                ->where('id', $order_arr[4])
-                ->update(['bol_update_status' => $processStatus->status]);
+            // [
+            //     'orderItems' => [
+            //         'orderItemId' => $order->orderItems[$i]->orderItemId
+            //     ],
+            //     'shipmentReference' => '',
+            //     'shippingLabelId' => '',
+            //     'transport' => [
+            //         'transporterCode' => $order_arr[2],
+            //         'trackAndTrace' => $order_arr[1]
+            // ]
+
+            /*
+
+                Demo return
+
+                Picqer\BolRetailer\ProcessStatus Object
+                (
+                    [data:protected] => Array
+                        (
+                            [id] => 1
+                            [entityId] => 6042823871
+                            [eventType] => CONFIRM_SHIPMENT
+                            [description] => Confirm shipment for order item 6042823871.
+                            [status] => PENDING
+                            [createTimestamp] => 2020-03-31T20:41:13+02:00
+                            [links] => Array
+                                (
+                                    [0] => Array
+                                        (
+                                            [rel] => self
+                                            [href] => http://api.bol.com/retailer-demo/process-status/1
+                                            [method] => GET
+                                        )
+                                )
+                        )
+                )
+            */
+                
+            // if ($processStatus->status == 'Sent') {
+                DB::table('bol_data')
+                    ->where('id', $order_arr[4])
+                    ->update(['bol_update_status' => $processStatus->status]);
+            // }
+
         }
 
         return redirect('/bol/all_orders');
+
+        // You can now choose to wait until the process completes:
+        //
+        // ```php
+        // $processStatus->waitUntilComplete(20, 3);
+        // ```
+        //
+        // Since the demo API of Bol.com does not support dynamic process statuses, we will not wait.
+
+        // printf("Waiting for process with ID \"%s\"\n", $processStatus->id);
+
+        // exit;
+
+        // $userId = Auth::id();
+
+        // $bol_rec = DB::table('bol_rec')->where('user_id', $userId)->orderBy('id', 'DESC')->paginate(10);
+
+        // return View::make("template/gold/bol/dashboard", compact(array('bol_rec')));
     }
 
     public function ordersEmailsSend(Request $request)
@@ -1751,24 +1826,11 @@ class OrderController extends Controller
             $returns .= ('</td>');
             $returns .= ('</tr>');
         }
-
         $result = DB::getSchemaBuilder()->getColumnListing('bol_data');
-
-        // print_r($result);
-
-        // exit;
-
-        //$this->db->field_data('bol_data');
-
-        //$data = array();
-
         $rows = $returns;
-
         $fields = $result;
-
         $bol_rec = DB::table('bol_rec')->where('id', $id)->get()->toArray();
-
-        return View::make("template/gold/fetch_select", compact(array('rows', 'fields', 'bol_rec', 'id')));
+        return View::make("bol::fetch_select", compact(array('rows', 'fields', 'bol_rec', 'id')));
     }
 
     public function fetchSelectNext(Request $request)
@@ -2382,10 +2444,12 @@ class OrderController extends Controller
         }
         // return $cmd;
         $result = shell_exec($cmd);
-        $file = public_path() . "/pdf_zip/" . $mzip_name;
+        // $file = public_path() . "/pdf_zip/" . $mzip_name;
+        $file = Module::assetPath('bol').'/pdf_zip/' . $mzip_name;
         $headers = array(
             'Content-Type: application/pdf',
         );
+        
         return response()->download($file, $mzip_name, $headers);
     }
 
@@ -3122,8 +3186,7 @@ class OrderController extends Controller
 	public function invoice2()
 	{
         $default = EmailTemplate::where('user_id',Auth::id())->where('email_type','Order Invoice')->where('status',1)->first();
-		// return View::make("bol::invoice/bol_invoice2", compact('default'));
-        return View::make("layouts/createinvoice", compact('default'));
+        return View::make("bol::invoice.create_invoice", compact('default'));
 	}
 
 	public function invoice_submit2(Request $request)

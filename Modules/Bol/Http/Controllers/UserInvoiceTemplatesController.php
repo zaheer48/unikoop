@@ -161,14 +161,14 @@ class UserInvoiceTemplatesController extends Controller
             ->first();
         if (!$preview) {
             Session::flash('danger','Please configure Invoice template in Settings tab area.');
-            return redirect('/bol/invoice');
+            return to_route('invoice');
         }
 
         $servicebanks = DB::table('servicebank')->where('user_id', Auth::id())->first();
         $record = DB::table('bol_data')->where('bestelnummer', $id)->first();
         // return View('template.gold.dhl.invoice-templates.download_invoice', compact('record','servicebanks','preview'));
         $pdf = \PDF::loadView('bol::invoice.download_invoice', compact('record','servicebanks','preview'));
-        $file = $record->voornaam_verzending.' '.$record->achternaam_verzending.' Invoice bestelnummer #'.$id.'.pdf';
+        $file = $record->voornaam_verzending.' '.$record->achternaam_verzending.' Invoice bestelnummer #'.$id.'.pdf';        
         return $pdf->download($file);
     }
 

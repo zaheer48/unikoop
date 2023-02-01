@@ -90,7 +90,7 @@
                                                             @endif
                                                         </td>
                                                         <td height="30">
-                                                            <a target="_blank" href="{{ asset('pdf_files/'.$row->lable_pdf) }}"
+                                                            <a target="_blank" href="{{ Module::asset('bol:pdf_files/' . $row->lable_pdf) }}"
                                                                class="btn btn-sm btn-primary">
                                                                 <i class="fe-file-plus"></i> PDF
                                                             </a>
@@ -167,7 +167,7 @@
                                                                         </td>
                                                                         <td>
                                                                             <a target="_blank"
-                                                                                href="{{ asset('pdf_files/' . $row->lable_pdf) }}"
+                                                                                href="{{ Module::asset('bol:pdf_files/' . $row->lable_pdf) }}"
                                                                                 class="btn btn-sm btn-primary">
                                                                                 <i class="fe-file-plus"></i> PDF
                                                                             </a>

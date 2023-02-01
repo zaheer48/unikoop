@@ -263,7 +263,6 @@
 
                         </div>
                     </li>
-
                     <li class="dropdown notification-list">
                         <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                             <i class="fe-settings noti-icon"></i>
@@ -284,7 +283,6 @@
                             <!-- <span class="logo-lg-text-light">U</span> -->
                         </span>
                     </a>
-
                     <a href="index.html" class="logo logo-light text-center">
                         <span class="logo-sm">
                             <img src="{{URL::asset('assets/images/logo-sm.png')}}" alt="" height="22">
@@ -294,14 +292,12 @@
                         </span>
                     </a>
                 </div>
-
                 <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
                     <li>
                         <button class="button-menu-mobile waves-effect waves-light">
                             <i class="fe-menu"></i>
                         </button>
                     </li>
-
                     <li>
                         <!-- Mobile menu toggle (Horizontal Layout)-->
                         <a class="navbar-toggle nav-link" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
@@ -313,10 +309,6 @@
                         </a>
                         <!-- End mobile menu toggle-->
                     </li>
-
-
-
-
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -375,11 +367,8 @@
 
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
-
                     <ul id="side-menu">
-
                         <li class="menu-title">Navigation</li>
-
                         <li>
                             <a href="#sidebarDashboards" data-bs-toggle="collapse">
                                 <i data-feather="airplay"></i>
@@ -395,31 +384,17 @@
                                 </ul>
                             </div>
                         </li>
-
                         <li>
                             <a href="#sidebarCrm" data-bs-toggle="collapse">
                                 <i data-feather="shopping-cart"></i>
-
                                 <span> Orders</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarCrm">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('allorder')}}">All Orders</a>
+                                        <a href="{{route('all.orders')}}">All Orders</a>
                                     </li>
-                                    {{-- <li>
-                                        <a href="Invoice-tempelate.html">Invoice Tempelate</a>
-                                    </li>
-                                    <li>
-                                        <a href="Invoice.html">invoice</a>
-                                    </li>
-                                    <li>
-                                        <a href="Payment.html">Payment</a>
-                                    </li>
-                                    <li>
-                                        <a href="mywallet.html">My Wallet</a>
-                                    </li> --}}
                                 </ul>
                             </div>
                         </li>
@@ -460,9 +435,6 @@
                                 <span>Payment History</span>
                             </a>
                         </li>
-
-
-
                         {{-- <li>
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                                 <i data-feather="shopping-cart"></i>
@@ -510,35 +482,7 @@
 
                                 </ul>
                             </div>
-                        </li> --}}
-                        <li>
-                            <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                                {{-- <i class="fa-light fa-download"></i> --}}
-                                <i class="fa-solid fa-download"></i>
-                                {{-- <i data-feather="shopping-cart"></i> --}}
-                                <span> Download Label </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarEcommerce">
-                                <ul class="nav-second-level">
-
-                                    <li>
-                                        <a href="{{route('downloadLabel')}}">Download Label</a>
-                                    </li>
-                                    {{-- <li>
-                                        <a href="CategoryList">See All Label</a>
-                                    </li> --}}
-
-                                    {{-- <li>
-                                        <a href="AddCategory.html">Add Category</a>
-                                    </li>
-                                    <li>
-                                        <a href="UpdateCategory.html">Update Category</a>
-                                    </li> --}}
-
-                                </ul>
-                            </div>
-                        </li>
+                        </li> --}}                        
                         <li>
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                                 <i class="fa-solid fa-arrow-up-from-bracket"></i>
@@ -551,14 +495,6 @@
                                     <li>
                                         <a href="{{'uploadBolSheet'}}">See All</a>
                                     </li>
-
-                                    {{-- <li>
-                                        <a href="AddCategory.html">Add Category</a>
-                                    </li>
-                                    <li>
-                                        <a href="UpdateCategory.html">Update Category</a>
-                                    </li> --}}
-
                                 </ul>
                             </div>
                         </li>
@@ -570,18 +506,9 @@
                             </a>
                             <div class="collapse" id="sidebarEcommerce">
                                 <ul class="nav-second-level">
-
                                     <li>
                                         <a href="{{route('allBolSheet')}}">See All</a>
                                     </li>
-
-                                    {{-- <li>
-                                        <a href="AddCategory.html">Add Category</a>
-                                    </li>
-                                    <li>
-                                        <a href="UpdateCategory.html">Update Category</a>
-                                    </li> --}}
-
                                 </ul>
                             </div>
                         </li>
@@ -593,73 +520,40 @@
                             </a>
                             <div class="collapse" id="sidebarEcommerce">
                                 <ul class="nav-second-level">
-
                                     <li>
                                         <a href="{{route('allTransaction')}}">See All</a>
                                     </li>
-
-                                    {{-- <li>
-                                        <a href="AddCategory.html">Add Category</a>
-                                    </li>
-                                    <li>
-                                        <a href="UpdateCategory.html">Update Category</a>
-                                    </li> --}}
-
                                 </ul>
                             </div>
                         </li>
-                        {{-- <li>
-                            <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                                <i data-feather="shopping-cart"></i>
-                                <span> Cateogory </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarEcommerce">
-                                <ul class="nav-second-level">
-
-                                    <li>
-                                        <a href="CategoryList.html">All-Lists</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="AddCategory.html">Add Category</a>
-                                    </li>
-                                    <li>
-                                        <a href="UpdateCategory.html">Update Category</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li> --}}
-
                         <li>
                             <a href="#sidebarCrm" data-bs-toggle="collapse">
                                 <i class="fa-solid fa-file-invoice"></i>
-
                                 <span> Invoice</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="sidebarCrm">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('createinvoice')}}">Create Invoice</a>
+                                        <a href="{{ route('invoice') }}">Create Invoice</a>
                                     </li>
-                                    {{-- <li>
-                                        <a href="Invoice-tempelate.html">Invoice Tempelate</a>
-                                    </li>
-                                    <li>
-                                        <a href="Invoice.html">invoice</a>
-                                    </li>
-                                    <li>
-                                        <a href="Payment.html">Payment</a>
-                                    </li>
-                                    <li>
-                                        <a href="mywallet.html">My Wallet</a>
-                                    </li> --}}
                                 </ul>
                             </div>
                         </li>
-
+                        <li>
+                            <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                                <i class="fa-solid fa-download"></i>
+                                <span> Download Label </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarEcommerce">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="{{route('downloadLabel')}}">Download Label</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
 
 
 

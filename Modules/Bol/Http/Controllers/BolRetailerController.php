@@ -3,13 +3,13 @@
 namespace Modules\Bol\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use App\Bol_data;
-use App\Bol_rec;
+use App\Models\Bol_data;
+use App\Models\Bol_rec;
 // use Picqer\BolRetailerV8\Client;
 
 use App\Models\User;
 use App\Models\Platform;
-use App\Setting;
+use App\Models\Setting;
 use Auth;
 use DB;
 

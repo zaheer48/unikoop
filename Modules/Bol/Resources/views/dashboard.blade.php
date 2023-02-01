@@ -1,5 +1,3 @@
-{{-- @extends('layouts.service_dashboard')
-@section('title','All Orders | Unikoop') --}}
 @extends('layouts.app')
 @section('title','All Orders | Unikoop')
 
@@ -132,20 +130,20 @@
                                                 $pending = $bol_data->where('logistiek',null)->count();
                                         ?>
                                                 @if ($dhl > 0 || $dpd > 0 || $dhl_today > 0)
-                                                    <a href="{{ url('/bol/fetched/labels',$bol_rec_id) }}" class="download-btn" style="cursor: pointer;">All Fetched Labels</a><br>
+                                                    <a href="{{ route('fetched.labels',$bol_rec_id) }}" class="download-btn" style="cursor: pointer;">All Fetched Labels</a><br>
                                                 @endif
                                                 @if ($dhl > 0)
-                                                    <a href="{{ url('/download-pdf/DHL/order',$bol_rec_id) }}" target="_blank" class="download-btn"
+                                                    <a href="{{ route('download.pdf.order', ['type' => 'DHL', 'id' => $bol_rec_id]) }}" target="_blank" class="download-btn"
                                                     style="cursor: pointer;">Download: DHL Labels ({{ $dhl }})</a><br>
                                                 @endif
 
                                                 @if ($dpd > 0)
-                                                    <a href="{{ url('/download-pdf/DPD/order',$bol_rec_id) }}" target="_blank" class="download-btn"
+                                                    <a href="{{ route('download.pdf.order', ['type' => 'DPD', 'id' => $bol_rec_id]) }}" target="_blank" class="download-btn"
                                                     style="cursor: pointer;">Download: DPD Labels ({{ $dpd }})</a><br>
                                                 @endif
 
                                                 @if ($dhl_today > 0)
-                                                    <a href="{{ url('/download-pdf/DHL-Today/order',$bol_rec_id) }}" target="_blank" class="download-btn"
+                                                    <a href="{{ route('download.pdf.order', ['type' => 'DHL-Today', 'id' => $bol_rec_id]) }}" target="_blank" class="download-btn"
                                                     style="cursor: pointer;">Download: DHL Today Labels ({{ $dhl_today }})</a><br>
                                                 @endif
                                         <?php
@@ -339,20 +337,20 @@
                                                                         $pending = $bol_data->where('logistiek',null)->count();
                                                                 ?>
                                                                         @if ($dhl > 0 || $dpd > 0 || $dhl_today > 0)
-                                                                            <a href="{{ url('/bol/fetched/labels',$bol_rec_id) }}" class="download-btn" style="cursor: pointer;">All Fetched Labels</a><br>
+                                                                            <a href="{{ route('fetched.labels',$bol_rec_id) }}" class="download-btn" style="cursor: pointer;">All Fetched Labels</a><br>
                                                                         @endif
                                                                         @if ($dhl > 0)
-                                                                            <a href="{{ url('/download-pdf/DHL/order',$bol_rec_id) }}" target="_blank" class="download-btn"
+                                                                            <a href="{{ route('download.pdf.order', ['type' => 'DHL', 'id' => $bol_rec_id]) }}" target="_blank" class="download-btn"
                                                                             style="cursor: pointer;">Download: DHL Labels ({{ $dhl }})</a><br>
                                                                         @endif
 
                                                                         @if ($dpd > 0)
-                                                                            <a href="{{ url('/download-pdf/DPD/order',$bol_rec_id) }}" target="_blank" class="download-btn"
+                                                                            <a href="{{ route('download.pdf.order', ['type' => 'DPD', 'id' => $bol_rec_id]) }}" target="_blank" class="download-btn"
                                                                             style="cursor: pointer;">Download: DPD Labels ({{ $dpd }})</a><br>
                                                                         @endif
 
                                                                         @if ($dhl_today > 0)
-                                                                            <a href="{{ url('/download-pdf/DHL-Today/order',$bol_rec_id) }}" target="_blank" class="download-btn"
+                                                                            <a href="{{ route('download.pdf.order', ['type' => 'DHL-Today', 'id' => $bol_rec_id]) }}" target="_blank" class="download-btn"
                                                                             style="cursor: pointer;">Download: DHL Today Labels ({{ $dhl_today }})</a><br>
                                                                         @endif
                                                                 <?php
