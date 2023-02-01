@@ -483,7 +483,7 @@
                                 </ul>
                             </div>
                         </li> --}}                        
-                        <li>
+                        <!-- <li>
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                                 <i class="fa-solid fa-arrow-up-from-bracket"></i>
                                 <span> Upload Bol Sheets </span>
@@ -497,8 +497,8 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                                 <i data-feather="shopping-cart"></i>
                                 <span> All Bol Sheets</span>
@@ -511,7 +511,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                                 <i class="fa-solid fa-hand-holding-dollar"></i>
@@ -549,7 +549,7 @@
                             <div class="collapse" id="sidebarEcommerce">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('downloadLabel')}}">Download Label</a>
+                                        <a href="{{route('download.label')}}">Download Label</a>
                                     </li>
                                 </ul>
                             </div>

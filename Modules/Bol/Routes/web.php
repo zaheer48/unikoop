@@ -32,7 +32,7 @@ Route::prefix('bol')->group(function() {
     Route::post('/invoice_submit2', 'OrderController@invoice_submit2');
     Route::get('/download', function(){
         return view('bol::download');
-    })->middleware('auth');
+    })->name('download.label')->middleware('auth');
     Route::post('/label_download', 'OrderController@downloadLabel');
     Route::get('/orders_emails/{id}', 'OrderController@ordersEmails')->middleware('auth');
 
