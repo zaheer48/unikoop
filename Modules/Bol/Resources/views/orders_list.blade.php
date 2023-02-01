@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('title','Order List | Unikoop')
+@section('sidebar')
+    @include('bol::layouts.side_bar')
+@endsection
 @section('content')
-
 <style>
     .form-control{
         width:auto;

@@ -72,7 +72,6 @@ class OrderController extends Controller
         $userId = Auth::id();
         $bol_rec = DB::table('bol_rec')->where('user_id', $userId)->orderBy('id', 'DESC')->paginate(10);
         $totalRecords = DB::table('bol_rec')->where('user_id', $userId)->count();
-        // dd($totalRecords);
         return view('bol::dashboard', compact('bol_rec', 'totalRecords'));
     }
 
@@ -241,7 +240,7 @@ class OrderController extends Controller
         $rows = $returns;
         $fields = $result;
         $bol_rec = DB::table('bol_rec')->where('id', $id)->get()->toArray();
-        return View::make("emails.orders_email_list", compact(array('rows', 'fields', 'bol_rec')));
+        return View::make("bol::emails.orders_email_list", compact(array('rows', 'fields', 'bol_rec')));
     }
 
     public function updateOrders(Request $request)

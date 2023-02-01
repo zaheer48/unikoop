@@ -1,5 +1,8 @@
 @extends('layouts.service_dashboard')
 @section('title','Packing List templates')
+@section('sidebar')
+    @include('bol::layouts.side_bar')
+@endsection
 @section('content')
 <style>
     .invalid-feedback {

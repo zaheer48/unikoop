@@ -59,7 +59,7 @@ Route::get('/bussiness-info', function () {
     return view('user.business_info');
 })->name('business.info');
 Route::post('bussiness-info-update/{id}', 'NotificationController@bussinessinfo')->name('business.info.update');
-Route::get('/account-report', 'NotificationController@accountReport')->name('account.report');
+
 // Email templates
 Route::resource('/email-templates', 'UserEmailTemplatesController');
 // Invoice
@@ -73,9 +73,6 @@ Route::post('/service-bank/update/{id}', 'UserInvoiceTemplatesController@service
 Route::resource('/packinglist-templates', 'UserPacklistTemplatesController')->middleware('auth');
 Route::get('/packlist-template-preview/{id}', 'UserPacklistTemplatesController@preview')->middleware('auth');
 // Payment History
-Route::get('/payment-history', function () {
-    return view('payment-history.index');
-})->name('payment.history');
 Route::get('/payment-invoice/{id}', 'MollieController@paymentInvoice')->name('payment.invoice');
 Route::get('/custom-payment-invoice/{id}', 'CustomOrderController@paymentInvoice')->name('custom.payment.invoice');
 

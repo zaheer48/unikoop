@@ -3,6 +3,9 @@
 @section('css')
     <link rel="stylesheet" href="{{ URL::asset('assets/css/datatables.min.css') }}">
 @endsection
+@section('sidebar')
+    @include('bol::layouts.side_bar')
+@endsection
 @section('content')
     <div class="content-page">
         <div class="content">

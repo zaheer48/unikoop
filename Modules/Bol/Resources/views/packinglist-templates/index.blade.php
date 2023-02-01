@@ -1,9 +1,9 @@
 @extends('layouts.service_dashboard')
 @section('title','Packing List templates')
-@section('css')
+@section('sidebar')
+    @include('bol::layouts.side_bar')
 @endsection
 @section('content')
-
     <div class="col-md-10 bg-blue middlecontainer">
         @if(Session::has('success'))
             <p class="alert alert-success">{{ Session::get('success') }}

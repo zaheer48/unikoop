@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('title','All Orders | Unikoop')
-
+@section('sidebar')
+    @include('bol::layouts.side_bar')
+@endsection
 @section('content')
 <style>
     .w-5{

@@ -1,5 +1,8 @@
-@extends('layouts.service_dashboard')
+@extends('layouts.app')
 @section('title','Transaction Report')
+@section('sidebar')
+    @include('bol::layouts.side_bar')
+@endsection
 @section('content')
     @php
         $user = Auth::user();

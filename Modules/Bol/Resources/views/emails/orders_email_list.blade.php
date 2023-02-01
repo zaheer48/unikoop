@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Order Emails | Unioop')
+@section('sidebar')
+    @include('bol::layouts.side_bar')
+@endsection
 @section('content')
-
-
 <style>
     .form-control{
         display: initial;

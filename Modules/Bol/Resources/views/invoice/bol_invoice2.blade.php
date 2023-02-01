@@ -1,6 +1,8 @@
 @extends('layouts/app')
 @section('title','Create Invoice | Unikoop')
-
+@section('sidebar')
+    @include('bol::layouts.side_bar')
+@endsection
 @section('content')
     <div class="col-md-10 bg-blue middlecontainer">
         <p class="alert alert-info">

@@ -1,5 +1,8 @@
 @extends('layouts/app')
 @section('title','Create Invoice | Unikoop')
+@section('sidebar')
+    @include('bol::layouts.side_bar')
+@endsection
 @section('content')
             <!-- ============================================================== -->
             <!-- Start Page Content here -->

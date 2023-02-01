@@ -3,10 +3,10 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
 @endsection
+@section('sidebar')
+    @include('bol::layouts.side_bar')
+@endsection
 @section('content')
-
-
-
         {{-- <div class="col-md-10 card middlecontainer">
             <div class="panel panel-info">
                 <div class="row" style="margin-top: 8px;">
