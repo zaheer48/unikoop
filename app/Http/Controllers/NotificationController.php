@@ -14,7 +14,7 @@ class NotificationController extends Controller
 {
     public function accountReport()
     {
-        return view('template.gold.dhl.userprofile.account_report');
+        return view('user.account_report');
     }
 
     public function profileupdate(Request $request, $id)

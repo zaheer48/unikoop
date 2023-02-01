@@ -34,7 +34,6 @@ Route::prefix('bol')->group(function() {
         return view('bol::download');
     })->middleware('auth');
     Route::post('/label_download', 'OrderController@downloadLabel');
-    Route::get('/account-report', 'NotificationController@accountReport');
     Route::get('/orders_emails/{id}', 'OrderController@ordersEmails')->middleware('auth');
 
 

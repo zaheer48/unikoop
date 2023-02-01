@@ -36,7 +36,7 @@ Route::get('/my-wallet', function () {
     return view('userwallet.index');}
 )->name('my.wallet');
 Route::get('/wallet-invoice/{id}', 'MollieController@walletInvoice')->middleware('auth')->name('wallet.invoice');
-Route::post('/recharge-wallet', 'Controllers\MollieController@rechargeWallet')->name('recharge.wallet');
+Route::post('/recharge-wallet', 'MollieController@rechargeWallet')->name('recharge.wallet');
 Route::get('/mollio-success', 'MollieController@successPayment')->name('mollio.success.payment');
 Route::post('webhooks/mollie', 'MollieController@handle')->name('webhooks.mollie');
 
@@ -59,7 +59,7 @@ Route::get('/bussiness-info', function () {
     return view('user.business_info');
 })->name('business.info');
 Route::post('bussiness-info-update/{id}', 'NotificationController@bussinessinfo')->name('business.info.update');
-
+Route::get('/account-report', 'NotificationController@accountReport')->name('account.report');
 // Email templates
 Route::resource('/email-templates', 'UserEmailTemplatesController');
 // Invoice

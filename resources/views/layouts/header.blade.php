@@ -521,7 +521,7 @@
                             <div class="collapse" id="sidebarEcommerce">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('allTransaction')}}">See All</a>
+                                        <a href="{{ route('account.report') }}">See All</a>
                                     </li>
                                 </ul>
                             </div>

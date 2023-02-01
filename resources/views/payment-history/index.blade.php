@@ -66,10 +66,6 @@
                 </div>
             </div>
         </div> --}}
-
-
-
-
          <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
@@ -120,32 +116,15 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
-                        <!-- end page title -->
+                     <!-- end page title -->
 
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-
-
-
-
-
-
-
-
-
-
-
                                         <div class="responsive-table-plugin">
                                             <div class="table-rep-plugin">
                                                 <div class="table-responsive">
-
-
                                                     <div class="row" >
                                                         <div class="col-lg-4"></div>
                                                         <div class="col-lg-3"></div>
@@ -198,9 +177,6 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-
-
-
                                                         </tbody>
                                                     </table>
                                                 </div> <!-- end .table-responsive -->
@@ -216,7 +192,6 @@
                             <div class="col-12">
                                 <div class="text-end">
                                     <ul class="pagination pagination-rounded justify-content-end">
-
                                         {{-- <span>{{$transaction->links()}}</span> --}}
                                         <li class="page-item">
                                             <a class="page-link" href="javascript: void(0);" aria-label="Previous">
@@ -240,11 +215,7 @@
                             </div>
                         </div>
                     </div> <!-- container -->
-
                 </div> <!-- content -->
-
-
-
             </div>
             <!-- ============================================================== -->
             <!-- End Page content -->
@@ -253,7 +224,7 @@
 @endsection
 @section('js')
 
-    <script src="{{ asset('css/datatables.min.js') }}"></script>
+    <script src="{{ URL::asset('css/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('#myTable').DataTable();

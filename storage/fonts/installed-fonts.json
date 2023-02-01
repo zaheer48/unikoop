@@ -1,0 +1,30 @@
+{
+    "glyphicons halflings": {
+        "normal": "glyphicons-halflings-normal_a10af4baeca73ce84ea24f3c18ee7213"
+    },
+    "fontawesome": {
+        "normal": "fontawesome-normal_218c84163998706ffedda6dc4d4439ce"
+    },
+    "roboto": {
+        "100_italic": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_100_italic_f11cf67fa184ec5467ecdf37c629d86f",
+        "300_italic": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_300_italic_60fd1c5c48964f53c185886d78f6dd92",
+        "italic": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_italic_d5c10dd70a66238a4d11751aca1ac2f6",
+        "500_italic": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_500_italic_cb3389574fec6f0962ed3b8e8df3657a",
+        "bold_italic": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_bold_italic_3c4c982d93d98be963531fd17b72c633",
+        "900_italic": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_900_italic_88fdfb383ea3335a2ea849c31af79315",
+        "100": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_100_d876775dd3daf87873e6dd250e9c4c9e",
+        "300": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_300_21960201651f2ea862182ff34dfd5ead",
+        "normal": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_normal_9fa47a070a8b30b595086d70bb7ac78c",
+        "500": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_500_d0dcda9e813eb9b854a1cc044831f6fe",
+        "bold": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_bold_3d0ad20d45ace845335f9e6c390a09d9",
+        "900": "roboto_900_509a5e5b153550862359e315131088d5"
+    },
+    "roboto condensed": {
+        "300_italic": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_condensed_300_italic_54f52fd851539e7efb6dab8385e5a0f6",
+        "italic": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_condensed_italic_56097a73c00d191e4d2856a9a019d7a0",
+        "bold_italic": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_condensed_bold_italic_368648c4b06ca372e379753bb2fecdc9",
+        "300": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_condensed_300_7936413cf1b2d5ce5ae063d636ddc719",
+        "normal": "D:\\laragon\\www\\unikoop\\storage\\fonts\/roboto_condensed_normal_b1c81c5b8bff9fc82e79f049bb7c20e9",
+        "bold": "roboto_condensed_bold_b62ecde992a70434b192f443feff6b62"
+    }
+}
