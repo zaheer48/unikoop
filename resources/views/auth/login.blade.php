@@ -150,9 +150,10 @@
                                     </div>
 
                                         <div class="text-center d-grid mt-1">
-                                         <button  class ="btn btn-lg btn-primary" type="submit">  {{ __('Log in') }} </button>
-                                         <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
-                                              </div>
+                                           <button  class ="btn btn-lg btn-outline-primary" type="submit">  {{ __('Log in') }} </button>
+                                           <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
+                                        </div>
+
                                     <!-- <div class="mb-3">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
@@ -163,6 +164,16 @@
                                         <button class="btn btn-primary" type="submit"> Log In </button>
                                     </div> -->
                                 </form>
+                                <div class="row mt-3">
+                                <div class="col-6 text-center d-grid mt-1">
+                                    <button  class ="btn btn-lg btn-outline-success" type="submit">  {{ __('Get Invoice') }} </button>
+                                    <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
+                                 </div>
+                                 <div class="col-6 text-center d-grid mt-1">
+                                    <button  class ="btn btn-lg btn-outline-info" type="submit">  {{ __('Track Order') }} </button>
+                                    <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
+                                 </div>
+                                </div>
                                 <!-- <div class="text-center">
                                     <h5 class="mt-3 text-muted">Sign in with</h5>
                                     <ul class="social-list list-inline mt-3 mb-0">

@@ -33,7 +33,7 @@
                                 </a>
                             </form> --}}
                             </div>
-                            {{-- <h4 class="page-title" style="color: blue">Fetched Label</h4> --}}
+                            <h4 class="page-title" style="color: blue">Fetched Label</h4>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                         <div class="row" style="margin-top: 8px;">
                             <div class="col-md-12">
                                 <div class="container">
-                                    <h3 style="padding: 20px;color: blue">Fetched Labels</h3>
+                                    {{-- <h3 style="padding: 20px;color: blue">Fetched Labels</h3> --}}
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <div class="panel panel-default" id="main_section">

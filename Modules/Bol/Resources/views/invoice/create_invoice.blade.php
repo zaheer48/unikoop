@@ -26,16 +26,21 @@
                                         <hr>
                                         <div class="row">
                                             <div class="col-12 col-sm-3 col-md-5 col-lg-5 ">
-                                                <h5 class="text-center">Order ID</h5>
+                                                <h5 class="text-start">Order ID</h5>
                                             </div>
                                             <div class="col-12 col-sm-9 col-md-7 col-lg-7">
-                                                <div class="input-group text-center">
+                                                <div class="input-group text-start">
                                                     <div class="form-outline ">
                                                         <input type="text" name="bestelnummer" id="bestelnummer" class="form-control" placeholder="bestelnummer" required="" value="">
                                                     </div>
-                                                    <div>
+                                                    <div class="d-flex gap-3">
                                                         <input type="button" id="check_invoice" value="Fetch Info" class="btn btn-primary">
-                                                        <!-- <span><button type="button" class="btn btn-primary">Fetch Info</button></span> -->                                                    
+                                                        <!-- <span><button type="button" class="btn btn-primary">Fetch Info</button></span> -->
+                                                        <select class="col-lg col-md col-sm-2 form-select" name="" id="">
+                                                                    <option value="bol">Bol</option>
+                                                                    <option value="amazon">Amazon</option>
+                                                                    <option value="unikoop">Unikoop</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,12 +153,12 @@
                                                     placeholder="bestelnummer" required="" value="">
                                             </form>
                                         </div>
-                                    </div>                            
+                                    </div>
                                     @else
                                         <p class="alert alert-danger">Please configure your email template in settings tab area</p>
                                     @endif
                                 </div>
-                            </div> 
+                            </div>
                         </div> <!-- end card -->
                     </div> <!-- end col -->
                 </div>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Download Label')
+@section('title','Download Label | Unikoop')
 @section('sidebar')
     @include('bol::layouts.side_bar')
 @endsection
@@ -47,7 +47,44 @@
         }
 
     </style>
-    <div class="col-md-10 bg-blue middlecontainer">
+
+   <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+                  <!-- start page title -->
+                  <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                {{-- <form class="d-flex align-items-center mb-3">
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control border" id="dash-daterange">
+                                        <span class="input-group-text bg-blue border-blue text-white">
+                                            <i class="mdi mdi-calendar-range"></i>
+                                        </span>
+                                    </div>
+                                    <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-2">
+                                        <i class="mdi mdi-autorenew"></i>
+                                    </a>
+                                    <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
+                                        <i class="mdi mdi-filter-variant"></i>
+                                    </a>
+                                </form> --}}
+                            </div>
+                            <h4 class="page-title" style="color: blue">Download Label</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+    <div class="col-md-12 card middlecontainer">
         @if(Session::has('alert-danger'))
             <p class="alert alert-warning">{{ Session::get('alert-danger') }}
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
@@ -107,7 +144,7 @@
             <div>
             </div>
             <div style="text-align:center; margin-bottom:20px">
-                
+
                 @if(Session::has('check_invoice_message'))
                     @if(Session::get('check_invoice_message') == '1-2')
                         <a href="/bol/create_invoice_2/{{Session::get('check_invoice_orderID')}}">Invoice</a> - <a
@@ -127,12 +164,14 @@
                         <a href="/bol/create_invoice_3/{{Session::get('print_invoice_orderID')}}">Invoice</a>
                     @endif
                 @endif
-                
+
             </div>
         </div>
     </div>
     <div class="col-md-10 bg-blue middlecontainer"></div>
-
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
 

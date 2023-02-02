@@ -352,7 +352,7 @@
                                                 <div class="col-lg-5 col-md-6">
                                                     <div class="input-group">
                                                         <div class="form-outline" style="margin-left: 70px;">
-                                                            <input type="search" id="form1" class="form-control" />
+                                                            <input type="search" id="form1" class="form-control" placeholder="Search" />
 
                                                         </div>
                                                         <button type="button" class="btn btn-primary"
