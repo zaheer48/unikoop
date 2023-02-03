@@ -38,21 +38,7 @@
                         <i class="fa-solid fa-money-check-dollar"></i>
                         <span>Payment History</span>
                     </a>
-                </li> -->
-                <li>
-                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
-                        <span> Transaction Report</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEcommerce">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('account.report') }}">See All</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                </li> -->                
                 <li>
                     <a href="#sidebarCrm" data-bs-toggle="collapse">
                         <i class="fa-solid fa-file-invoice"></i>

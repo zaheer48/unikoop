@@ -3,19 +3,31 @@
 namespace Modules\Bol\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Notification;
+use App\Models\Notification;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Paginate;
 use Mail;
+use DB;
+
 class NotificationController extends Controller
 {
     public function accountReport()
     {
-        return view('bol::account_report');
+        $user = Auth::user();
+        $business = DB::table('bussiness_address')->where('register_id',$user->id)->first();
+        $transactions = DB::table('transaction_histories')->where('user_id',$user->id)->get();
+        $labels = DB::table('bol_rec')
+            ->select('*')
+            ->join('bol_data', 'bol_data.bol_rec_id', '=', 'bol_rec.id')
+            ->where('bol_rec.user_id',$user->id)
+            ->paginate(10);
+        return view('account_report', compact('labels', 'transactions', 'business'));
     }
+
 
     public function profileupdate(Request $request, $id)
     {
@@ -24,7 +36,7 @@ class NotificationController extends Controller
             'username' => 'string|alpha_dash|regex:/^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/',
         ]);
         $user = User::where('is_admin',1)->first();
-      
+
         $obj = (object)array('username' => $request->username,'email' => $request->email);
 
         $profile_info = new Notification();

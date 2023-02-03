@@ -8,13 +8,7 @@
     <link rel="stylesheet" href="{{URL:: asset('assets/css/datatables.min.css') }}">
 
     {{-- <link rel="stylesheet" href="<?php echo url('/'); ?>/dhl/css/bootstrap.min.css"> --}}
-
     <link rel="stylesheet" href="{{URL::asset('dhl/css/bootstrap.min.css')}}">
-
-
-
-    
-
     <style>
         a:hover{
             text-decoration: none;
@@ -803,13 +797,25 @@ div.dataTables_wrapper div.dataTables_paginate {
 
     <script src="{{URL:: asset('assets/js/datatables.min.js') }}"></script>
     <script>
-        $(document).ready(function () {
-            $('#recharged_table').DataTable({responsive: true});
-            $('#payment_table').DataTable({responsive: true});
-            $('#label_table').DataTable({responsive: true});
-            $('#dhl_table').DataTable({responsive: true});
-            $('#dpd_table').DataTable({responsive: true});
-            $('#custom_table').DataTable({responsive: true});
+        $(document).ready(function() {
+            $('#recharged_table').DataTable({
+                responsive: true
+            });
+            $('#payment_table').DataTable({
+                responsive: true
+            });
+            $('#label_table').DataTable({
+                responsive: true
+            });
+            $('#dhl_table').DataTable({
+                responsive: true
+            });
+            $('#dpd_table').DataTable({
+                responsive: true
+            });
+            $('#custom_table').DataTable({
+                responsive: true
+            });
         });
 
         function showMoreAll(id, title) {
@@ -850,6 +856,5 @@ div.dataTables_wrapper div.dataTables_paginate {
             $('#dpd_' + id).html(str);
             $('#dpd_text_' + id).html('Show More');
         }
-
     </script>
 @endsection

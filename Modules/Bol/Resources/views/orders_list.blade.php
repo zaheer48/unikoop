@@ -97,7 +97,7 @@
                                                         onfocus="this.value = '';"
                                                         onblur="if (this.value == '') {this.value = 'Search...';}" required="">
 
-                                                <!-- <input type="image" src="<?php echo url('/'); ?>/dhl/images/search.png" border="0" alt="Submit" /> -->
+                                                  <!-- <input type="image" src="<?php echo url('/'); ?>/dhl/images/search.png" border="0" alt="Submit" /> -->
 
                                                     <button type="submit" class="btn btn-info button-search">
                                                         <span class="fa fa-search"></span>
@@ -199,56 +199,57 @@
                                                    </div> -->
 
                                                    <form name="all_data" action="{{url('/bol/update_orders')}}" method="post">
-                                                    <input type="hidden" name="all_checked" value=""/>
+                                                        <input type="hidden" name="all_checked" value=""/>
 
-                                                    {{ csrf_field() }}
-                                                    <input type="hidden" name="order_id" value="{{ $order_id }}">
-                                                    <input type="hidden" name="site" value="<?php echo $bol_rec[0]->site; ?>"/>
-                                                   <div class="table-responsive">
-                                                    <table id="tech-companies-1 " class="table table-striped mb-5" >
-                                                        <thead>
-                                                        <tr>
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="order_id" value="{{ $order_id }}">
+                                                        <input type="hidden" name="site" value="<?php echo $bol_rec[0]->site; ?>"/>
+                                                        <div class="table-responsive">
+                                                                    <table id="tech-companies-1 " class="table table-striped mb-5" >
+                                                                        <thead>
+                                                                        <tr>
 
-                                                            <th>Id</th>
-                                                            <th >Product</th>
-                                                            <th >BestelNummer</th>
-                                                            <th >Postcode</th>
-                                                            <th >Voomaam</th>
-                                                            <th >Archternaam</th>
-                                                            <th >BestelDatum</th>
-                                                            <th > Uiterste Leverdatum</th>
+                                                                            <th>Id</th>
+                                                                            <th >Product</th>
+                                                                            <th >BestelNummer</th>
+                                                                            <th >Postcode</th>
+                                                                            <th >Voomaam</th>
+                                                                            <th >Archternaam</th>
+                                                                            <th >BestelDatum</th>
+                                                                            <th > Uiterste Leverdatum</th>
 
-                                                            <th > TrackerCode</th>
+                                                                            <th > TrackerCode</th>
 
-                                                            <th > Orders</th>
-                                                            <th> Update Status</th>
+                                                                            <th > Orders</th>
+                                                                            <th> Update Status</th>
 
-                                                            <th> Action</th>
-                                                            <th>
-                                                                <div class="">
-                                                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                                                            <!-- select all boxes -->
-                                                            <input type="hidden"  id="checkings" onclick="check_all('click1');"
-                                                            value="Get"/></th>
-                                                        </tr>
-                                                        </thead>
+                                                                            <th> Action</th>
+                                                                            <th>
+                                                                                <div class="">
+                                                                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                                                                            <!-- select all boxes -->
+                                                                            <input type="hidden"  id="checkings" onclick="check_all('click1');"
+                                                                            value="Get"/></th>
+                                                                        </tr>
+                                                                        </thead>
 
-                                                        <tbody class="">
-                                                            <?php
-                                                            if (!empty($rows)) {
+                                                                        <tbody class="">
+                                                                            <?php
+                                                                            if (!empty($rows)) {
 
-                                                                print_r($rows);
+                                                                                print_r($rows);
 
-                                                            } else {
-                                                                echo('<tr>');
-                                                                echo('<td height="30" colspan="11"> No Record Found! </td>');
-                                                                echo('</tr>');
-                                                            }
-                                                            ?>
+                                                                            } else {
+                                                                                echo('<tr>');
+                                                                                echo('<td height="30" colspan="11"> No Record Found! </td>');
+                                                                                echo('</tr>');
+                                                                            }
+                                                                            ?>
 
-                                                        </tbody>
-                                                    </table >
-                                                </div> <!-- end table-responsive -->
+                                                                        </tbody>
+                                                                    </table >
+                                                        </div> <!-- end table-responsive -->
+                                                   </form>
                                             </div> <!-- end .table-rep-plugin-->
                                         </div> <!-- end .responsive-table-plugin-->
                                     </div>
