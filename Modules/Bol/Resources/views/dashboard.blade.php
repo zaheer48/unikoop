@@ -74,7 +74,7 @@
                         </div>
                         <div class="btn-group">
                         <span class="text_16 badge badge-primary">
-                            Total Orders {{ $totalRecords }}</span>
+                            Total Orders {{ $bol_rec->total() }}</span>
                             <span class="text_16 badge badge-primary">
                             Active Orders 1696</span>
                             <span class="text_16 badge badge-primary">
@@ -185,8 +185,8 @@
                                     </tr>
                                     <?php  }
                                     ?>
-                                </table>
-                                {{$bol_rec->links()}}
+                                </table>                                
+                                {{ $bol_rec->links() }}
                             </div>
                         </div>
                 </div>
@@ -274,7 +274,7 @@
                                                         <a href="{{ route('apidata', 'be') }}" class="btn btn-primary waves-effect waves-light" onclick="return confirm('Are you sure, you want to fetch the orders?')" class="btn btn-primary">
                                                             Fetch Orders From Bol.com (BE)
                                                         </a>
-                                                        <button type="button" class="btn btn-info rounded-pill waves-effect waves-light">Toal Records {{ $totalRecords }}</button>
+                                                        <button type="button" class="btn btn-info rounded-pill waves-effect waves-light">Toal Records {{ $bol_rec->total() }}</button>
 
                                                         <button type="button" class="btn btn-info rounded-pill waves-effect waves-light">Active Orders 1696 </button>
 

@@ -35,12 +35,6 @@ Route::prefix('bol')->group(function() {
     })->name('download.label')->middleware('auth');
     Route::post('/label_download', 'OrderController@downloadLabel');
     Route::get('/orders_emails/{id}', 'OrderController@ordersEmails')->middleware('auth');
-    // PAyment
-    Route::get('/payment-history', function () {
-        return view('bol::payment-history.index');
-    })->name('payment.history');
-
-    Route::get('/account-report', 'NotificationController@accountReport')->name('account.report');
 
 
 

@@ -16,10 +16,10 @@ use App\Http\Controllers;
 
 Route::get('/', function () {
     return view('auth.login');
-});
-// Route::get('/', function () {
-//     return view('logout');
-// });
+})->name('home');
+Route::get('/see-you', function () {
+    return view('see_you');
+})->name('see.you');
 
 Route::get('/test', [Controllers\TestController::class, 'test']
     )->name('test');
@@ -75,8 +75,11 @@ Route::get('/packlist-template-preview/{id}', 'UserPacklistTemplatesController@p
 // Payment History
 Route::get('/payment-invoice/{id}', 'MollieController@paymentInvoice')->name('payment.invoice');
 Route::get('/custom-payment-invoice/{id}', 'CustomOrderController@paymentInvoice')->name('custom.payment.invoice');
-
-
+// PAyment
+Route::get('/payment-history', function () {
+    return view('payment-history.index');
+})->name('payment.history');
+Route::get('/account-report', 'NotificationController@accountReport')->name('account.report');
 
 // Not Confirmed
 /** Guest Routes **/
@@ -101,7 +104,7 @@ Route::view('allTransaction','layouts/allTransaction')->name('allTransaction');
 Route::view('downloadLabel','layouts/downloadLabel')->name('downloadLabel');
 Route::view('uploadBolSheet','layouts/uploadBolSheet')->name('uploadBolSheet');
 Route::view('allBolSheet','layouts/allBolSheet')->name('allBolSheet');
-Route::view('lockScreen','layouts/lockScreen')->name('lockScreen');
+Route::view('lock-screen','layouts/lockScreen')->name('lockScreen');
 
 
 

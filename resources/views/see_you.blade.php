@@ -69,7 +69,7 @@
 
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-                                <p class="text-white-50">Back to <a href="{{route('login')}}" class="text-white ms-1"><b>Sign In</b></a></p>
+                                <p class="text-white-50">Back to <a href="{{ route('home') }}" class="text-white ms-1"><b>Sign In</b></a></p>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->

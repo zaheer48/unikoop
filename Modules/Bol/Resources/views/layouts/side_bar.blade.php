@@ -33,12 +33,12 @@
                         </ul>
                     </div>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="{{ route('payment.history')}}" class="dropdown-item notify-item">
                         <i class="fa-solid fa-money-check-dollar"></i>
                         <span>Payment History</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                         <i class="fa-solid fa-hand-holding-dollar"></i>

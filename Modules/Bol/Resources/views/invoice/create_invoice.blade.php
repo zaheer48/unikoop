@@ -15,27 +15,46 @@
                     <div class="container-fluid">
 
                         <!-- end page title -->
+                        
+                        <div class="row mt-1">
+                            <div class="col-md-12">
+                                <div class="card-body">
+                                    <p class="alert alert-info p-3">
+                                        You can set templates for 
+                                        <a href="{{route('invoice')}}" 
+                                        style="text-decoration: underline;">Invoice
+                                    </a>,
+                                    <a href="/email-templates" 
 
-                        <div class="row mt-5">
-                            <div class="col-md-12 mt-5">
+                                         style="text-decoration: underline;">Email</a>,
+                                          <a href="/packinglist-templates" 
+                                         style="text-decoration: underline;">Packing List</a> by going to settings tab.
+                                    </p>
+                                </div>
                                 <div class="card">
                                     @if($default ?? '')
+                                    
                                     <div class="card-body mb-4">
                                         <h4 class="page-title" style="color: blue";>Create Invoice</h4>
 
                                         <hr>
                                         <div class="row">
                                             <div class="col-12 col-sm-3 col-md-5 col-lg-5 ">
-                                                <h5 class="text-center">Order ID</h5>
+                                                <h5 class="text-start">Order ID</h5>
                                             </div>
                                             <div class="col-12 col-sm-9 col-md-7 col-lg-7">
-                                                <div class="input-group text-center">
+                                                <div class="input-group text-start">
                                                     <div class="form-outline ">
                                                         <input type="text" name="bestelnummer" id="bestelnummer" class="form-control" placeholder="bestelnummer" required="" value="">
                                                     </div>
-                                                    <div>
+                                                    <div class="d-flex gap-3">
                                                         <input type="button" id="check_invoice" value="Fetch Info" class="btn btn-primary">
-                                                        <!-- <span><button type="button" class="btn btn-primary">Fetch Info</button></span> -->                                                    
+                                                        <!-- <span><button type="button" class="btn btn-primary">Fetch Info</button></span> -->
+                                                        <select class="col-lg col-md col-sm-2 form-select" name="" id="">
+                                                                    <option value="bol">Bol</option>
+                                                                    <option value="amazon">Amazon</option>
+                                                                    <option value="unikoop">Unikoop</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,12 +167,12 @@
                                                     placeholder="bestelnummer" required="" value="">
                                             </form>
                                         </div>
-                                    </div>                            
+                                    </div>
                                     @else
                                         <p class="alert alert-danger">Please configure your email template in settings tab area</p>
                                     @endif
                                 </div>
-                            </div> 
+                            </div>
                         </div> <!-- end card -->
                     </div> <!-- end col -->
                 </div>

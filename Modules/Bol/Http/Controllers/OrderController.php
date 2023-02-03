@@ -71,8 +71,7 @@ class OrderController extends Controller
     {
         $userId = Auth::id();
         $bol_rec = DB::table('bol_rec')->where('user_id', $userId)->orderBy('id', 'DESC')->paginate(10);
-        $totalRecords = DB::table('bol_rec')->where('user_id', $userId)->count();
-        return view('bol::dashboard', compact('bol_rec', 'totalRecords'));
+        return view('bol::dashboard', compact('bol_rec'));
     }
 
     public function orders($id)
@@ -1853,7 +1852,7 @@ class OrderController extends Controller
         unset($request_arr['_token']);
         unset($request_arr['bol_rec_id']);
         $counts = array_count_values($request_arr);
-        return View::make("template/gold/fetch_select_next", compact('request_arr', 'counts', 'bol', 'dhl', 'dpd', 'user'));
+        return View::make("bol::fetch_select_next", compact('request_arr', 'counts', 'bol', 'dhl', 'dpd', 'user'));
     }
 
     public function fetch(Request $request, $id)

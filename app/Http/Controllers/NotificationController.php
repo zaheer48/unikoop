@@ -9,12 +9,21 @@ use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Mail;
+use DB;
 
 class NotificationController extends Controller
 {
     public function accountReport()
     {
-        return view('user.account_report');
+        $user = Auth::user();
+        $business = DB::table('bussiness_address')->where('register_id',$user->id)->first();
+        $transactions = DB::table('transaction_histories')->where('user_id',$user->id)->get();
+        $labels = DB::table('bol_rec')
+            ->select('*')
+            ->join('bol_data', 'bol_data.bol_rec_id', '=', 'bol_rec.id')
+            ->where('bol_rec.user_id',$user->id)
+            ->paginate(15);
+        return view('user.account_report', compact('labels', 'transactions', 'business'));
     }
 
     public function profileupdate(Request $request, $id)
