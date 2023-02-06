@@ -1853,7 +1853,7 @@ class OrderController extends Controller
         unset($request_arr['_token']);
         unset($request_arr['bol_rec_id']);
         $counts = array_count_values($request_arr);
-        return View::make("bol::fetch_select_next", compact('request_arr', 'counts', 'bol', 'dhl', 'dpd', 'user'));
+        return View::make("template/gold/fetch_select_next", compact('request_arr', 'counts', 'bol', 'dhl', 'dpd', 'user'));
     }
 
     public function fetch(Request $request, $id)

@@ -103,6 +103,9 @@ Route::view('uploadBolSheet','layouts/uploadBolSheet')->name('uploadBolSheet');
 Route::view('allBolSheet','layouts/allBolSheet')->name('allBolSheet');
 Route::view('lockScreen','layouts/lockScreen')->name('lockScreen');
 
+Route::view('getinvoice','/getInvoice')->name('getinvoice');
+Route::view('trackorder','/trackorder')->name('trackorder');
+
 
 
 

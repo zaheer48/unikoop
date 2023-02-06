@@ -91,14 +91,13 @@
 @endsection
 @section('js')
 
-    <link href="{{asset('css/summernote.css')}}" rel="stylesheet">
-    <script src="{{asset('css/summernote.js')}}"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#edit_profile_description').summernote({
-                height: 350
-            });
+<link href="{{URL::asset('assets/css/summernote.css')}}" rel="stylesheet">
+<script src="{{URL::asset('assets/js/summernote.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#edit_profile_description').summernote({
+            height: 350
         });
-    </script>
+    });</script>
 
 @endsection

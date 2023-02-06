@@ -36,7 +36,10 @@
             <div class="card card-profile shadow">
                 <div class="card-body">
                     <div class="row page-titles">
+
                         <div class="col-md-12">
+                    <a href="{{route('my.profile')}}" class="btn btn-primary mb-3" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+
                             <ol class="breadcrumb">
 
                                 <li class="breadcrumb-item" style="color:white;"><a>update profile</a></li>
