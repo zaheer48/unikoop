@@ -9,76 +9,32 @@
 
     {{-- <link rel="stylesheet" href="<?php echo url('/'); ?>/dhl/css/bootstrap.min.css"> --}}
 
-    <link rel="stylesheet" href="{{URL::asset('dhl/css/bootstrap.min.css')}}">
-
-
 
 
 
     <style>
-
-body {
-    /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    /* background-color: #f7f6f6; */
-    background-color: rgba(var(--ct-body-bg-rgb));
-}
-
-
-
-           .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    color: var(--ct-form-check-input-checked-bg-color);
-    border-bottom: var(--ct-form-check-input-checked-bg-color) 3px solid;
-}
-        a:hover{
-            text-decoration: none;
-        }
-        html{
-            font-size:17px;
-        }
-        .navbar-custom .app-search .app-search-box {
-            display: none;
-            vertical-align: middle;
-            position: relative;
-}
-        .input-group-text{
-            font-size: 17px;
-        }
         .dataTables_wrapper {
             overflow-x: scroll !important;
         }
 
-        .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-            z-index: 3;
-            color: #fff;
-            cursor: default;
-            background-color:var(--ct-form-check-input-checked-bg-color);
-            border-color:var(--ct-form-check-input-checked-bg-color);
-}
-
         .text_less_more {
             font-weight: 400;
-            color: var(--ct-form-check-input-checked-bg-color);;
+            color: #337ab7;
             cursor: pointer;
             display: block;
             font-size: 12px;
         }
-        .pagination>li>a, .pagination>li>span {
-            color: var(--ct-form-check-input-checked-bg-color);
-        }
-        /* .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
             color: #3266cc;
             border-bottom: #3266cc 3px solid;
-        } */
+        }
         .dataTables_wrapper .dataTables_filter input {
     margin-left: 0.5em;
     background-color: white;
     border-radius: 5px;
     /* outline: none; */
     border: 1px solid gainsboro;
-    padding: 5px;
 }
 
         div.dataTables_wrapper div.dataTables_info {
@@ -98,11 +54,12 @@ div.dataTables_wrapper div.dataTables_paginate {
     <!-- Start Page Content here -->
     <!-- ============================================================== -->
 
-    <div class="content-page bg-body">
+    <div class="content-page">
         <div class="content">
 
 
             <!-- Start Content-->
+            <div class="container-fluid">
                   <!-- start page title -->
                   <div class="row">
                     <div class="col-12">
@@ -123,19 +80,19 @@ div.dataTables_wrapper div.dataTables_paginate {
                                     </a>
                                 </form> --}}
                             </div>
-                            <h3 class="page-title" style="color: blue"> Transaction Report</h3>
+                            <h4 class="page-title" style="color: blue"> Transaction Report</h4>
                         </div>
                     </div>
                 </div>
                 <!-- end page title -->
-                    <div class="col-md-12 card middlecontainer">
-                        <div class="panel">
+                    <div class="col-md-12 card   middlecontainer">
+                        <div class="panel panel-info">
                             <div class="row">
                                 <div class="col-md-12">
-                                    {{-- <h3 style="padding: 14px;">
+                                    <h3 style="padding: 14px;">
                                         Transaction Report
-                                    </h3> --}}
-                                    {{-- <hr style="margin: 0px;"> --}}
+                                    </h3>
+                                    <hr style="margin: 0px;">
                                     <div class="row" style="padding: 20px;">
                                         <div class="col-md-12">
                                             <ul class="nav nav-tabs gap-3" style="display: flex; margin-bottom: 1px;">
@@ -366,38 +323,8 @@ div.dataTables_wrapper div.dataTables_paginate {
 
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="text-end">
-                                                                <ul class="pagination pagination-rounded justify-content-end">
-                                                                                          {{-- <li class="page-item">
-                                                                                            <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-                                                                                                <span aria-hidden="true">«</span>
-                                                                                                <span class="visually-hidden">Previous</span>
-                                                                                            </a>
-                                                                                        </li>
-                                                                                        <li class="page-item active"><a class="page-link" href="javascript: void(0);">1</a></li>
-                                                                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a></li>
-                                                                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a></li>
-                                                                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a></li>
-                                                                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a></li>
-                                                                                        <li class="page-item">
-                                                                                            <a class="page-link " href="javascript: void(0);" aria-label="Next">
-
-                                                                                                <span aria-hidden="true">»</span>
-                                                                                                <span class="visually-hidden">Next</span>
-                                                                                            </a>
-                                                                                          </li> --}}
-                                                                    {{$labels->links()}}
-
-
-
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
-                                                <div id="dhl" class="tab-pane fade ">
+                                                <div id="dhl" class="tab-pane fade">
                                                     <div class="row" style="padding: 30px;">
                                                         <div class="col-md-12">
                                                             <table class="table table-hover table-bordered" id="dhl_table">
@@ -544,7 +471,36 @@ div.dataTables_wrapper div.dataTables_paginate {
                                                 {{--</div>--}}
 
                                             </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="text-end">
+                                                        <ul class="pagination pagination-rounded justify-content-end">
+                                                                                  {{-- <li class="page-item">
+                                                                                    <a class="page-link" href="javascript: void(0);" aria-label="Previous">
+                                                                                        <span aria-hidden="true">«</span>
+                                                                                        <span class="visually-hidden">Previous</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="page-item active"><a class="page-link" href="javascript: void(0);">1</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a></li>
+                                                                                <li class="page-item">
+                                                                                    <a class="page-link " href="javascript: void(0);" aria-label="Next">
 
+                                                                                        <span aria-hidden="true">»</span>
+                                                                                        <span class="visually-hidden">Next</span>
+                                                                                    </a>
+                                                                                  </li> --}}
+                                                            {{$labels->links()}}
+
+
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                         </div>
                                     </div>
