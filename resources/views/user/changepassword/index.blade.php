@@ -85,8 +85,8 @@
           <!-- start page title -->
           <div class="row">
             <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
+                {{-- <div class="page-title-box"> --}}
+                    {{-- <div class="page-title-right"> --}}
                         {{-- <form class="d-flex align-items-center mb-3">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control border" id="dash-daterange">
@@ -101,19 +101,22 @@
                                 <i class="mdi mdi-filter-variant"></i>
                             </a>
                         </form> --}}
-                    </div>
-                    <h4 class="page-title" style="color:blue;">Change Password</h4>
-                </div>
+                    {{-- </div> --}}
+                    {{-- <h4 class="page-title" style="color:blue;">Change Password</h4> --}}
+                {{-- </div> --}}
             </div>
         </div>
         <!-- end page title -->
-        <div class="col-md-10 card middlecontainer">
+        <div class="col-md-12 card middlecontainer">
             <div class="card card-profile shadow">
                 <div class="card-body">
                     <div class="row page-titles">
                         <div class="col-md-12">
-                            <a href="{{route('my.profile')}}" class="btn btn-primary mb-3" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+                            <div class="d-flex justify-content-between">
+                                <h4 class="page-title" style="color:blue;">Change Password</h4>
 
+                                    <a href="{{route('my.profile')}}" class="btn btn-primary mb-3" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+                        </div>
                             <ol class="breadcrumb">
 
                                 {{-- <li class="breadcrumb-item" ><a>Change password</a></li> --}}
@@ -121,6 +124,7 @@
                         </div>
                     </div>
                     {{-- <hr class="my-4"> --}}
+
                     {{-- <h4 class="page-title">Update Your Profile</h4> --}}
                     <form method="post" action="{{ route('cahnge.password.update') }}">
                         @csrf

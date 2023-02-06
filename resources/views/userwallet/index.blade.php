@@ -345,7 +345,7 @@
 
                                     <div class="table-rep-plugin">
 
-                                        <div class="table-responsive">
+                                        {{-- <div class="table-responsive"> --}}
                                             <div class="row">
                                                 <div class="col-4  "></div>
                                                 <div class="col-3  "></div>
@@ -422,7 +422,7 @@
 
                                                                 <a href="{{ route('wallet.invoice', $transaction->id) }}"
                                                                     class="btn btn-sm btn-primary">
-                                                                    <i class="fe-file-plus"></i>&nbsp; PDF
+                                                                    <i class="fa-solid fa-file-pdf"></i>&nbsp; PDF
                                                                 </a>
 
 
@@ -437,7 +437,7 @@
 
                                                 </tbody>
                                             </table>
-                                        </div> <!-- end .table-responsive -->
+                                        {{-- </div> <!-- end .table-responsive --> --}}
 
                                     </div> <!-- end .table-rep-plugin-->
                                 </div> <!-- end .responsive-table-plugin-->
