@@ -82,7 +82,7 @@
     <div class="account-pages mt-5 mb-5">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6 col-xl-4">
+                <div class="col-md-8 col-lg-6 col-xl-6">
 
 
                     <div class="card bg-pattern">
@@ -161,7 +161,43 @@
                                 @endforeach
 
                             </div>
+                            <div class="row mb-2">
+                                <div class="mb-1">
+                                    {{-- <x-jet-label for="email" value="{{ __('Email') }}" class="form-label" /> --}}
+                                    <x-jet-label for="phone"  value="{{ __('Phone Number') }}" class="form-label" />
+                                    <x-jet-input class="form-control" type="text" id="phone" name="phone"
+                                        placeholder="Enter Phone Number" required/>
+                                </div>
+                                @foreach ($errors->get('phone') as $message)
 
+                                <span style="color: red">{{ $message}}</span>
+
+                                @endforeach
+                            </div>
+                            <div class="row mb-2">
+                                <div class="mb-1">
+                                    <x-jet-label for="pobox_number" value="{{ __('PO BOX Number') }}" class="form-label" />
+                                    <x-jet-input class="form-control" type="text" id="pobox_number" name="pobox_number"
+                                        placeholder="Enter PO BOX number" required/>
+                                </div>
+                                @foreach ($errors->get('pobox_number') as $message)
+
+                                <span style="color: red">{{ $message}}</span>
+
+                                @endforeach
+                            </div>
+                            <div class="row mb-2">
+                                <div class="mb-1">
+                                    <x-jet-label for="address" value="{{ __('Address') }}" class="form-label" />
+                                    <x-jet-input class="form-control" type="text" id="address" name="address"
+                                        placeholder="Enter Your Address" required/>
+                                </div>
+                                @foreach ($errors->get('address') as $message)
+
+                                <span style="color: red">{{ $message}}</span>
+
+                                @endforeach
+                           </div>
                             <div class="row mb-2">
 
                                 <div class="mb-1">
