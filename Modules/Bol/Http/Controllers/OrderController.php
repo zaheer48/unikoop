@@ -1887,7 +1887,8 @@ class OrderController extends Controller
 
         if ($check == 0) {
             \Session::flash('warning', 'Business settings not found.');
-            return redirect('/bol/fetch/select/' . $id);
+            return to_route('fetch.select', ['id' => $id]);
+            // return redirect('/bol/fetch/select/' . $id);
             exit;
         } else {
             $qb = DB::table('setting')->where('userid', $uid)->get()->toArray();
@@ -1900,14 +1901,16 @@ class OrderController extends Controller
             if ($dhl_count > 0) {
                 if ($checkclientid == '') {
                     \Session::flash('warning', 'DHL client key not found.');
-                    return redirect('/bol/fetch/select/' . $id);
+                    return to_route('fetch.select', ['id' => $id]);
+                    // return to_route('/bol/fetch/select/' . $id);
                     exit;
                 }
             }
             if ($dpd_count > 0) {
                 if ($delisid == '') {
                     \Session::flash('warning', 'DPD Delis ID not found.');
-                    return redirect('/bol/fetch/select/' . $id);
+                    return to_route('fetch.select', ['id' => $id]);
+                    // return redirect('/bol/fetch/select/' . $id);
                     exit;
                 }
             }
@@ -1921,7 +1924,8 @@ class OrderController extends Controller
         $orders_key = [];
         if ($total > $user->credit_limit || $user->credit_limit == null) {
             \Session::flash('warning', 'Your current wallet balance is low.');
-            return redirect('/bol/fetch/select/' . $id);
+            return to_route('fetch.select', ['id' => $id]);
+            // return redirect('/bol/fetch/select/' . $id);
             exit;
         }
 
@@ -2267,6 +2271,8 @@ class OrderController extends Controller
                         $pdf_base64_decoded = base64_decode($pdf_data_array->pdf);
                         $response_pdf .= $pdf_base64_decoded;
                         $path = public_path() . "/pdf_files/" . $bol_data_id . "_" . $i . ".pdf";
+
+                        dd($path);
                         file_put_contents($path, $pdf_base64_decoded);
                         $txt_data .= $bol_data_id . "_" . $i . ".pdf" . "\r\n";
                         $file_array[] = $bol_data_id . "_" . $i . ".pdf";
@@ -2408,7 +2414,8 @@ class OrderController extends Controller
         }
 
         \Session::flash('success', 'Orders fetched successful.');
-        return redirect('/bol/all_orders');
+        return to_route('all.orders');
+        // return redirect('/bol/all_orders');
     }
 
     public function fetchedLabels($id)

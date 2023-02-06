@@ -40,9 +40,9 @@ Route::prefix('bol')->group(function() {
 
     Route::get('/orders/{id}', 'OrderController@orders')->middleware('auth')->name('bol.update');
     Route::post('/orders_emails_send', 'OrderController@ordersEmailsSend')->middleware('auth');
-    Route::post('/fetch/{id}', 'OrderController@fetch')->middleware('auth');
-    Route::get('/fetch/select/{id}', 'OrderController@fetchSelect')->middleware('auth');
-    Route::post('/fetch/select/next', 'OrderController@fetchSelectNext')->middleware('auth');
+    Route::post('/fetch/{id}', 'OrderController@fetch')->name('fetch')->middleware('auth');
+    Route::get('/fetch/select/{id}', 'OrderController@fetchSelect')->name('fetch.select')->middleware('auth');
+    Route::post('/fetch/select/next', 'OrderController@fetchSelectNext')->name('fetch.select.next')->middleware('auth');
 
     Route::post('/update_orders', 'OrderController@updateOrders')->middleware('auth');
     Route::get('/packing_list/{site}/{id}', 'OrderController@packing_list')->middleware('auth');
