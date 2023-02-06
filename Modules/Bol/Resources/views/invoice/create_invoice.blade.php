@@ -14,17 +14,7 @@
                     <!-- Start Content-->
                     <div class="container-fluid">
 
-                        <!-- end page title -->
-                        
-                        <div class="row mt-1">
-                            <div class="col-md-12">
-                                <div class="card-body">
-                                    <p class="alert alert-info p-3">
-                                        You can set templates for 
-                                        <a href="{{route('invoice')}}" 
-                                        style="text-decoration: underline;">Invoice
-                                    </a>,
-                                    <a href="/email-templates" 
+                        <!-- end page title -->z                        
 
                         <div class="row mt-1">
                             <div class="col-md-12">
