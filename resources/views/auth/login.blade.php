@@ -166,11 +166,11 @@
                                 </form>
                                 <div class="row mt-3">
                                 <div class="col-6 text-center d-grid mt-1">
-                                    <button  class ="btn btn-lg btn-outline-success" type="submit">  {{ __('Get Invoice') }} </button>
+                                    <a href="{{ route('register') }}" class ="btn btn-lg btn-outline-success" type="submit">  {{ __('Get Invoice') }} </a>
                                     <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
                                  </div>
                                  <div class="col-6 text-center d-grid mt-1">
-                                    <button  class ="btn btn-lg btn-outline-info" type="submit">  {{ __('Track Order') }} </button>
+                                    <a href="{{ route('register') }}" class ="btn btn-lg btn-outline-info" type="submit">  {{ __('Track Order') }} </a>
                                     <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
                                  </div>
                                 </div>

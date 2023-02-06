@@ -13,8 +13,6 @@
 
                     <!-- Start Content-->
                     <div class="container-fluid">
-
-                        <!-- end page title -->
                         <div class="row mt-1">
                             <div class="col-md-12">
                                 <div class="card-body">
@@ -204,7 +202,6 @@
 
             <!-- ============================================================== -->
             <!-- End Page content -->
-            <!-- ============================================================== -->
 @endsection
 @section('js')
 

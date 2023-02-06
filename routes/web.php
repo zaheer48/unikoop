@@ -16,6 +16,11 @@ use App\Http\Controllers;
 
 Route::get('/', function () {
     return view('auth.login');
+
+    Route::get('/register', function () {
+        return view('auth.register');
+    })->name('register');
+
 })->name('home');
 Route::get('/see-you', function () {
     return view('see_you');
