@@ -103,11 +103,39 @@
                         {{ Auth::user()->username }} <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                <div class="dropdown-menu dropdown-menu-end profile-dropdown " style="
+                    min-width: 250px;">
                     item
                     <div class="dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Welcome !</h6>
                     </div>
+                    <div class="d-flex text-center"  class="dropdown-item notify-item" >
+                        <div class="col-6">
+                                <a href="{{route('getinvoice')}}" class="">
+
+
+                                    {{-- <span>Get Invoice</span> --}}
+
+                                    <button type="submit" class="fs-6 btn btn-dark underline text-sm text-gray-600 hover:text-gray-900 ml-2">
+
+                                        <i class="fa-solid fa-file-lines"></i>{{ __('Get Invoice') }}
+                                    </button>
+                                </a>
+                        </div>
+                        <div class="col-7">
+                            <a href="{{route('trackorder')}}" class="">
+
+
+                                {{-- <span>Take Order</span> --}}
+                                <button type="submit" class="fs-6 btn btn-primary underline  text-sm text-gray-600 hover:text-gray-900 ml-2" style="margin-right:22px">
+
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    {{ __('Track Order') }}
+                                </button>
+                            </a>
+                        </div>
+                   </div>
+                   <hr>
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-settings"></i>
                         <span>Settings</span>
@@ -119,6 +147,7 @@
                         <span>Lock Screen</span>
                     </a>
 
+
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
@@ -127,13 +156,18 @@
                         <i class="fe-log-out"></i>
                         <span>Logout</span>
                     </a> --}}
-                    <form method="POST" action="{{ route('logout') }}" class="inline mx-3">
+                    <div class=" dropdown-item notify-item">
+                    <form method="POST" action="{{ route('logout') }}" class="inline mx-3 ">
                         @csrf
 
-                        <button type="submit" class=" btn btn-light underline text-sm text-gray-600 hover:text-gray-900 ml-2">
+                        {{-- <p type="submit" class="text-danger underline text-sm text-gray-600 hover:text-gray-900 ml-2">
                             {{ __('Log Out') }}
+                        </p> --}}
+                        <button type="submit" class="btn text-sm text-gray-600 hover:text-gray-900 ml-2 mx-n3 m-lg-n4 ">
+                            <i class="fa-solid fa-right-from-bracket"></i>  {{ __('Log Out') }}
                         </button>
                     </form>
+                </div>
 
                 </div>
             </li>
