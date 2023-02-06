@@ -166,12 +166,12 @@
                                                         <td>@if ($transaction->type == 'Label')
                                                             <a href="{{ route('payment.invoice',$transaction->id) }}"
                                                             class="btn btn-sm btn-primary">
-                                                                <i class="fa fa-file-pdf-o"></i>&nbsp; PDF
+                                                            <i class="fa-solid fa-file-pdf"></i>&nbsp; PDF
                                                             </a>
                                                         @else
                                                             <a href="{{ route('custom.payment.invoice',$transaction->id) }}"
                                                             class="btn btn-sm btn-primary">
-                                                                <i class="fa fa-file-pdf-o"></i>&nbsp; PDF
+                                                            <i class="fa-solid fa-file-pdf"></i>&nbsp; PDF
                                                             </a>
                                                         @endif
                                                     </td>
