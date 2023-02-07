@@ -21,6 +21,10 @@ Route::get('/', function () {
         return view('auth.register');
     })->name('register');
 
+    Route::get('/client-register', function () {
+        return view('auth.client-register');
+    })->name('client-register');
+
 })->name('home');
 Route::get('/see-you', function () {
     return view('see_you');
