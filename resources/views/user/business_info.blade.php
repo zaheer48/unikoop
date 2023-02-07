@@ -30,14 +30,14 @@
             </div>
             <!-- end page title -->
             <div class="col-md-12 card middlecontainer">
-                <div class="card card-profile shadow">
+                <div class="card card-profile">
                     <div class="card-body">
                         <div class="row page-titles">
                             <div class="col-md-12">
                                 <div class="d-flex justify-content-between">
                                     <h4 class="page-title" style="color:blue;">Update Bussiness Info</h4>
 
-                                    <a href="{{ route('my.profile') }}" class="btn btn-primary mb-3"
+                                    <a href="{{ route('my.profile') }}" class="btn btn-secondary mb-3"
                                         style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
                                 </div>
                                 {{-- <ol class="breadcrumb">

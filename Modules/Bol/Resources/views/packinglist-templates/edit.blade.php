@@ -15,15 +15,21 @@
     }
 </style>
 <div class="col-md-10 bg-blue middlecontainer">
-    @if(Session::has('success'))
-    <p class="alert alert-success">{{ Session::get('success') }}
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    </p>
-    @endif
-    @if(Session::has('alert-warning'))
-    <p class="alert alert-warning">{{ Session::get('alert-warning') }}
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    </p>
+    @if (Session::has('success'))
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ Session::get('success') }}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+   @endif
+    @if (Session::has('alert-warning'))
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{ Session::get('alert-warning') }}.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
     @endif
 
     <div class="panel panel-info">

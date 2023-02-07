@@ -93,7 +93,7 @@
                                                             <div class="form-group">
                                                                 <input style="margin-bottom: 5px;" type="text" name="cc" value=""
                                                                     class="form-control"
-                                                                    placeholder="can enter multiple emails separated by comma">
+                                                                    placeholder="Can enter multiple emails separated by comma">
                                                                 @if ($errors->has('cc'))
                                                                     <small class="invalid-feedback" role="alert" style="color: red;">
                                                                         <strong>{{ $errors->first('cc') }}</strong>

@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts.app')
 @section('title','All Bol Sheet| Unikoop')
 @section('content')
 

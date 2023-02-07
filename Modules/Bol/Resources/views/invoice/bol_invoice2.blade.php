@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts.app')
 @section('title','Create Invoice | Unikoop')
 @section('sidebar')
     @include('bol::layouts.side_bar')
@@ -6,20 +6,26 @@
 @section('content')
     <div class="col-md-10 bg-blue middlecontainer">
         <p class="alert alert-info">
-            You can set templates for <a href="{{ route('invoice-templates.index') }}" style="text-decoration: underline;">Invoice</a>, 
-            <a href="{{ route('email-templates.index') }}" style="text-decoration: underline;">Email</a>, 
+            You can set templates for <a href="{{ route('invoice-templates.index') }}" style="text-decoration: underline;">Invoice</a>,
+            <a href="{{ route('email-templates.index') }}" style="text-decoration: underline;">Email</a>,
             <a href="{{ route('packinglist-templates.index') }}" style="text-decoration: underline;">Packing List</a> by going to settings tab.
         </p>
-        @if(Session::has('success'))
-            <p class="alert alert-success">{{ Session::get('success') }}
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            </p>
-        @endif
-        @if(Session::has('alert-warning'))
-            <p class="alert alert-warning">{{ Session::get('alert-warning') }}
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            </p>
-        @endif
+        @if (Session::has('success'))
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ Session::get('success') }}.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                   @endif
+                @if (Session::has('alert-warning'))
+
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>{{ Session::get('alert-warning') }}.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                @endif
         @if(Session::has('danger'))
             <p class="alert alert-warning">{{ Session::get('danger') }}
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
