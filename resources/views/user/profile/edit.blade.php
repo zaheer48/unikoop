@@ -27,12 +27,12 @@
                             </a>
                         </form> --}}
                     </div>
-                    {{-- <h4 class="page-title" style="color: blue">Update Profile</h4> --}}
+                    <h4 class="page-title" style="color: blue">Update Profile</h4>
                 </div>
             </div>
         </div>
         <!-- end page title -->
-        <div class="col-md-12 card middlecontainer">
+        <div class="col-md-10 card middlecontainer">
             <div class="card card-profile shadow">
                 <div class="card-body">
                     <div class="row page-titles">
@@ -41,9 +41,8 @@
                     <a href="{{route('my.profile')}}" class="btn btn-primary mb-3" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
 
                             <ol class="breadcrumb">
-                                <h4 class="page-title" style="color: blue">Update Profile</h4>
 
-                                {{-- <li class="breadcrumb-item" ><a>update profile</a></li> --}}
+                                <li class="breadcrumb-item" style="color:white;"><a>update profile</a></li>
                             </ol>
                         </div>
                     </div>

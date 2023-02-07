@@ -106,13 +106,8 @@
 
 
                                 <div class="col-md-1"></div>
-
                             </div>
-                                <div class="col-12">
-                                    <hr style="width:100%;border:1px solid #efefef">
-
-
-                                </div>
+                <hr>
                             <div class="row">
 
                                     <div class="col-md-1"></div>

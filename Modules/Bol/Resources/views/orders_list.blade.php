@@ -51,7 +51,7 @@
                         //$this->load->view($theme_path.'dhl/assets/sidebar');
                         ?>
                         <div class="col-md-12 card middlecontainer">
-                            <h3 class="page-title" style="color:blue"> All Orders</h3>
+                            <h3 class="page-title" style="color:blue"> All Orders </h3>
                             <div class="row">
                             @if(session('success'))
                                 <p class="alert alert-success"><strong>Success:</strong> {{ session('success') }}</p>
