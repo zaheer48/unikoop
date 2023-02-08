@@ -16,9 +16,8 @@ class Client extends Model
      */
 
     protected $fillable = [
-        'name',
-        'email',
         'username', 
+        'email',
         'password',
         'status', 
         'password_hint',
@@ -51,14 +50,14 @@ class Client extends Model
      *
      * @var array<int, string>
      */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+    // protected $appends = [
+    //     'profile_photo_url',
+    // ];
 
-    public function platforms()
-    {
-        return $this->hasMany(Platform::class);
-    }
+    // public function platforms()
+    // {
+    //     return $this->hasMany(Platform::class);
+    // }
 
     // public function tenant()
     // {

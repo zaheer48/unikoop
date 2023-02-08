@@ -96,6 +96,7 @@
                     </a>
                 </div>
             </li>
+            @if (Auth::check())
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{URL::asset('assets/images/users/user-1.jpg')}}" alt="user-image" class="rounded-circle">
@@ -171,6 +172,7 @@
 
                 </div>
             </li>
+            @endif
             <li class="dropdown notification-list">
                 <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                     <i class="fe-settings noti-icon"></i>

@@ -52,13 +52,15 @@
                                                 <h5 class="text-start">Order ID</h5>
                                             </div>
                                             <div class="col-12 col-sm-9 col-md-7 col-lg-7">
+                                                    <form name="register" method="post" id="check_invoice_form2" action="" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
                                                 <div class="input-group text-start gap-2">
                                                     <div class="form-outline ">
                                                         <input type="text" name="bestelnummer" id="bestelnummer" class="form-control" placeholder="bestelnummer" required="" value="">
                                                     </div>
                                                     <div class="d-flex gap-3">
                                                         <!-- <span><button type="button" class="btn btn-primary">Fetch Info</button></span> -->
-                                                        <select class="col-lg col-md col-sm-2 form-select" name="" id="">
+                                                        <select class="col-lg col-md col-sm-2 form-select" name="platform" id="">
                                                                     <option value="bol">Bol</option>
                                                                     <option value="amazon">Amazon</option>
                                                                     <option value="unikoop">Unikoop</option>
@@ -67,6 +69,7 @@
                                                     <input type="button" id="check_invoice" value="Fetch Info" class="btn btn-primary">
 
                                                 </div>
+                                            </form>
                                             </div>
                                         <div>
 
@@ -80,6 +83,18 @@
                                                     <input type="hidden" value="2577628200" name="o_no" id="o_no">
                                                     <div class="row">
                                                         <div class="col-md-3">
+                                                            <label>Name</label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <input style="margin-bottom: 5px;" type="Name" name="name" id="or_name" value=""
+                                                                    class="form-control">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
                                                             <label>Email</label>
                                                         </div>
                                                         <div class="col-md-4">
@@ -90,7 +105,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    {{-- <div class="row">
                                                         <div class="col-md-3">
                                                             <label class="mb_margin">CC</label>
                                                         </div>
@@ -102,7 +117,7 @@
 
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="row">
                                                         <div class="col-md-3">
                                                             <label>Subject</label>
@@ -114,7 +129,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    {{-- <div class="row">
                                                         <div class="col-md-3">
                                                         </div>
                                                         <div class="col-md-4">
@@ -129,7 +144,7 @@
                                                                 <a style="display:none" href="" id="third_anchor">Packing List</a>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="row">
                                                         <div class="col-md-3">
                                                             <label>File(s)</label>
@@ -160,13 +175,6 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <div style="text-align:center; margin-bottom:20px">
-                                            <form name="register" method="post" id="check_invoice_form2" action="" enctype="multipart/form-data"
-                                                style="display:none">
-                                                <input type="text" name="bestelnummer" id="bestelnummer2" class="form-control"
-                                                    placeholder="bestelnummer" required="" value="">
-                                            </form>
-                                        </div>
                                     </div>
 
                                         {{-- <p class="alert alert-danger">Please configure your email template in settings tab area</p> --}}
@@ -189,5 +197,90 @@
 @endsection
 @section('js')
 
+<script>
+    $('#template_id').on('change', function () {
+        var body = $("#template_id").val();
+        $("#content").val(body);
+        $('#new_template').html(body);
+    });
+</script>
+<script src="{{url('/dhl')}}/js/jquery.multifile.js"></script>
+<script>
+    $("#check_invoice").click(function () {
+        var formdata = $("#check_invoice_form2").serialize();
+        $.ajax({
+            type: "post",
+            url: "/checkorder",
+            data: formdata,
+            dataType: "json",
+            success: function (data) {
+                if (data.message == 'redirect') {
+                    window.location.replace(data.route);
+                }
+                else if (data.message == 'No record found against this Order ID') {
+                    alert('No record found against this Order ID');
+                    $('#bestelnummer').val('');
+                    $("#my_form").css("display", "none");
+                } else {
+                    $("#my_form").css("display", "block");
+                    $("#o_no").val(data.o_no);
+                    $("#or_email").val(data.email);
+                    $("#or_name").val(data.name);
+                    var subject = data.name + ' ' + 'Invoice BOL bestelnummer' + ' ' + data.o_no;
+                    $("#subject").val(subject);
+
+                    if (data.check_invoice_message == '1') {
+                        $("#second_anchor").css("display", "block");
+                        var check_invoice_orderID = data.check_invoice_orderID;
+                        // $("#second_anchor").attr("href", "/bol/create_invoice_2/" + check_invoice_orderID);
+                        $("#second_anchor").attr("href", "/download-invoice-pdf/" + check_invoice_orderID);
+                        $("#finvoice_input").attr("value", "");
+                        $("#fpackinglist_input").attr("value", "");
+                        $("#tpackinglist_input").attr("value", "");
+                        $("#sinvoice_input").attr("value", "yes");
+                    } else {
+                        $("#second_anchor").css("display", "none");
+                    }
+                    if (data.check_invoice_message == '2') {
+                        $("#third_anchor").css("display", "block");
+                        var check_invoice_orderID = data.check_invoice_orderID;
+                        // $("#third_anchor").attr("href", "/bol/create_packing_list/" + check_invoice_orderID);
+                        $("#third_anchor").attr("href", "/download-packinglist-pdf/" + check_invoice_orderID);
+                        $("#finvoice_input").attr("value", "");
+                        $("#fpackinglist_input").attr("value", "");
+                        $("#sinvoice_input").attr("value", "");
+                        $("#tpackinglist_input").attr("value", "yes");
+                    } else {
+                        $("#third_anchor").css("display", "none");
+                    }
+                    if (data.check_invoice_message == '1-2') {
+                        $("#f_anchor").css("display", "block");
+                        $("#sf_anchor").css("display", "block");
+                        var check_invoice_orderID = data.check_invoice_orderID;
+                        // $("#f_anchor").attr("href", "/bol/create_invoice_2/" + check_invoice_orderID);
+                        $("#f_anchor").attr("href", "/bol/download-invoice-pdf/" + check_invoice_orderID);
+                        $("#sf_anchor").attr("href", "/bol/download-packinglist-pdf/" + check_invoice_orderID);
+                        $("#tpackinglist_input").attr("value", "");
+                        $("#sinvoice_input").attr("value", "");
+                        $("#finvoice_input").attr("value", "yes");
+                        $("#fpackinglist_input").attr("value", "yes");
+                        // $("#sf_anchor").attr("href", "/bol/create_packing_list/" + check_invoice_orderID);
+                    } else {
+                        $("#f_anchor").css("display", "none");
+                        $("#sf_anchor").css("display", "none");
+                    }
+                }
+
+            }
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+    jQuery(function () {
+        $('#file_input').multifile();
+    });
+</script>
 
 @endsection

@@ -11,7 +11,7 @@
 
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="username" :value="old('name')"
                     required autofocus autocomplete="name" />
             </div>
 
@@ -112,7 +112,7 @@
                                 @csrf
                                 {{-- <div>
                                     <x-jet-label for="name" value="{{ __('Name') }}" />
-                                    <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
+                                    <x-jet-input id="name" class="block mt-1 w-full" type="text" name="username" :value="old('name')"
                                         required autofocus autocomplete="name" />
                                 </div> --}}
 
@@ -120,7 +120,7 @@
                                 <div class="row mb-2">
                                     <div class="mb-1">
                                         <x-jet-label for="name" class="form-label" value="{{ __('Name') }}" />
-                                        <x-jet-input type="text"   name="name" :value="old('name')" id="name" class="form-control"
+                                        <x-jet-input type="text"   name="username" :value="old('name')" id="name" class="form-control"
                                             id="textinput" placeholder="First Name" autofocus autocomplete="name"  required/>
                                     </div>
                                     @foreach ($errors->get('name') as $message)
