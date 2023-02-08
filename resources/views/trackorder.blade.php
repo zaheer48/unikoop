@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('title','Get Invoice | Unikoop')
+@section('title','Track Order | Unikoop')
 @section('sidebar')
     @include('bol::layouts.side_bar')
 @endsection

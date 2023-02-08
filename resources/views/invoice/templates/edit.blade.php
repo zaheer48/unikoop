@@ -55,16 +55,28 @@
                     @endif
 
                     <div class="col-md-12 card middlecontainer">
-                        @if(Session::has('success'))
-                            <p class="alert alert-success">{{ Session::get('success') }}
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            </p>
-                        @endif
-                        @if(Session::has('alert-warning'))
-                            <p class="alert alert-warning">{{ Session::get('alert-warning') }}
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            </p>
-                        @endif
+                        @if (Session::has('success'))
+                        {{-- <p class="alert alert-success">{{ Session::get('success') }}
+                            <a href="#" class="close" data-dismiss="alert"
+                                aria-label="close">&times;</a>
+                        </p> --}}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{ Session::get('success') }}.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                       @endif
+                    @if (Session::has('alert-warning'))
+                        {{-- <p class="alert alert-warning">{{ Session::get('alert-warning') }}
+                            <a href="#" class="close" data-dismiss="alert"
+                                aria-label="close">&times;</a>
+                        </p> --}}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>{{ Session::get('alert-warning') }}.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                    @endif
 
                         <div class="panel panel-info">
                             <div class="row" style="margin-top: 8px;">
@@ -119,20 +131,12 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-12 form-group">
-                                                    <button class="btn btn-md btn-primary">
-                                                        Submit
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-5 form-group">
-                                        <h4 class="text-center">Template Sample</h4>
-                                        <img src="{{ asset('portal/'.$preview->preview) }}" class="mx-3" style="border: 1px solid #999;height:420px">
+                                            </form>
+                                        </div>
+                                        <div class="col-md-5 form-group">
+                                            <h4 class="mx-3">Template Sample</h4>
+                                            <img src="{{ asset('portal/'.$preview->preview) }}" class="mx-3" style="border: 1px solid #999;height:420px">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
