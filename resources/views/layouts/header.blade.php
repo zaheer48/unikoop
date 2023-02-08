@@ -124,7 +124,7 @@
                                 </a>
                         </div>
                         <div class="col-7">
-                            <a href="{{route('trackorder')}}" class="">
+                            <a href="{{route('track.order')}}" class="">
 
 
                                 {{-- <span>Take Order</span> --}}

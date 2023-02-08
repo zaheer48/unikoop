@@ -25,7 +25,10 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
+        
+       $url = $input['url'];
 
+      if($url == route('track.order')) {
         return User::create([
             'username' => $input['username'],
             'email' => $input['email'],
@@ -33,5 +36,15 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
             
         ]);
+    }
+      else{
+          return User::create([
+            'username' => $input['username'],
+            'email' => $input['email'],
+            'user_type' => 'vendor',
+            'password' => Hash::make($input['password']),
+            
+        ]);
+      }
     }
 }

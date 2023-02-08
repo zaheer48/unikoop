@@ -170,7 +170,7 @@
                                     <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
                                  </div>
                                  <div class="col-6 text-center d-grid mt-1">
-                                    <a href="{{ route('trackorder') }}" class ="btn btn-lg btn-outline-info" type="submit">  {{ __('Track Order') }} </a>
+                                    <a href="{{ route('track.order') }}" class ="btn btn-lg btn-outline-info" type="submit">  {{ __('Track Order') }} </a>
                                     <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
                                  </div>
                                 </div>

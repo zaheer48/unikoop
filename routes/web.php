@@ -19,9 +19,9 @@ Route::get('/', function () {
     return view('auth.login');
 })->name('home');
 
-Route::get('trackorder', function () {
+Route::get('track-order', function () {
     return view('trackorder');
-})->name('trackorder');
+})->name('track.order');
 Route::post('/checkorder', [OrderTrackController::class, 'check_order'])->name('checkorder');
 
     Route::get('/register', function () {
