@@ -196,31 +196,12 @@
             </div>
             <!-- end page title -->
 
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <!-- Logo & title -->
-                            {{-- <div class="clearfix">
-                                <div class="float-start">
-                                    <div class="auth-logo">
-                                        <div class="logo logo-dark">
-                                            <span class="logo-lg">
-                                                <img src="assets/images/logo-dark.png" alt="" height="22">
-                                            </span>
-                                        </div>
 
-                                        <div class="logo logo-light">
-                                            <span class="logo-lg">
-                                                <img src="assets/images/logo-light.png" alt="" height="22">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="float-end">
-                                    <h4 class="m-0 d-print-none">Invoice</h4>
-                                </div>
-                            </div> --}}
 
                             {{-- <div class="row">
                                 <div class="col-md-6">
@@ -301,6 +282,66 @@
                                 @php
                                 $info = \DB::table('bussiness_address')->where('register_id',Auth::id())->first();
                                 @endphp
+
+                                @endif
+                                <div class="row mt-3">
+                                    <h3 style="padding: 14px;">
+                                        My Info
+                                        @if ($profiledata)
+                                            <p class="alert alert-success bg_view">Your Profile Info updation is in pending
+                                                with admin</p>
+                                        @endif
+
+                                    </h3>
+                                    <div class="col-sm-6">
+
+                                        <h4 class="text-primary">User Name : <span
+                                                class="text-dark">{{ Auth::user()->username }}</span></h4>
+                                        </h4>
+
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">Email : <span
+                                                class="text-dark">{{ Auth::user()->email }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">Phone Number : <span
+                                                class="text-dark">{{ Auth::user()->phone }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">PO Box Number : <span
+                                                class="text-dark">{{ Auth::user()->pobox }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">Address : <span
+                                                class="text-dark">{{ Auth::user()->address }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">Profile Picture :<span
+                                                class="text-dark">{{ Auth::user()->pic }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+
                                 </div>
 
                             </div>
