@@ -101,7 +101,7 @@
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{URL::asset('assets/images/users/user-1.jpg')}}" alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ms-1">
-                        Geneva <i class="mdi mdi-chevron-down"></i>
+                        {{ Auth::user()->username }}<i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown " style="
@@ -183,20 +183,27 @@
         <div class="logo-box">
             <a href="index.html" class="logo logo-dark text-center">
                 <span class="logo-sm">
-                    <img src="{{URL::asset('assets/images/logo-sm.png')}}" alt="" height="22">
+                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" class="mx-2" alt="LeyWood" width="70" height="50">
+
+                    {{-- <img src="{{URL::asset('assets/images/logo-sm.png')}}" alt="" height="22"> --}}
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
                 </span>
                 <span class="logo-lg">
-                    <img src=" {{URL::asset('assets/images/logo-dark.png')}}"  alt="" height="20">
+                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" alt="LeyWood" width="100" height="50">
+
+                    {{-- <img src=" {{URL::asset('assets/images/logo-dark.png')}}"  alt="" height="20"> --}}
                     <!-- <span class="logo-lg-text-light">U</span> -->
                 </span>
             </a>
             <a href="index.html" class="logo logo-light text-center">
                 <span class="logo-sm">
-                    <img src="{{URL::asset('assets/images/logo-sm.png')}}" alt="" height="22">
+                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg"  class="mx-2"  alt="LeyWood" width="70" height="50">
+
+                    {{-- <img src="{{URL::asset('assets/images/logo-sm.png')}}" alt="" height="22"> --}}
                 </span>
                 <span class="logo-lg">
-                    <img src="{{URL:: asset('assets/images/logo-light.png')}}" alt="" height="20">
+                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" alt="LeyWood" width="100" height="50">
+                    {{-- <img src="{{URL:: asset('assets/images/logo-light.png')}}" alt="" height="20"> --}}
                 </span>
             </a>
         </div>

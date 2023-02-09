@@ -55,12 +55,12 @@
                         @csrf
                         <div class="row">
 
-                        <div class="col-md-1"></div>
+                        {{-- <div class="col-md-1"></div> --}}
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label for="username">UserName</label>
+                                    <label for="username">User Name</label>
                                     <small style="color: red;"> optional</small>
-                                    <input type="text" name="username"
+                                    <input type="text" name="username" placeholder="Name"
                                         class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
                                         value="{{Auth::user()->username}}">
                                     @if ($errors->has('username'))
@@ -70,13 +70,14 @@
                                     @endif
                                 </div>
                             </div>
+                        <div class="col-md-1"></div>
 
 
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label for="name">Email</label>
+                                    <label for="email">Email</label>
                                     <small style="color: red;"> optional</small>
-                                    <input type="email" name="email"
+                                    <input type="email" name="email" placeholder="Email"
                                         class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                         value="{{Auth::user()->email}}">
                                     @if ($errors->has('email'))
@@ -87,9 +88,70 @@
                                 </div>
                             </div>
                             <div class="col-md-1"></div>
+                            <div class="col-md-5 mt-2">
+                                <div class="form-group">
+                                    <label for="pobox">PO Box Numer</label>
+                                    <small style="color: red;"> optional</small>
+                                    <input type="text" name="pobox" placeholder="PO Box Number"
+                                        class="form-control{{ $errors->has('pobox') ? ' is-invalid' : '' }}"
+                                        value="{{Auth::user()->pobox}}">
+                                    @if ($errors->has('pobox'))
+                                    <span class="invalid-feedback" role="alert" style="color:red;">
+                                            <strong>{{ $errors->first('pobox') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5  mt-2">
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <small style="color: red;"> optional</small>
+                                    <input type="text" name="phone" placeholder="Phone Number"
+                                        class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+                                        value="{{Auth::user()->phone}}">
+                                    @if ($errors->has('phone'))
+                                    <span class="invalid-feedback" role="alert" style="color:red;">
+                                            <strong>{{ $errors->first('phone') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5  mt-2">
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <small style="color: red;"> optional</small>
+                                    <input type="text" name="address" placeholder="Address"
+                                        class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"
+                                        value="{{Auth::user()->address}}">
+                                    @if ($errors->has('address'))
+                                    <span class="invalid-feedback" role="alert" style="color:red;">
+                                            <strong>{{ $errors->first('address') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+
+                            <div class="col-md-5  mt-2">
+                                <div class="form-group">
+                                    <label for="profile_pic">Profile Picture</label>
+                                    <small style="color: red;"> optional</small>
+                                    <input type="file" name="profile_pic"
+                                        class="form-control{{ $errors->has('profile_pic') ? ' is-invalid' : '' }}"
+                                        value="{{Auth::user()->profile_pic}}">
+                                    @if ($errors->has('profile_pic'))
+                                    <span class="invalid-feedback" role="alert" style="color:red;">
+                                            <strong>{{ $errors->first('profile_pic') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-1"></div>
+                            {{-- <div class="col-md-1"></div> --}}
                             <div class="col-md-10">
                                 <div class="form-group" id="adding-form">
                                     <button type="submit" class="mt-4 btn btn-md btn-primary">

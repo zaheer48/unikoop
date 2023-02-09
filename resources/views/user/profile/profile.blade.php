@@ -60,7 +60,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                              
+
                                 <!-- end row -->
                                 <div class="panel panel-info">
                                     <div class="row text-center">
@@ -120,13 +120,46 @@
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <h4 class="text-primary">Email: <span
+                                        <h4 class="text-primary">Email : <span
                                                 class="text-dark">{{ Auth::user()->email }}</span></h4>
                                         </h4>
 
                                         {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
 
                                     </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">Phone Number : <span
+                                                class="text-dark">{{ Auth::user()->phone }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">PO Box Number : <span
+                                                class="text-dark">{{ Auth::user()->pobox }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">Address : <span
+                                                class="text-dark">{{ Auth::user()->address }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">Profile Picture :<span
+                                                class="text-dark">{{ Auth::user()->pic }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+
 
 
 

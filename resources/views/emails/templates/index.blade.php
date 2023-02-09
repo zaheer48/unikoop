@@ -5,7 +5,7 @@
 
 
 
-   
+
     <!-- ============================================================== -->
     <!-- Start Page Content here -->
     <!-- ============================================================== -->
@@ -109,10 +109,10 @@
                                             <thead>
                                                 <tr>
 
-                                                    <th>S.No</th>
-                                                    <th>Type</th>
-                                                    <th>Status</th>
-                                                    <th>Actions</th>
+                                                    <th class="col-1">S.No</th>
+                                                    <th class="col-3">Type</th>
+                                                    <th class="col-3">Status</th>
+                                                    <th class="col-3">Actions</th>
 
 
                                                 </tr>

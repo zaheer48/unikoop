@@ -63,7 +63,7 @@
         <div class="account-pages mt-5 mb-5">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6 col-xl-4">
+                    <div class="col-md-8 col-lg-6 col-xl-6">
                         <div class="card bg-pattern">
 
                             <div class="card-body p-4">
@@ -156,6 +156,15 @@
                                         <div class="text-center d-grid mt-1">
                                            <button  class ="btn btn-lg btn-outline-primary" type="submit">  {{ __('Log in') }} </button>
                                            <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
+                                        </div>
+                                        <div class="flex items-center justify-end mt-3">
+
+                                                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="register">
+                                                    {{ __('Do not have an account ? SignUp') }}
+                                                </a>
+
+
+
                                         </div>
 
                                     <!-- <div class="mb-3">

@@ -79,12 +79,12 @@ Route::prefix('bol')->group(function() {
     Route::get('/Exportcsv/{recid}',[
         "uses" => 'CsvexportController@getExport',
         "as" => 'Exportcsv'])->middleware('auth');
-  
+
 
 
     Route::get('/wallet-invoice/{id}', 'MollieController@walletInvoice')->middleware('auth');
     Route::get('/download-custom-label','CustomOrderController@downloadCustomLabel')->middleware('auth');
-    Route::get('/unikoop/payment-invoice/{id}','UnikoopController@paymentInvoice');
+    // Route::get('/unikoop/payment-invoice/{id}','UnikoopController@paymentInvoice');
 });
 
 

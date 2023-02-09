@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Orders List | Unikoop')
+@section('title', 'Fetched Selected List | Unikoop')
 @section('content')
 
     <!-- ============================================================== -->
@@ -13,11 +13,11 @@
             <!-- Start Content-->
             <div class="container-fluid">
                 <!-- start page title -->
-                {{-- <div class="row">
+                <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
                             <div class="page-title-right">
-                                <form class="d-flex align-items-center mb-3">
+                                {{-- <form class="d-flex align-items-center mb-3">
                                     <div class="input-group input-group-sm">
                                         <input type="text" class="form-control border" id="dash-daterange">
                                         <span class="input-group-text bg-blue border-blue text-white">
@@ -30,12 +30,13 @@
                                     <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
                                         <i class="mdi mdi-filter-variant"></i>
                                     </a>
-                                </form>
+                                </form> --}}
                             </div>
-                            <h4 class="page-title">Add Product</h4>
+                            <h3 class="page-title" style="color: blue">Fetched Select List</h3>
+
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <!-- end page title -->
 
 
@@ -163,9 +164,9 @@
                             <div class="card">
 
                                 <div class="card-body">
-                            <h3 class="page-title mb-3 mt-0" style="color: blue">Order List</h3>
+                            {{-- <h3 class="page-title mb-3 mt-0" style="color: blue">Fetched Select List</h3> --}}
 
-                                   
+
 
                                     <div
                                         style="background-color:  var(--ct-form-check-input-checked-bg-color) ; padding: 20px; margin-bottom: 6px; color: #fff;">

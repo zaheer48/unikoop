@@ -123,10 +123,11 @@
                                                                             &nbsp;Default</a>
                                                                     @else
                                                                         <a href="{{ url('set-invoice-template-default', $template->id) }}"
-                                                                            class="btn btn-sm btn-info">Set Default</a>
+                                                                            class="btn btn-sm btn-info"><i class="fa-solid fa-check"></i> Set Default</a>
                                                                     @endif
                                                                 @else
-                                                                    Not Configured
+                                                                {{-- <i class="fa-solid fa-xmark"></i> --}}
+                                                                 Not Configured
                                                                 @endif
                                                             </td>
 
@@ -184,10 +185,9 @@
                                                             <tr>
 
                                                                 <th>IBAN</th>
-                                                                <th>Bank Name</th>
+                                                                <th class="col-3">Bank Name</th>
                                                                 <th>BIC</th>
-
-                                                                <th>Action</th>
+                                                                <th class="col-3">Action</th>
 
                                                             </tr>
                                                         </thead>
@@ -281,10 +281,10 @@
                                                             <tr>
 
                                                                 <th>IBAN</th>
-                                                                <th>Bank Name</th>
+                                                                <th class="col-3">Bank Name</th>
                                                                 <th>BIC</th>
+                                                                <th class="col-3">Action</th>
 
-                                                                <th>Action</th>
 
                                                             </tr>
                                                         </thead>

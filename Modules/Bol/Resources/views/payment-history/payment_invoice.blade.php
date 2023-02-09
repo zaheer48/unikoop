@@ -19,7 +19,7 @@
         <div>
             <div class="row" style="margin-top: 8px;">
                 <div class="col-md-12">
-                    <img src="{{ asset('portal/'.$settings->site_logo) }}" style="width: 250px; margin-top: 20px;">
+                    <img src="{{ URL::asset('portal/'.$settings->site_logo) }}" style="width: 250px; margin-top: 20px;">
                     <div style="float: right;">
                         <h2>
                             Transaction #{{ $transaction->id }}
