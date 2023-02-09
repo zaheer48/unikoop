@@ -210,11 +210,21 @@
                     </div>
                     <!-- end page title -->
 
-                @if (Session::has('success'))
-                    <p class="alert alert-success">
-                        {{ Session::get('success') }}
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    </p>
+                    @if (Session::has('success'))
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ Session::get('success') }}.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                   @endif
+                @if (Session::has('alert-warning'))
+
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>{{ Session::get('alert-warning') }}.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
                 @endif
                 @if ($errors->any())
                     <ul class="alert alert-warning"
@@ -268,15 +278,19 @@
                                                     <div class="auth-logo">
                                                         <a href="index.html" class="logo logo-dark">
                                                             <span class="logo-lg">
-                                                                <img src="assets/images/logo-dark.png" alt=""
-                                                                    height="24">
+                                                                {{-- <img src="assets/images/logo-dark.png" alt=""
+                                                                    height="24"> --}}
+                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" class="mx-2" alt="LeyWood" width="100" height="50">
+
                                                             </span>
                                                         </a>
 
                                                         <a href="index.html" class="logo logo-light">
                                                             <span class="logo-lg">
-                                                                <img src="assets/images/logo-light.png" alt=""
-                                                                    height="24">
+                                                                {{-- <img src="assets/images/logo-light.png" alt=""
+                                                                    height="24"> --}}
+                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" class="mx-2" alt="LeyWood" width="100" height="50">
+
                                                             </span>
                                                         </a>
                                                     </div>

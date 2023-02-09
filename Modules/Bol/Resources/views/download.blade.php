@@ -83,12 +83,22 @@
                     </div>
                 </div>
                 <!-- end page title -->
+                @if (Session::has('alert-danger'))
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{ Session::get('alert-danger') }}.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                 @endif
 
     <div class="col-md-12 card middlecontainer">
         @if(Session::has('alert-danger'))
             <p class="alert alert-warning">{{ Session::get('alert-danger') }}
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-        @endif
+        @endif --}}
+
+
         <div class="panel panel-info">
             <div class="row">
                 <div class="col-md-12">
@@ -117,7 +127,7 @@
             </div>
             <br><br>
             <div class="row text-center">
-                <div class="col-md-12">
+                <div class="col-md-12"  style="margin-left:-7%">
                     @if($pdf_file ?? '')
                         @if($exists)
                             <a href="{{ asset('pdf_files/'.$pdf_file) }}" download="{{$pdf_file}}">

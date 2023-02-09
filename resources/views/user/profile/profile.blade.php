@@ -196,25 +196,41 @@
             </div>
             <!-- end page title -->
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <!-- Logo & title -->
-                            {{-- <div class="clearfix">
-                                <div class="float-start">
-                                    <div class="auth-logo">
-                                        <div class="logo logo-dark">
-                                            <span class="logo-lg">
-                                                <img src="assets/images/logo-dark.png" alt="" height="22">
-                                            </span>
-                                        </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
 
-                                        <div class="logo logo-light">
-                                            <span class="logo-lg">
-                                                <img src="assets/images/logo-light.png" alt="" height="22">
-                                            </span>
-                                        </div>
+                                <!-- end row -->
+                                <div class="panel panel-info">
+                                    <div class="row text-center">
+                                        @if (session()->has('success'))
+                                            <div class="alert alert-dismissable alert-success">
+                                                <button type="button" class="close" data-dismiss="alert"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <strong>
+                                                    {!! session()->get('success') !!}
+                                                </strong>
+                                            </div>
+                                        @endif
+                                        @if (Auth::user())
+                                            <div class="col-md-4" style="border-right: 1px solid #999;">
+                                                <a href="{{ route('profile.edit', Auth::user()->id) }}"
+                                                    style="display: block;" class="btn btn-outline-primary"><i
+                                                        class="fa fa-user fa-lg"></i> Edit Profile</a>
+                                            </div>
+                                            <div class="col-md-4" style="border-right: 1px solid #999;">
+                                                <a href="{{ route('cahnge.password') }}" style="display: block;"
+                                                    class="btn btn-outline-danger"><i class="fa fa-key fa-lg"></i>&nbsp;
+                                                    Change Password</a>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="{{ route('business.info') }}" style="display: block;"
+                                                    class="btn btn-outline-warning"><i class="fa fa-edit fa-lg"></i> Edit
+                                                    Business Info</a>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="float-end">
@@ -301,6 +317,69 @@
                                 @php
                                 $info = \DB::table('bussiness_address')->where('register_id',Auth::id())->first();
                                 @endphp
+                                @endif
+                                <div class="row mt-3">
+                                    <h3 style="padding: 14px;">
+                                        My Info
+                                        @if ($profiledata)
+                                            <p class="alert alert-success bg_view">Your Profile Info updation is in pending
+                                                with admin</p>
+                                        @endif
+
+                                    </h3>
+                                    <div class="col-sm-6">
+
+                                        <h4 class="text-primary">User Name : <span
+                                                class="text-dark">{{ Auth::user()->username }}</span></h4>
+                                        </h4>
+
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">Email : <span
+                                                class="text-dark">{{ Auth::user()->email }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">Phone Number : <span
+                                                class="text-dark">{{ Auth::user()->phone }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">PO Box Number : <span
+                                                class="text-dark">{{ Auth::user()->pobox }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">Address : <span
+                                                class="text-dark">{{ Auth::user()->address }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary">Profile Picture :<span
+                                                class="text-dark">{{ Auth::user()->pic }}</span></h4>
+                                        </h4>
+
+                                        {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
+
+                                    </div>
+
+
+
+
+
                                 </div>
 
                             </div>

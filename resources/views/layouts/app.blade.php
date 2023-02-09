@@ -60,6 +60,9 @@
         .has-details:hover span {
             transform: translateY(10%) scale(1);
         }
+      .btn-btn-logout:hover{
+        border-color:#ffffff00;
+    }
     </style>
     @yield('css')
     </head>
