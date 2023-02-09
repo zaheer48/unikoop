@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Http\Controllers\OrderTrackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,24 @@ use App\Http\Controllers;
 
 Route::get('/', function () {
     return view('auth.login');
+})->name('home');
+
+Route::get('track-order', function () {
+    return view('trackorder');
+})->name('track.order');
+Route::post('/checkorder', [OrderTrackController::class, 'check_order'])->name('checkorder');
 
     Route::get('/register', function () {
         return view('auth.register');
     })->name('register');
 
-})->name('home');
+    Route::get('/client-register', function () {
+        return view('auth.client-register');
+    })->name('client-register');
+
+    Route::post('/order-track', [OrderTrackController::class, 'store']
+    )->name('order-track');
+
 Route::get('/see-you', function () {
     return view('see_you');
 })->name('see.you');
@@ -112,7 +125,7 @@ Route::view('allBolSheet','layouts/allBolSheet')->name('allBolSheet');
 Route::view('lock-screen','layouts/lockScreen')->name('lockScreen');
 
 Route::view('getinvoice','/getInvoice')->name('getinvoice');
-Route::view('trackorder','/trackorder')->name('trackorder');
+// Route::view('trackorder','/trackorder')->name('trackorder');
 
 
 

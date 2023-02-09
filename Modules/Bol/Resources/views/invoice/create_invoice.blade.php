@@ -35,7 +35,7 @@
 
                                         <hr>
                                         <div class="row">
-                                            <div class="col-12 col-sm-3">
+                                            <div class="col-12 col-sm-3 col-md-5 col-lg-5 ">
                                                 <h5 class="text-start">Order ID</h5>
                                             </div>
                                             <div class="col-12 col-sm-9 col-md-7 col-lg-7">
@@ -89,7 +89,7 @@
                                                             <div class="form-group">
                                                                 <input style="margin-bottom: 5px;" type="text" name="cc" value=""
                                                                     class="form-control"
-                                                                    placeholder="Can enter multiple emails separated by comma">
+                                                                    placeholder="can enter multiple emails separated by comma">
                                                                 @if ($errors->has('cc'))
                                                                     <small class="invalid-feedback" role="alert" style="color: red;">
                                                                         <strong>{{ $errors->first('cc') }}</strong>

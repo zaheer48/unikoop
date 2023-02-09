@@ -1,4 +1,3 @@
-
 <div class="navbar-custom">
     <div class="container-fluid">
         <ul class="list-unstyled topnav-menu float-end mb-0">
@@ -97,6 +96,7 @@
                     </a>
                 </div>
             </li>
+            @if (Auth::check())
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{URL::asset('assets/images/users/user-1.jpg')}}" alt="user-image" class="rounded-circle">
@@ -106,7 +106,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown " style="
                     min-width: 250px;">
-                    UniKoop
+                    item
                     <div class="dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Welcome !</h6>
                     </div>
@@ -124,7 +124,7 @@
                                 </a>
                         </div>
                         <div class="col-7">
-                            <a href="{{route('trackorder')}}" class="">
+                            <a href="{{route('track.order')}}" class="">
 
 
                                 {{-- <span>Take Order</span> --}}
@@ -136,7 +136,8 @@
                             </a>
                         </div>
                    </div>
-                    <a href="javascript:void(0);" class="dropdown-item notify-item mt-2">
+                   <hr>
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-settings"></i>
                         <span>Settings</span>
                     </a>
@@ -163,8 +164,7 @@
                         {{-- <p type="submit" class="text-danger underline text-sm text-gray-600 hover:text-gray-900 ml-2">
                             {{ __('Log Out') }}
                         </p> --}}
-
-                        <button type="submit" class="btn btn-btn-logout text-sm text-gray-600 hover:text-gray-900 ml-2 mx-n3 m-lg-n4">
+                        <button type="submit" class="btn text-sm text-gray-600 hover:text-gray-900 ml-2 mx-n3 m-lg-n4 ">
                             <i class="fa-solid fa-right-from-bracket"></i>  {{ __('Log Out') }}
                         </button>
                     </form>
@@ -172,6 +172,7 @@
 
                 </div>
             </li>
+            @endif
             <li class="dropdown notification-list">
                 <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                     <i class="fe-settings noti-icon"></i>

@@ -2,38 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Client extends Model
 {
-    use HasApiTokens;
     use HasFactory;
-    use HasProfilePhoto;
-    use Notifiable;
-    use TwoFactorAuthenticatable;
 
-    /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'username', 
         'email',
-        'user_type',
         'password',
         'status', 
         'password_hint',
         'create_by',
     ];
 
-    /**
+     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
@@ -59,21 +50,21 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+    // protected $appends = [
+    //     'profile_photo_url',
+    // ];
 
-    public function platforms()
-    {
-        return $this->hasMany(Platform::class);
-    }
+    // public function platforms()
+    // {
+    //     return $this->hasMany(Platform::class);
+    // }
 
     // public function tenant()
     // {
     //     return $this->hasOne(Tenant::class);
     // }
     
-    function bol_records() {
-        return $this->hasMany(Bol_rec::class);
-    }
+    // function bol_records() {
+    //     return $this->hasMany(Bol_rec::class);
+    // }
 }

@@ -1,3 +1,78 @@
+{{-- <x-guest-layout>
+    <x-jet-authentication-card>
+        <x-slot name="logo">
+            <x-jet-authentication-card-logo />
+        </x-slot>
+
+        <x-jet-validation-errors class="mb-4" />
+
+        <form method="POST" action="{{ route('order-track') }}">
+            @csrf
+
+            <div>
+                <x-jet-label for="name" value="{{ __('Name') }}" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="username" :value="old('username')"
+                    required autofocus autocomplete="name" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                    required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                    autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password"
+                    name="password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                <div class="mt-4">
+                    <x-jet-label for="terms">
+                        <div class="flex items-center">
+                            <x-jet-checkbox name="terms" id="terms" required />
+
+                            <div class="ml-2">
+                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                    'terms_of_service' =>
+                                        '<a target="_blank" href="' .
+                                        route('terms.show') .
+                                        '" class="underline text-sm text-gray-600 hover:text-gray-900">' .
+                                        __('Terms of Service') .
+                                        '</a>',
+                                    'privacy_policy' =>
+                                        '<a target="_blank" href="' .
+                                        route('policy.show') .
+                                        '" class="underline text-sm text-gray-600 hover:text-gray-900">' .
+                                        __('Privacy Policy') .
+                                        '</a>',
+                                ]) !!}
+                            </div>
+                        </div>
+                    </x-jet-label>
+                </div>
+            @endif
+
+            <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+
+                <x-jet-button class="ml-4">
+                    {{ __('Register') }}
+                </x-jet-button>
+            </div>
+        </form>
+    </x-jet-authentication-card>
+</x-guest-layout> --}}
+
 @section('title','Register | Unikoop')
 
 @include('auth/header')
@@ -22,16 +97,30 @@
                                         </span>
                                     </a>
 
+                                    <!-- <a href="index.html" class="logo logo-light text-center">
+                                            <span class="logo-lg">
+                                                <img src="assets/images/logo-light.png" alt="" height="22">
+                                            </span>
+                                        </a> -->
                                 </div>
                                 <p class="text-muted mb-2 mt-2">Don't have an account?</p>
                             </div>
-                            <form method="POST" action="{{ route('register') }}">
+
+                            {{-- <x-jet-validation-errors class="mb-4" /> --}}
+
+                            <form method="POST" action="{{ route('order-track') }}">
                                 @csrf
-                                     <input type="hidden" name="url" :value="{{url()->previous()}}"/>
+                                {{-- <div>
+                                    <x-jet-label for="name" value="{{ __('Name') }}" />
+                                    <x-jet-input id="name" class="block mt-1 w-full" type="text" name="username" :value="old('username')"
+                                        required autofocus autocomplete="name" />
+                                </div> --}}
+
+
                                 <div class="row mb-2">
                                     <div class="mb-1">
                                         <x-jet-label for="name" class="form-label" value="{{ __('Name') }}" />
-                                        <x-jet-input type="text"   name="username" :value="old('name')" id="name" class="form-control"
+                                        <x-jet-input type="text"   name="username" :value="old('username')" id="name" class="form-control"
                                             id="textinput" placeholder="First Name" autofocus autocomplete="name"  required/>
                                     </div>
                                     @foreach ($errors->get('name') as $message)
@@ -39,7 +128,24 @@
                                     <span style="color: red">{{ $message}}</span>
 
                                     @endforeach
+
+                                    {{-- <div class="form col-md-6">
+                                        <label for="fullname" class="form-label">Second Name</label>
+                                        <input type="text" class="form-control"
+                                            id="textinput"placeholder="Second Name" required>
+                                    </div> --}}
                                 </div>
+
+                                <!-- <div class="mb-3">
+                                        <label for="fullname" class="form-label">Full Name</label>
+                                        <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required>
+                                    </div> -->
+
+                                {{-- <div class="mb-1">
+                                    <label for="" class="form-label">Phone Number</label>
+                                    <input class="form-control" type="text" id="fullname"
+                                        placeholder="Enter Phone Number" required>
+                                </div> --}}
 
                                 <div class="row mb-2">
 
@@ -57,6 +163,7 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="mb-1">
+                                    {{-- <x-jet-label for="email" value="{{ __('Email') }}" class="form-label" /> --}}
                                     <x-jet-label for="phone"  value="{{ __('Phone Number') }}" class="form-label" />
                                     <x-jet-input class="form-control" type="text" id="phone" name="phone"
                                         placeholder="Enter Phone Number" required/>
@@ -130,6 +237,26 @@
                                 </div>
                             </div>
 
+                                {{-- <label>Enter Captcha:</label>
+                                <div class="row">
+                                    <div class="form col-md-6">
+                                        <input type="text" class="form-control" readonly id="capt">
+                                    </div>
+                                    <div class="form col-md-6">
+                                        <input type="text" class="form-control" id="textinput">
+                                    </div>
+                                </div>
+                                <h6>Captcha not visible <img src="refresh.jpg" width="40px" onclick="cap()"></h6>
+                                <div class="mb-2">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox-signup">
+                                        <label class="form-check-label" for="checkbox-signup">I accept <a
+                                                href="javascript: void(0);" class="text-dark">Terms and
+                                                Conditions</a></label>
+                                    </div>
+                                </div> --}}
+
+
                                 <div class="text-center d-grid mt-3">
                                     <button class="btn btn-lg btn-primary" type="submit">  {{ __('Register') }} </button>
                                     <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
@@ -145,7 +272,32 @@
 
                                 </div>
 
+
+
+
+                                <!-- <div class="text-center d-grid">
+                                        <button onclick="validcap()"class="btn btn-success" type="submit"> Sign Up </button>
+                                    </div> -->
+
                             </form>
+
+                            <!-- <div class="text-center">
+                                    <h5 class="mt-2 text-muted">Sign up using</h5>
+                                    <ul class="social-list list-inline mt-3 mb-0">
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
+                                        </li>
+                                    </ul>
+                                </div> -->
 
                         </div> <!-- end card-body -->
                     </div>
