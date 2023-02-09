@@ -4,7 +4,7 @@
     @include('bol::layouts.side_bar')
 @endsection
 @section('content')
-          
+           <!-- Left Sidebar End -->
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->

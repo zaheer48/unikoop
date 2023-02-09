@@ -32,13 +32,13 @@
             </div>
         </div>
         <!-- end page title -->
-        <div class="col-md-12 card middlecontainer">
-            <div class="card card-profile">
+        <div class="col-md-10 card middlecontainer">
+            <div class="card card-profile shadow">
                 <div class="card-body">
                     <div class="row page-titles">
 
                         <div class="col-md-12">
-                    <a href="{{route('my.profile')}}" class="btn btn-secondary mb-3" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+                    <a href="{{route('my.profile')}}" class="btn btn-primary mb-3" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
 
                             <ol class="breadcrumb">
 

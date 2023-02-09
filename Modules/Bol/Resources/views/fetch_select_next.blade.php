@@ -165,7 +165,19 @@
                                 <div class="card-body">
                             <h3 class="page-title mb-3 mt-0" style="color: blue">Order List</h3>
 
-                                   
+                                    {{-- <div class="dropdown float-end">
+                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="mdi mdi-dots-vertical"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">Edit Report</a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                </div>
+            </div> --}}
 
                                     <div
                                         style="background-color:  var(--ct-form-check-input-checked-bg-color) ; padding: 20px; margin-bottom: 6px; color: #fff;">

@@ -30,7 +30,7 @@
                                 </a>
                             </form> --}}
                         </div>
-                        <h4 class="page-title" style="color: blue">Create Email Template</h4>
+                        <h4 class="page-title">Create Email Template</h4>
                     </div>
                 </div>
              </div>
@@ -38,31 +38,22 @@
             <div class="col-md-12 card middlecontainer">
 
                 @if(Session::has('success'))
-                    {{-- <p class="alert alert-success">{{ Session::get('success') }}
+                    <p class="alert alert-success">{{ Session::get('success') }}
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    </p> --}}
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>{{ Session::get('success') }}.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-
+                    </p>
                 @endif
 
                 @if(Session::has('alert-warning'))
-                    {{-- <p class="alert alert-warning">{{ Session::get('alert-warning') }}
+                    <p class="alert alert-warning">{{ Session::get('alert-warning') }}
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    </p> --}}
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>{{ Session::get('alert-warning') }}.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                    </p>
                 @endif
                     <div class="panel panel-info">
                     <div class="row" style="margin-top: 8px;">
                         <div class="col-md-12">
                             <h3 style="padding: 20px;color: blue;" class="page-title">
                                 Template Details
-                                <a href="{{ route('email-templates.index') }}" class="btn btn-md btn-secondary" style="float: right; margin-top: -10px;">Email Templates</a>
+                                <a href="{{ route('email-templates.index') }}" class="btn btn-md btn-primary" style="float: right; margin-top: -10px;">Email Templates</a>
                             </h3>
                             <hr>
                             <form class="form-horizontal mx-5" action="{{ url('/email-templates') }}" method="POST" enctype="multipart/form-data">

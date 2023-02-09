@@ -13,7 +13,16 @@
 
                             <div class="card-body p-4">
 
-
+                                {{-- <div class="text-center w-75 m-auto">
+                                    <div class="auth-logo">
+                                        <a href="index.html" class="logo logo-dark text-center">
+                                            <span class="logo-lg">
+                                                <img src="assets/images/logo-dark.png" alt="" height="22">
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
+                                </div> --}}
                                 <div class="text-center w-75 m-auto">
                                     <img src="assets/images/users/user-1.jpg" height="88" alt="user-image" class="rounded-circle shadow">
                                     <h4 class="text-dark-50 text-center mt-3">Hi ! Geneva </h4>
@@ -33,6 +42,17 @@
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
 
+                                    {{-- <div class="mb-3">
+                                        <x-jet-label for="email" class="form-label" value="{{ __('Email') }}" />
+                                        <x-jet-input class="form-control" name="email" type="email" id="email" :value="old('email')" required autofocus  placeholder="Enter your email" />
+
+                                        @foreach ($errors->get('email') as $message)
+
+                                        <span style="color: red">{{ $message}}</span>
+
+                                        @endforeach
+                                    </div> --}}
+
                                     <div class="mb-3">
 
 
@@ -50,18 +70,79 @@
                                         </div>
 
                                     </div>
+                                    {{-- <label>Enter Captcha:</label>
+                                    <div class="row">
+                                  <div class="form col-md-6">
+                                      <input type="text" class="form-control" readonly id="capt">
+                                        </div>
+                                <div class="form col-md-6">
+                                      <input type="text" class="form-control" id="textinput" required="">
+                                             </div>
+                                        </div>
+                                     <h6>Captcha not visible <img src="refresh.jpg" width="40px" onclick="cap()"></h6> --}}
 
+                                     {{-- <div class="form-check mb-1">
+                                             <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
+                                          <label class="form-check-label " for="checkbox-signin">Remember me</label>
+                                     </div> --}}
+                                     {{-- <div class="block mt-4">
+                                        <label for="remember_me" class="flex items-center">
+                                            <x-jet-checkbox id="remember_me" name="remember" class="form-check-input" id="checkbox-signin" checked />
+                                            <span class="ml-2 underline text-sm text-gray-600 hover:text-gray-900">{{ __('Remember me') }}</span>
+                                        </label>
+                                    </div>
+
+
+                                     <div class="flex items-center justify-end mt-3">
+                                        @if (Route::has('password.request'))
+                                            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                                                {{ __('Forgot your password?') }}
+                                            </a>
+                                        @endif
+
+
+                                    </div> --}}
 
                                         <div class="text-center d-grid mt-1">
                                          <button  class ="btn btn-lg btn-primary" type="submit">  {{ __('Log in') }} </button>
                                          <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
                                               </div>
-                                 
+                                    <!-- <div class="mb-3">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
+                                            <label class="form-check-label" for="checkbox-signin">Remember me</label>
+                                        </div>
+                                    </div>
+                                    <div class="text-center d-grid">
+                                        <button class="btn btn-primary" type="submit"> Log In </button>
+                                    </div> -->
                                 </form>
-
+                                <!-- <div class="text-center">
+                                    <h5 class="mt-3 text-muted">Sign in with</h5>
+                                    <ul class="social-list list-inline mt-3 mb-0">
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
+                                        </li>
+                                    </ul>
+                                </div> -->
                             </div> <!-- end card-body -->
                         </div>
-
+                        <!-- end card -->
+                                   <!--
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <p> <a href="auth-recoverpw.html" class="text-white-50 ms-1">Forgot your password?</a></p>
+                                <p class="text-white-50">Don't have an account? <a href="auth-register.html" class="text-white ms-1"><b>Sign Up</b></a></p>
+                            </div> end col -->
                         </div>
                         <!-- end row -->
 
