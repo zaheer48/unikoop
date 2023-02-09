@@ -298,8 +298,40 @@ div.dataTables_wrapper div.dataTables_paginate {
                                                     <div class="row" style="padding: 30px;">
                                                         <div class="col-md-12">
 
-                                                            <table class="table table-hover table-bordered texy-danger table-responsive" id="label_table">
-                                                                <thead>
+
+
+                <div class="col-lg-12 col-md-12 card middlecontainer">
+                    <div class="panel panel-info">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 style="padding: 14px;">
+                                    Transaction Report
+                                </h3>
+                                <hr style="margin: 0px;">
+                                <div class="row" style="padding: 20px;">
+                                    <div class="col-md-12">
+                                        <ul class="nav nav-tabs" style="display: flex; margin-bottom: 1px;">
+
+                                            <li class="active" style="display: contents;">
+                                                <a href="#labels" data-toggle="tab">All Labels</a>
+                                            </li>
+                                            <li style="display: contents;">
+                                                <a href="#dhl" data-toggle="tab">DHL Labels</a>
+                                            </li>
+                                            <li style="display: contents;">
+                                                <a href="#dpd" data-toggle="tab">DPD Labels</a>
+                                            </li>
+                                            {{-- <li style="display: contents;"> --}}
+                                            {{-- <a href="#custom" data-toggle="tab">Custom Labels</a> --}}
+                                            {{-- </li> --}}
+                                        </ul>
+                                        <div class="tab-content">
+
+                                            <div id="labels" class="tab-pane fade in active">
+                                                <div class="row" style="padding: 30px;">
+                                                    <div class="col-md-12">
+                                                        <table class="table table-hover table-bordered" id="label_table">
+                                                            <thead>
                                                                 <tr>
                                                                     <th height="30">Id</th>
                                                                     <th height="30">Product</th>
@@ -714,64 +746,12 @@ div.dataTables_wrapper div.dataTables_paginate {
                                                                     </tr>
                                                                 @endforeach
                                                             </tbody>
-                                                   </table >
-                                                {{-- </div> <!-- end table-responsive --> --}}
-                                            {{-- </div> <!-- end .table-rep-plugin--> --}}
-                                        </div> <!-- end .responsive-table-plugin-->
-                                        <div class="responsive-table-plugin tab-pane fade" id="dpd" >
-
-                                            <div class="table-rep-plugin">
-
-                                                    <table id="dpd_table" class="table table-striped mb-5">
-                                                        <thead>
-                                                        <tr>
-
-                                                            <th>Id</th>
-                                                            <th>Product</th>
-                                                            <th>BestelNummer</th>
-                                                            <th>Postcode</th>
-                                                            <th>Voornaam</th>
-                                                            <th>Achternaam</th>
-                                                            <th>TrackerCode
-                                                            <th>Prijis</th>
-                                                            <th>BestelDatum</th>
-
-
-
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody class="">
-                                                            @foreach($labels->where('logistiek','DPD') as $label)
-                                                        <tr>
-                                                            <!-- <th>GOOG <span class="co-name">Google Inc.</span></th> -->
-                                                            <td>{{ $label->id }}</td>
-                                                                        <td>
-                                                                            <span id="dpd_{{ $label->id }}">{{ substr($label->producttitel,0,10) }}...</span>
-                                                                            <span id="dpd_text_{{ $label->id }}" class="text_less_more"
-                                                                                onclick="showMoreDpd('{{ $label->id }}','{{ $label->producttitel }}')">
-                                                                        Show More
-                                                                    </span>
-                                                                        </td>
-                                                                        <td>{{ $label->bestelnummer }}</td>
-                                                                        <td>{{ $label->postcode_verzending }}</td>
-                                                                        <td>{{ $label->voornaam_verzending }}</td>
-                                                                        <td>{{ $label->achternaam_verzending }}</td>
-                                                                        <td>{{ $label->trackerCode }}</td>
-                                                                        <td>
-                                                                            @if($label->price_charged)
-                                                                            &euro;{{ number_format($label->price_charged,2) }}
-                                                                            @else
-                                                                                -
-                                                                            @endif
-                                                                        </td>
-                                                                        <td>{{ $label->besteldatum }}</td>
-                                                                    </tr>
-                                                                @endforeach
-                                                                </tbody>
-                                                   </table >
-                                                {{-- </div> <!-- end table-responsive --> --}}
-                                            {{-- </div> <!-- end .table-rep-plugin--> --}}
-                                        </div> <!-- end .responsive-table-plugin-->
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
                                     </div>
                                 </div> <!-- end card -->
                             </div> <!-- end col -->

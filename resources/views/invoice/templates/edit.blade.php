@@ -54,23 +54,56 @@
                         </p>
                     @endif
 
-                    <div class="panel panel-info">
-                        <div class="row" style="margin-top: 8px;">
-                            <div class="col-md-12">
-                                <h3 style="padding: 20px;">Invoice Templates
-                                    <a href="{{route('invoice-templates.index')}}" class="btn btn-primary" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
-                                </h3>
-                                <hr>
-                                <div class="row" style="padding: 20px;">
-                                    <div class="col-md-7">
-                                        <form action="{{ url('/invoice-templates',$preview->id) }}" method="POST" enctype="multipart/form-data">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="row">
-                                                <div class="col-md-6 form-group">
-                                                    <label for="">Logo 1</label>
-                                                    <input type="file" name="logo_1" class="form-control">
-                                                    @error('logo_1')
+                    <div class="col-md-12 card middlecontainer">
+                        @if (Session::has('success'))
+                        {{-- <p class="alert alert-success">{{ Session::get('success') }}
+                            <a href="#" class="close" data-dismiss="alert"
+                                aria-label="close">&times;</a>
+                        </p> --}}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{ Session::get('success') }}.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                       @endif
+                    @if (Session::has('alert-warning'))
+                        {{-- <p class="alert alert-warning">{{ Session::get('alert-warning') }}
+                            <a href="#" class="close" data-dismiss="alert"
+                                aria-label="close">&times;</a>
+                        </p> --}}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>{{ Session::get('alert-warning') }}.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                    @endif
+
+                        <div class="panel panel-info">
+                            <div class="row" style="margin-top: 8px;">
+                                <div class="col-md-12">
+                                    <h3 style="padding: 20px;">Invoice Templates
+                                        <a href="{{route('invoice-templates.index')}}" class="btn btn-secondary" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+                                    </h3>
+                                    <hr>
+                                    <div class="row" style="padding: 20px;">
+                                        <div class="col-md-7">
+                                            <form action="{{ url('/invoice-templates',$preview->id) }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="row">
+                                                    <div class="col-md-6 form-group">
+                                                        <label for="">Logo 1</label>
+                                                        <input type="file" name="logo_1" class="form-control">
+                                                        @error('logo_1')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label for="">Logo 2</label>
+                                                        <input type="file" name="logo_2" class="form-control">
+                                                        @error('logo_2')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -98,20 +131,12 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-md-12 form-group">
-                                                    <button class="btn btn-md btn-primary">
-                                                        Submit
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-5 form-group">
-                                        <h4 class="text-center">Template Sample</h4>
-                                        <img src="{{ asset('portal/'.$preview->preview) }}" class="mx-3" style="border: 1px solid #999;height:420px">
+                                            </form>
+                                        </div>
+                                        <div class="col-md-5 form-group">
+                                            <h4 class="mx-3">Template Sample</h4>
+                                            <img src="{{ asset('portal/'.$preview->preview) }}" class="mx-3" style="border: 1px solid #999;height:420px">
+                                        </div>
                                     </div>
                                 </div>
                             </div>

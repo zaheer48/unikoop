@@ -31,7 +31,7 @@
                                     </a>
                                 </form> --}}
                             </div>
-                            <h4 class="page-title" style="color:blue;">Show Email Templates</h4>
+                            <h4 class="page-title" style="color:blue;"> Email Templates</h4>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                             <div class="col-md-12">
                                 <h3 style="padding: 20px;">
                                     Template Details
-                                    <a href="{{ route('email-templates.index') }}" class="btn btn-md btn-primary" style="float: right; margin-top: -10px;">Email Templates</a>
+                                    <a href="{{ route('email-templates.index') }}" class="btn btn-md btn-secondary" style="float: right; margin-top: -10px;">Email Templates</a>
                                 </h3>
                                 <hr>
                                 <div class="row" style="padding: 20px;">

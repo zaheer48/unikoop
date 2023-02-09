@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'All Orders | Unikoop')
+@section('title', 'Pending Fetched | Unikoop')
 @section('content')
 
 
@@ -91,133 +91,7 @@
         }
     </script>
 
-    {{-- <input type="hidden" name="all_checked" value=""/> --}}
-
-    {{-- <div class="container " style="margin-top: 10rem;">
-    <div class="row">
-
-        <?php
-        //$this->load->view($theme_path.'dhl/assets/sidebar');
-        ?>
-        <div class="col-md-12 card middlecontainer">
-            <h3> All Orders </h3>
-            <div class="row">
-                <div class="col-md-12">
-                    @if (session()->has('warning'))
-                        <div class="alert alert-dismissable alert-warning">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <strong>
-                                {!! session()->get('warning') !!}
-                            </strong>
-                        </div>
-                    @endif
-                    <div id="admin_page_form">
-                        <?php
-                        $smg = '';
-
-                        if ($smg != '') {
-                            echo '<div id="reg_ok" style="color:red;">' . $smg . '</div>';
-                        }
-
-                        ?>
-
-                        <div id="show_file_table" class=" panel-body panel-body-multi">
-                            <div class="row">
-                                <div class="col-md-6"></div>
-                                <div class="col-md-5">
-                                    <select class="form-control" id="shipping_service_type"
-                                            style="width: 80%; display: inline">
-                                        <option value="">--Select--</option>
-                                        <option value="dhl">DHL</option>
-                                        <option value="dpd">DPD</option>
-                                        <option value="dhl_today">DHL Today</option>
-                                    </select>
-                                    <button class="btn btn-primary" id="apply-btn"
-                                            style="padding: 9px 15px; background-color: #fff; border-color: #fff; color: #004a9b;">
-                                        Apply
-                                    </button>
-                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-block btn-primary" id="next-btn"
-                                            style="padding: 9px 15px; float: right;">
-                                        Next
-                                    </button>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <form name="all_data" action="{{ url('/bol/fetch/select/next') }}"
-                                          id="all_data" method="post">
-                                        <input type="hidden" name="bol_rec_id" value="{{ $id }}"/>
-
-                                        {{ csrf_field() }}
-
-                                        <input type="hidden" name="site"
-                                               value="<?php echo $bol_rec[0]->site; ?>"/>
-
-                                        <div class="panel panel-default">
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="table-responsive">
-
-                                                        <table class="table table-hover table-bordered">
-                                                            <thead>
-                                                            <tr>
-                                                                <th height="30"> id</th>
-                                                                <th height="30"> Product</th>
-                                                                <th height="30"> BestelNummer</th>
-                                                                <th height="30"> Postcode</th>
-                                                                <th height="30"> Voornaam</th>
-                                                                <th height="30"> Achternaam</th>
-                                                                <th height="30"> BestelDatum</th>
-                                                                <th height="30"> Orders</th>
-                                                                <th height="30"> Choose</th>
-                                                                <th height="30">
-                                                                    <input type="checkbox" id="checking"
-                                                                           onclick="check_all('click1');"
-                                                                           value="Get"/>
-                                                                </th>
-                                                            </tr>
-                                                            </thead>
-                                                            <?php
-                                                            if (!empty($rows)) {
-                                                                print_r($rows);
-                                                            } else {
-                                                                echo '<tr>';
-                                                                echo '<td height="30" colspan="11"> No Record Found! </td>';
-                                                                echo '</tr>';
-                                                            }
-                                                            ?>
-                                                        </table>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div class="text-right">
-                                        Check All <input type="checkbox" id="checkings"
-                                                         onclick="check_all2('click1');" value="Get"/>
-                                        <button class="btn btn-primary" id="next-btn"
-                                                style="padding: 9px 15px;">
-                                            Next
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div> --}}
-    <!-- order list end -->
-
+   
 
 
     <!-- ============================================================== -->
@@ -244,7 +118,7 @@
                             <?php
                             //$this->load->view($theme_path.'dhl/assets/sidebar');
                             ?>
-                            <h4 class="page-title" style="color: blue">All Orders</h4>
+                            <h4 class="page-title" style="color: blue">Pending Fetched</h4>
                         </div>
                     </div>
                 </div>
@@ -275,7 +149,7 @@
                                 }
 
                                 ?>
-                                <div class="d-flex mt-5 m-3">
+                                <div class="d-flex mt-3 m-3">
                                     <div class="col-md-5 ">
                                         <select class="form-control" id="shipping_service_type"
                                             style="width: 80%; display: inline">

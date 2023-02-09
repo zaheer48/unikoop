@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Order List | Unikoop')
+@section('title','Bol Order List | Unikoop')
 @section('sidebar')
     @include('bol::layouts.side_bar')
 @endsection
@@ -19,11 +19,11 @@
         <!-- Start Content-->
         <div class="container-fluid">
               <!-- start page title -->
-              {{-- <div class="row">
+            <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
                         <div class="page-title-right">
-                            <form class="d-flex align-items-center mb-3">
+                            {{-- <form class="d-flex align-items-center mb-3">
                                 <div class="input-group input-group-sm">
                                     <input type="text" class="form-control border" id="dash-daterange">
                                     <span class="input-group-text bg-blue border-blue text-white">
@@ -36,29 +36,45 @@
                                 <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
                                     <i class="mdi mdi-filter-variant"></i>
                                 </a>
-                            </form>
+                            </form> --}}
                         </div>
-                        <h4 class="page-title">All Orders </h4>
+                        <h4 class="page-title" style="color: blue">Bol Orders List </h4>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!-- end page title -->
                 <!-- order list start -->
-                <div class="container mt-10">
+                <div class="">
                     <div class="row">
 
                         <?php
                         //$this->load->view($theme_path.'dhl/assets/sidebar');
                         ?>
                         <div class="col-md-12 card middlecontainer">
-                            <h3 class="page-title" style="color:blue"> All Orders </h3>
+                            {{-- <h3 class="page-title" style="color:blue"> Bol Orders</h3> --}}
                             <div class="row">
-                            @if(session('success'))
+                            {{-- @if(session('success'))
                                 <p class="alert alert-success"><strong>Success:</strong> {{ session('success') }}</p>
                             @endif
                             @if(session('danger'))
                                 <p class="alert alert-danger"><strong>Failed:</strong> {{ session('danger') }}</p>
+                            @endif --}}
+                            @if (Session::has('success'))
+
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{ Session::get('success') }}.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+
                             @endif
+                            @if (Session::has('danger'))
+
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>{{ Session::get('danger') }}.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+
+                        @endif
 
                                 <div id="admin_page_form">
                                     <?php
@@ -71,7 +87,7 @@
                                     ?>
 
                                     <div id="show_file_table" class=" panel-body panel-body-multi">
-                                    <div class="row">
+                                    <div class="row mt-3 mx-2">
 
                                             <div class="col-lg-9 col-md-8 col-sm-12 search">
                                                 <!-- <form id="search-form"> -->
@@ -113,9 +129,6 @@
 
 
                                     </div>
-
-
-                                        <br>
                                         {{-- <form name="all_data" action="{{url('/bol/update_orders')}}" method="post">
                                             <input type="hidden" name="all_checked" value=""/>
 
