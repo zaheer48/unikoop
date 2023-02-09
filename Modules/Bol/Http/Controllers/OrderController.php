@@ -3919,346 +3919,35 @@ class OrderController extends Controller
 		return $str_html;
 	}
 
+    // public function trackOrder($bestelnummer, $platform)
     public function trackOrder()
     {
-        $user = Auth::user();
-        $setting = DB::table('setting')->where('userid', $user->id)->first();
+        // if($platform == 'DHL'){
+        //     $user = Auth::user();
+        //     $setting = DB::table('setting')->where('userid', $user->id)->first();
 
-        $curl = curl_init();
+        //     $curl = curl_init();
 
-        curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://api-gw.dhlparcel.nl/track-trace?key=JVGL06158406001889825605',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'GET',
-        CURLOPT_HTTPHEADER => array(
-            'Cookie: __cfruid=7dbd7bc116db0cfffc4bfacf51424cfee593352a-1675772273'
-        ),
-        ));
+        //     curl_setopt_array($curl, array(
+        //     CURLOPT_URL => 'https://api-gw.dhlparcel.nl/track-trace?key=JVGL06158406001889825605',
+        //     CURLOPT_RETURNTRANSFER => true,
+        //     CURLOPT_ENCODING => '',
+        //     CURLOPT_MAXREDIRS => 10,
+        //     CURLOPT_TIMEOUT => 0,
+        //     CURLOPT_FOLLOWLOCATION => true,
+        //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //     CURLOPT_CUSTOMREQUEST => 'GET',
+        //     CURLOPT_HTTPHEADER => array(
+        //         'Cookie: __cfruid=7dbd7bc116db0cfffc4bfacf51424cfee593352a-1675772273'
+        //     ),
+        //     ));
 
-        $response = curl_exec($curl);
+        //     $response = curl_exec($curl);
 
-        curl_close($curl);
-        dd(json_decode($response));
-        // if ($dhl_today_count > 0) {
-        //     array_push($orders_key, $row->id);
-        //     // DHL API //
-        //     $auth_string = '{"clientId":"' . $setting->client_id . '","key":"' . $setting->dhlkey . '"}';
-        //     https://api-gw.dhlparcel.nl/track-trace?key=3SBPB0000094346+9999BB
-        //     $ch2 = curl_init('https://api-gw.dhlparcel.nl/authenticate/api-key'); //test environment
-        //     curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "GET");
-        //     curl_setopt($ch2, CURLOPT_POSTFIELDS, $auth_string);
-        //     curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
-        //     curl_setopt($ch2, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
-        //     //json response
-        //     $auth_response = curl_exec($ch2);
-        //     $api_key = json_decode($auth_response);
-        //     $accessToken = $api_key->{'accessToken'};
-        //     $uuid = $this->generate_uuid();
-        //     $ch = curl_init();
-        //     curl_setopt($ch, CURLOPT_URL, 'https://api-gw.dhlparcel.nl/labels');
-        //     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        //     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        //             "Content-Type: application/json; charset=utf-8",
-        //             "Authorization: Bearer $accessToken",
-        //             "Accept: application/json",
-        //         ]
-        //     );
-
-        //     // Create body
-        //     $bol_data_id = $row->id;
-        //     $bestelnummer = $row->bestelnummer;
-        //     $emailadres = $row->emailadres;
-        //     $besteldt = $row->besteldatum;
-        //     $exp_datum = explode("T", $besteldt);
-        //     $besteldatum = $exp_datum[0];
-        //     $telnummerbezorging = $row->telnummerbezorging;
-        //     $aanhef_verzending = $row->aanhef_verzending;
-        //     $voornaam_verzending = $row->voornaam_verzending;
-        //     $achternaam_verzending = $row->achternaam_verzending;
-        //     $adres_verz_straat = $row->adres_verz_straat;
-        //     $adres_verz_huisnummer = $row->adres_verz_huisnummer;
-        //     $adres_verz_huisnummer_toevoeging = $row->adres_verz_huisnummer_toevoeging;
-        //     $adres_verz_toevoeging = $row->adres_verz_toevoeging;
-        //     $more_address = $adres_verz_huisnummer_toevoeging . " " . $adres_verz_toevoeging;
-        //     if (empty($more_address)) {
-        //     } else {
-        //         $more_address = ' ';
-        //     }
-        //     if (empty($telnummerbezorging)) {
-        //     } else {
-        //         $telnummerbezorging = ' ';
-        //     }
-        //     $postcode_verzending = $row->postcode_verzending;
-        //     $woonplaats_verzending = $row->woonplaats_verzending;
-        //     $land_verzending = $row->land_verzending;
-        //     $house_num_ext = $adres_verz_huisnummer . " " . $adres_verz_huisnummer_toevoeging;
-        //     $json_array = [
-        //         "labelId" => "$uuid",
-        //         "parcelTypeKey" => "SMALL",
-        //         "receiver" => [
-        //             "name" => [
-        //                 "firstName" => $voornaam_verzending,
-        //                 "lastName" => "$achternaam_verzending",
-        //                 "companyName" => $company_name,
-        //                 "additionalName" => ""
-        //             ],
-        //             "address" => [
-        //                 "countryCode" => "$land_verzending",
-        //                 "postalCode" => $postcode_verzending,
-        //                 "city" => "$woonplaats_verzending",
-        //                 "street" => "$adres_verz_straat",
-        //                 "number" => "$house_num_ext",
-        //                 "isBusiness" => false,
-        //                 "addition" => "$more_address"
-        //             ],
-        //             "email" => "$emailadres",
-        //             "phoneNumber" => "$telnummerbezorging"
-        //         ],
-        //         "shipper" => [
-        //             "name" => [
-
-        //                 "companyName" => $display_name,
-        //                 "additionalName" => ""
-        //             ],
-        //             "address" => [
-        //                 "countryCode" => $buaddr->country,
-        //                 "postalCode" => $buaddr->postcode,
-        //                 "city" => $buaddr->city_town,
-        //                 "street" => $buaddr->street,
-        //                 "number" => $buaddr->h_b_number,
-        //                 "isBusiness" => true,
-        //                 "addition" => ""
-        //             ],
-        //             "email" => $buaddr->email_admin,
-        //             "phoneNumber" => "+31 206814411"
-        //         ],
-        //         "accountId" => $setting->account_id,
-        //         "options" => [
-        //             [
-        //                 "key" => "SDD"
-        //             ],
-        //             [
-        //                 "key" => "REFERENCE",
-        //                 "input" => "$bestelnummer"
-        //             ]
-        //         ],
-        //         "isReturnShipment" => false,
-        //         "pieceNumber" => 1,
-        //         "quantity" => 1,
-        //         "product" => "DFY-B2C",
-        //         "userId" => $setting->dhlkey
-
-        //     ];
-        //     $body = json_encode($json_array);
-        //     echo "<pre>";
-
-        //     // Set body
-        //     curl_setopt($ch, CURLOPT_POST, 1);
-        //     curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-        //     // Send the request & save response to $resp
-        //     $resp = curl_exec($ch);
-        //     if (!$resp) {
-        //         die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
-        //     } else {
-        //         echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        //         $pdf_data_array = json_decode($resp);
-        //         $response_pdf .= $pdf_data_array->trackerCode;
-        //         $trackerCode = $pdf_data_array->trackerCode;
-        //         $today_dt = date("Y-m-d H:i:s");
-        //         DB::table('dhl_entries')->insert(
-        //             array(
-        //                 'user_id' => $uid,
-        //                 'dhlcode' => $trackerCode,
-        //                 'date_time' => $today_dt
-        //             )
-        //         );
-
-        //         $pdf_base64_decoded = base64_decode($pdf_data_array->pdf);
-        //         $response_pdf .= $pdf_base64_decoded;
-        //         // $path = public_path() . "/modules/bol/pdf_files/" . $bol_data_id . "_" . $i . ".pdf";
-        //         $path = Module::assetPath('bol').'/pdf_files/' . $bol_data_id . "_" . $i . ".pdf";
-        //         file_put_contents($path, $pdf_base64_decoded);
-        //         $txt_data .= $bol_data_id . "_" . $i . ".pdf" . "\r\n";
-        //         $file_array[] = $bol_data_id . "_" . $i . ".pdf";
-        //         $name = $bol_data_id . "_" . $i . ".pdf";
-
-        //         DB::table('bol_data')
-        //             ->where('id', $bol_data_id)
-        //             ->update([
-        //                 'trackerCode' => $trackerCode,
-        //                 'lable_pdf' => $name,
-        //                 'logistiek' => 'DHL Today',
-        //                 'price_charged' => $dhl_total_price,
-        //                 'fetched_date' => now()
-        //             ]);
-        //     }
-        //     curl_close($ch);                
-        // }
-
-        // if ($dhl_count > 0) {
-        //     array_push($orders_key, $row->id);
-        //     // DHL API //
-        //     $auth_string = '{"clientId":"' . $setting->client_id . '","key":"' . $setting->dhlkey . '"}';
-        //     $ch2 = curl_init('https://api-gw.dhlparcel.nl/authenticate/api-key'); //test environment
-        //     curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "POST");
-        //     curl_setopt($ch2, CURLOPT_POSTFIELDS, $auth_string);
-        //     curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
-        //     curl_setopt($ch2, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
-        //     //json response
-        //     $auth_response = curl_exec($ch2);
-        //     $api_key = json_decode($auth_response);
-        //     $accessToken = $api_key->{'accessToken'};
-        //     $uuid = $this->generate_uuid();
-        //     $ch = curl_init();
-        //     curl_setopt($ch, CURLOPT_URL, 'https://api-gw.dhlparcel.nl/labels');
-        //     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        //     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        //             "Content-Type: application/json; charset=utf-8",
-        //             "Authorization: Bearer $accessToken",
-        //             "Accept: application/json",
-        //         ]
-        //     );
-
-        //     // Create body
-        //     $bol_data_id = $row->id;
-        //     $bestelnummer = $row->bestelnummer;
-        //     $emailadres = $row->emailadres;
-        //     $besteldt = $row->besteldatum;
-        //     $exp_datum = explode("T", $besteldt);
-        //     $besteldatum = $exp_datum[0];
-        //     $telnummerbezorging = $row->telnummerbezorging;
-        //     $aanhef_verzending = $row->aanhef_verzending;
-        //     $voornaam_verzending = $row->voornaam_verzending;
-        //     $achternaam_verzending = $row->achternaam_verzending;
-        //     $adres_verz_straat = $row->adres_verz_straat;
-        //     $adres_verz_huisnummer = $row->adres_verz_huisnummer;
-        //     $adres_verz_huisnummer_toevoeging = $row->adres_verz_huisnummer_toevoeging;
-        //     $adres_verz_toevoeging = $row->adres_verz_toevoeging;
-        //     $more_address = $adres_verz_huisnummer_toevoeging . " " . $adres_verz_toevoeging;
-        //     if (empty($more_address)) {
-        //     } else {
-        //         $more_address = ' ';
-        //     }
-        //     if (empty($telnummerbezorging)) {
-        //     } else {
-        //         $telnummerbezorging = ' ';
-        //     }
-        //     $postcode_verzending = $row->postcode_verzending;
-        //     $woonplaats_verzending = $row->woonplaats_verzending;
-        //     $land_verzending = $row->land_verzending;
-        //     $house_num_ext = $adres_verz_huisnummer . " " . $adres_verz_huisnummer_toevoeging;
-        //     $json_array = [
-        //         "labelId" => "$uuid",
-        //         "parcelTypeKey" => "SMALL",
-        //         "receiver" => [
-        //             "name" => [
-        //                 "firstName" => $voornaam_verzending,
-        //                 "lastName" => "$achternaam_verzending",
-        //                 "companyName" => $company_name,
-        //                 "additionalName" => ""
-        //             ],
-        //             "address" => [
-        //                 "countryCode" => "$land_verzending",
-        //                 "postalCode" => $postcode_verzending,
-        //                 "city" => "$woonplaats_verzending",
-        //                 "street" => "$adres_verz_straat",
-        //                 "number" => "$house_num_ext",
-        //                 "isBusiness" => false,
-        //                 "addition" => "$more_address"
-        //             ],
-        //             "email" => "$emailadres",
-        //             "phoneNumber" => "$telnummerbezorging"
-        //         ],
-        //         "shipper" => [
-        //             "name" => [
-
-        //                 "companyName" => $display_name,
-        //                 "additionalName" => ""
-        //             ],
-        //             "address" => [
-        //                 "countryCode" => $buaddr->country,
-        //                 "postalCode" => $buaddr->postcode,
-        //                 "city" => $buaddr->city_town,
-        //                 "street" => $buaddr->street,
-        //                 "number" => $buaddr->h_b_number,
-        //                 "isBusiness" => true,
-        //                 "addition" => ""
-        //             ],
-        //             "email" => $buaddr->email_admin,
-        //             "phoneNumber" => "+31 206814411"
-        //         ],
-        //         "accountId" => $setting->account_id,
-        //         "options" => [
-        //             [
-        //                 "key" => "DOOR"
-        //             ],
-        //             [
-        //                 "key" => "REFERENCE",
-        //                 "input" => "$bestelnummer"
-        //             ]
-        //         ],
-        //         "isReturnShipment" => false,
-        //         "pieceNumber" => 1,
-        //         "quantity" => 1,
-        //         "product" => "DFY-B2C",
-        //         "userId" => $setting->dhlkey
-
-        //     ];
-        //     $body = json_encode($json_array);
-        //     echo "<pre>";
-
-        //     // Set body
-        //     curl_setopt($ch, CURLOPT_POST, 1);
-        //     curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-        //     // Send the request & save response to $resp
-        //     $resp = curl_exec($ch);
-        //     if (!$resp) {
-        //         die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
-        //     } else {
-        //         echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        //         $pdf_data_array = json_decode($resp);
-        //         $response_pdf .= $pdf_data_array->trackerCode;
-        //         $trackerCode = $pdf_data_array->trackerCode;
-        //         $today_dt = date("Y-m-d H:i:s");
-        //         DB::table('dhl_entries')->insert(
-        //             array(
-        //                 'user_id' => $uid,
-        //                 'dhlcode' => $trackerCode,
-        //                 'date_time' => $today_dt
-        //             )
-        //         );
-
-        //         $pdf_base64_decoded = base64_decode($pdf_data_array->pdf);
-        //         $response_pdf .= $pdf_base64_decoded;
-        //         // $path = public_path() . "/modules/bol/pdf_files/" . $bol_data_id . "_" . $i . ".pdf";
-        //         $path = Module::assetPath('bol').'/pdf_files/' . $bol_data_id . "_" . $i . ".pdf";
-
-        //         file_put_contents($path, $pdf_base64_decoded);
-        //         $txt_data .= $bol_data_id . "_" . $i . ".pdf" . "\r\n";
-        //         $file_array[] = $bol_data_id . "_" . $i . ".pdf";
-        //         $name = $bol_data_id . "_" . $i . ".pdf";
-
-        //         DB::table('bol_data')
-        //             ->where('id', $bol_data_id)
-        //             ->update([
-        //                 'trackerCode' => $trackerCode,
-        //                 'lable_pdf' => $name,
-        //                 'logistiek' => 'DHL',
-        //                 'price_charged' => $dhl_total_price,
-        //                 'fetched_date' => now()
-        //             ]);
-        //     }
-        //     curl_close($ch);
-        // }
-
-        // if ($dpd_count > 0) {
+        //     curl_close($curl);
+        //     return $response;
+            
+        // } else if($platform == 'DPD'){
         //     $history = true;
 
         //     // Setting configurations
@@ -4353,12 +4042,9 @@ class OrderController extends Controller
         //                 'logistiek' => 'DPD',
         //                 'price_charged' => $dpd_total_price,
         //                 'fetched_date' => now()
-        //         ]);
+        //             ]);
         //     }
         // }
-        
-        // \Session::flash('success', 'Orders fetched successful.');
-        // return to_route('all.orders');
     }
 
 }

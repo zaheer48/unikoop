@@ -78,10 +78,10 @@ Route::prefix('bol')->group(function() {
 
     Route::get('/wallet-invoice/{id}', 'MollieController@walletInvoice')->middleware('auth');
     Route::get('/download-custom-label','CustomOrderController@downloadCustomLabel')->middleware('auth');
-    Route::get('/unikoop/payment-invoice/{id}','UnikoopController@paymentInvoice');
 
 
-    Route::get('/trach-order','OrderController@trackOrder')->name('track.order');
+    Route::post('/track-order-submit','OrderController@trackOrder')->name('track.order.submit');
+    // Route::get('/unikoop/payment-invoice/{id}','UnikoopController@paymentInvoice');
 });
 
 
