@@ -25,10 +25,8 @@
                                 </div>
                                 <p class="text-muted mb-2 mt-2">Don't have an account?</p>
                             </div>
-
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
-
                                      <input type="hidden" name="url" :value="{{url()->previous()}}"/>
                                 <div class="row mb-2">
                                     <div class="mb-1">

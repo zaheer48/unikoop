@@ -28,11 +28,11 @@ class CreateNewUser implements CreatesNewUsers
         
        $url = $input['url'];
 
-      if($url == route('track.order')) {
+      if($url == route('home')) {
         return User::create([
             'username' => $input['username'],
             'email' => $input['email'],
-            'user_type' => 'user',
+            'user_type' => 'vendor',
             'password' => Hash::make($input['password']),
             
         ]);
