@@ -21,20 +21,6 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#sidebarCrm" data-bs-toggle="collapse">
-                        <i data-feather="shopping-cart"></i>
-                        <span> Orders</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarCrm">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{route('all.orders')}}">All Orders</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
                     <a href="{{ route('my.wallet')}}" class="dropdown-item notify-item">
                         <i class="fa-solid fa-wallet"></i>
                         <span>My Wallet</span>

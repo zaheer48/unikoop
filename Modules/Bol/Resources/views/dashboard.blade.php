@@ -4,10 +4,12 @@
     @include('bol::layouts.side_bar')
 @endsection
 @section('content')
-<style>
-    .w-5{
-        display: none;
-    }
+
+    <style>
+
+        .w-5 {
+            display: none;
+        }
     </style>
     {{-- <style>
         .lds-ring {
@@ -51,7 +53,7 @@
             }
         }
     </style>
-    <div class="content-page">
+     <div class="content-page">     
         <div class="content">
                 <div class="col-md-10 bg-blue middlecontainer">
                         <h3> All Lists </h3>
@@ -101,9 +103,8 @@
                                     // $userId = ;
                                     // $bol_rec = DB::table('bol_rec')->where('user_id', $userId)->orderBy('id', 'DESC')->get();
 
-                                    //print_r($bol_rec);
-
-                                    foreach ($bol_rec as $bo_rec) {
+                                    // dd($bol_rec);                                    
+                                    foreach ($bol_rec as $bo_rec) {                                        
                                         $bol_rec_id = $bo_rec->id;
                                         $bol_rec_id_sr = $bo_rec->s_no;
 
@@ -257,74 +258,74 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- end page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="responsive-table-plugin">
-                                            <div class="table-rep-plugin">
-                                                <div class="table-responsive">
-                                                    <ul class="nav nav-pills navtab-bg nav-justified">
-                                                    <div class="button-list">
-                                                      <a href="{{ route('apidata', 'nl') }}" class="btn btn-primary waves-effect waves-light" onclick="return confirm('Are you sure, you want to fetch the orders?')" class="btn btn-primary">
-                                                            Fetch Orders From Bol.com (NL)
-                                                        </a>
-                                                        {{-- <button type="button" class="btn btn-primary waves-effect waves-light">Fetch Order From Bol.com(BE)</button> --}}
-                                                        <a href="{{ route('apidata', 'be') }}" class="btn btn-primary waves-effect waves-light" onclick="return confirm('Are you sure, you want to fetch the orders?')" class="btn btn-primary">
-                                                            Fetch Orders From Bol.com (BE)
-                                                        </a>
-                                                        <button type="button" class="btn btn-info rounded-pill waves-effect waves-light">Toal Records {{ $bol_rec->total() }}</button>
+                    </div>
+                </div>
+                <!-- end page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="responsive-table-plugin">
+                                    <div class="table-rep-plugin">
+                                        {{-- <div class="table-responsive"> --}}
+                                            <ul class="nav nav-pills navtab-bg nav-justified">
+                                                <div class="button-list">
+                                                    <a href="{{ route('apidata', 'nl') }}"
+                                                        class="btn btn-primary waves-effect waves-light"
+                                                        onclick="return confirm('Are you sure, you want to fetch the orders?')"
+                                                        class="btn btn-primary">
+                                                        Fetch Orders From Bol.com (NL)
+                                                    </a>
+                                                    {{-- <button type="button" class="btn btn-primary waves-effect waves-light">Fetch Order From Bol.com(BE)</button> --}}
+                                                    <a href="{{ route('apidata', 'be') }}"
+                                                        class="btn btn-primary waves-effect waves-light"
+                                                        onclick="return confirm('Are you sure, you want to fetch the orders?')"
+                                                        class="btn btn-primary">
+                                                        Fetch Orders From Bol.com (BE)
+                                                    </a>
+                                                    <button type="button"
+                                                        class="btn btn-info rounded-pill waves-effect waves-light">Toal
+                                                        Records {{ $bol_rec->total() }}</button>
+                                                    <button type="button"
+                                                        class="btn btn-info rounded-pill waves-effect waves-light">Active
+                                                        Orders @if(isset($bol_update_status_count['Not Updated'])){{ $bol_update_status_count['Not Updated'] }}@endif </button>
+                                                    <button type="button"
+                                                        class="btn btn-info rounded-pill waves-effect waves-light">Pending
+                                                        Orders @if(isset($bol_update_status_count['PENDING'])){{ $bol_update_status_count['PENDING'] }} @endif</button>
+                                                    <button type="button"
+                                                        class="btn btn-danger rounded-pill waves-effect waves-light">Failure
+                                                        Orders @if(isset($bol_update_status_count['FAILURE'])){{ $bol_update_status_count['FAILURE'] }} @endif</button>
+                                                </div>
+                                            </ul>
+                                            <table id="tech-companies-1" class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Date</th>
+                                                        <th>Orders</th>
+                                                        <th>Site</th>
+                                                        <th>Label</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                    if(!$bol_rec->isEmpty()){
+                                                    foreach ($bol_rec as $bo_rec) {
+                                                        $bol_rec_id = $bo_rec->id;
+                                                        $bol_rec_id_sr = $bo_rec->s_no;
 
-                                                        <button type="button" class="btn btn-info rounded-pill waves-effect waves-light">Active Orders 1696 </button>
+                                                        $bol_rec_date = $bo_rec->date;
 
-
-
-                                                        <button type="button" class="btn btn-info rounded-pill waves-effect waves-light">Pending Orders 3446</button>
-
-
-
-                                                        <button type="button" class="btn btn-danger rounded-pill waves-effect waves-light">Failure Orders 10</button>
-
-
-                                                    </div>
-                                                    </ul>
-                                                    <table id="tech-companies-1" class="table table-striped">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>Id</th>
-                                                            <th>Date</th>
-                                                            <th>Orders</th>
-                                                            <th>Site</th>
-                                                            <th>Label</th>
-
-                                                            <th>Action</th>
-                                                        </tr>
-                                                        </thead>
-
-                                                        <?php
-                                                        // $userId = ;
-                                                        // $bol_rec = DB::table('bol_rec')->where('user_id', $userId)->orderBy('id', 'DESC')->get();
-
-                                                        //print_r($bol_rec);
-
-                                                        foreach ($bol_rec as $bo_rec) {
-                                                            $bol_rec_id = $bo_rec->id;
-                                                            $bol_rec_id_sr = $bo_rec->s_no;
-
-                                                            $bol_rec_date = $bo_rec->date;
-
-                                                            $bol_rec_site = $bo_rec->site;
-                                                            //echo $bol_rec_id."<br/>";
-                                                            $bol_data = DB::table('bol_data')->select('logistiek')->where('bol_rec_id', $bol_rec_id)->get();
-                                                        ?>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td> <?=$bol_rec_id_sr//?> </td>
-                                                                <td><?=date('d-m-Y H:i:s', strtotime($bol_rec_date))?></td>
-                                                                <td><?=$bol_data->count()?></td>
-                                                                <td><?=$bol_rec_site?></td>
-                                                                <td>
+                                                        $bol_rec_site = $bo_rec->site;
+                                                        //echo $bol_rec_id."<br/>";
+                                                        $bol_data = DB::table('bol_data')->select('logistiek')->where('bol_rec_id', $bol_rec_id)->get();
+                                                ?>
+                                                    <tr>
+                                                        <td> <?= $bol_rec_id_sr?> </td>
+                                                        <td><?= date('d-m-Y H:i:s', strtotime($bol_rec_date)) ?></td>
+                                                        <td><?= $bol_data->count() ?></td>
+                                                        <td><?= $bol_rec_site ?></td>
+                                                        <td>
 
                                                                     <?php
                                                                     $lable_pdf_file = $bo_rec->lable_pdf_file;
@@ -376,16 +377,27 @@
                                                                         <a class="dropdown-item" href="{{url('/bol/orders_emails/'.$bol_rec_id)}}">Emails</a>
                                                                         <a class="dropdown-item" href="{{url('/bol/delete/bol.com (NL)/'.$bol_rec_id)}}" onclick=" return dellcheck()" >Delete</a>
 
-                                                                    </div></td>
-                                                            </tr>
-                                                            <?php  }
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ url('/bol/delete/bol.com (NL)/' . $bol_rec_id) }}"
+                                                                        onclick=" return dellcheck()">Delete</a>
+
+                                                                </div>
+                                                        </td>
+                                                    </tr>
+                                                    <?php  } 
+                                                    } else {
+                                                    ?>
+                                                    <tr>
+                                                        <td colspan="6"> No Data Found! </td>
+                                                    </tr>
+                                                    <?php
+                                                    }
                                                             ?>
 
 
-                                                        <!-- Repeat -->
-                                                        </tbody>
-                                                    </table>
-                                                </div> <!-- end .table-responsive -->
+                                                    <!-- Repeat -->
+                                            </table>
+                                        {{-- </div> <!-- end .table-responsive --> --}}
 
                                             </div> <!-- end .table-rep-plugin-->
                                         </div> <!-- end .responsive-table-plugin-->
