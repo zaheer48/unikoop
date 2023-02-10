@@ -23,6 +23,7 @@ class OrderTrackController extends Controller
 
     public function check_order(Request $request)
     {
+        dd($request->all());
         $bestelnummer = $request->post('bestelnummer');
         $platform = $request->post('platform');
         $baseln = DB::table('users_orders')
@@ -83,7 +84,7 @@ class OrderTrackController extends Controller
                 'message' => 'redirect',
                 'route' => route('register'),
             ];
-            return json_encode($response);
+            echo json_encode($response);
             // return redirect()->to('/register')->send();
         }
 

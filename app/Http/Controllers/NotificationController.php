@@ -55,6 +55,15 @@ class NotificationController extends Controller
                 $message->from('online@unikoop.nl');
             }
         );
+            $image = $request->profile_url;
+            $name = $image->getClientOriginalName();
+            $image->storeAs('public/images',$name);
+
+
+            //  User::Create(['profile_url' => $name,]);
+            $image_save = User::find($id);
+            $image_save->profile_url = $name;
+            $image_save->save();
 
         return redirect()->route('my.profile')->with('success', 'Profile Info Change Request sent to admin for approval.');
     }

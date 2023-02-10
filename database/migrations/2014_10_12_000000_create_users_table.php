@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->string('user_type');
+            $table->bigInteger('phone');
+            $table->string('pobox_number');
+            $table->string('address');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

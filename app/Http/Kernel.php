@@ -43,6 +43,10 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        // 'guard' => [
+        //     \App\Http\Middleware\UserType::class,
+        //     \App\Http\Middleware\LoginCheck::class,
+        // ],
     ];
 
     /**
@@ -54,6 +58,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
+        'usertype' => \App\Http\Middleware\UserType::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

@@ -169,6 +169,7 @@
 <script>
     $("#check_invoice").click(function () {
         var formdata = $("#check_invoice_form2").serialize();
+        console.log('here');
         $.ajax({
             type: "post",
             url: "/checkorder",

@@ -99,10 +99,16 @@
             @if (Auth::check())
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    @if (Auth::user()->profile_url)
+                    <img src="{{ asset('storage/images/'.Auth::user()->profile_url)}}" alt="user-image" class="rounded-circle">
+                  @else
                     <img src="{{URL::asset('assets/images/users/user-1.jpg')}}" alt="user-image" class="rounded-circle">
+                    @endif
+                    @if(Auth::check())
                     <span class="pro-user-name ms-1">
                         {{ Auth::user()->username }} <i class="mdi mdi-chevron-down"></i>
                     </span>
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown " style="
                     min-width: 250px;">
@@ -182,7 +188,7 @@
 
         <!-- LOGO -->
         <div class="logo-box">
-            <a href="index.html" class="logo logo-dark text-center">
+            <a href="{{route('home')}}" class="logo logo-dark text-center">
                 <span class="logo-sm">
                     <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" class="mx-2" alt="LeyWood" width="70" height="50">
 
@@ -196,7 +202,7 @@
                     <!-- <span class="logo-lg-text-light">U</span> -->
                 </span>
             </a>
-            <a href="index.html" class="logo logo-light text-center">
+            <a href="{{route('home')}}" class="logo logo-light text-center">
                 <span class="logo-sm">
                     <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg"  class="mx-2"  alt="LeyWood" width="70" height="50">
 
