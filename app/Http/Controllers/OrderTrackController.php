@@ -23,7 +23,6 @@ class OrderTrackController extends Controller
 
     public function check_order(Request $request)
     {
-        dd($request->all());
         $bestelnummer = $request->post('bestelnummer');
         $platform = $request->post('platform');
         $baseln = DB::table('users_orders')
@@ -104,8 +103,6 @@ class OrderTrackController extends Controller
     {
         if($platform == 'DHL'){
             $user = Auth::user();
-            $setting = DB::table('setting')->where('userid', $user->id)->first();
-
             $curl = curl_init();
 
             curl_setopt_array($curl, array(

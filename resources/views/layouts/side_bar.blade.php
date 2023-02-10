@@ -201,7 +201,7 @@
                             </li>
                         </ul>
                     </div>
-                </li> -->
+                </li>
             </ul>
         </div>
         <!-- End Sidebar -->

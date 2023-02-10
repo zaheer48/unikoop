@@ -23,7 +23,7 @@ Route::get('track-order', function () {
     return view('trackorder');
 })->name('track.order');
 
-Route::post('/checkorder', [OrderTrackController::class, 'check_order'])->name('checkorder');
+Route::post('/checkorder', [OrderTrackController::class, 'check_order'])->name('check.order');
 
     Route::get('/register', function () {
         return view('auth.register');
