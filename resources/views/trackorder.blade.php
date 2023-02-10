@@ -1,199 +1,160 @@
 @extends('layouts/app')
 @section('title','Get Invoice | Unikoop')
 @section('sidebar')
-    @include('bol::layouts.side_bar')
+
 @endsection
 @section('content')
-           <!-- Left Sidebar End -->
+    <!-- Start Page Content here -->
+    <div class="content-page">
+        <div class="content">
+            <!-- Start Content-->
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <!-- <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
+                                    <li class="breadcrumb-item active">Responsive Table</li>
+                                </ol>
+                            </div> -->
 
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
-
-            <div class="content-page">
-                <div class="content">
-
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <!-- <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                            <li class="breadcrumb-item active">Responsive Table</li>
-                                        </ol>
-                                    </div> -->
-
-                                </div>
-                            </div>
                         </div>
-
-
-
-
-                        <!-- end page title -->
-
-                        <div class="row ">
-                            <div class="col-md-12 mt-2">
-
-                                <div class="card">
-
-
-                                    <div class="card-body mb-4">
-                                        <h4 class="page-title" style="color: blue";>Track Order</h4>
-
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-3">
-                                                <h5 class="text-start">Order ID</h5>
-                                            </div>
-                                            <div class="col-12 col-sm-9 col-md-7 col-lg-7">
-                                                    <form name="register" method="post" id="check_invoice_form2" action="" enctype="multipart/form-data">
-                                                        {{ csrf_field() }}
-                                                <div class="input-group text-start gap-2">
-                                                    <div class="form-outline ">
-                                                        <input type="text" name="bestelnummer" id="bestelnummer" class="form-control" placeholder="bestelnummer" required="" value="">
-                                                    </div>
-                                                    <div class="d-flex gap-3">
-                                                        <!-- <span><button type="button" class="btn btn-primary">Fetch Info</button></span> -->
-                                                        <select class="col-lg col-md col-sm-2 form-select" name="platform" id="">
-                                                                    <option value="bol">Bol</option>
-                                                                    <option value="amazon">Amazon</option>
-                                                                    <option value="unikoop">Unikoop</option>
-                                                        </select>
-                                                    </div>
-                                                    <input type="button" id="check_invoice" value="Fetch Info" class="btn btn-primary">
-
+                    </div>
+                </div>
+                <!-- end page title -->
+                <div class="row ">
+                    <div class="col-md-12 mt-2">
+                        <div class="card">
+                            <div class="card-body mb-4">
+                                <h4 class="page-title" style="color: blue";>Track Order</h4>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-12 col-sm-3">
+                                        <h5 class="text-start">Order ID</h5>
+                                    </div>
+                                    <div class="col-12 col-sm-9 col-md-7 col-lg-7">
+                                        <form name="register" method="post" id="check_invoice_form2" action="" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+                                            <div class="input-group text-start gap-2">
+                                                <div class="form-outline ">
+                                                    <input type="text" name="bestelnummer" id="bestelnummer" class="form-control" placeholder="bestelnummer" required="" value="">
                                                 </div>
-                                            </form>
+                                                <div class="d-flex gap-3">
+                                                    <select class="col-lg col-md col-sm-2 form-select" name="platform" id="">
+                                                        <option value="DHL">DHL</option>
+                                                        <option value="DPD">DPD</option>
+                                                    </select>
+                                                </div>
+                                                <input type="button" id="check_invoice" value="Fetch Info" class="btn btn-primary">
                                             </div>
-                                        <div>
+                                        </form>
+                                    </div>
+                                <div>
 
-                                        <div class="row">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br>
+                                        <div class="row" id="tracker_result" style="display: none">
                                             <div class="col-md-12">
-                                                <form name="register" method="post" id="my_form" action="/bol/invoice_submit2"
-                                                    enctype="multipart/form-data"
-                                                    style="display:none;">
-                                                    @csrf
-                                                    <br>
-                                                    <input type="hidden" value="2577628200" name="o_no" id="o_no">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label>Name</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <input style="margin-bottom: 5px;" type="Name" name="name" id="or_name" value=""
-                                                                    class="form-control">
+                                                <div id="new_template" style="height: auto !important; border: 1px solid #ccc; border-radius: 4px; padding: 20px;">
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label>Email</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <input style="margin-bottom: 5px;" type="email" name="email" id="or_email" value=""
-                                                                    class="form-control">
 
-                                                            </div>
-                                                        </div>
+                                                    <div class="c-tracking-result--section">
+                                                        <div class="c-tracking-result--code" id="tracker_code" aria-hidden="true">Tracking Code: </div>
+                                                        <div class="">This shipment is handled by: <strong id="handled_by"></strong></div>
+                                                        <!-- <a href="/pk-en/home/tracking/contact/express.html" target="_blank" rel="noopener noreferrer" class="c-tracking-result--contact-link c-tracking-result--info-link link link-external has-icon" style="display: none !important;">
+                                                            Customer Service
+                                                        </a>
+                                                        <button class="base-button base-button--white c-tracking-result--print circle-button icon-print js--tracking-result--print">
+                                                            <span>Download</span>
+                                                        </button> -->
                                                     </div>
-                                                    {{-- <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label class="mb_margin">CC</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <input style="margin-bottom: 5px;" type="text" name="cc" value=""
-                                                                    class="form-control"
-                                                                    placeholder="can enter multiple emails separated by comma">
-
+                                                    <div class="c-tracking-result--section">
+                                                        <div class="c-tracking-result--status l-grid">
+                                                            <h2 role="text" tabindex="-1" class="tracking-result-status" id="tracking-result-status" dir="ltr">
+                                                            </h2>
+                                                            <div class="c-tracking-result--status-copy-date" id="tracking-result-time" dir="ltr">
                                                             </div>
                                                         </div>
-                                                    </div> --}}
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label>Subject</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <input style="margin-bottom: 5px;" type="text" name="subject" value="" id="subject"
-                                                                    class="form-control">
+                                                        <!-- <span class="sr-only">Origin</span>
+                                                        <p class="c-tracking-result--origin bold">
+                                                            Service Area: QUEBEC SERVICE AREA, QC - CANADA
+                                                        </p> -->
+                                                        <!-- <div class="c-tracking-results--status-bar-container l-grid  ">
+                                                            <div class="c-tracking-results-status-bar l-grid--w-33pc-s bar-1 bar-pretransit ">
+                                                            </div>
+                                                            <div class="c-tracking-results-status-bar l-grid--w-33pc-s bar-2 bar-pretransit ">
+                                                            </div>
+                                                            <div class="c-tracking-results-status-bar l-grid--w-33pc-s bar-3 bar-pretransit ">
+                                                            </div>
+                                                            <div class="c-tracking-result--status-icon pretransit">
+                                                                <span class="c-tracking-result--icon has-icon c-tracking-result--status-shipment-pretransit"></span>
                                                             </div>
                                                         </div>
+                                                        <span class="sr-only">Destination</span>
+                                                        <p class="c-tracking-result--destination bold">
+                                                            Service Area: BOGOTA - COLOMBIA
+                                                        </p> -->
                                                     </div>
-                                                    {{-- <div class="row">
-                                                        <div class="col-md-3">
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <input type="hidden" name="finvoice_input" id="finvoice_input" value="">
-                                                                <input type="hidden" name="fpackinglist_input" id="fpackinglist_input" value="">
-                                                                <input type="hidden" name="sinvoice_input" id="sinvoice_input" value="">
-                                                                <input type="hidden" name="tpackinglist_input" id="tpackinglist_input" value="">
-                                                                <a style="display:none" href="" id="f_anchor">Invoice</a>
-                                                                <a style="display:none" href="" id="sf_anchor">Packing List</a>
-                                                                <a style="display:none" href="" id="second_anchor">Invoice</a>
-                                                                <a style="display:none" href="" id="third_anchor">Packing List</a>
-                                                            </div>
-                                                        </div>
-                                                    </div> --}}
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label>File(s)</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <input id="file_input" type="file" name="files[]" style="margin-bottom: 5px;"
-                                                                    class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <button class="btn btn-primary btn-block" id="s_email" style="padding: 9px;">
-                                                                    Send Email
+                                                    <!-- <div class="c-tracking-result--section">
+                                                        <div class="c-tracking-result--checkpoints-dropdown js--accordion--type-default c-accordion--item js--accordion--item l-grid l-grid--left-s is-open is-latest">
+                                                            <div class=" c-accordion--hitbox js--accordion--hitbox c-component-accordion--header js--accordion--header js--dropdown-checkpoints-open l-grid ">
+                                                                <button id="c-tracking-result--checkpoints-dropdown-button" class="c-tracking-result--moredetails-dropdown-button js--dropdown-moredetails-toggle-btn js-tracking-result--checkpoints--toggle-btn has-icon" aria-expanded="true" aria-controls="c-tracking-result--checkpoints-dropdown-menu">
+                                                                <h3 class="c-tracking-result--detail-label level4">All Shipment Updates</h3>
                                                                 </button>
                                                             </div>
-                                                            <input type="hidden" name="content" id="content" value="">
-                                                        </div>
-                                                    </div>
-                                                    <br>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div id="new_template"
-                                                                style="height: auto !important; border: 1px solid #ccc; border-radius: 4px; padding: 20px;">
+                                                            <div class="c-tracking-result--checkpoints-dropdown-menu c-accordion--content js--accordion--content" id="c-tracking-result--checkpoints-dropdown-menu" aria-labelledby="c-tracking-result--checkpoints-dropdown-button" style="display: block; height: auto; overflow: hidden;">
+                                                                <div class="c-tracking-result--checkpoint l-grid  l-grid--left-s">
+                                                                    <div class="c-tracking-result--checkpoint-info l-grid  ">
+                                                                        <ul class="">
+                                                                            <li class="l-grid">
+                                                                                <div class="c-tracking-result--checkpoint-left  first">
+                                                                                    <span class="c-tracking-result--checkpoint-weekday  ">Wednesday</span>
+                                                                                    <span class="c-tracking-result--checkpoint-date level4" dir="ltr">November, 09 2022</span>
+                                                                                    <span class="c-tracking-result--checkpoint-time" dir="ltr">
+                                                                                    16:13 Local time
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="c-tracking-result--checkpoint-right has-icon">
+                                                                                    <div class="c-tracking-result--checkpoint-dashedline"></div>
+                                                                                    <div class="c-tracking-result--checkpoint-mobile">
+                                                                                        <span class="c-tracking-result--checkpoint-weekday  ">Wednesday</span>
+                                                                                        <span class="c-tracking-result--checkpoint-date level4">November, 09 2022</span>
+                                                                                        <span class="c-tracking-result--checkpoint-time">
+                                                                                        16:13 Local time
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <p class="bold  first" dir="ltr">Shipment information received</p>
+                                                                                    <span class="c-tracking-result--checkpoint--more">
+                                                                                            Service Area: QUEBEC SERVICE AREA, QC - CANADA
+                                                                                    </span>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </form>
+                                                    </div> -->
+
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                        {{-- <p class="alert alert-danger">Please configure your email template in settings tab area</p> --}}
-
                                 </div>
-                            </div> <!-- end col -->
+                            </div>
                         </div>
-                        <!-- end row -->
-
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
-
-
-            </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div> <!-- container -->
+        </div> <!-- content -->
+    </div>
+    <!-- End Page content -->
 @endsection
 @section('js')
 
@@ -222,55 +183,23 @@
                     $('#bestelnummer').val('');
                     $("#my_form").css("display", "none");
                 } else {
-                    $("#my_form").css("display", "block");
-                    $("#o_no").val(data.o_no);
-                    $("#or_email").val(data.email);
-                    $("#or_name").val(data.name);
-                    var subject = data.name + ' ' + 'Invoice BOL bestelnummer' + ' ' + data.o_no;
-                    $("#subject").val(subject);
-
-                    if (data.check_invoice_message == '1') {
-                        $("#second_anchor").css("display", "block");
-                        var check_invoice_orderID = data.check_invoice_orderID;
-                        // $("#second_anchor").attr("href", "/bol/create_invoice_2/" + check_invoice_orderID);
-                        $("#second_anchor").attr("href", "/download-invoice-pdf/" + check_invoice_orderID);
-                        $("#finvoice_input").attr("value", "");
-                        $("#fpackinglist_input").attr("value", "");
-                        $("#tpackinglist_input").attr("value", "");
-                        $("#sinvoice_input").attr("value", "yes");
-                    } else {
-                        $("#second_anchor").css("display", "none");
-                    }
-                    if (data.check_invoice_message == '2') {
-                        $("#third_anchor").css("display", "block");
-                        var check_invoice_orderID = data.check_invoice_orderID;
-                        // $("#third_anchor").attr("href", "/bol/create_packing_list/" + check_invoice_orderID);
-                        $("#third_anchor").attr("href", "/download-packinglist-pdf/" + check_invoice_orderID);
-                        $("#finvoice_input").attr("value", "");
-                        $("#fpackinglist_input").attr("value", "");
-                        $("#sinvoice_input").attr("value", "");
-                        $("#tpackinglist_input").attr("value", "yes");
-                    } else {
-                        $("#third_anchor").css("display", "none");
-                    }
-                    if (data.check_invoice_message == '1-2') {
-                        $("#f_anchor").css("display", "block");
-                        $("#sf_anchor").css("display", "block");
-                        var check_invoice_orderID = data.check_invoice_orderID;
-                        // $("#f_anchor").attr("href", "/bol/create_invoice_2/" + check_invoice_orderID);
-                        $("#f_anchor").attr("href", "/bol/download-invoice-pdf/" + check_invoice_orderID);
-                        $("#sf_anchor").attr("href", "/bol/download-packinglist-pdf/" + check_invoice_orderID);
-                        $("#tpackinglist_input").attr("value", "");
-                        $("#sinvoice_input").attr("value", "");
-                        $("#finvoice_input").attr("value", "yes");
-                        $("#fpackinglist_input").attr("value", "yes");
-                        // $("#sf_anchor").attr("href", "/bol/create_packing_list/" + check_invoice_orderID);
-                    } else {
-                        $("#f_anchor").css("display", "none");
-                        $("#sf_anchor").css("display", "none");
-                    }
+                    var api_response = JSON.parse(data.response);
+                    $('#tracker_result').css('display', 'block');
+                    api_response.forEach(obj => {
+                        $('#tracker_code').append(obj.barcode);
+                        if(data.handled_by = 'DHL'){
+                            $('#handled_by').html('DHL Express');
+                        }                        
+                        obj.events.forEach(eventsObj => {
+                            if(eventsObj.category == 'DATA_RECEIVED' && eventsObj.status == 'DATA_RECEIVED_WITH_PREFIX_LABEL'){
+                                $('#tracking-result-status').html('Shipment information received');
+                                var separate_timestamp = eventsObj.timestamp.split('T');
+                                var separate_time = separate_timestamp[1].split('Z');
+                                $('#tracking-result-time').html(separate_timestamp[0] + ' '+ separate_time[0]);
+                            }                            
+                        });
+                    });                    
                 }
-
             }
         });
     });
