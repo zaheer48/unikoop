@@ -17,7 +17,7 @@ use App\Http\Controllers\OrderTrackController;
 
 Route::get('/', function () {
     return view('auth.login');
-})->name('home');
+})->name('home')->middleware('guest');
 
 Route::get('track-order', function () {
     return view('trackorder');
