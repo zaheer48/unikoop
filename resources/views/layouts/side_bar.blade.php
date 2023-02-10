@@ -8,8 +8,10 @@
     <img src="{{URL::asset('assets/images/users/user-1.jpg')}}" alt="user-img" title="Mat Helme"
         class="rounded-circle avatar-md">
     <div class="dropdown">
+        @if(Auth::check() )
         <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
             data-bs-toggle="dropdown">{{ Auth::user()->username }}</a>
+            @endif
         <div class="dropdown-menu user-pro-dropdown">
 
             <!-- item-->

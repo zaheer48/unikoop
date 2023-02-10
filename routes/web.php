@@ -22,15 +22,17 @@ Route::get('/', function () {
 Route::get('track-order', function () {
     return view('trackorder');
 })->name('track.order');
+
 Route::post('/checkorder', [OrderTrackController::class, 'check_order'])->name('checkorder');
 
     Route::get('/register', function () {
         return view('auth.register');
     })->name('register');
 
-    // Route::get('/client-register', function () {
-    //     return view('auth.client-register');
-    // })->name('client-register');
+   
+    Route::get('/see-you', function () {
+        return view('see_you');
+    })->name('see.you');
 
     Route::post('/order-track', [OrderTrackController::class, 'store']
     )->name('order-track');
@@ -51,9 +53,6 @@ Route::get('/searching', 'SiteController@searching')->name('site.search');
 
 Route::middleware(['usertype'])->group(function(){
 
-    Route::get('/see-you', function () {
-        return view('see_you');
-    })->name('see.you');
     
     Route::get('/test', [Controllers\TestController::class, 'test']
         )->name('test');

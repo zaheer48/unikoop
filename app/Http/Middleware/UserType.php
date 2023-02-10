@@ -17,10 +17,11 @@ class UserType
      */
     public function handle(Request $request, Closure $next)
     {
-        $type = Auth::user()->user_type;
-        if(session()->has(Auth::user()->id && $type === 'vendor'))
+        
+        // dd(Auth::user());
+        if(Auth::check() && Auth::user()->user_type == 'vendor')
            return $next($request);
         else
-           return redirect()->back();
+           return redirect()->route('track.order');
     }
 }
