@@ -197,20 +197,14 @@
                 </span>
                 <span class="logo-lg">
                     <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" alt="LeyWood" width="100" height="50">
-
-                    {{-- <img src=" {{URL::asset('assets/images/logo-dark.png')}}"  alt="" height="20"> --}}
-                    <!-- <span class="logo-lg-text-light">U</span> -->
                 </span>
             </a>
             <a href="{{route('home')}}" class="logo logo-light text-center">
                 <span class="logo-sm">
                     <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg"  class="mx-2"  alt="LeyWood" width="70" height="50">
-
-                    {{-- <img src="{{URL::asset('assets/images/logo-sm.png')}}" alt="" height="22"> --}}
                 </span>
                 <span class="logo-lg">
                     <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" alt="LeyWood" width="100" height="50">
-                    {{-- <img src="{{URL:: asset('assets/images/logo-light.png')}}" alt="" height="20"> --}}
                 </span>
             </a>
         </div>
