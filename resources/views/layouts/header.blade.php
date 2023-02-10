@@ -99,7 +99,11 @@
             @if (Auth::check())
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    @if (Auth::user()->profile_url)
+                    <img src="{{ asset('storage/images/'.Auth::user()->profile_url)}}" alt="user-image" class="rounded-circle">
+                  @else
                     <img src="{{URL::asset('assets/images/users/user-1.jpg')}}" alt="user-image" class="rounded-circle">
+                    @endif
                     <span class="pro-user-name ms-1">
                         {{ Auth::user()->username }} <i class="mdi mdi-chevron-down"></i>
                     </span>
