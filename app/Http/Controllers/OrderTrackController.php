@@ -20,9 +20,6 @@ class OrderTrackController extends Controller
         return view('trackorder', compact('user'));
     }
 
-
-
-
     public function check_order(Request $request)
     {
 
