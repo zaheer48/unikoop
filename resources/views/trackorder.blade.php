@@ -168,6 +168,7 @@
 <script src="{{url('/dhl')}}/js/jquery.multifile.js"></script>
 <script>
     $("#check_invoice").click(function () {
+        $('#tracker_result').css('display', 'none');
         var formdata = $("#check_invoice_form2").serialize();
         $.ajax({
             type: "post",
@@ -177,19 +178,24 @@
             success: function (data) {
                 if (data.message == 'redirect') {
                     window.location.replace(data.route);
-                }
-                else if (data.message == 'No record found against this Order ID') {
-                    alert('No record found against this Order ID');
-                    $('#bestelnummer').val('');
-                    $("#my_form").css("display", "none");
-                } else {
+                } else if (data.message == 'failure'){
+                    $('#tracker_result').css('display', 'block');
+                    $('#tracker_code').html('Tracking Code: ' + data.tracking_code);
+                    $('#handled_by').html('');
+                    $('#tracking-result-time').html('');
+                    $('#tracking-result-status').html(data.response);
+                } else if (data.message == 'success' && data.response == "No parcel found for the given key(s)"){
+                    $('#tracker_result').css('display', 'block');
+                    $('#tracker_code').html('Tracking Code: ' + data.tracking_code);
+                    $('#tracking-result-status').html(data.response);
+                } else if (data.message == 'success'){
                     var api_response = JSON.parse(data.response);
                     $('#tracker_result').css('display', 'block');
                     api_response.forEach(obj => {
-                        $('#tracker_code').append(obj.barcode);
+                        $('#tracker_code').html('Tracking Code: ' + obj.barcode);
                         if(data.handled_by = 'DHL'){
                             $('#handled_by').html('DHL Express');
-                        }                        
+                        }
                         obj.events.forEach(eventsObj => {
                             if(eventsObj.category == 'DATA_RECEIVED' && eventsObj.status == 'DATA_RECEIVED_WITH_PREFIX_LABEL'){
                                 $('#tracking-result-status').html('Shipment information received');

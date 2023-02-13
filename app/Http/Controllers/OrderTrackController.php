@@ -23,80 +23,51 @@ class OrderTrackController extends Controller
 
     public function check_order(Request $request)
     {
-        $bestelnummer = $request->post('bestelnummer');
+        $trackerCode_bestel = $request->post('bestelnummer');
         $platform = $request->post('platform');
-        $baseln = DB::table('users_orders')
-            ->select('*')
-            ->where('order_id',$bestelnummer)
-            ->first();
 
-        if ($baseln) {
-            $bol_data = DB::table('bol_data')->select("bestelnummer", "emailadres", "trackerCode", "bol_rec_id")->where('bestelnummer', $bestelnummer)->first();  
-            // return [
-            //     'o_no' => $bastenumber,
-            //     'email' => $data,
-            //     'name' => $name,
-            // ];
-
-        } elseif (Auth::check()) {
-            $bol_data = DB::table('bol_data')->select("bestelnummer", "emailadres", "trackerCode", "bol_rec_id")
+        $bol_data = DB::table('bol_data')->select("bestelnummer", "emailadres", "trackerCode", "bol_rec_id")
                                 ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
-                                ->where('bol_data.bestelnummer',$bestelnummer)
-                                ->where('bol_rec.user_id',Auth::id())
+                                ->where('bol_data.trackerCode', $trackerCode_bestel)
+                                ->orWhere('bol_data.bestelnummer', $trackerCode_bestel)
                                 ->first();
-            DB::table('users_orders')->insert([
-                'order_id'=> $bestelnummer,
-                'user_id'=> Auth::id(),
-                'platform'=> $platform,
-            ]);
-            // if($bol_data){
-            //     $updation = DB::table('users_orders')->where(['order_id'=> $bestelnummer])->first();
-            //     if(!$updation)
-            //     {
-            //         DB::table('users_orders')->insert([
-            //             'order_id'=> $bestelnummer,
-            //             'user_id'=> Auth::id(),
-            //             'platform'=> $platform,
-            //         ]);
-            //     }
-            // $bastenumber2 = $baseln2->bestelnummer;
 
-            // $bol_data = DB::table('bol_data')->select("bestelnummer","emailadres", "voornaam_verzending", "achternaam_verzending", "bedrijfsnaam_verzending", "bol_rec_id")->where('bestelnummer', $bestelnummer)->first();
-            
-            // if ($bol_data->bedrijfsnaam_verzending != "") {
-            //     $name = $bol_data->bedrijfsnaam_verzending;
-            // } else {
-            //     $name = $bol_data->voornaam_verzending . " " . $bol_data->achternaam_verzending;
-            // }
+        if($bol_data){
+            $baseln = DB::table('users_orders')
+                        ->select('*')
+                        ->where('order_id',$bol_data->bestelnummer)
+                        ->first();
 
-            // if ($bol_data) {
-            //     $data = $bol_data->emailadres;
-            // }
-            // return [
-            //     'o_no' => $bastenumber2,
-            //     'email' => $data,
-            //     'name' => $name,
-            // ];
-            // }
-        } else{
+            if (!$baseln && !Auth::check()) {
+                $response = [
+                    'message' => 'redirect',
+                    'route' => route('register'),
+                ];
+                return json_encode($response);
+            } else if(!$baseln){
+                DB::table('users_orders')->insert([
+                    'order_id'=> $bol_data->bestelnummer,
+                    'user_id'=> Auth::id(),
+                    'platform'=> $platform,
+                ]);
+            }
+
+            $track_order_response = $this->trackOrder($bol_data->trackerCode, $platform);            
             $response = [
-                'message' => 'redirect',
-                'route' => route('register'),
+                'message' => 'success',
+                'handled_by' => $platform,
+                'response' => $track_order_response,
+                'tracking_code' => $trackerCode_bestel,
             ];
-            echo json_encode($response);
-            // return redirect()->to('/register')->send();
+            return json_encode($response);
+        } else {
+            $response = [
+                'message' => 'failure',
+                'response' => 'No record found against this ID.',
+                'tracking_code' => $trackerCode_bestel,
+            ];
+            return json_encode($response);
         }
-
-        $track_orser_response = $this->trackOrder($bol_data->trackerCode, $platform);
-
-        $response = [
-            'message' => 'success',
-            'handled_by' => $platform,
-            'response' => $track_orser_response,
-        ];
-        return json_encode($response);
-        // return $track_orser_response;
-
     }
 
     public function trackOrder($trackerCode, $platform)
