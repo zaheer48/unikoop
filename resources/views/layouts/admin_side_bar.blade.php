@@ -67,124 +67,40 @@
                 </li>
                 <li>
 
-                    <a href="{{ route('my.profile')}}" class="dropdown-item notify-item">
+                    <a href="{{ route('users.index')}}" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
-                        <span>My Profile</span>
+                        <span>Users</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('email-templates.index')}}" class="dropdown-item notify-item">
+                    <a href="{{ route('subadmins.index')}}" class="dropdown-item notify-item">
                         <i class="fa-solid fa-envelope-open-text"></i>
-                        <span>Email Templates</span>
+                        <span>Sub Admins</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('invoice-templates.index')}}" class="dropdown-item notify-item">
+                    <a href="{{ route('user_requests.index')}}" class="dropdown-item notify-item">
                         <i class="fa-solid fa-file-invoice"></i>
-                        <span>Invoice Templates</span>
+                        <span>Users Requests</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('packinglist-templates.index')}}" class="dropdown-item notify-item">
+                    <a href="{{ route('payment.methods') }}" class="dropdown-item notify-item">
                         <i class="fa-sharp fa-solid fa-list-ul"></i>
-                        <span>Packing List Templates</span>
+                        <span>Payment Method</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('payment.history')}}" class="dropdown-item notify-item">
+                    <a href="" class="dropdown-item notify-item">
                         <i class="fa-solid fa-money-check-dollar"></i>
-                        <span>Payment History</span>
+                        <span>Activation</span>
                     </a>
                 </li>
-                {{-- <li>
-                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                        <i data-feather="shopping-cart"></i>
-                        <span> Ecommerce </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEcommerce">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="Companies.html">Companies</a>
-                            </li>
-                            <li>
-                                <a href="All-Lists.html">All-Lists</a>
-                            </li>
-
-                            <li>
-                                <a href="All-Orders.html">All-Orders</a>
-                            </li>
-                            <li>
-                                <a href="Orders.html">Orders</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </li> --}}
-                {{-- <li>
-                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                        <i data-feather="shopping-cart"></i>
-                        <span> Products </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEcommerce">
-                        <ul class="nav-second-level">
-
-                            <li>
-                                <a href="ProductList">All-Lists</a>
-                            </li>
-
-                            <li>
-                                <a href="AddProduct">Add Products</a>
-                            </li>
-                            <li>
-                                <a href="UpdateProduct">Update Products</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </li> --}}
                 <li>
-                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
-                        <span> Transaction Report</span>
-                        <span class="menu-arrow"></span>
+                    <a href="" class="dropdown-item notify-item">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <span>Site Settings</span>
                     </a>
-                    <div class="collapse" id="sidebarEcommerce">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('account.report') }}">See All</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="#sidebarCrm" data-bs-toggle="collapse">
-                        <i class="fa-solid fa-file-invoice"></i>
-                        <span> Invoice</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarCrm">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('invoice') }}">Create Invoice</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                        <i class="fa-solid fa-download"></i>
-                        <span> Download Label </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEcommerce">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{route('download.label')}}">Download Label</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
             </ul>
         </div>

@@ -53,75 +53,79 @@
             </strong>
         </div>
     @endif
-    <div class="card card-profile shadow">
-        <div class="card-body">
-            <h3>Update User Record</h3>
-            <hr class="my-4">
-            <form action="{{route('users.update',$user->id)}}" method="post">
-                @csrf
-                @method('PUT')
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="category_name">User Email</label>
-                            <small style="color: red;"> *</small>
-                            <input type="email" value="{{$user->email}}" name="email"
-                                   class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                   placeholder="User Email" required>
-                            @if ($errors->has('email'))
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                            @endif
+    <div class="content-page">
+        <div class="content">
+            <div class="card card-profile shadow">
+                <div class="card-body">
+                    <h3>Update User Record</h3>
+                    <hr class="my-4">
+                    <form action="{{route('users.update',$user->id)}}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="category_name">User Email</label>
+                                    <small style="color: red;"> *</small>
+                                    <input type="email" value="{{$user->email}}" name="email"
+                                        class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                        placeholder="User Email" required>
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="category_name">User Password</label>
+                                    <small style="color: red;"> *</small>
+                                    <input type="text" value="{{$user->password_hint}}" name="password"
+                                        class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                        placeholder="User Password" required>
+                                    @if ($errors->has('password'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
                         </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label for="category_name">User Password</label>
-                            <small style="color: red;"> *</small>
-                            <input type="text" value="{{$user->password_hint}}" name="password"
-                                   class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                   placeholder="User Password" required>
-                            @if ($errors->has('password'))
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-md-1"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
 
-                        <div class="form-group">
-                            <label for="category_name">Username</label>
-                            <small style="color: red;"> *</small>
-                            <input type="text" id="username" value="{{$user->username}}" name="username"
-                                   class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
-                                   placeholder="Username" required>
-                            @if ($errors->has('username'))
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('username') }}</strong>
-                            </span>
-                            @endif
+                                <div class="form-group">
+                                    <label for="category_name">Username</label>
+                                    <small style="color: red;"> *</small>
+                                    <input type="text" id="username" value="{{$user->username}}" name="username"
+                                        class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                                        placeholder="Username" required>
+                                    @if ($errors->has('username'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
-                        <div class="form-group" id="adding-form">
-                            <button type="submit" class="btn btn-md btn-primary">
-                                Update User
-                            </button>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <div class="form-group" id="adding-form">
+                                    <button type="submit" class="btn btn-md btn-primary">
+                                        Update User
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
                         </div>
-                    </div>
-                    <div class="col-md-1"></div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
     <br>

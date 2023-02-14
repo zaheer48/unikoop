@@ -18,7 +18,6 @@ class SubAdminsController extends Controller
      */
     public function index()
     {
-
         $subadmins = User::where('is_admin', 2)->orderBy('id', 'DESC')->get();
         return view('admin.subadmins.index', compact('subadmins'));
     }

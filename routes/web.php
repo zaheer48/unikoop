@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\OrderTrackController;
@@ -146,6 +145,20 @@ Route::group(['middleware' => 'superadmin'], function () {
     Route::resource('/users', 'UsersController');
 
     Route::resource('subadmins', 'SubAdminsController');
+
+    Route::resource('/user_requests', 'Admin\UserRequestController');
+
+    Route::get('/payment-methods', 'Admin\PaymentMethodsController@index')->name('payment.methods');
+    Route::post('/payment-methods', 'Admin\PaymentMethodsController@store');
+
+    Route::get('/site-settings', 'WebsiteController@index')->name('website.settings');
+    Route::get('/update-site-settings', 'WebsiteController@edit');
+    Route::post('/update-site-settings', 'WebsiteController@update');
+    Route::post('/delete-partner', 'WebsiteController@deletePartner');
+
+
+
+
     Route::post('subadmins/activate/{id}', 'Admin\UserActivationController@activateSuperadmin');
     Route::post('subadmins/deactivate/{id}', 'Admin\UserActivationController@deactivateSuperadmin');
     Route::post('users/activate/{id}', 'Admin\UserActivationController@activate');
@@ -164,15 +177,11 @@ Route::group(['middleware' => 'superadmin'], function () {
     Route::get('/label-pricing/{id}/edit', 'Admin\LabelPricingController@edit')->name('label.pricing.edit');
     Route::post('/label-pricing', 'Admin\LabelPricingController@store')->name('label.pricing.store');
 
-    Route::get('/payment-methods', 'PaymentMethodsController@index')->name('payment.methods');
-    Route::post('/payment-methods', 'PaymentMethodsController@store');
+    
     Route::get('/activation', 'ActivationController@index')->name('activate.settings');
     Route::post('/switch-activation', 'ActivationController@switchOperation');
-    Route::get('/site-settings', 'WebsiteController@index')->name('website.settings');
-    Route::get('/update-site-settings', 'WebsiteController@edit');
-    Route::post('/update-site-settings', 'WebsiteController@update');
-    Route::post('/delete-partner', 'WebsiteController@deletePartner');
-    Route::resource('/user_requests', 'Admin\UserRequestController');
+    
+    
     Route::resource('/email-template', 'EmailTemplateController');
     Route::resource('/email-categories', 'EmailCategoryController');
     Route::get('/email/status/{id1}/{id2}', 'UserUpdateController@status')->name('admin-template-st');

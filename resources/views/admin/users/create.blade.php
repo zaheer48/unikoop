@@ -83,99 +83,102 @@ if ($user1 ?? '') {
     $business_register_contact = '';
 }
 ?>
-
-<div class="row page-titles">
-    <div class="col-md-12">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
-            <li class="breadcrumb-item"><a>Create User</a></li>
-        </ol>
-    </div>
-</div>
-
-<div class="card card-profile shadow">
-    <div class="card-body">
-        <h3>Users
-            <a href="{{route('users.index')}}" class="btn btn-sm btn-primary" style="float: right;">
-                Finish User Settings
-            </a>
-        </h3>
-        <hr class="my-4">
-        <form id="first_form" method="post" action="{{url('/store')}}">
-            @csrf
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label for="category_name">User Email</label>
-                        <small style="color: red;"> *</small>
-                        <input type="email" name="email" @if($userrecord) value="{{$userrecord->email}}" disabled @else
-                               value="{{old('email')}}" @endif id="email"
-                               class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                               placeholder="User Email" required>
-                        @if ($errors->has('email'))
-                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-
-
-                </div>
-                <div class="col-md-5">
-
-                    <div class="form-group">
-                        <label for="category_name">User Password</label>
-                        <small style="color: red;"> *</small>
-                        <input type="text" id="pass" min="8" @if($userrecord) value="{{$userrecord->password_hint}}"
-                               disabled @else value="{{old('password')}}" @endif name="password"
-                               class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                               placeholder="User Password" required>
-                        @if ($errors->has('password'))
-                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-md-1"></div>
+<div class="content-page">
+    <div class="content">
+        <div class="row page-titles">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
+                    <li class="breadcrumb-item"><a>Create User</a></li>
+                </ol>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-5">
+        <div class="card card-profile shadow">
+            <div class="card-body">
+                <h3>Users
+                    <a href="{{route('users.index')}}" class="btn btn-sm btn-primary" style="float: right;">
+                        Finish User Settings
+                    </a>
+                </h3>
+                <hr class="my-4">
+                <form id="first_form" method="post" action="{{url('/store')}}">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="category_name">User Email</label>
+                                <small style="color: red;"> *</small>
+                                <input type="email" name="email" @if($userrecord) value="{{$userrecord->email}}" disabled @else
+                                    value="{{old('email')}}" @endif id="email"
+                                    class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                    placeholder="User Email" required>
+                                @if ($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
 
 
-                    <div class="form-group">
-                        <label for="category_name">Username</label>
-                        <small style="color: red;"> *</small>
-                        <input type="text" id="username" @if($userrecord) value="{{$userrecord->username}}" disabled
-                               @else value="{{old('username')}}" @endif name="username"
-                               class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
-                               placeholder="Username" required>
-                        @if ($errors->has('username'))
-                        <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('username') }}</strong>
-                            </span>
-                        @endif
+                        </div>
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+                                <label for="category_name">User Password</label>
+                                <small style="color: red;"> *</small>
+                                <input type="text" id="pass" min="8" @if($userrecord) value="{{$userrecord->password_hint}}"
+                                    disabled @else value="{{old('password')}}" @endif name="password"
+                                    class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                    placeholder="User Password" required>
+                                @if ($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
                     </div>
 
-                </div>
-            </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
 
 
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <div class="form-group" id="adding-form">
-                        <button type="submit" @if($userrecord) disabled @endif class="btn btn-md btn-primary">
-                            Create User
-                        </button>
+                            <div class="form-group">
+                                <label for="category_name">Username</label>
+                                <small style="color: red;"> *</small>
+                                <input type="text" id="username" @if($userrecord) value="{{$userrecord->username}}" disabled
+                                    @else value="{{old('username')}}" @endif name="username"
+                                    class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                                    placeholder="Username" required>
+                                @if ($errors->has('username'))
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-1"></div>
+
+
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <div class="form-group" id="adding-form">
+                                <button type="submit" @if($userrecord) disabled @endif class="btn btn-md btn-primary">
+                                    Create User
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 <br>
