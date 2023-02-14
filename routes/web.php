@@ -25,17 +25,17 @@ Route::get('track-order', function () {
 
 Route::post('/checkorder', [OrderTrackController::class, 'check_order'])->name('check.order');
 
-    Route::get('/register', function () {
-        return view('auth.register');
-    })->name('register');
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
 
-   
-    Route::get('/see-you', function () {
-        return view('see_you');
-    })->name('see.you');
 
-    Route::post('/order-track', [OrderTrackController::class, 'store']
-    )->name('order-track');
+Route::get('/see-you', function () {
+    return view('see_you');
+})->name('see.you');
+
+Route::post('/order-track', [OrderTrackController::class, 'store']
+)->name('order-track');
 
 
 
@@ -118,18 +118,74 @@ Route::middleware(['usertype'])->group(function(){
     Route::view('footer','layouts/footer');
 
     //Product Route
-Route::view('AddProduct','layouts/Product/AddProduct')->name('AddProduct');
-Route::view('ProductList','layouts/Product/ProductList')->name('ProductList');
-Route::view('UpdateProduct','layouts/Product/UpdateProduct')->name('UpdateProduct');
+    Route::view('AddProduct','layouts/Product/AddProduct')->name('AddProduct');
+    Route::view('ProductList','layouts/Product/ProductList')->name('ProductList');
+    Route::view('UpdateProduct','layouts/Product/UpdateProduct')->name('UpdateProduct');
 
-Route::view('createinvoice','layouts/createinvoice')->name('createinvoice');
-Route::view('allTransaction','layouts/allTransaction')->name('allTransaction');
-Route::view('downloadLabel','layouts/downloadLabel')->name('downloadLabel');
-Route::view('uploadBolSheet','layouts/uploadBolSheet')->name('uploadBolSheet');
-Route::view('allBolSheet','layouts/allBolSheet')->name('allBolSheet');
-Route::view('lock-screen','layouts/lockScreen')->name('lockScreen');
+    Route::view('createinvoice','layouts/createinvoice')->name('createinvoice');
+    Route::view('allTransaction','layouts/allTransaction')->name('allTransaction');
+    Route::view('downloadLabel','layouts/downloadLabel')->name('downloadLabel');
+    Route::view('uploadBolSheet','layouts/uploadBolSheet')->name('uploadBolSheet');
+    Route::view('allBolSheet','layouts/allBolSheet')->name('allBolSheet');
+    Route::view('lock-screen','layouts/lockScreen')->name('lockScreen');
 
-Route::view('getinvoice','/getInvoice')->name('getinvoice');
+    Route::view('getinvoice','/getInvoice')->name('getinvoice');
+});
+
+
+//Route::get('admin/login',function(){return view('admin_login');})->name('admin.login');
+Route::post('/adminlogin','AdminLoginController@login');
+
+
+/** Admin Routes **/
+Route::group(['middleware' => 'superadmin'], function () {
+    Route::get('/admin_dashboard', 'HomeController@adminDashboard')->name('admin.dashboard');
+    Route::post('/store', 'UserCreateController@store');
+    Route::get('/create', 'UserCreateController@create');
+
+    Route::resource('/users', 'UsersController');
+
+    Route::resource('subadmins', 'SubAdminsController');
+    Route::post('subadmins/activate/{id}', 'Admin\UserActivationController@activateSuperadmin');
+    Route::post('subadmins/deactivate/{id}', 'Admin\UserActivationController@deactivateSuperadmin');
+    Route::post('users/activate/{id}', 'Admin\UserActivationController@activate');
+    Route::post('users/deactivate/{id}', 'Admin\UserActivationController@deactivate');
+    Route::resource('admin-profile', 'AdminProfileController');
+    Route::resource('changepass', 'ChangepasswordController');
+    Route::post('/adminSellingplanregis', 'UserCreateController@storesellplan');
+    Route::post('/adminBussiness', 'UserCreateController@storeBussiness_address');
+    Route::post('/adminBankdetail', 'UserCreateController@storebankdetail');
+    Route::post('/adminchargeoption', 'UserCreateController@chargeoption');
+    Route::post('/adminCreditCard', 'UserCreateController@storeCharge_method');
+    Route::post('/adminLogistiek', 'UserCreateController@storelogistiek');
+
+    Route::get('/label-pricing', 'Admin\LabelPricingController@index')->name('label.pricing');
+    Route::get('/label-pricing/create', 'Admin\LabelPricingController@create')->name('label.pricing.create');
+    Route::get('/label-pricing/{id}/edit', 'Admin\LabelPricingController@edit')->name('label.pricing.edit');
+    Route::post('/label-pricing', 'Admin\LabelPricingController@store')->name('label.pricing.store');
+
+    Route::get('/payment-methods', 'PaymentMethodsController@index')->name('payment.methods');
+    Route::post('/payment-methods', 'PaymentMethodsController@store');
+    Route::get('/activation', 'ActivationController@index')->name('activate.settings');
+    Route::post('/switch-activation', 'ActivationController@switchOperation');
+    Route::get('/site-settings', 'WebsiteController@index')->name('website.settings');
+    Route::get('/update-site-settings', 'WebsiteController@edit');
+    Route::post('/update-site-settings', 'WebsiteController@update');
+    Route::post('/delete-partner', 'WebsiteController@deletePartner');
+    Route::resource('/user_requests', 'Admin\UserRequestController');
+    Route::resource('/email-template', 'EmailTemplateController');
+    Route::resource('/email-categories', 'EmailCategoryController');
+    Route::get('/email/status/{id1}/{id2}', 'UserUpdateController@status')->name('admin-template-st');
+    Route::resource('/invoice-template', 'InvoiceTemplateController');
+    Route::resource('/pack_list-template', 'PacklistTemplateController');
+    Route::post('/adminLogistiekupdate', 'UserUpdateController@updatelogistiek');
+    Route::post('/adminBussinessupdate', 'UserUpdateController@updateBussiness_address');
+    Route::post('/adminSellingplanupdate', 'UserUpdateController@updatesellplan');
+    Route::post('/adminBankdetailupdate', 'UserUpdateController@updatebankdetail');
+    Route::post('/adminchargeoptionupdate', 'UserUpdateController@chargeoptionupdate');
+    Route::post('/adminCreditCardupdate', 'UserUpdateController@updateCharge_method');
+
+    
 });
 
 

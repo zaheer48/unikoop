@@ -1,0 +1,61 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class CustomOrder extends Model
+{
+    protected $fillable = [
+        'user_id',
+        'bestel_nummer',
+        'salutation_shipment',
+        'first_name',
+        'last_name',
+        'company_name',
+        'created_at',
+        'updated_at',
+        'street',
+        'house_number',
+        'house_number_addition',
+        'supplement_address',
+        'postal_code',
+        'residence',
+        'country',
+        'chamber_of_commerce_no',
+        'order_reference',
+        'salutation_billing',
+        'first_name_billing',
+        'last_name_billing',
+        'company_name_billing',
+        'fact_straat',
+        'fact_house_number',
+        'fact_house_number_addition',
+        'fact_addition',
+        'zip_code_billing',
+        'residence_invoicing',
+        'country_billing',
+        'chamber_of_commerce_no_billing',
+        'billing_order_reference',
+        'order_Item_id',
+        'ean',
+        'reference',
+        'product_title',
+        'number',
+        'price',
+        'order_date',
+        'deadline_delivery',
+        'exact_delivery_date',
+        'conditie',
+        'cancellation_request',
+        'email_address',
+        'email_status',
+        'email_datetime',
+        'telephone_number',
+        'work_phone',
+        'date_added',
+        'trackerCode',
+        'lable_pdf',
+        'logistics',
+    ];
+}
