@@ -81,23 +81,23 @@
                                                     </a>
                                                     <button type="button"
                                                         class="btn btn-info rounded-pill waves-effect waves-light">Toal
-                                                        Records {{ $totalRecords }}</button>
+                                                        Records {{ $bol_rec->total() }}</button>
 
                                                     <button type="button"
                                                         class="btn btn-info rounded-pill waves-effect waves-light">Active
-                                                        Orders 1696 </button>
+                                                        Orders {{ $bol_update_status_count['Not Updated'] }} </button>
 
 
 
                                                     <button type="button"
                                                         class="btn btn-info rounded-pill waves-effect waves-light">Pending
-                                                        Orders 3446</button>
+                                                        Orders {{ $bol_update_status_count['PENDING'] }}</button>
 
 
 
                                                     <button type="button"
                                                         class="btn btn-danger rounded-pill waves-effect waves-light">Failure
-                                                        Orders 10</button>
+                                                        Orders {{ $bol_update_status_count['FAILURE'] }}</button>
 
 
                                                 </div>
