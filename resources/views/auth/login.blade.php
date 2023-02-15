@@ -1,93 +1,29 @@
-
-{{-- <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
-
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-
-
-    </x-jet-authentication-card>
-</x-guest-layout> --}}
 @section('title','Login | Unikoop')
-
 @include('auth/header')
-
-
     <body class="authentication-bg authentication-bg-pattern">
-
         <div class="account-pages mt-5 mb-5">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-6">
                         <div class="card bg-pattern">
-
                             <div class="card-body p-4">
-
                                 <div class="text-center w-75 m-auto">
                                     <div class="auth-logo">
-                                        <a href="index.html" class="logo logo-dark text-center">
+                                        <a href="{{ route('home') }}" class="logo logo-dark text-center">
                                             <span class="logo-lg">
-                                                <img src="assets/images/logo-dark.png" alt="" height="22">
+                                                <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                                             </span>
                                         </a>
                                     </div>
                                     <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
                                 </div>
-
-
-
-                                {{-- <x-jet-validation-errors class="mb-4" /> --}}
-
                                 @if (session('status'))
                                     <div class="mb-4 font-medium text-sm text-green-600">
                                         {{ session('status') }}
                                     </div>
                                 @endif
-
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
-
                                     <div class="mb-3">
                                         <x-jet-label for="email" class="form-label" value="{{ __('Email') }}" />
                                         <x-jet-input class="form-control" name="email" type="email" id="email" :value="old('email')" required autofocus  placeholder="Enter your email" />
@@ -98,10 +34,7 @@
 
                                         @endforeach
                                     </div>
-
                                     <div class="mb-3">
-
-
                                         <x-jet-label for="password" class="form-label"  value="{{ __('Password') }}" />
                                         <div class="input-group input-group-merge">
                                             <x-jet-input type="password" id="password"  name="password" class="form-control"  required autocomplete="current-password"  placeholder="Enter your password"/>
@@ -118,51 +51,41 @@
                                     </div>
                                     {{-- <label>Enter Captcha:</label>
                                     <div class="row">
-                                  <div class="form col-md-6">
-                                      <input type="text" class="form-control" readonly id="capt">
+                                        <div class="form col-md-6">
+                                            <input type="text" class="form-control" readonly id="capt">
                                         </div>
-                                <div class="form col-md-6">
-                                      <input type="text" class="form-control" id="textinput" required="">
-                                             </div>
+                                        <div class="form col-md-6">
+                                            <input type="text" class="form-control" id="textinput" required="">
                                         </div>
-                                     <h6>Captcha not visible <img src="refresh.jpg" width="40px" onclick="cap()"></h6> --}}
+                                    </div>
+                                    <h6>Captcha not visible <img src="refresh.jpg" width="40px" onclick="cap()"></h6> --}}
 
-                                     {{-- <div class="form-check mb-1">
-                                             <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
-                                          <label class="form-check-label " for="checkbox-signin">Remember me</label>
-                                     </div> --}}
-                                     <div class="block mt-4">
+                                    {{-- <div class="form-check mb-1">
+                                        <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
+                                    <label class="form-check-label " for="checkbox-signin">Remember me</label>
+                                    </div> --}}
+                                    <div class="block mt-4">
                                         <label for="remember_me" class="flex items-center">
                                             <x-jet-checkbox id="remember_me" name="remember" class="form-check-input" id="checkbox-signin" checked />
                                             <span class="ml-2 underline text-sm text-gray-600 hover:text-gray-900">{{ __('Remember me') }}</span>
                                         </label>
                                     </div>
-
-
-                                     <div class="flex items-center justify-end mt-3">
+                                    <div class="flex items-center justify-end mt-3">
                                         @if (Route::has('password.request'))
                                             <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                                                 {{ __('Forgot your password?') }}
                                             </a>
                                         @endif
-
-
                                     </div>
-
-                                        <div class="text-center d-grid mt-1">
-                                           <button  class ="btn btn-lg btn-outline-primary" type="submit">  {{ __('Log in') }} </button>
-                                           <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
-                                        </div>
-                                        <div class="flex items-center justify-end mt-3">
-
-                                                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="register">
-                                                    {{ __('Do not have an account ? SignUp') }}
-                                                </a>
-
-
-
-                                        </div>
-
+                                    <div class="text-center d-grid mt-1">
+                                        <button  class ="btn btn-lg btn-outline-primary" type="submit">  {{ __('Log in') }} </button>
+                                        <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
+                                    </div>
+                                    <div class="flex items-center justify-end mt-3">
+                                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="register">
+                                            {{ __('Do not have an account ? SignUp') }}
+                                        </a>
+                                    </div>
                                     <!-- <div class="mb-3">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
@@ -174,14 +97,14 @@
                                     </div> -->
                                 </form>
                                 <div class="row mt-3">
-                                <div class="col-6 text-center d-grid mt-1">
-                                    <a href="{{ route('register') }}" class ="btn btn-lg btn-outline-success" type="submit">  {{ __('Get Invoice') }} </a>
-                                    <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
-                                 </div>
-                                 <div class="col-6 text-center d-grid mt-1">
-                                    <a href="{{ route('track.order') }}" class ="btn btn-lg btn-outline-info" type="submit">  {{ __('Track Order') }} </a>
-                                    <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
-                                 </div>
+                                    <div class="col-6 text-center d-grid mt-1">
+                                        <a href="{{ route('register') }}" class ="btn btn-lg btn-outline-success" type="submit">  {{ __('Get Invoice') }} </a>
+                                        <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
+                                    </div>
+                                    <div class="col-6 text-center d-grid mt-1">
+                                        <a href="{{ route('track.order') }}" class ="btn btn-lg btn-outline-info" type="submit">  {{ __('Track Order') }} </a>
+                                        <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
+                                    </div>
                                 </div>
                                 <!-- <div class="text-center">
                                     <h5 class="mt-3 text-muted">Sign in with</h5>

@@ -12,35 +12,29 @@
                         </div>
                         <div class="dropdown-menu dropdown-lg" id="search-dropdown">
                             <!-- item-->
-                            <div class="dropdown-header noti-title">
+                            <!-- <div class="dropdown-header noti-title">
                                 <h5 class="text-overflow mb-2">Found 22 results</h5>
-                            </div>
-
+                            </div> -->
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="fe-home me-1"></i>
                                 <span>Analytics Report</span>
-                            </a>
-
+                            </a> -->
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="fe-aperture me-1"></i>
                                 <span>How can I help you?</span>
-                            </a>
-
+                            </a> -->
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="fe-settings me-1"></i>
                                 <span>User profile settings</span>
-                            </a>
-
+                            </a> -->
                             <!-- item-->
-                            <div class="dropdown-header noti-title">
+                            <!-- <div class="dropdown-header noti-title">
                                 <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-                            </div>
-
-                            <div class="notification-list">
-                                <!-- item-->
+                            </div> -->
+                            <!-- <div class="notification-list">
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <div class="d-flex align-items-start">
                                         <img class="d-flex me-2 rounded-circle" src="{{URL::asset('assets/images/users/user-2.jpg')}}" alt="Generic placeholder image" height="32">
@@ -50,8 +44,6 @@
                                         </div>
                                     </div>
                                 </a>
-
-                                <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <div class="d-flex align-items-start">
                                         <img class="d-flex me-2 rounded-circle" src="{{URL::asset('assets/images/users/user-5.jpg')}}" alt="Generic placeholder image" height="32">
@@ -61,8 +53,7 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
-
+                            </div> -->
                         </div>
                     </div>
                 </form>
@@ -190,21 +181,19 @@
         <div class="logo-box">
             <a href="{{route('home')}}" class="logo logo-dark text-center">
                 <span class="logo-sm">
-                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" class="mx-2" alt="LeyWood" width="70" height="50">
-
-                    {{-- <img src="{{URL::asset('assets/images/logo-sm.png')}}" alt="" height="22"> --}}
+                    <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
                 </span>
                 <span class="logo-lg">
-                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" alt="LeyWood" width="100" height="50">
+                    <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                 </span>
             </a>
             <a href="{{route('home')}}" class="logo logo-light text-center">
                 <span class="logo-sm">
-                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg"  class="mx-2"  alt="LeyWood" width="70" height="50">
+                    <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" alt="LeyWood" width="100" height="50">
+                    <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                 </span>
             </a>
         </div>

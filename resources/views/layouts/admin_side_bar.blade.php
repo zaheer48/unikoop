@@ -91,13 +91,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="dropdown-item notify-item">
+                    <a href="{{ route('activate.settings') }}" class="dropdown-item notify-item">
                         <i class="fa-solid fa-money-check-dollar"></i>
                         <span>Activation</span>
                     </a>
                 </li>
                 <li>
-                    <a href="" class="dropdown-item notify-item">
+                    <a href="{{ route('website.settings') }}" class="dropdown-item notify-item">
                         <i class="fa-solid fa-money-check-dollar"></i>
                         <span>Site Settings</span>
                     </a>

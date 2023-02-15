@@ -51,8 +51,6 @@ Route::get('/searching', 'SiteController@searching')->name('site.search');
 
 
 Route::middleware(['usertype'])->group(function(){
-
-    
     Route::get('/test', [Controllers\TestController::class, 'test']
         )->name('test');
     
@@ -107,7 +105,7 @@ Route::middleware(['usertype'])->group(function(){
     // Payment History
     Route::get('/payment-invoice/{id}', 'MollieController@paymentInvoice')->name('payment.invoice');
     Route::get('/custom-payment-invoice/{id}', 'CustomOrderController@paymentInvoice')->name('custom.payment.invoice');
-    // PAyment
+    // Payment
     Route::get('/payment-history', function () {
         return view('payment-history.index');
     })->name('payment.history');
@@ -142,7 +140,7 @@ Route::group(['middleware' => 'superadmin'], function () {
     Route::post('/store', 'UserCreateController@store');
     Route::get('/create', 'UserCreateController@create');
 
-    Route::resource('/users', 'UsersController');
+    Route::resource('/users', 'UserController');
 
     Route::resource('subadmins', 'SubAdminsController');
 
@@ -151,10 +149,13 @@ Route::group(['middleware' => 'superadmin'], function () {
     Route::get('/payment-methods', 'Admin\PaymentMethodsController@index')->name('payment.methods');
     Route::post('/payment-methods', 'Admin\PaymentMethodsController@store');
 
-    Route::get('/site-settings', 'WebsiteController@index')->name('website.settings');
-    Route::get('/update-site-settings', 'WebsiteController@edit');
-    Route::post('/update-site-settings', 'WebsiteController@update');
-    Route::post('/delete-partner', 'WebsiteController@deletePartner');
+    Route::get('/site-settings', 'Admin\SettingController@index')->name('website.settings');
+    Route::get('/update-site-settings', 'Admin\SettingController@edit');
+    Route::post('/update-site-settings', 'Admin\SettingController@update');
+    Route::post('/delete-partner', 'Admin\SettingController@deletePartner');
+
+    Route::get('/activation', 'Admin\ActivationController@index')->name('activate.settings');
+    Route::post('/switch-activation', 'Admin\ActivationController@switchOperation');
 
 
 
@@ -171,16 +172,10 @@ Route::group(['middleware' => 'superadmin'], function () {
     Route::post('/adminchargeoption', 'UserCreateController@chargeoption');
     Route::post('/adminCreditCard', 'UserCreateController@storeCharge_method');
     Route::post('/adminLogistiek', 'UserCreateController@storelogistiek');
-
     Route::get('/label-pricing', 'Admin\LabelPricingController@index')->name('label.pricing');
     Route::get('/label-pricing/create', 'Admin\LabelPricingController@create')->name('label.pricing.create');
     Route::get('/label-pricing/{id}/edit', 'Admin\LabelPricingController@edit')->name('label.pricing.edit');
     Route::post('/label-pricing', 'Admin\LabelPricingController@store')->name('label.pricing.store');
-
-    
-    Route::get('/activation', 'ActivationController@index')->name('activate.settings');
-    Route::post('/switch-activation', 'ActivationController@switchOperation');
-    
     
     Route::resource('/email-template', 'EmailTemplateController');
     Route::resource('/email-categories', 'EmailCategoryController');
@@ -193,8 +188,6 @@ Route::group(['middleware' => 'superadmin'], function () {
     Route::post('/adminBankdetailupdate', 'UserUpdateController@updatebankdetail');
     Route::post('/adminchargeoptionupdate', 'UserUpdateController@chargeoptionupdate');
     Route::post('/adminCreditCardupdate', 'UserUpdateController@updateCharge_method');
-
-    
 });
 
 

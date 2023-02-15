@@ -17,8 +17,6 @@ class UserType
      */
     public function handle(Request $request, Closure $next)
     {
-        
-        // dd(Auth::user());
         if(Auth::check() && Auth::user()->user_type == 'vendor')
            return $next($request);
         else

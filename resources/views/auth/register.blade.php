@@ -16,12 +16,11 @@
 
                             <div class="text-center w-75 m-auto">
                                 <div class="auth-logo">
-                                    <a href="index.html" class="logo logo-dark text-center">
+                                    <a href="{{ route('home') }}" class="logo logo-dark text-center">
                                         <span class="logo-lg">
-                                            <img src="assets/images/logo-dark.png" alt="" height="22">
+                                            <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                                         </span>
                                     </a>
-
                                 </div>
                                 <p class="text-muted mb-2 mt-2">Don't have an account?</p>
                             </div>
