@@ -37,6 +37,7 @@ class User extends Authenticatable
         'status', 
         'password_hint',
         'create_by',
+        'profile_photo'
     ];
 
     /**
