@@ -30,7 +30,6 @@ Route::get('/see-you', function () {
 /** Guest Routes **/
 Route::get('/searching', 'SiteController@searching')->name('site.search');
 
-
 Route::middleware(['usertype'])->group(function(){
     Route::get('/test', [Controllers\TestController::class, 'test']
         )->name('test');
@@ -42,6 +41,17 @@ Route::middleware(['usertype'])->group(function(){
     ])->group(function () {
         Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
     });
+    // Payment
+    Route::get('/payment-history', function () {
+        return view('payment-history.index');
+    })->name('payment.history');
+
+    // Verified Above
+
+
+
+
+    
     // Wallet
     Route::get('/my-wallet', function () {
         return view('userwallet.index');}
@@ -93,10 +103,6 @@ Route::middleware(['usertype'])->group(function(){
     Route::view('getinvoice','/getInvoice')->name('getinvoice');
 });
 
-// Track Order 
-
-
-
 // Track Invoice 
 Route::get('/invoice', 'App\Http\Controllers\InvoiceController@invoice')->name('track.invoice');
 Route::get('/download-invoice/{id}', 'UserInvoiceTemplatesController@downloadInvoice')->name('download.invoice.pdf');
@@ -116,11 +122,7 @@ Route::group(['middleware' => 'superadmin'], function () {
     Route::resource('subadmins', 'SubAdminsController');
     Route::post('subadmins/activate/{id}', 'Admin\UserActivationController@activateSuperadmin');
     Route::post('subadmins/deactivate/{id}', 'Admin\UserActivationController@deactivateSuperadmin');
-    Route::resource('/user_requests', 'Admin\UserRequestController');
-    // Payment
-    Route::get('/payment-history', function () {
-        return view('payment-history.index');
-    })->name('payment.history');
+    Route::resource('/user_requests', 'Admin\UserRequestController');    
     // Payment Methods
     Route::get('/payment-methods', 'Admin\PaymentMethodsController@index')->name('payment.methods');
     Route::post('/payment-methods', 'Admin\PaymentMethodsController@store');
@@ -134,12 +136,18 @@ Route::group(['middleware' => 'superadmin'], function () {
 
     Route::get('/addons', 'Admin\AddonsController@index')->name('addons');
     Route::post('/addon_change_status', 'Admin\AddonsController@update')->name('addon.change.status');
+    Route::post('/store', 'UserCreateController@store');
+    Route::get('/create', 'UserCreateController@create');
 
+
+    // Verified Above Super Admin
+
+
+    
 
     // ----------------------
 
-    Route::post('/store', 'UserCreateController@store');
-    Route::get('/create', 'UserCreateController@create');
+    
 
 
     

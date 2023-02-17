@@ -101,7 +101,7 @@
                     data:{ _token:"{{ csrf_token() }}", name: $(this).attr('module'), status: $(this).is(':checked') },
                     dataType: "json",
                     success: function (data) {
-                        
+                        console.log(data);
                     }
                 });
             });

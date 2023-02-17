@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Nwidart\Modules\Facades\Module;
-
+use Illuminate\Http\Response;
 class AddonsController extends Controller
 {
     /**
@@ -67,8 +67,20 @@ class AddonsController extends Controller
      */
     public function update(Request $request)
     {
-        // return Module::disable($request->name);
-        return ($request->status) ? Module::enable($request->name) : Module::disable($request->name);
+        // return $request->status;
+        if($request->status == 'true') {
+            Module::enable($request->name);
+            $message = $request->name. ' Activated successfully!';
+        } else {
+            Module::disable($request->name);
+            $message = $request->name. ' Deactivated successfully!';
+        }
+        return \Response::json([
+            'status' => 'success', 
+            'data' =>[], 
+            'message' => $message
+        ], 200);
+        // return ($request->status == 'true') ? 1 : 0;
     }
 
     /**

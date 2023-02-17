@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <hr class="my-4">
-                    <form method="post" action="{{ route('service_bank.service.store') }}">
+                    <form method="post" action="{{ route('service-bank.store') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-1"></div>

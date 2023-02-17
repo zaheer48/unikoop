@@ -107,13 +107,7 @@
                         <span>Packing List Templates</span>
                     </a>
                 </li>
-                @endif
-                <li>
-                    <a href="{{ route('payment.history')}}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-money-check-dollar"></i>
-                        <span>Payment History</span>
-                    </a>
-                </li>
+                @endif                
                 <li>
                     <a href="{{ route('payment.methods') }}" class="dropdown-item notify-item">
                         <i class="fa-sharp fa-solid fa-list-ul"></i>

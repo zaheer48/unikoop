@@ -171,6 +171,12 @@
                         </ul>
                     </div>
                 </li>
+                <li>
+                    <a href="{{ route('payment.history')}}" class="dropdown-item notify-item">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <span>Payment History</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- End Sidebar -->

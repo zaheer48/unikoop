@@ -97,13 +97,12 @@
                                     </div> -->
                                 </form>
                                 <div class="row mt-3">                                    
-                                    @if(isset($modules['enabled']['GenerateInvoice']))
+                                    @if(isset($modules['GenerateInvoice']) ? $modules['GenerateInvoice']->isEnabled() : 0)
                                     <div class="col-6 text-center d-grid mt-1">
                                         <a href="{{ route('get.invoice') }}" class ="btn btn-lg btn-outline-success" type="submit">  {{ __('Get Invoice') }} </a>
-                                        <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
                                     </div>
                                     @endif
-                                    @if(isset($modules['enabled']['TrackOrder']))
+                                    @if(isset($modules['TrackOrder']) ? $modules['TrackOrder']->isEnabled() : 0)
                                     <div class="col-6 text-center d-grid mt-1">
                                         <a href="{{ route('track.order') }}" class ="btn btn-lg btn-outline-info" type="submit">  {{ __('Track Order') }} </a>
                                     </div>

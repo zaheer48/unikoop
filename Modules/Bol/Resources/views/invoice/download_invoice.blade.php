@@ -1,6 +1,4 @@
-@php
-
-                                                                    
+@php                                                              
 $bestelnummer = $record->bestelnummer;
 $datas = DB::table('bol_data')
     ->select('id', 'EAN', 'aantal', 'producttitel', 'prijs', 'referentie')
@@ -58,7 +56,7 @@ $address = \DB::table('bussiness_address')
 <html>
 <head>
     <title>Invoice</title>
-    <link rel="stylesheet" href="{{ asset('dhl/css/style_invoice.css') }}" media="all" />
+    <link rel="stylesheet" href="{{ URL::asset('dhl/css/style_invoice.css') }}" media="all" />
     <style>
         tr.border_top th {
             padding: 7px !important;
@@ -118,18 +116,18 @@ $address = \DB::table('bussiness_address')
         <header class="clearfix">
             <div id="logo">
                 @if ($preview->logo_1)
-                    <img src="{{ asset('images/' . $preview->logo_1) }}" width="120px" style="margin-right:80px" />
+                    <img src="{{ URL::asset('images/' . $preview->logo_1) }}" width="120px" style="margin-right:80px" />
                 @else
-                    <img src="{{ asset('dhl/images/Homee For your comforts-2.jpg') }}" width="120px"
+                    <img src="{{ URL::asset('dhl/images/Homee For your comforts-2.jpg') }}" width="120px"
                         style="margin-right:80px" />
                 @endif
             </div>
             <h1 class="title01"> FACTUUR</h1>
             <div id="logo2">
                 @if ($preview->logo_2)
-                    <img src="{{ asset('images/' . $preview->logo_2) }}" width="150" />
+                    <img src="{{ URL::asset('images/' . $preview->logo_2) }}" width="150" />
                 @else
-                    <img src="{{ asset('dhl/images/bol_logo-2.png') }}" width="200" />
+                    <img src="{{ URL::asset('dhl/images/bol_logo-2.png') }}" width="200" />
                 @endif
             </div>
         </header>
@@ -137,18 +135,17 @@ $address = \DB::table('bussiness_address')
         <header class="clearfix">
             <div id="logo">
                 @if ($preview->logo_1)
-                    <img src="{{ asset('images/' . $preview->logo_1) }}" width="120px" style="margin-right:80px" />
+                    <img src="{{ URL::asset('images/' . $preview->logo_1) }}" width="120px" style="margin-right:80px" />
                 @else
-                    <img src="{{ asset('dhl/images/Homee For your comforts-2.jpg') }}" width="120px"
-                        style="margin-right:80px" />
+                    <img src="{{ URL::asset('dhl/images/Homee For your comforts-2.jpg') }}" width="120px" style="margin-right:80px" />
                 @endif
             </div>
             <h1 class="title01"></h1>
             <div id="logo2">
                 @if ($preview->logo_2)
-                    <img src="{{ asset('images/' . $preview->logo_2) }}" width="150" />
+                    <img src="{{ URL::asset('images/' . $preview->logo_2) }}" width="150" />
                 @else
-                    <img src="{{ asset('dhl/images/bol_logo-2.png') }}" width="200" />
+                    <img src="{{ URL::asset('dhl/images/bol_logo-2.png') }}" width="200" />
                 @endif
             </div>
         </header>
@@ -158,16 +155,15 @@ $address = \DB::table('bussiness_address')
         <header class="clearfix">
             <div id="logo">
                 @if ($preview->logo_1)
-                    <img src="{{ asset('images/' . $preview->logo_1) }}" width="120px" style="margin-right:80px" />
+                    <img src="{{ URL::asset('images/' . $preview->logo_1) }}" width="120px" style="margin-right:80px" />
                 @else
-                    <img src="{{ asset('dhl/images/Homee For your comforts-2.jpg') }}" width="120px"
-                        style="margin-right:80px" />
+                    <img src="{{ URL::asset('dhl/images/Homee For your comforts-2.jpg') }}" width="120px" style="margin-right:80px" />
                 @endif
                 <br>
                 @if ($preview->logo_2)
-                    <img src="{{ asset('images/' . $preview->logo_2) }}" width="150" />
+                    <img src="{{ URL::asset('images/' . $preview->logo_2) }}" width="150" />
                 @else
-                    <img src="{{ asset('dhl/images/bol_logo-2.png') }}" width="200" />
+                    <img src="{{ URL::asset('dhl/images/bol_logo-2.png') }}" width="200" />
                 @endif
             </div>
             <div id="logo2">
@@ -181,16 +177,15 @@ $address = \DB::table('bussiness_address')
             </div>
             <div id="logo2">
                 @if ($preview->logo_1)
-                    <img src="{{ asset('images/' . $preview->logo_1) }}" width="120px" style="margin-right:80px" />
+                    <img src="{{ URL::asset('images/' . $preview->logo_1) }}" width="120px" style="margin-right:80px" />
                 @else
-                    <img src="{{ asset('dhl/images/Homee For your comforts-2.jpg') }}" width="120px"
-                        style="margin-right:80px" />
+                    <img src="{{ URL::asset('dhl/images/Homee For your comforts-2.jpg') }}" width="120px" style="margin-right:80px" />
                 @endif
                 <br>
                 @if ($preview->logo_2)
-                    <img src="{{ asset('images/' . $preview->logo_2) }}" width="150" />
+                    <img src="{{ URL::asset('images/' . $preview->logo_2) }}" width="150" />
                 @else
-                    <img src="{{ asset('dhl/images/bol_logo-2.png') }}" width="200" />
+                    <img src="{{ URL::asset('dhl/images/bol_logo-2.png') }}" width="200" />
                 @endif
             </div>
         </header>
@@ -205,24 +200,24 @@ $address = \DB::table('bussiness_address')
                     @endphp
                     @foreach ($logos as $record => $value)
                         <th class="desc" width="20%">
-                            <img src="{{ asset('images/' . $value) }}" width="120" />
+                            <img src="{{ URL::asset('images/' . $value) }}" width="120" />
                         </th>
                     @endforeach
                 @else
                     <th class="desc" width="20%">
-                        <img src="{{ asset('dhl/images/homee_logo-2.jpg') }}" width="120" />
+                        <img src="{{ URL::asset('dhl/images/homee_logo-2.jpg') }}" width="120" />
                     </th>
                     <th class="desc" width="20%">
-                        <img src="{{ asset('dhl/images/Lalouchi SINCE 1986-2.jpg') }}" width="150" />
+                        <img src="{{ URL::asset('dhl/images/Lalouchi SINCE 1986-2.jpg') }}" width="150" />
                     </th>
                     <th width="20%" class="desc" style="text-align:center">
-                        <img src="{{ asset('dhl/images/organic-2.jpg') }}" width="120" />
+                        <img src="{{ URL::asset('dhl/images/organic-2.jpg') }}" width="120" />
                     </th>
                     <th class="desc" width="20%">
-                        <img src="{{ asset('dhl/images/Ellaa Cosmetische Argon Olie-2.jpg') }}" width="120" />
+                        <img src="{{ URL::asset('dhl/images/Ellaa Cosmetische Argon Olie-2.jpg') }}" width="120" />
                         </td>
                     <th width="20%" class="desc">
-                        <img src="{{ asset('dhl/images/La Tulipe Noire-2.jpg') }}" width="200" height="50" />
+                        <img src="{{ URL::asset('dhl/images/La Tulipe Noire-2.jpg') }}" width="200" height="50" />
                     </th>
                 @endif
             </tr>

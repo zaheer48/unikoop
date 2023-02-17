@@ -32,7 +32,7 @@ class UserInvoiceTemplatesController extends Controller
             $templates = DB::table('user_invoice_previews')->where('user_id', Auth::id())->get();
         }
         $servicebanks = DB::table('servicebank')->where('user_id', Auth::id())->first();
-        return view('template.gold.dhl.invoice-templates.index', compact('templates','servicebanks'));
+        return view('bol::invoice-templates.index', compact('templates','servicebanks'));
     }
 
     public function edit($id)
@@ -42,7 +42,7 @@ class UserInvoiceTemplatesController extends Controller
             ->join('user_invoice_previews', 'user_invoice_previews.invoice_preview_id', '=', 'invoice_previews.id')
             ->where('user_invoice_previews.id', $id)
             ->first();
-        return view('template.gold.dhl.invoice-templates.edit', compact('preview'));
+        return view('bol::invoice-templates.edit', compact('preview'));
     }
 
     /**
@@ -166,10 +166,14 @@ class UserInvoiceTemplatesController extends Controller
 
         $servicebanks = DB::table('servicebank')->where('user_id', Auth::id())->first();
         $record = DB::table('bol_data')->where('bestelnummer', $id)->first();
+        $file = $record->voornaam_verzending.' '.$record->achternaam_verzending.' Invoice bestelnummer #'.$id.'.pdf';
+        dd($file);
         // return View('template.gold.dhl.invoice-templates.download_invoice', compact('record','servicebanks','preview'));
         $pdf = \PDF::loadView('bol::invoice.download_invoice', compact('record','servicebanks','preview'));
-        $file = $record->voornaam_verzending.' '.$record->achternaam_verzending.' Invoice bestelnummer #'.$id.'.pdf';        
-        return $pdf->download($file);
+        if($pdf){
+            $file = $record->voornaam_verzending.' '.$record->achternaam_verzending.' Invoice bestelnummer #'.$id.'.pdf';        
+            return $pdf->download($file);
+        }        
     }
 
     public function servicecreate()
