@@ -13,7 +13,6 @@ use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
-    use LaratrustUserTrait;
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;

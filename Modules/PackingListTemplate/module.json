@@ -1,0 +1,11 @@
+{
+    "name": "PackingListTemplate",
+    "alias": "packinglisttemplate",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PackingListTemplate\\Providers\\PackingListTemplateServiceProvider"
+    ],
+    "files": []
+}

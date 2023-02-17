@@ -84,6 +84,36 @@
                         <span>Users Requests</span>
                     </a>
                 </li>
+                @if($modules['EmailTemplate']->isEnabled())
+                <li>
+                    <a href="{{ route('email-templates.index')}}" class="dropdown-item notify-item">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <span>Email Templates</span>
+                    </a>                    
+                </li>
+                @endif
+                @if($modules['GenerateInvoice']->isEnabled())
+                <li>
+                    <a href="{{ route('invoice-templates.index')}}" class="dropdown-item notify-item">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <span>Invoice Templates</span>
+                    </a>
+                </li>
+                @endif
+                @if($modules['PackingListTemplate']->isEnabled())
+                <li>
+                    <a href="{{ route('packinglist-templates.index')}}" class="dropdown-item notify-item">
+                        <i class="fa-sharp fa-solid fa-list-ul"></i>
+                        <span>Packing List Templates</span>
+                    </a>
+                </li>
+                @endif
+                <li>
+                    <a href="{{ route('payment.history')}}" class="dropdown-item notify-item">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <span>Payment History</span>
+                    </a>
+                </li>
                 <li>
                     <a href="{{ route('payment.methods') }}" class="dropdown-item notify-item">
                         <i class="fa-sharp fa-solid fa-list-ul"></i>
@@ -100,6 +130,12 @@
                     <a href="{{ route('website.settings') }}" class="dropdown-item notify-item">
                         <i class="fa-solid fa-money-check-dollar"></i>
                         <span>Site Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('addons') }}" class="dropdown-item notify-item">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <span>AddOns</span>
                     </a>
                 </li>
             </ul>

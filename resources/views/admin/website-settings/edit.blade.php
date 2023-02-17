@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Update Website Settings')
 @section('sidebar')
-    @include('layouts.admin_side_bar')
+    @include('layouts.admin_side_bar', ['modules' => $modules])
 @endsection
 @section('content')
     <div class="content-page">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','User Report')
 @section('sidebar')
-    @include('layouts.admin_side_bar')
+    @include('layouts.admin_side_bar', ['modules' => $modules])
 @endsection
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">

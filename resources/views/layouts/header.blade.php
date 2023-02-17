@@ -108,30 +108,26 @@
                         <h6 class="text-overflow m-0">Welcome !</h6>
                     </div>
                     <div class="d-flex text-center"  class="dropdown-item notify-item" >
+                        @if($modules['GenerateInvoice']->isEnabled())
                         <div class="col-6">
-                                <a href="{{route('getinvoice')}}" class="">
-
-
-                                    {{-- <span>Get Invoice</span> --}}
-
-                                    <button type="submit" class="fs-6 btn btn-dark underline text-sm text-gray-600 hover:text-gray-900 ml-2">
-
-                                        <i class="fa-solid fa-file-lines"></i>{{ __('Get Invoice') }}
-                                    </button>
-                                </a>
+                            <a href="" class="">
+                                <button type="submit" class="fs-6 btn btn-dark underline text-sm text-gray-600 hover:text-gray-900 ml-2">
+                                    <i class="fa-solid fa-file-lines"></i>{{ __('Get Invoice') }}
+                                </button>
+                            </a>
                         </div>
+                        @endif
+                        @if($modules['TrackOrder']->isEnabled())
                         <div class="col-7">
                             <a href="{{route('track.order')}}" class="">
-
-
                                 {{-- <span>Take Order</span> --}}
                                 <button type="submit" class="fs-6 btn btn-primary underline  text-sm text-gray-600 hover:text-gray-900 ml-2" style="margin-right:22px">
-
                                     <i class="fa-solid fa-cart-shopping"></i>
                                     {{ __('Track Order') }}
                                 </button>
                             </a>
                         </div>
+                        @endif
                    </div>
                    <hr>
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
