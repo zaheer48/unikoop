@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
@@ -27,10 +28,15 @@ class User extends Authenticatable
         'username', 
         'email',
         'user_type',
+        'phone',
+        'pobox_number',
+        'address',
         'password',
+        'profile_url',
         'status', 
         'password_hint',
         'create_by',
+        'profile_photo'
     ];
 
     /**

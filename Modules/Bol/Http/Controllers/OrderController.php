@@ -70,8 +70,12 @@ class OrderController extends Controller
     public function allOrders()
     {
         $userId = Auth::id();
+        $user_bol_rec_ids = DB::table('bol_rec')->where('user_id', $userId)->pluck('id')->toArray();
+        $user_bol_data = DB::table('bol_data')
+                    ->whereIn('id', $user_bol_rec_ids)->get('bol_update_status');
+        $bol_update_status_count = $user_bol_data->groupBy('bol_update_status')->map->count();
         $bol_rec = DB::table('bol_rec')->where('user_id', $userId)->orderBy('id', 'DESC')->paginate(10);
-        return view('bol::dashboard', compact('bol_rec'));
+        return view('bol::dashboard', compact('bol_rec', 'bol_update_status_count'));
     }
 
     public function orders($id)
@@ -2090,7 +2094,8 @@ class OrderController extends Controller
 
                         $pdf_base64_decoded = base64_decode($pdf_data_array->pdf);
                         $response_pdf .= $pdf_base64_decoded;
-                        $path = public_path() . "/pdf_files/" . $bol_data_id . "_" . $i . ".pdf";
+                        // $path = public_path() . "/modules/bol/pdf_files/" . $bol_data_id . "_" . $i . ".pdf";
+                        $path = Module::assetPath('bol').'/pdf_files/' . $bol_data_id . "_" . $i . ".pdf";
                         file_put_contents($path, $pdf_base64_decoded);
                         $txt_data .= $bol_data_id . "_" . $i . ".pdf" . "\r\n";
                         $file_array[] = $bol_data_id . "_" . $i . ".pdf";
@@ -2270,9 +2275,9 @@ class OrderController extends Controller
 
                         $pdf_base64_decoded = base64_decode($pdf_data_array->pdf);
                         $response_pdf .= $pdf_base64_decoded;
-                        $path = public_path() . "/pdf_files/" . $bol_data_id . "_" . $i . ".pdf";
+                        // $path = public_path() . "/modules/bol/pdf_files/" . $bol_data_id . "_" . $i . ".pdf";
+                        $path = Module::assetPath('bol').'/pdf_files/' . $bol_data_id . "_" . $i . ".pdf";
 
-                        dd($path);
                         file_put_contents($path, $pdf_base64_decoded);
                         $txt_data .= $bol_data_id . "_" . $i . ".pdf" . "\r\n";
                         $file_array[] = $bol_data_id . "_" . $i . ".pdf";
@@ -2378,7 +2383,8 @@ class OrderController extends Controller
                         )
                     );
 
-                    $path = public_path() . "/pdf_files/" . $bol_data_id . "_dpd.pdf";
+                    // $path = public_path() . "/modules/bol/pdf_files/" . $bol_data_id . "_dpd.pdf";
+                    $path = Module::assetPath('bol').'/pdf_files/' . $bol_data_id . "_dpd.pdf";
                     file_put_contents($path, $resp);
                     $name = $bol_data_id . "_dpd.pdf";
 
@@ -2445,7 +2451,7 @@ class OrderController extends Controller
 
         $cmd = "gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$outputName ";
         foreach ($array as $file) {
-            $cmd .= public_path() . "/pdf_files/" . $file->lable_pdf . " ";
+            $cmd .= public_path() . "/modules/bol/pdf_files/" . $file->lable_pdf . " ";
         }
         // return $cmd;
         $result = shell_exec($cmd);
@@ -3912,5 +3918,4 @@ class OrderController extends Controller
 
 		return $str_html;
 	}
-
 }

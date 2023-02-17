@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    {{-- <title>{{ config('app.name', 'Unikoop') }}</title> --}}
     <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link href=" {{ URL::asset('assets/images/favicon.ico') }}" rel="shortcut icon"  />
+    <link href=" {{ isset($settings->site_fav_icon) ? asset('portal/'.$settings->site_fav_icon) : '' }}" rel="shortcut icon"  />
     <!-- Responsive Table css -->
     <link href="{{URL::asset('assets/libs/admin-resources/rwd-table/rwd-table.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- third party css -->
@@ -60,7 +60,6 @@
         .has-details:hover span {
             transform: translateY(10%) scale(1);
         }
-
       .btn-btn-logout:hover{
         border-color:#ffffff00;
     }

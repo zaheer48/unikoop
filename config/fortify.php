@@ -63,6 +63,8 @@ return [
 
     'home' => RouteServiceProvider::HOME,
 
+    'dashboard' => RouteServiceProvider::HOME_ADMIN,
+
     /*
     |--------------------------------------------------------------------------
     | Fortify Routes Prefix / Subdomain

@@ -63,6 +63,7 @@
 
                 <div class="row">
                     @if (isset($available_modules['Amazon']))
+                    @if($modules['Amazon']->isEnabled())
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">
@@ -94,7 +95,9 @@
                         </div> <!-- end card -->
                     </div><!-- end col -->
                     @endif
+                    @endif
                     @if (isset($available_modules['Unikoop']))
+                    @if($modules['Unikoop']->isEnabled())
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">
@@ -127,7 +130,9 @@
                         </div> <!-- end card -->
                     </div><!-- end col -->
                     @endif
+                    @endif
                     @if (isset($available_modules['Bestlist']))
+                    @if($modules['Bestlist']->isEnabled())
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">
@@ -160,11 +165,13 @@
                         </div> <!-- end card -->
                     </div><!-- end col -->
                     @endif
+                    @endif
                 </div>
                 <!-- end row -->
 
                 <div class="row">
                     @if (isset($available_modules['Bol']))
+                    @if($modules['Bol']->isEnabled())
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">
@@ -196,7 +203,9 @@
                         </div> <!-- end card -->
                     </div><!-- end col -->
                     @endif
+                    @endif
                     @if (isset($available_modules['Ebay']))
+                    @if($modules['Ebay']->isEnabled())
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">
@@ -228,7 +237,9 @@
                         </div> <!-- end card -->
                     </div><!-- end col -->
                     @endif
+                    @endif
                     @if (isset($available_modules['Homee']))
+                    @if($modules['Homee']->isEnabled())
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">
@@ -259,6 +270,7 @@
                             </div>
                         </div> <!-- end card -->
                     </div><!-- end col -->
+                    @endif
                     @endif
                 </div>
                 <!-- end row -->

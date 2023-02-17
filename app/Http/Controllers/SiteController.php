@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+
 use App\Bol_data;
 use App\User;
 use DB;

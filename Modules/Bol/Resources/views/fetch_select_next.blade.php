@@ -166,6 +166,8 @@
                                 <div class="card-body">
                             {{-- <h3 class="page-title mb-3 mt-0" style="color: blue">Fetched Select List</h3> --}}
 
+
+
                                     <div
                                         style="background-color:  var(--ct-form-check-input-checked-bg-color) ; padding: 20px; margin-bottom: 6px; color: #fff;">
                                         <style>

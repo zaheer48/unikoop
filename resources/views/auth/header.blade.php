@@ -12,8 +12,8 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <link href="{{ URL::asset('assets/css/images/favicon.ico') }}" rel="shortcut icon"   />
+        <link rel="shortcut icon" href="assets/images/favicon.webp">
+        <link href="{{ URL::asset('assets/css/images/favicon.webp') }}" rel="shortcut icon"   />
 
 
 
