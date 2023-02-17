@@ -54,19 +54,21 @@
             <ul id="side-menu">
                 <li class="menu-title">Navigation</li>
                 <li>
-                    <a href="#sidebarDashboards" data-bs-toggle="collapse">
+                    <a href="{{ route('dashboard') }}"
+                     {{-- href="#sidebarDashboards" --}}
+                      data-bs-toggle="collapse">
                         <i data-feather="airplay"></i>
                         <!-- <span class="badge bg-success rounded-pill float-end">4</span> -->
                         <span> Dashboards </span>
                     </a>
-                    <div class="collapse" id="sidebarDashboards">
+                    {{-- <div class="collapse" id="sidebarDashboards">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
 
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
                 <li>
                     <a href="{{ route('my.wallet')}}" class="dropdown-item notify-item">
@@ -144,32 +146,32 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#sidebarCrm" data-bs-toggle="collapse">
+                    <a href="{{ route('invoice') }}">
                         <i class="fa-solid fa-file-invoice"></i>
-                        <span> Invoice</span>
-                        <span class="menu-arrow"></span>
+                        <span>Create Invoice</span>
+                        {{-- <span class="menu-arrow"></span> --}}
                     </a>
-                    <div class="collapse" id="sidebarCrm">
+                    {{-- <div class="collapse" id="sidebarCrm">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('invoice') }}">Create Invoice</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
                 <li>
-                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                    <a href="{{route('download.label')}}">
                         <i class="fa-solid fa-download"></i>
                         <span> Download Label </span>
-                        <span class="menu-arrow"></span>
+                        {{-- <span class="menu-arrow"></span> --}}
                     </a>
-                    <div class="collapse" id="sidebarEcommerce">
+                    {{-- <div class="collapse" id="sidebarEcommerce">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{route('download.label')}}">Download Label</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
             </ul>
         </div>
