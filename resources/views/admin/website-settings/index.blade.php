@@ -84,6 +84,7 @@
                                             <br>
                                         @endforeach
                                     @endif
+                                    
                                 </div>
                                 <hr>
                                 <div class="row">

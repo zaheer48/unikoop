@@ -76,7 +76,7 @@
                                     <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
                                         <i class="mdi mdi-filter-variant"></i>
                                     </a>
-                                </form> --}}
+                                </form>--}}
                             </div>
                             <h4 class="page-title" style="color: blue">Download Label</h4>
                         </div>
@@ -96,7 +96,7 @@
         @if(Session::has('alert-danger'))
             <p class="alert alert-warning">{{ Session::get('alert-danger') }}
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-        @endif --}}
+        @endif
 
 
         <div class="panel panel-info">
