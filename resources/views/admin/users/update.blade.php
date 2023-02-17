@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','update User')
 @section('sidebar')
-    @include('layouts.admin_side_bar')
+    @include('layouts.admin_side_bar', ['modules' => $modules])
 @endsection
 @section('content')
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>

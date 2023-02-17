@@ -10,8 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::prefix('bol')->group(function() {
+Route::group(['middleware' => ['auth'], 'prefix' => 'bol'], function() {
     Route::get('/', 'BolController@index')->name('bol');
 
     Route::get('/all_orders', 'OrderController@allOrders')

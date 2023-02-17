@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Users Requests')
 @section('sidebar')
-    @include('layouts.admin_side_bar')
+    @include('layouts.admin_side_bar', ['modules' => $modules])
 @endsection
 @section('content')
 

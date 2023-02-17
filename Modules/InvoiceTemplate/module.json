@@ -1,0 +1,11 @@
+{
+    "name": "InvoiceTemplate",
+    "alias": "invoicetemplate",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\InvoiceTemplate\\Providers\\InvoiceTemplateServiceProvider"
+    ],
+    "files": []
+}
