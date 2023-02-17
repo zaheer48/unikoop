@@ -23,7 +23,8 @@ class OrderTrackController extends Controller
 
     public function check_order(Request $request)
     {
-        $trackerCode_bestel = $request->post('bestelnummer');
+        dd($request->all());
+        $bestelnummer = $request->post('bestelnummer');
         $platform = $request->post('platform');
 
         $bol_data = DB::table('bol_data')->select("bestelnummer", "emailadres", "trackerCode", "bol_rec_id")
@@ -32,25 +33,31 @@ class OrderTrackController extends Controller
                                 ->orWhere('bol_data.bestelnummer', $trackerCode_bestel)
                                 ->first();
 
-        if($bol_data){
-            $baseln = DB::table('users_orders')
-                        ->select('*')
-                        ->where('order_id',$bol_data->bestelnummer)
-                        ->first();
+            // $bol_data = DB::table('bol_data')->select("bestelnummer","emailadres", "voornaam_verzending", "achternaam_verzending", "bedrijfsnaam_verzending", "bol_rec_id")->where('bestelnummer', $bestelnummer)->first();
+            
+            // if ($bol_data->bedrijfsnaam_verzending != "") {
+            //     $name = $bol_data->bedrijfsnaam_verzending;
+            // } else {
+            //     $name = $bol_data->voornaam_verzending . " " . $bol_data->achternaam_verzending;
+            // }
 
-            if (!$baseln && !Auth::check()) {
-                $response = [
-                    'message' => 'redirect',
-                    'route' => route('register'),
-                ];
-                return json_encode($response);
-            } else if(!$baseln){
-                DB::table('users_orders')->insert([
-                    'order_id'=> $bol_data->bestelnummer,
-                    'user_id'=> Auth::id(),
-                    'platform'=> $platform,
-                ]);
-            }
+            // if ($bol_data) {
+            //     $data = $bol_data->emailadres;
+            // }
+            // return [
+            //     'o_no' => $bastenumber2,
+            //     'email' => $data,
+            //     'name' => $name,
+            // ];
+            // }
+        } else{
+            $response = [
+                'message' => 'redirect',
+                'route' => route('register'),
+            ];
+            echo json_encode($response);
+            // return redirect()->to('/register')->send();
+        }
 
             $track_order_response = $this->trackOrder($bol_data->trackerCode, $platform);            
             $response = [
