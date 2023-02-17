@@ -70,10 +70,54 @@ span.img-text:hover {
                                     <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
                                         <i class="mdi mdi-filter-variant"></i>
                                     </a>
-                                </form> --}}
+                                </form>--}}
+                            </div>
+                            <h4 class="page-title" style="color: blue">Download Label</h4>
                         </div>
                         <h4 class="page-title" style="color: blue">Download Label</h4>
                     </div>
+                </div>
+                <!-- end page title -->
+                @if (Session::has('alert-danger'))
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{ Session::get('alert-danger') }}.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                 @endif
+
+    <div class="col-md-12 card middlecontainer">
+        @if(Session::has('alert-danger'))
+            <p class="alert alert-warning">{{ Session::get('alert-danger') }}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+        @endif
+
+
+        <div class="panel panel-info">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3  style="padding: 20px; padding-bottom: 10px;">
+                        Download Label
+                    </h3>
+                    <hr style="margin-top: 0px;">
+                    <form name="register" method="post" id="invoice_form" action="/bol/label_download"
+                          enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="row text-center">
+                            <div class="col-md-2 col-md-offset-1">
+                                <div class="form-group" style="text-align: center; margin-top: 8px;">
+                                    <label for="">Search Order</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-container form-group">
+                                    <input type="text" name="bestelnummer" id="bestelnummer" class="form-control mb_view" placeholder="bestelnummer">
+                                    <input type="submit" value="Search Order" class="btn btn-success" id="" style="margin-left: 5px; padding: 0px 15px;">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- end page title -->
