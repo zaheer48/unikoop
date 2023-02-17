@@ -47,12 +47,27 @@
             margin-bottom: 3px;
             width: 391px;
         }
-    </style>
-    
+
+        #sidebar-menu>ul>li>a {
+            transition: none;
+
+            font-size: inherit;
+        }
+        #sidebar-menu .menu-title{
+            font-size: 12px;
+        }
+        .navbar-custom .app-search .app-search-box {
+          display: none;
+        }
+        a:hover {
+
+             text-decoration: none;
+          }
+</style>
     <div class="content-page">
         <div class="content">
             <div class="row page-titles">
-                <div class="col-md-12">
+                <div class="col-md-12 mt-3">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
                         <li class="breadcrumb-item"><a>update User</a></li>
@@ -69,7 +84,7 @@
                 </strong>
             </div>
             @endif
-            <div class="card card-profile shadow">
+            <div class="card card-profile shadow border">
                 <div class="card-body">
                     <h3>Update User Record</h3>
                     <hr class="my-4">
@@ -130,7 +145,7 @@
                             <div class="col-md-1"></div>
                             <div class="col-md-10">
                                 <div class="form-group" id="adding-form">
-                                    <button type="submit" class="btn btn-md btn-primary">
+                                    <button type="submit" class="btn btn-md btn-primary bg-primary">
                                         Update User
                                     </button>
                                 </div>
@@ -147,8 +162,8 @@
                 <?php echo csrf_field(); ?>
                 <div id="second_card" style="">
                     <div class="about-left sting" id="businessandcontact" style="display:block;">
-                        <div class="panel panel-default">
-                            <div class="panel-body panel-body-multi">
+                        <div class="panel-default">
+                            <div class="card panel-body panel-body-multi border">
                                 <div class="row">
                                     <div class="col-md-12">
 
@@ -527,7 +542,7 @@
                                     $mid_name=$b_own->mid_name;
                                     $lastname=$b_own->lastname;
 
-                            
+
                                 ?>
                                 <div class="row" style="display: inline;">
                                     <input type="hidden" name="type_{{ $i }}" value="1">
@@ -881,7 +896,7 @@
                                 </div>
                             </div>
                             <br>
-                            <button name="button" type="submit" class="btn btn btn-primary" id="button" value="true" >Save</button>
+                            <button name="button" type="submit" class="btn btn btn-primary bg-primary" id="button" value="true" >Save</button>
                         </div>
                     </div>
                 </div>
@@ -920,7 +935,7 @@
                                         <input class="form-control input" type="text" value="@if($user->bol_be_client_secret ?? ''){{$user->bol_be_client_secret}}@endif" name="bol_be_client_secret" placeholder="Bol client secret (BE)">
                                         <hr>
                                         <div class="panel-body">
-                                            <button name="button" type="submit" class="btn btn-primary" id="button" value="true" >Save</button>
+                                            <button name="button" type="submit" class="btn btn-primary bg-primary" id="button" value="true" >Save</button>
                                     </div>
                                 </form>
                             </div>
@@ -1038,12 +1053,12 @@
                                             </div>
                                             <div class="form-group">
                                                 @if($userrecord->credit_limit ?? '')
-                                                    <button name="" type="button" class="btn btn btn-primary" id="button" value=""
+                                                    <button name="" type="button" class="btn btn btn-primary bg-primary" id="button" value=""
                                                             disabled>
                                                         Save
                                                     </button>
                                                 @else
-                                                    <button name="button" type="submit" class="btn btn btn-primary" id="button"
+                                                    <button name="button" type="submit" class="btn btn btn-primary bg-primary" id="button"
                                                             value="true">Save
                                                     </button>
                                                 @endif
@@ -1166,7 +1181,7 @@
                 if ($("#one").is(":checked")) {
                     $('#option1').css('display','block');
                 }
-         
+
         });
 
     </script>

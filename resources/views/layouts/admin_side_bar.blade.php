@@ -65,31 +65,39 @@
                         <span>Label Pricing</span>
                     </a>
                 </li>
-                <li>
 
-                    <a href="{{ route('users.index')}}" class="dropdown-item notify-item">
-                        <i class="fe-user"></i>
-                        <span>Users</span>
-                    </a>
-                </li>
+
+
                 <li>
-                    <a href="{{ route('subadmins.index')}}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-envelope-open-text"></i>
-                        <span>Sub Admins</span>
+                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                        <i data-feather="shopping-cart"></i>
+                        <span> User Management </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="sidebarEcommerce">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('users.index')}}">Users</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('subadmins.index')}}">Sub Admins</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('user_requests.index')}}">User Requests</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
                 </li>
-                <li>
-                    <a href="{{ route('user_requests.index')}}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-file-invoice"></i>
-                        <span>Users Requests</span>
-                    </a>
-                </li>
+
+
                 @if($modules['EmailTemplate']->isEnabled())
                 <li>
                     <a href="{{ route('email-templates.index')}}" class="dropdown-item notify-item">
                         <i class="fa-solid fa-envelope-open-text"></i>
                         <span>Email Templates</span>
-                    </a>                    
+                    </a>
                 </li>
                 @endif
                 @if($modules['GenerateInvoice']->isEnabled())
@@ -115,29 +123,39 @@
                     </a>
                 </li>
                 <li>
+                    <a href="#sidebarCrm" data-bs-toggle="collapse">
+                        <i data-feather="shopping-cart"></i>
+                        <span>Adds Management </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarCrm">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('addons') }}">AddOns</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('activate.settings') }}">Activation</a>
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                </li>
+                <li>
                     <a href="{{ route('payment.methods') }}" class="dropdown-item notify-item">
                         <i class="fa-sharp fa-solid fa-list-ul"></i>
                         <span>Payment Method</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('activate.settings') }}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-money-check-dollar"></i>
-                        <span>Activation</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="{{ route('website.settings') }}" class="dropdown-item notify-item">
                         <i class="fa-solid fa-money-check-dollar"></i>
                         <span>Site Settings</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('addons') }}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-money-check-dollar"></i>
-                        <span>AddOns</span>
-                    </a>
-                </li>
+
             </ul>
         </div>
         <!-- End Sidebar -->

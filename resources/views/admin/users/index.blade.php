@@ -61,6 +61,9 @@
         .dropdown-toggle::after {
             display: none !important;
         }
+        .table {
+            width:115%;
+        }
     </style>
     <div class="content-page">
         <div class="content">
@@ -96,8 +99,8 @@
                                     <th scope="col">Password</th>
                                     <th scope="col">Acount</th>
                                     <th scope="col">Credit limit</th>
-                                    <th scope="col">Price Per Label (DHL)</th>
-                                    <th scope="col">Price Per Label (DPD)</th>
+                                   <th scope="col" class="col-2">Price Per Label (DHL)</th>
+                                    <th scope="col"  class="col-2">Price Per Label (DPD)</th>
                                     <th scope="col">Created By</th>
                                     <th scope="col">Actions</th>
                                 </tr>
@@ -172,7 +175,7 @@
                                                             {{--</button>--}}
                                                         {{--</form>--}}
                                                         <a class="edit dropdown-item" href="{{route('users.show',$user->id)}}">View Report</a>
-                                                    
+
                                                     </div>
                                             </td>
 

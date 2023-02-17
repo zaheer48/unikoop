@@ -22,7 +22,7 @@
                     {!! implode('', $errors->all('<li>:message</li>')) !!}
                 </ul>
             @endif
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-md-12">
                     <div class="card shadow">
                         <div class="card-body">
@@ -111,7 +111,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <button class="btn btn-primary">
+                                                <button class="btn btn-primary mt-3">
                                                     Save
                                                 </button>
                                             </div>

@@ -19,9 +19,11 @@
                 </strong>
             </div>
         @endif
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-md-6">
-                    <div class="card shadow">
+                    <div class="card shadow" style="
+                    height: 96%;
+                ">
                         <div class="card-body">
                             <div class="card-body">
                                 <h4 class="text-center">Mollie Credential</h4>
@@ -49,7 +51,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row form-group mt-3">
                                         <div class="col-md-4">
                                             <label for="">Mollie Profile ID</label>
                                         </div>
@@ -68,7 +70,7 @@
                                     <div class="row form-group">
                                         <div class="col-md-12 pull-right">
                                             @if (in_array('update_pmethod',$privileges) || Auth::user()->is_admin == 1)
-                                                <button class="btn btn-md btn-primary">Save</button>
+                                                <button class="btn btn-md btn-primary mt-3" style="margin-left:164px">Save</button>
                                             @endif
                                         </div>
                                     </div>
@@ -106,7 +108,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row form-group mt-2">
                                         <div class="col-md-4">
                                             <label for="">Account name</label>
                                         </div>
@@ -122,7 +124,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row form-group mt-2">
                                         <div class="col-md-4">
                                             <label for="">Account</label>
                                         </div>
@@ -138,7 +140,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row form-group mt-2">
                                         <div class="col-md-4">
                                             <label for="">Account IBAN</label>
                                         </div>
@@ -154,7 +156,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row form-group mt-2">
                                         <div class="col-md-4">
                                             <label for="">Swift code</label>
                                         </div>
@@ -170,7 +172,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row form-group mt-2">
                                         <div class="col-md-4">
                                             <label for="">Bank Address</label>
                                         </div>
@@ -186,7 +188,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row form-group mt-2">
                                         <div class="col-md-4">
                                             <label for="">City</label>
                                         </div>
@@ -331,7 +333,7 @@
                                         <div class="col-md-4">
                                             <label for="">Country</label>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-8 mt-2">
                                             <select name="country" class="form-control" required
                                                     style="height: 34px !important;">
                                                 <option value="">--Select--</option>
@@ -349,10 +351,10 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div class="row form-group mt-3">
                                         <div class="col-md-12 pull-right">
                                             @if (in_array('update_pmethod',$privileges) || Auth::user()->is_admin == 1)
-                                                <button class="btn btn-md btn-primary">Save</button>
+                                                <button class="btn btn-md btn-primary" style="margin-left: 164px">Save</button>
                                             @endif
                                         </div>
                                     </div>

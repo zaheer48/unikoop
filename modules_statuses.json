@@ -4,5 +4,5 @@
     "EmailTemplate": true,
     "PackingListTemplate": true,
     "TrackOrder": true,
-    "GenerateInvoice": false
+    "GenerateInvoice": true
 }

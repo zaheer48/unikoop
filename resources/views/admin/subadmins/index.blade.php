@@ -16,6 +16,13 @@
             color: #FFF !important;
             background-color: #dc3545 !important;
         }
+        div.dataTables_wrapper div.dataTables_filter {
+    margin: 2rem;
+    text-align: right;
+}
+#userTable_length{
+    margin: 2rem;
+}
     </style>
     @php
         $privileges = explode(",",\Auth::user()->privilages);

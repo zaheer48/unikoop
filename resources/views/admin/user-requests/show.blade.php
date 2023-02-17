@@ -28,7 +28,7 @@
                     ?>
                     <h3>
                         Request Details
-                        <a class="btn btn-primary" href="{{route('user_requests.index')}}" style="float: right;">Back</a>
+                        <a class="btn btn-outline-primary" href="{{route('user_requests.index')}}" style="float: right;">Back</a>
                         @if (in_array('activate_user_request',$privileges) || Auth::user()->is_admin == 1)
                             <form method="post" action="{{route('user_requests.update',$user_request->id)}}" style="float: right;">
                                 @csrf
@@ -36,7 +36,7 @@
                                 <button type="submit"
                                         onclick="return confirm('You are going to Approve the user: {{$username->username}} data. Do you want to proceed ?')"
                                         data-toggle="tooltip" data-original-title="approve" style="margin-right: 5px;"
-                                        class="btn btn-success">
+                                        class="btn btn-outline-success">
                                     <i class="glyphicon glyphicon-ok"></i> Approve
                                 </button>
                             </form>
@@ -49,7 +49,7 @@
                                 <button type="submit"
                                         onclick="return confirm('You are going to Reject the user: {{$username->username}} data. Do you want to proceed ?')"
                                         data-toggle="tooltip" data-original-title="reject" style="margin-right: 5px;"
-                                        class="btn btn-danger">
+                                       class="btn btn-outline-danger">
                                     <i class="glyphicon glyphicon-remove"></i> Reject
                                 </button>
                             </form>
