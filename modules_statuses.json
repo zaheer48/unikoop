@@ -1,7 +1,7 @@
 {
     "Bol": true,
     "InvoiceTemplate": true,
-    "EmailTemplate": false,
+    "EmailTemplate": true,
     "PackingListTemplate": true,
     "TrackOrder": true,
     "GenerateInvoice": true

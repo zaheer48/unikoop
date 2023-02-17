@@ -44,13 +44,17 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
-
+                    
                     </div>
                 </div>
             </div>
             <!-- end page title -->
             <div class="col-xl-12">
                 <div class="mt-5">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert" style="display:none">
+                        <span></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                     <div class="card-body" style="background-color: #fff;">
                         <h3 class="header-title mb-3">All Modules</h3>
                         <div class="table-responsive">
@@ -100,8 +104,11 @@
                     url: "{{ route('addon.change.status') }}",
                     data:{ _token:"{{ csrf_token() }}", name: $(this).attr('module'), status: $(this).is(':checked') },
                     dataType: "json",
-                    success: function (data) {
-                        console.log(data);
+                    success: function (response) {
+                        if(response.status == 'success'){
+                            $('#alert').show();
+                            $('#alert span').html(response.message);
+                        }
                     }
                 });
             });

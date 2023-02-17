@@ -128,7 +128,7 @@
                 </li>
                 <li>
                     <a href="{{ route('addons') }}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <i class="fa-solid"></i>
                         <span>AddOns</span>
                     </a>
                 </li>

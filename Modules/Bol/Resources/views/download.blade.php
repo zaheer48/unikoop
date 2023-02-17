@@ -88,12 +88,6 @@ span.img-text:hover {
                  @endif
 
     <div class="col-md-12 card middlecontainer">
-        @if(Session::has('alert-danger'))
-            <p class="alert alert-warning">{{ Session::get('alert-danger') }}
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-        @endif
-
-
         <div class="panel panel-info">
             <div class="row">
                 <div class="col-md-12">

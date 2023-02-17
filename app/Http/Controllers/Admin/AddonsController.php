@@ -70,10 +70,10 @@ class AddonsController extends Controller
         // return $request->status;
         if($request->status == 'true') {
             Module::enable($request->name);
-            $message = $request->name. ' Activated successfully!';
+            $message = $request->name. ' Module Activated successfully!';
         } else {
             Module::disable($request->name);
-            $message = $request->name. ' Deactivated successfully!';
+            $message = $request->name. ' Module Deactivated successfully!';
         }
         return \Response::json([
             'status' => 'success', 
