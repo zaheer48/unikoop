@@ -29,6 +29,7 @@
                                                 @php
                                                     $transactions = \DB::table('transaction_histories')->where('user_id',Auth::id())->where('type','Label')->orWhere('type','Custom Label')->get();
                                                 @endphp
+                                                @if()
                                                 @foreach($transactions as $transaction)
                                                     <tr>
                                                         <td height="30">{{ $transaction->id }}</td>
@@ -149,68 +150,68 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @php
-                                                            $transactions = \DB::table('transaction_histories')->where('user_id',Auth::id())->where('type','Label')->orWhere('type','Custom Label')->get();
+                                                        @php
+                                                            $transactions = \DB::table('transaction_histories')->where('user_id',242)->where('type','Label')->orWhere('type','Custom Label')->get();
                                                         @endphp
                                                         @foreach($transactions as $transaction)
-
                                                         <tr>
                                                             <td>{{ $transaction->id }}</td>
                                                             <td> &euro;{{ number_format($transaction->amount,2) }}</td>
                                                             <td>{{ $transaction->description }}</td>
                                                             <td>Completed</td>
                                                             <td>{{ $transaction->created_at }}</td>
-                                                        <td>@if ($transaction->type == 'Label')
-                                                            <a href="{{ route('payment.invoice',$transaction->id) }}"
-                                                            class="btn btn-sm btn-primary">
-                                                                <i class="fa fa-file-pdf-o"></i>&nbsp; PDF
-                                                            </a>
-                                                        @else
-                                                            <a href="{{ route('custom.payment.invoice',$transaction->id) }}"
-                                                            class="btn btn-sm btn-primary">
-                                                                <i class="fa fa-file-pdf-o"></i>&nbsp; PDF
-                                                            </a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                                            <td>
+                                                                @if ($transaction->type == 'Label')
+                                                                    <a href="{{ route('payment.invoice',$transaction->id) }}"
+                                                                    class="btn btn-sm btn-primary">
+                                                                        <i class="fa fa-file-pdf-o"></i>&nbsp; PDF
+                                                                    </a>
+                                                                @else
+                                                                    <a href="{{ route('custom.payment.invoice',$transaction->id) }}"
+                                                                    class="btn btn-sm btn-primary">
+                                                                        <i class="fa fa-file-pdf-o"></i>&nbsp; PDF
+                                                                    </a>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
                                                         </tbody>
                                                     </table>
-                                                </div> <!-- end .table-responsive -->
-
+                                                </div> <!-- end .table-responsive -->                                                
                                             </div> <!-- end .table-rep-plugin-->
                                         </div> <!-- end .responsive-table-plugin-->
                                     </div>
                                 </div> <!-- end card -->
                             </div> <!-- end col -->
+                            <!-- <div class="row">
+                                <div class="col-12">
+                                    <div class="text-end">
+                                        <ul class="pagination pagination-rounded justify-content-end">
+                                            {{-- <span>{{$transactions->links()}}</span> --}}
+                                            <li class="page-item">
+                                                <a class="page-link" href="javascript: void(0);" aria-label="Previous">
+                                                    <span aria-hidden="true">«</span>
+                                                    <span class="visually-hidden">Previous</span>
+                                                </a>
+                                            </li>
+                                            <li class="page-item active"><a class="page-link" href="javascript: void(0);">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a></li>
+                                            <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="javascript: void(0);" aria-label="Next">
+                                                    <span aria-hidden="true">»</span>
+                                                    <span class="visually-hidden">Next</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> -->
                         </div>
                         <!-- end row -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="text-end">
-                                    <ul class="pagination pagination-rounded justify-content-end">
-                                        {{-- <span>{{$transaction->links()}}</span> --}}
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-                                                <span aria-hidden="true">«</span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="javascript: void(0);">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript: void(0);" aria-label="Next">
-                                                <span aria-hidden="true">»</span>
-                                                <span class="visually-hidden">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div> <!-- container -->
                 </div> <!-- content -->
             </div>

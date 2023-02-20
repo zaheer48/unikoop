@@ -21,10 +21,10 @@
                     <h3 style="padding: 20px;">
                         Service Bank
                          @if($service_banks == null)
-                        <a href="{{ route('service_bank.create') }}" class="btn btn-md btn-primary"
+                        <a href="{{ route('service-bank.create') }}" class="btn btn-md btn-primary"
                            style="float: right; margin-top: -10px;">Add Service Bank</a>
                         @else
-                        <a href="{{ route('service_bank.edit',$service_banks->slug) }}" class="btn btn-md btn-primary"
+                        <a href="{{ route('service-bank.edit',$service_banks->slug) }}" class="btn btn-md btn-primary"
                            style="float: right; margin-top: -10px;">Update Service Bank</a>
                         @endif
                     </h3>

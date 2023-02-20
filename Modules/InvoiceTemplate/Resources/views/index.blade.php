@@ -177,7 +177,7 @@
                                                                     <!-- <th>GOOG <span class="co-name">Google Inc.</span></th> -->
                                                                     <td>
                                                                         <p align="center">No record Found <br>
-                                                                            <a href="{{ route('service_bank.service.create') }}"
+                                                                            <a href="{{ route('service-bank.create') }}"
                                                                                 class="btn btn-md btn-primary"
                                                                                 style="text-align: center; margin-top: 10px;">Add
                                                                                 Bank Service</a>
@@ -251,7 +251,7 @@
                                                                     <!-- <th>GOOG <span class="co-name">Google Inc.</span></th> -->
                                                                     <td>
                                                                         <p align="center">No record Found <br>
-                                                                            <a href="{{ route('service_bank.create') }}"
+                                                                            <a href="{{ route('service-bank.create') }}"
                                                                                 class="btn btn-md btn-primary"
                                                                                 style="text-align: center; margin-top: 10px;">Add
                                                                                 Bank Service</a>

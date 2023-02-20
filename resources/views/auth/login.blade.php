@@ -97,13 +97,12 @@
                                     </div> -->
                                 </form>
                                 <div class="row mt-3">                                    
-                                    @if(isset($modules['enabled']['GenerateInvoice']))
+                                    @if(isset($modules['GenerateInvoice']) ? $modules['GenerateInvoice']->isEnabled() : 0)
                                     <div class="col-6 text-center d-grid mt-1">
                                         <a href="{{ route('get.invoice') }}" class ="btn btn-lg btn-outline-success" type="submit">  {{ __('Get Invoice') }} </a>
-                                        <!-- <button onclick="document.location='default.asp'">HTML Tutorial<a href="dashboard.html"></a> </button> -->
                                     </div>
                                     @endif
-                                    @if(isset($modules['enabled']['TrackOrder']))
+                                    @if(isset($modules['TrackOrder']) ? $modules['TrackOrder']->isEnabled() : 0)
                                     <div class="col-6 text-center d-grid mt-1">
                                         <a href="{{ route('track.order') }}" class ="btn btn-lg btn-outline-info" type="submit">  {{ __('Track Order') }} </a>
                                     </div>
@@ -141,25 +140,22 @@
                     </div> <!-- end col -->
                 </div>
                 <!-- end row -->
+
+                
+                @php
+                $settings = \DB::table('website_settings')->first();
+            @endphp
                 <div class="carousel mt-4" data-flickity='{ "wrapAround": true, "autoPlay": true, "imagesLoaded":true }'>
+                    @if($settings->partners_logo != null)
+                    @php
+                        $files = explode(",",$settings->partners_logo);
+                    @endphp
+                    @foreach($files as $files => $value)
                     <div class="carousel-cell">
-                      <img class="w3-image" src="https://smash-images.photobox.com/original/5f04c1b41fd48d1b10ff27dfc90548bf13608845_Large-Print-lifestyle-3_1-2600.jpg">
-                    </div>
-                    <div class="carousel-cell">
-                      <img class="w3-image" src="https://smash-images.photobox.com/original/bca8e5fa7862a2cfaefc300c5b572e7a6dc6f3f3_Standard-Prints-lifestyle-3_1-2600.jpg">
-                    </div>
-                    <div class="carousel-cell">
-                      <img class="w3-image" src="https://smash-images.photobox.com/original/a422aed1a721e933961b19ea9e47e07fc71e0699_Acrylic-Prints-lifestyle-3_1-2600.jpg">
-                    </div>
-                    <div class="carousel-cell">
-                     <img class="w3-image" src="https://smash-images.photobox.com/original/5f04c1b41fd48d1b10ff27dfc90548bf13608845_Large-Print-lifestyle-3_1-2600.jpg">
-                    </div>
-                    <div class="carousel-cell">
-                      <img class="w3-image" src="https://smash-images.photobox.com/original/bca8e5fa7862a2cfaefc300c5b572e7a6dc6f3f3_Standard-Prints-lifestyle-3_1-2600.jpg">
-                    </div>
-                    <div class="carousel-cell">
-                      <img class="w3-image" src="https://smash-images.photobox.com/original/a422aed1a721e933961b19ea9e47e07fc71e0699_Acrylic-Prints-lifestyle-3_1-2600.jpg">
-                    </div>
+                        <img class="w3-image" src="{{ asset('portal/'.$value) }}">
+                      </div>
+                    @endforeach
+                @endif
                 </div>
             </div>
             <!-- end container -->

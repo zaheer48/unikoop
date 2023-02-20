@@ -117,12 +117,6 @@
                 </li>
                 @endif
                 <li>
-                    <a href="{{ route('payment.history')}}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-money-check-dollar"></i>
-                        <span>Payment History</span>
-                    </a>
-                </li>
-                <li>
                     <a href="#sidebarCrm" data-bs-toggle="collapse">
                         <i data-feather="shopping-cart"></i>
                         <span>Adds Management </span>
