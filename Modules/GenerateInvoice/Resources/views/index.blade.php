@@ -4,21 +4,21 @@
 @endsection
 @section('content')
     <!-- Start Page Content here -->
-    <div class="content-page">
+    <div class="content-page m-auto mt-5">
         <div class="content">
 
             <!-- Start Content-->
-            <div class="container-fluid">
-                <div class="row mt-1">
-                    <div class="col-md-12">
+            <div class="container-fluid col-10">
+                <div class="row">
+                    <div class="col-md-12 mt-5">
                         <div class="card">
                             <div class="card-body mb-4">
                                 <h4 class="page-title" style="color: blue";>Create Invoice</h4>
 
                                 <hr>
                                 <div class="row">
-                                    <div class="col-12 col-sm-3 col-md-5 col-lg-5 ">
-                                        <h5 class="text-start">Order ID</h5>
+                                    <div class="col-12 col-sm-3 ">
+                                        <h5 class="text-end">Order ID</h5>
                                     </div>
                                     <div class="col-12 col-sm-9 col-md-7 col-lg-7">
                                         <div class="input-group text-start gap-2">
@@ -153,29 +153,32 @@
             </div> <!-- end col -->
         </div>
                 <!-- end row -->
+                @section('footer')
 
+                <!-- Footer Start -->
+                <footer class="footer" style="left:0px">
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <script>document.write(new Date().getFullYear())</script> &copy;<a href="">KeyDevs  </a>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="text-md-end footer-links d-none d-sm-block">
+                                  <a href="javascript:void(0);">About Us</a>
+                                  <a href="javascript:void(0);">Help</a>
+                                  <a href="javascript:void(0);">Contact Us</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </footer>
+              </div>
+              <!-- end Footer -->
+              @endsection
             </div> <!-- container -->
 
         </div> <!-- content -->
 
-        <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <script>document.write(new Date().getFullYear())</script> &copy; UBold theme by <a href="">Coderthemes</a>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="text-md-end footer-links d-none d-sm-block">
-                            <a href="javascript:void(0);">About Us</a>
-                            <a href="javascript:void(0);">Help</a>
-                            <a href="javascript:void(0);">Contact Us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- end Footer -->
 
     </div>
     <!-- End Page content -->
