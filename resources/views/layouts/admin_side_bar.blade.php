@@ -130,9 +130,6 @@
                             <li>
                                 <a href="{{ route('activate.settings') }}">Activation</a>
                             </li>
-
-
-
                         </ul>
                     </div>
                 </li>

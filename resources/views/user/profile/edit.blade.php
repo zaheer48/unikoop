@@ -151,7 +151,7 @@
                                 <div class="mt-2">     @if (Auth::user()->profile_url)
                                     <img class="rounded-circle" style="width:80px" src="{{ asset('storage/images/'.Auth::user()->profile_url)}}" alt="user-image">
                                   @else
-                                    <img class="rounded-circle" style="width:80px" src="{{URL::asset('assets/images/users/user-1.jpg')}}" alt="user-image">
+                                    <img class="rounded-circle" style="width:80px" src="{{URL::asset('assets/images/users/avatar.png')}}" alt="user-image">
                                     @endif
                                 </div>
                             </div>

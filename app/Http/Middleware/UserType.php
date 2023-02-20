@@ -16,10 +16,11 @@ class UserType
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {
+    {        
         if(Auth::check() && Auth::user()->user_type == 'vendor')
            return $next($request);
         else
+            dd(url()->previous());
            return redirect()->route('track.order');
     }
 }

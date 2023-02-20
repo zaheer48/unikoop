@@ -53,22 +53,12 @@
         <div id="sidebar-menu">
             <ul id="side-menu">
                 <li class="menu-title">Navigation</li>
+                
                 <li>
-                    <a href="{{ route('dashboard') }}"
-                     {{-- href="#sidebarDashboards" --}}
-                      data-bs-toggle="collapse">
-                        <i data-feather="airplay"></i>
-                        <!-- <span class="badge bg-success rounded-pill float-end">4</span> -->
-                        <span> Dashboards </span>
+                    <a href="{{ route('dashboard')}}" class="dropdown-item notify-item">
+                    <i data-feather="airplay"></i>
+                        <span>Dashboards</span>
                     </a>
-                    {{-- <div class="collapse" id="sidebarDashboards">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('dashboard') }}">Dashboard</a>
-                            </li>
-
-                        </ul>
-                    </div> --}}
                 </li>
                 <li>
                     <a href="{{ route('my.wallet')}}" class="dropdown-item notify-item">
@@ -77,7 +67,6 @@
                     </a>
                 </li>
                 <li>
-
                     <a href="{{ route('my.profile')}}" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
                         <span>My Profile</span>
@@ -131,7 +120,7 @@
                         </ul>
                     </div>
                 </li> --}}
-                <li>
+                <!-- <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                         <i class="fa-solid fa-hand-holding-dollar"></i>
                         <span> Transaction Report</span>
@@ -149,36 +138,14 @@
                     <a href="{{ route('invoice') }}">
                         <i class="fa-solid fa-file-invoice"></i>
                         <span>Create Invoice</span>
-                        {{-- <span class="menu-arrow"></span> --}}
                     </a>
-                    {{-- <div class="collapse" id="sidebarCrm">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('invoice') }}">Create Invoice</a>
-                            </li>
-                        </ul>
-                    </div> --}}
                 </li>
                 <li>
                     <a href="{{route('download.label')}}">
                         <i class="fa-solid fa-download"></i>
                         <span> Download Label </span>
-                        {{-- <span class="menu-arrow"></span> --}}
                     </a>
-                    {{-- <div class="collapse" id="sidebarEcommerce">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{route('download.label')}}">Download Label</a>
-                            </li>
-                        </ul>
-                    </div> --}}
-                </li>
-                <li>
-                    <a href="{{ route('payment.history')}}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-money-check-dollar"></i>
-                        <span>Payment History</span>
-                    </a>
-                </li>
+                </li>                 -->
             </ul>
         </div>
         <!-- End Sidebar -->
