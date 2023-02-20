@@ -155,7 +155,7 @@
                                         <h4 class="text-primary">Profile Picture :                    @if (Auth::user()->profile_url)
                                             <img class="ms-3 rounded-circle" style="width:80px" src="{{ asset('storage/images/'.Auth::user()->profile_url)}}" alt="user-image">
                                           @else
-                                            <img class="ms-3 rounded-circle" style="width:80px" src="{{URL::asset('assets/images/users/user-1.jpg')}}" alt="user-image">
+                                            <img class="ms-3 rounded-circle" style="width:80px" src="{{URL::asset('assets/images/users/avatar.png')}}" alt="user-image">
                                             @endif</h4>
                                         </h4>
 
