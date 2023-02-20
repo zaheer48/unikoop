@@ -49,7 +49,7 @@
                                         </div>
 
                                     </div>
-                                    {{-- <label>Enter Captcha:</label>
+                                    <label>Enter Captcha:</label>
                                     <div class="row">
                                         <div class="form col-md-6">
                                             <input type="text" class="form-control" readonly id="capt">
@@ -58,7 +58,7 @@
                                             <input type="text" class="form-control" id="textinput" required="">
                                         </div>
                                     </div>
-                                    <h6>Captcha not visible <img src="refresh.jpg" width="40px" onclick="cap()"></h6> --}}
+                                    <h6>Captcha not visible <img src="refresh.jpg" width="40px" onclick="cap()"></h6>
 
                                     {{-- <div class="form-check mb-1">
                                         <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
@@ -193,6 +193,16 @@
                           }
                          }
           </script>
-
+        <script>
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LcnHv4ZAAAAAB8bFzbAfR9zBDSkNfYFMgLZ7J_g', {action: 'homepage'}).then(function(token) {
+                    console.log(token);
+                });
+            });
+            function recaptchaCallback() {
+                $('#button').removeAttr('disabled');
+                $('#register_button').removeAttr('disabled');
+            };
+        </script>
     </body>
 </html>

@@ -43,6 +43,23 @@
     <!-- seller_regist jquery -->
     <script src="/js/seller_regist/script.js?1564436599" type="text/javascript"></script>
     <script src="/js/seller_regist/return_shipping.js?1564436599" type="text/javascript"></script>
+    <style>
+        #sidebar-menu>ul>li>a {
+            transition: none;
+
+            font-size: inherit;
+        }
+        #sidebar-menu .menu-title{
+            font-size: 12px;
+        }
+        .navbar-custom .app-search .app-search-box {
+    display: none;
+        }
+        a:hover {
+
+    text-decoration: none;
+}
+        </style>
     <div class="row page-titles">
                 <div class="col-md-12">
                     <ol class="breadcrumb">
@@ -53,8 +70,8 @@
             </div>
     <div class="content-page">
         <div class="content">
-            
-            <div class="card card-profile shadow">
+
+            <div class="card card-profile shadow border">
                 <div class="card-body">
                     <h3>Label Pricing</h3>
                     <hr class="my-4">
@@ -172,7 +189,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary">
+                                                    <button type="submit" class="btn btn-primary bg-primary">
                                                         Submit
                                                     </button>
                                                 </div>
@@ -283,7 +300,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary">
+                                                    <button type="submit" class="btn btn-primary bg-primary">
                                                         Submit
                                                     </button>
                                                 </div>

@@ -5,17 +5,15 @@
     <meta charset="utf-8" />
     <title>@yield('title') </title>
     <title>Log In | Unikoop</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.webp">
-        <link href="{{ URL::asset('assets/css/images/favicon.webp') }}" rel="shortcut icon"   />
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.webp">
+    <link href="{{ URL::asset('assets/css/images/favicon.webp') }}" rel="shortcut icon"   />
 
     <!-- Bootstrap css -->
     <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -27,6 +25,8 @@
     <link href="{{ URL::asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- Head js -->
     <script src="assets/js/head.js"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
 <style media="screen">

@@ -182,7 +182,7 @@
                                 <div class="text-center">
                                     <a href="@if(Route::has('bol')){{ route('all.orders') }}@endif" class="btn btn-sm btn-light">View more info</a>
                                 </div>
-                                <div class="row mt-4 text-center">
+                                <!-- <div class="row mt-4 text-center">
                                     <div class="col-6">
                                         <h5 class="fw-normal text-muted">Revenue (USD)</h5>
                                         <h4>260 cr</h4>
@@ -191,7 +191,7 @@
                                         <h5 class="fw-normal text-muted">Number of employees</h5>
                                         <h4>3.1k</h4>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div> <!-- end card -->
                     </div><!-- end col -->

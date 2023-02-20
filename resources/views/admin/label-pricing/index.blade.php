@@ -4,6 +4,13 @@
     @include('layouts.admin_side_bar', ['modules' => $modules])
 @endsection
 @section('content')
+<style>
+      #sidebar-menu>ul>li>a {
+            transition: none;
+
+            font-size: inherit;
+        }
+    </style>
 
     @php
         $privileges = explode(",",\Auth::user()->privilages);
@@ -24,8 +31,9 @@
                         <hr>
                         @if (session('success'))
                             <div class="alert alert-dismissable alert-success">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
+
                                 </button>
                                 <strong>
                                     {{ session('success')}}

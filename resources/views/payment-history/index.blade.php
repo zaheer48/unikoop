@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title','Payment History | Unikoop')
+@section('sidebar')
+    @include('bol::layouts.side_bar')
+@endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
 @endsection
@@ -29,7 +32,6 @@
                                                 @php
                                                     $transactions = \DB::table('transaction_histories')->where('user_id',Auth::id())->where('type','Label')->orWhere('type','Custom Label')->get();
                                                 @endphp
-                                                @if()
                                                 @foreach($transactions as $transaction)
                                                     <tr>
                                                         <td height="30">{{ $transaction->id }}</td>
@@ -151,7 +153,7 @@
                                                         </thead>
                                                         <tbody>
                                                         @php
-                                                            $transactions = \DB::table('transaction_histories')->where('user_id',242)->where('type','Label')->orWhere('type','Custom Label')->get();
+                                                            $transactions = \DB::table('transaction_histories')->where('user_id',Auth::id())->where('type','Label')->orWhere('type','Custom Label')->get();
                                                         @endphp
                                                         @foreach($transactions as $transaction)
                                                         <tr>

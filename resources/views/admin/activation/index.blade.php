@@ -20,7 +20,7 @@ $privileges = explode(",",\Auth::user()->privilages);
         </div>
         @endif
 
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-md-6">
                 <div class="card shadow">
                     <div class="card-body">
@@ -35,9 +35,9 @@ $privileges = explode(",",\Auth::user()->privilages);
                                     @if (in_array('activate_mollie',$privileges) || Auth::user()->is_admin == 1)
                                     <div class="btn-group btn-toggle" id="mollie_gateway">
                                         <input type="hidden" id="mollie_status" value="{{ ($mollie->status) ? 'ON' : 'OFF' }}">
-                                        <button class="btn {{ ($mollie->status) ? 'btn-success active' : 'btn-default' }}">ON
+                                        <button class="btn {{ ($mollie->status) ? 'btn-info active' : 'btn-default' }}">ON
                                         </button>
-                                        <button class="btn {{ (!$mollie->status) ? 'btn-success active' : 'btn-default' }}">
+                                        <button class="btn {{ (!$mollie->status) ? 'btn-info active' : 'btn-default' }}">
                                             OFF
                                         </button>
                                     </div>
@@ -62,9 +62,9 @@ $privileges = explode(",",\Auth::user()->privilages);
                                     @if (in_array('activate_btransfer',$privileges) || Auth::user()->is_admin == 1)
                                     <div class="btn-group btn-toggle" id="bank_transfer">
                                         <input type="hidden" id="bank_status" value="{{ ($bank->status) ? 'ON' : 'OFF' }}">
-                                        <button class="btn {{ ($bank->status) ? 'btn-success active' : 'btn-default' }}">ON
+                                        <button class="btn {{ ($bank->status) ? 'btn-primary active' : 'btn-default' }}">ON
                                         </button>
-                                        <button class="btn {{ (!$bank->status) ? 'btn-success active' : 'btn-default' }}">OFF
+                                        <button class="btn {{ (!$bank->status) ? 'btn-primary active' : 'btn-default' }}">OFF
                                         </button>
                                     </div>
                                     @endif

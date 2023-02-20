@@ -19,6 +19,13 @@
                 border: 1px solid #ccc;
             }
         }
+        div.dataTables_wrapper div.dataTables_filter {
+    margin: 2rem;
+    text-align: right;
+}
+#userrequestsTable_length{
+    margin: 2rem;
+}
     </style>
     <div class="content-page">
         <div class="content">
@@ -48,7 +55,7 @@
                                     <th scope="col">Username</th>
                                     <th scope="col">E-mail</th>
                                     <th scope="col">Type</th>
-                                    
+
                                     <th scope="col">Actions</th>
                                 </tr>
                                 </thead>
@@ -75,11 +82,16 @@
                                                     }
                                                 ?>
                                             </td>
-                                        
-                                            <td style="display: inline-flex;">
-                                                <button class="btn btn-sm"
+
+                                            <td>
+                                                <button class="btn btn-outline-primary"
                                                         style="background: transparent; margin-top: -6px;margin-right: -14px;">
-                                                    <a href="{{route('user_requests.show',$user_request->id)}}" class="edit" title="" data-toggle="tooltip" data-original-title="view"><i class="glyphicon glyphicon-eye-open btn btn-sm btn-primary"></i></a>
+                                                    <a href="{{route('user_requests.show',$user_request->id)}}" class="edit" title="" data-toggle="tooltip" data-original-title="view">
+
+
+                                                        <i class="fa-solid fa-eye "></i>
+
+                                                    </a>
                                                 </button>
                                             </td>
                                         </tr>

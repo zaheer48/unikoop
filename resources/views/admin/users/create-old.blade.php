@@ -13,7 +13,7 @@
         window.scrollTo(0, 1);
     } </script>
 <!-- bootstarp-css -->
-{{-- <link href="/css/bootstrap.css?1564436599" rel="stylesheet" type="text/css" media="all"/>
+<link href="/css/bootstrap.css?1564436599" rel="stylesheet" type="text/css" media="all"/>
 <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="/js/jquery.min.js"></script>
@@ -21,7 +21,7 @@
 
 <script src="/js/nav.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <!--// bootstarp-css -->
 <!-- css -->
@@ -50,7 +50,7 @@ $user1 = Auth::user()->id;
 if ($user1 ?? '') {
     $userId = $user1;
     $userrecord = DB::table('users')->where('id', $userId)->first();
-    $user = DB::table('bussiness_address')->where('register_id', $userId)->first();
+    $user = DB::table('bussiness_address')->wzhere('register_id', $userId)->first();
 
     $reg_business = DB::table('bussines')->where('register_id', $userId)->first();
 
@@ -86,7 +86,7 @@ if ($user1 ?? '') {
 <div class="content-page">
     <div class="content">
         <div class="row page-titles">
-            <div class="col-md-12 mt-3">
+            <div class="col-md-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
                     <li class="breadcrumb-item"><a>Create User</a></li>
@@ -110,7 +110,7 @@ if ($user1 ?? '') {
                             <div class="form-group">
                                 <label for="category_name">User Email</label>
                                 <small style="color: red;"> *</small>
-                                <input type="email" name="email" @if($userrecord) value="{{$userrecord->email}}"  @else
+                                <input type="email" name="email" @if($userrecord) value="{{$userrecord->email}}" disabled @else
                                     value="{{old('email')}}" @endif id="email"
                                     class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                     placeholder="User Email" required>
@@ -129,7 +129,7 @@ if ($user1 ?? '') {
                                 <label for="category_name">User Password</label>
                                 <small style="color: red;"> *</small>
                                 <input type="text" id="pass" min="8" @if($userrecord) value="{{$userrecord->password_hint}}"
-                                     @else value="{{old('password')}}" @endif name="password"
+                                    disabled @else value="{{old('password')}}" @endif name="password"
                                     class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                     placeholder="User Password" required>
                                 @if ($errors->has('password'))
@@ -150,7 +150,7 @@ if ($user1 ?? '') {
                             <div class="form-group">
                                 <label for="category_name">Username</label>
                                 <small style="color: red;"> *</small>
-                                <input type="text" id="username" @if($userrecord) value="{{$userrecord->username}}"
+                                <input type="text" id="username" @if($userrecord) value="{{$userrecord->username}}" disabled
                                     @else value="{{old('username')}}" @endif name="username"
                                     class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
                                     placeholder="Username" required>
@@ -168,8 +168,8 @@ if ($user1 ?? '') {
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-10">
-                            <div class="form-group mt-3" id="adding-form">
-                                <button type="submit" @if($userrecord)  @endif class="btn btn-md btn-primary">
+                            <div class="form-group" id="adding-form">
+                                <button type="submit" @if($userrecord) disabled @endif class="btn btn-md btn-primary">
                                     Create User
                                 </button>
                             </div>
@@ -220,14 +220,14 @@ if ($user1 ?? '') {
         <?php echo csrf_field(); ?>
         <input type="hidden" class="form-control" name="user_id" value="<?= $userId; ?>">
         <div class="about-left sting" id="businessandcontact" style="display:block;">
-            <div class="card panel-default">
-                <div class="card-body panel-body-multi">
+            <div class="panel panel-default">
+                <div class="panel-body panel-body-multi">
                     <div class="row">
                         <div class="col-md-12">
 
                             <h3>Account Informatie</h3>
 
-                            <div class="card-body">
+                            <div class="panel-body">
                                 <br>
                                 <br>
                                 <p style="font-size: 16px;">is dit een geregistreerd bedrijf</p>
@@ -242,24 +242,17 @@ if ($user1 ?? '') {
                                     $entity_check1 = "checked";
                                 }
                                 ?>
-                                <div class="d-flex gap-2">
-                                <input type="radio" id="show" value="1" <?= $entity_check ?> name="bid" required>Yes
+                                <input type="radio" id="show" value="1" <?= $entity_check ?> name="bid" required>yes
 
 
                                 <input type="radio" id="hides" <?= $entity_check1 ?> value="0" name="bid">No
-                            </div>
                                 <br/>
                                 <div class="box" id="box">
                                     <p style="font-size: 15px;">Registreer je namens een bedrijf (inclusief Britse
                                         eenmanszaken)?</p>
-                                        <div class="d-flex gap-2">
 
-                                    <input type="radio" id="shows" value="1" name="prop_s">
-                                     <label for="">Yes</label>
-
-                                    <input type="radio" id="hid" value="0" checked="" name="prop_s">
-                                    <label for="">  No</label>
-                                        </div>
+                                    <input type="radio" id="shows" value="1" name="prop_s">yes
+                                    <input type="radio" id="hid" value="0" checked="" name="prop_s">No
                                 </div>
 
                                 <br/><br/>
@@ -336,16 +329,15 @@ if ($user1 ?? '') {
 
                                 <div class="entity" id="enityies">
                                     <p style="font-size: 16px;">Selecteer Juridische entiteit</p>
-                                    <div class="card-body">
+                                    <div class="panel-body">
 
                                         <div class="col-md-1">
                                             <input type="radio" id="enitys" class="enitys" <?= $entity_id ?>
                                                    name="entity" value="1">
-                                                   <span>Bedrijf</span>
                                         </div>
 
                                         <div class="col-md-11">
-
+                                            <span>Bedrijf</span>
                                             <p>
                                                 <div id="sub_entity1" <?= $sub_entity_id1 ?> class="sub_enity">
 
@@ -373,17 +365,14 @@ if ($user1 ?? '') {
                                         </p>
 
                                     </div>
-                                    <div class="clearfix">
+                                    <div class="clearfix"></div>
 
-                                </div>
-
-                                    <div class="col-md-11">
+                                    <div class="col-md-1">
                                         <input type="radio" class="enitys" <?= $entity_id1 ?> name="entity" value="2">
-                                        <span>Vereiniging</span>
-
                                     </div>
 
                                     <div class="col-md-11">
+                                        <span>Vereiniging</span>
                                         <p>
                                             <div id="sub_entity2" class="sub_enity">
 
@@ -408,11 +397,10 @@ if ($user1 ?? '') {
 
                                 <div class="col-md-1">
                                     <input type="radio" class="enitys" <?= $entity_id2 ?> name="entity" value="3">
-                                    <span>Stichting</span>
-
                                 </div>
 
                                 <div class="col-md-11">
+                                    <span>Stichting</span>
                                     <p>
                                         <div id="sub_entity3" class="sub_enity">
 
@@ -445,8 +433,8 @@ if ($user1 ?? '') {
 </div>
 </div>
 
-<div class="card panel-default" id="comp_detail">
-    <div class="card-body panel-body-multi">
+<div class="panel panel-default" id="comp_detail">
+    <div class="panel-body panel-body-multi">
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
@@ -568,8 +556,8 @@ width: 300px;
 </div>
 
 
-<div class="card panel-default" id="individual">
-    <div class="card-body panel-body-multi">
+<div class="panel panel-default" id="individual">
+    <div class="panel-body panel-body-multi">
         <div class="col-md-12">
             <div class="row">
 
@@ -615,8 +603,8 @@ width: 300px;
 </div>
 
 
-<div class="card panel-default" id="row_data">
-    <div class="card-body panel-body-multi">
+<div class="panel panel-default" id="row_data">
+    <div class="panel-body panel-body-multi">
         @if($business_owner ?? '')
         <div class="col-md-12" id="roww">
             <?php
@@ -709,8 +697,8 @@ width: 300px;
 </div>
 
 
-<div class="card panel-default">
-    <div class="card-body panel-body-multi">
+<div class="panel panel-default">
+    <div class="panel-body panel-body-multi">
         <div class="col-md-12">
             <div class="row">
                 <span>Geregistreerde bedrijfsadres</span>
@@ -838,8 +826,8 @@ width: 300px;
     </div>
 </div>
 <div class="clearfix"></div>
-<div class="card panel-default">
-    <div class="card-body panel-body-multi">
+<div class="panel panel-default">
+    <div class="panel-body panel-body-multi">
         <div class="col-md-12">
             <div class="row">
 
@@ -974,56 +962,48 @@ width: 300px;
 </style>
 <br>
 <div class="about-left sting" id="product_selection" style="display:block;">
-    <div class="panel-default">
-        <div class="card-body panel-body-multi">
+    <div class="panel panel-default">
+        <div class="panel-body panel-body-multi">
             <div class="col-md-12">
                 <div class="row">
+                    <h3>Verkoopplan</h3>
                     <form action="/adminSellingplanregis" method="post" accept-charset="utf-8">
                         <?php echo csrf_field(); ?>
                         <input type="hidden" class="form-control" name="user_id" value="<?= $userId; ?>">
-                        <div class="card ">
-
-
-
-
-                            <div class="card-body">
-                        <h3>Verkoopplan</h3>
-
-                                <div class="d-flex gap-2 col-md-2">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="col-md-2">
                                     <input type="checkbox" name="prod" value="1" required="" checked>
-                                    <h4>Sell on Unikoop </h4>
-
                                 </div>
                                 <div class="col-md-10">
+                                    <h4>Sell on Unikoop </h4>
                                     <span>Reach tens of millions of Unikoop customers when you sell your products on unikoop European Marketplaces. £25.00 a month (excl VAT) + Selling Fees.  </span>
                                 </div>
+                            </div>
+                            <br>
+                            <label>Bol Secrets (NL)</label>
+                            <input class="form-control input" type="text" @if($userrecord->bol_client_id ?? '')
+                         value="{{$userrecord->bol_client_id}}" disabled @endif name="bol_client_id" placeholder="Bol client id (NL)">
+                            <input class="form-control input" type="text" @if($userrecord->bol_client_secret ?? '')
+                            value="{{$userrecord->bol_client_secret}}" disabled @endif name="bol_client_secret"
+                            placeholder="Bol client secret (NL)">
+                            <br>
+                            <label>Bol Secrets (BE)</label>
+                            <input class="form-control input" type="text" @if($userrecord->bol_be_client_id ?? '')
+                            value="{{$userrecord->bol_be_client_id}}" disabled @endif name="bol_be_client_id"
+                            placeholder="Bol client id (BE)">
+                            <input class="form-control input" @if($userrecord->bol_be_client_secret ?? '')
+                            value="{{$userrecord->bol_be_client_secret}}" disabled @endif type="text"
+                            name="bol_be_client_secret" placeholder="Bol client secret (BE)">
+                            <hr>
 
-                                <br>
-                                <label>Bol Secrets (NL)</label>
-                                <input class="form-control input" type="text" @if($userrecord->bol_client_id ?? '')
-                                value="{{$userrecord->bol_client_id}}" disabled @endif name="bol_client_id" placeholder="Bol client id (NL)">
-                                <input class="form-control input" type="text" @if($userrecord->bol_client_secret ?? '')
-                                value="{{$userrecord->bol_client_secret}}" disabled @endif name="bol_client_secret"
-                                placeholder="Bol client secret (NL)">
-                                <br>
-                                <label>Bol Secrets (BE)</label>
-                                <input class="form-control input" type="text" @if($userrecord->bol_be_client_id ?? '')
-                                value="{{$userrecord->bol_be_client_id}}" disabled @endif name="bol_be_client_id"
-                                placeholder="Bol client id (BE)">
-                                <input class="form-control input" @if($userrecord->bol_be_client_secret ?? '')
-                                value="{{$userrecord->bol_be_client_secret}}" disabled @endif type="text"
-                                name="bol_be_client_secret" placeholder="Bol client secret (BE)">
-
-
-                             <div class="card-body">
+                            <div class="panel-body">
                                 <!--   <a class="btn btn-warning" name="Start" href="dashboard">
                                       Annuleer</span></span></a> -->
 
                                 <button name="button" type="submit" @if($userrecord->bol_client_id ?? '') disabled
-                                    @endif class="btn btn-primary mx-n3" id="button" value="true" >Save
+                                    @endif class="btn btn-primary" id="button" value="true" >Save
                                 </button>
-                            </div>
-                            </div>
                     </form>
                 </div>
             </div>
@@ -1032,8 +1012,8 @@ width: 300px;
 </div>
 
 <div class="about-left sting " id="logistiek" style="display:block;margin-top: 15px;">
-    <div class="card panel-default">
-        <div class="card-body panel-body-multi">
+    <div class="panel panel-default">
+        <div class="panel-body panel-body-multi">
             <div class="row">
                 <div class="col-md-12">
                     <h3>Unikoop Logistiek</h3>
@@ -1053,16 +1033,16 @@ width: 300px;
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                {{-- <ul class="nav nav-tabs">
+                                <ul class="nav nav-tabs">
                                     <li class="active" style="display: contents;">
                                         <a href="#dhl" data-toggle="tab">DHL</a>
                                     </li>
                                     <li style="display: contents;">
                                         <a href="#dpd" data-toggle="tab">DPD</a>
                                     </li>
-                                </ul> --}}
+                                </ul>
                                 <div class="tab-content">
-                                    <div id="dhl" class="tab-pane active">
+                                    <div id="dhl" class="tab-pane fade in active">
                                         <h3>DHL</h3>
                                         <br>
                                         <input type="hidden" name="Logistiek" value="DHL">
@@ -1122,7 +1102,7 @@ width: 300px;
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="dpd" class="tab-pane active mt-4">
+                                    <div id="dpd" class="tab-pane fade">
                                         <h3>DPD</h3>
                                         <br>
                                         <input type="hidden" name="dpd_logistiek" value="DPD">
@@ -1184,7 +1164,7 @@ width: 300px;
                                         Save
                                     </button>
                                     @else
-                                    <button name="button" type="submit" class="btn btn btn-primary mt-3" id="button"
+                                    <button name="button" type="submit" class="btn btn btn-primary" id="button"
                                             value="true">Save
                                     </button>
                                     @endif

@@ -23,8 +23,8 @@
     <div class="content-page">
         <div class="content">
             @if (session()->has('success'))
-                <div class="alert alert-dismissable alert-success">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <div class="alert alert-dismissable alert-success mt-2">
+                    <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <strong>
@@ -55,11 +55,15 @@
                                     </div>
                                     <div class="col-md-3">
                                         <h4>Fav Icon</h4>
-                                        <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_fav_icon) : '' }}" class="img-fluid" alt="">
+                                        <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_fav_icon) : '' }}" class="img-fluid" alt="" style="
+                                        height: 75px;
+                                    ">
                                     </div>
                                     <div class="col-md-5">
                                         <h4>Site Logo</h4>
-                                        <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" class="img-fluid" alt="">
+                                        <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" class="img-fluid" alt="" style="
+                                        height: 75px;
+                                    ">
                                     </div>
                                 </div>
                                 <hr>
@@ -73,18 +77,19 @@
                                             $files = explode(",",$settings->partners_logo);
                                         @endphp
                                         @foreach($files as $files => $value)
-                                            <div class="col-md-3" style="margin-bottom: 10px;">
+                                            <div class="col-md-3 mt-5" style="margin-bottom: 10px;">
                                         <span style="position: relative;" id="{{ $value }}">
                                             @if (in_array('deletesetting_image',$privileges) || Auth::user()->is_admin == 1)
-                                            <small class="remove" onclick="removePartner('{{ $value }}','partner')">X</small>
+                                            <small class="mt-n3 mx-n4  remove" onclick="removePartner('{{ $value }}','partner')">X</small>
                                             @endif
-                                            <img src="{{ asset('portal/'.$value) }}" class="img-fluid">
+                                            <img src="{{ asset('portal/'.$value) }}" class="img-fluid" style="
+                                            height: 75px;
+                                        ">
                                         </span>
                                             </div>
                                             <br>
                                         @endforeach
                                     @endif
-                                    
                                 </div>
                                 <hr>
                                 <div class="row">
@@ -97,12 +102,15 @@
                                             $files = explode(",",$settings->services_logo);
                                         @endphp
                                         @foreach($files as $files => $value)
-                                            <div class="col-md-3" style="margin-bottom: 10px;">
+                                            <div class="col-md-3 mt-5" style="margin-bottom: 10px;">
                                         <span style="position: relative;" id="{{ $value }}">
                                             @if (in_array('deletesetting_image',$privileges) || Auth::user()->is_admin == 1)
-                                            <small class="remove" onclick="removePartner('{{ $value }}','service')">X</small>
+                                            <small class="mt-n3 mx-n4 remove" onclick="removePartner('{{ $value }}','service')">X</small>
                                             @endif
-                                            <img src="{{ asset('portal/'.$value) }}" class="img-fluid">
+                                            <img src="{{ asset('portal/'.$value) }}" class="img-fluid" style="
+                                            height: 75px; width: 160px;
+
+                                        ">
                                         </span>
                                             </div>
                                             <br>
