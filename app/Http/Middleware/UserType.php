@@ -18,9 +18,14 @@ class UserType
     public function handle(Request $request, Closure $next)
     {        
         if(Auth::check() && Auth::user()->user_type == 'vendor')
-           return $next($request);
-        else
-            dd(url()->previous());
-           return redirect()->route('track.order');
+            return $next($request);
+        else {
+            $url = url()->previous();
+            $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
+            if($route == 'get.invoice')
+                return redirect()->route('get.invoice');
+            else
+                return redirect()->route('track.order');
+        }            
     }
 }
