@@ -26,7 +26,8 @@
     <!-- Head js -->
     <script src="assets/js/head.js"></script>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
 <style media="screen">
