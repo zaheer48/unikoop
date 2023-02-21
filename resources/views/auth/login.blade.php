@@ -49,7 +49,18 @@
                                         </div>
 
                                     </div>
-                                    <label>Enter Captcha:</label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <strong>ReCaptcha:</strong>
+                                                <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}"></div>
+                                                @if ($errors->has('g-recaptcha-response'))
+                                                    <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                                                @endif
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    {{-- <label>Enter Captcha:</label>
                                     <div class="row">
                                         <div class="form col-md-6">
                                             <input type="text" class="form-control" readonly id="capt">
@@ -58,7 +69,7 @@
                                             <input type="text" class="form-control" id="textinput" required="">
                                         </div>
                                     </div>
-                                    <h6>Captcha not visible <img src="refresh.jpg" width="40px" onclick="cap()"></h6>
+                                    <h6>Captcha not visible <img src="{{asset('assets/libs/feather-icons/icons/refresh-cw.svg')}}" onclick="cap()"></h6> --}}
 
                                     {{-- <div class="form-check mb-1">
                                         <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
@@ -167,7 +178,7 @@
         <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
         <!-- App js -->
         <script src="assets/js/app.min.js"></script>
-        <script type="text/javascript">
+        {{-- <script type="text/javascript">
             function cap(){
               var alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V'
                            ,'W','X','Y','Z','1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i',
@@ -179,6 +190,7 @@
                            var e = alpha[Math.floor(Math.random()*71)];
                            var f = alpha[Math.floor(Math.random()*71)];
                            var final = a+b+c+d+e+f;
+                           console.log(final);
                            document.getElementById("capt").value=final;
                          }
                          function validcap(){
@@ -203,6 +215,6 @@
                 $('#button').removeAttr('disabled');
                 $('#register_button').removeAttr('disabled');
             };
-        </script>
+        </script> --}}
     </body>
 </html>
