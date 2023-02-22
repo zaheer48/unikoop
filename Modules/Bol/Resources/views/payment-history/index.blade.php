@@ -125,12 +125,12 @@
                                         <div class="responsive-table-plugin">
                                             <div class="table-rep-plugin">
                                                 <div class="table-responsive">
-                                                    <div class="row mb-3" >
-                                                        {{-- <div class="col-lg-4"></div>
-                                                        <div class="col-lg-3"></div> --}}
+                                                    <div class="row" >
+                                                        <div class="col-lg-4"></div>
+                                                        <div class="col-lg-3"></div>
                                                         <div class="col-lg-5 col-md-6" >
                                                             <div class="input-group" >
-                                                                <div class="form-outline" >
+                                                                <div class="form-outline" style="margin-left: 70px;">
                                                                   <input type="search" id="form1" placeholder="Search" class="form-control" />
 
                                                                 </div>
@@ -166,12 +166,12 @@
                                                         <td>@if ($transaction->type == 'Label')
                                                             <a href="{{ route('payment.invoice',$transaction->id) }}"
                                                             class="btn btn-sm btn-primary">
-                                                            <i class="fa-solid fa-file-pdf"></i>&nbsp; PDF
+                                                                <i class="fa fa-file-pdf-o"></i>&nbsp; PDF
                                                             </a>
                                                         @else
                                                             <a href="{{ route('custom.payment.invoice',$transaction->id) }}"
                                                             class="btn btn-sm btn-primary">
-                                                            <i class="fa-solid fa-file-pdf"></i>&nbsp; PDF
+                                                                <i class="fa fa-file-pdf-o"></i>&nbsp; PDF
                                                             </a>
                                                         @endif
                                                     </td>

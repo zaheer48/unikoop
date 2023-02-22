@@ -1,0 +1,11 @@
+{
+    "name": "GenerateInvoice",
+    "alias": "generateinvoice",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\GenerateInvoice\\Providers\\GenerateInvoiceServiceProvider"
+    ],
+    "files": []
+}

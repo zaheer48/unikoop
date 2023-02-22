@@ -25,7 +25,7 @@ class NotificationController extends Controller
             ->join('bol_data', 'bol_data.bol_rec_id', '=', 'bol_rec.id')
             ->where('bol_rec.user_id',$user->id)
             ->paginate(10);
-        return view('bol::account_report', compact('labels', 'transactions', 'business'));
+        return view('account_report', compact('labels', 'transactions', 'business'));
     }
 
 

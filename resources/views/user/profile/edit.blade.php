@@ -27,29 +27,28 @@
                             </a>
                         </form> --}}
                     </div>
-                    {{-- <h4 class="page-title" style="color: blue">Update Profile</h4> --}}
+                    <h4 class="page-title" style="color: blue">Update Profile</h4>
                 </div>
             </div>
         </div>
         <!-- end page title -->
-        <div class="col-md-12 card middlecontainer">
-            <div class="card card-profile">
+        <div class="col-md-10 card middlecontainer">
+            <div class="card card-profile shadow">
                 <div class="card-body">
                     <div class="row page-titles">
 
                         <div class="col-md-12">
-                    <a href="{{route('my.profile')}}" class="btn btn-secondary mb-3" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+                    <a href="{{route('my.profile')}}" class="btn btn-primary mb-3" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
 
                             <ol class="breadcrumb">
-                                <h4 class="page-title" style="color: blue">Update Profile</h4>
 
-                                {{-- <li class="breadcrumb-item" ><a>update profile</a></li> --}}
+                                <li class="breadcrumb-item" style="color:white;"><a>update profile</a></li>
                             </ol>
                         </div>
                     </div>
                     {{-- <hr class="my-4"> --}}
                     {{-- <h4 class="page-title">Update Your Profile</h4> --}}
-                    <form method="post" action="{{ route('profile.update',$user->id)}}">
+                    <form method="post" action="{{ route('profile.update',$user->id)}}" enctype="multipart/form-data">
 
 
                         @csrf
@@ -90,14 +89,14 @@
                             <div class="col-md-1"></div>
                             <div class="col-md-5 mt-2">
                                 <div class="form-group">
-                                    <label for="pobox">PO Box Numer</label>
+                                    <label for="pobox_number">PO Box Numer</label>
                                     <small style="color: red;"> optional</small>
-                                    <input type="text" name="pobox" placeholder="PO Box Number"
-                                        class="form-control{{ $errors->has('pobox') ? ' is-invalid' : '' }}"
-                                        value="{{Auth::user()->pobox}}">
-                                    @if ($errors->has('pobox'))
+                                    <input type="text" name="pobox_number" placeholder="PO Box Number"
+                                        class="form-control{{ $errors->has('pobox_number') ? ' is-invalid' : '' }}"
+                                        value="{{Auth::user()->pobox_number}}">
+                                    @if ($errors->has('pobox_number'))
                                     <span class="invalid-feedback" role="alert" style="color:red;">
-                                            <strong>{{ $errors->first('pobox') }}</strong>
+                                            <strong>{{ $errors->first('pobox_number') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -134,21 +133,28 @@
                             </div>
                             <div class="col-md-1"></div>
 
-                            <div class="col-md-5  mt-2">
+                            <div class="col-md-4 d-flex mt-2">
                                 <div class="form-group">
-                                    <label for="profile_pic">Profile Picture</label>
+                                    <label for="profile_url">Profile Picture</label>
                                     <small style="color: red;"> optional</small>
-                                    <input type="file" name="profile_pic"
-                                        class="form-control{{ $errors->has('profile_pic') ? ' is-invalid' : '' }}"
-                                        value="{{Auth::user()->profile_pic}}">
-                                    @if ($errors->has('profile_pic'))
+                                    <input type="file" name="profile_url"
+                                        class="form-control{{ $errors->has('profile_url') ? ' is-invalid' : '' }}"
+                                        value="{{Auth::user()->profile_url}}">
+                                    @if ($errors->has('profile_url'))
                                     <span class="invalid-feedback" role="alert" style="color:red;">
-                                            <strong>{{ $errors->first('profile_pic') }}</strong>
+                                            <strong>{{ $errors->first('profile_url') }}</strong>
                                         </span>
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-1"></div>
+                            <div class="col-md-2">
+                                <div class="mt-2">     @if (Auth::user()->profile_url)
+                                    <img class="rounded-circle" style="width:80px" src="{{ asset('storage/images/'.Auth::user()->profile_url)}}" alt="user-image">
+                                  @else
+                                    <img class="rounded-circle" style="width:80px" src="{{URL::asset('assets/images/users/avatar.png')}}" alt="user-image">
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             {{-- <div class="col-md-1"></div> --}}

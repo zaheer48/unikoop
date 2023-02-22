@@ -1,4 +1,3 @@
-
 <div class="navbar-custom">
     <div class="container-fluid">
         <ul class="list-unstyled topnav-menu float-end mb-0">
@@ -11,37 +10,31 @@
                                 <i class="fe-search"></i>
                             </button>
                         </div>
-                        <div class="dropdown-menu dropdown-lg" id="search-dropdown">
+                        {{-- <div class="dropdown-menu dropdown-lg" id="search-dropdown"> --}}
                             <!-- item-->
-                            <div class="dropdown-header noti-title">
+                            <!-- <div class="dropdown-header noti-title">
                                 <h5 class="text-overflow mb-2">Found 22 results</h5>
-                            </div>
-
+                            </div> -->
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="fe-home me-1"></i>
                                 <span>Analytics Report</span>
-                            </a>
-
+                            </a> -->
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="fe-aperture me-1"></i>
                                 <span>How can I help you?</span>
-                            </a>
-
+                            </a> -->
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="fe-settings me-1"></i>
                                 <span>User profile settings</span>
-                            </a>
-
+                            </a> -->
                             <!-- item-->
-                            <div class="dropdown-header noti-title">
+                            <!-- <div class="dropdown-header noti-title">
                                 <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-                            </div>
-
-                            <div class="notification-list">
-                                <!-- item-->
+                            </div> -->
+                            <!-- <div class="notification-list">
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <div class="d-flex align-items-start">
                                         <img class="d-flex me-2 rounded-circle" src="{{URL::asset('assets/images/users/user-2.jpg')}}" alt="Generic placeholder image" height="32">
@@ -51,8 +44,6 @@
                                         </div>
                                     </div>
                                 </a>
-
-                                <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <div class="d-flex align-items-start">
                                         <img class="d-flex me-2 rounded-circle" src="{{URL::asset('assets/images/users/user-5.jpg')}}" alt="Generic placeholder image" height="32">
@@ -62,9 +53,8 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
-
-                        </div>
+                            </div> -->
+                        {{-- </div> --}}
                     </div>
                 </form>
             </li>
@@ -97,46 +87,50 @@
                     </a>
                 </div>
             </li>
+            @if (Auth::check())
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{URL::asset('assets/images/users/user-1.jpg')}}" alt="user-image" class="rounded-circle">
+                    @if (Auth::user()->profile_photo)
+                        <img src="{{ asset('storage/images/'.Auth::user()->profile_photo)}}" alt="user-image" class="rounded-circle">
+                    @else
+                        <img src="{{URL::asset('assets/images/users/avatar.png')}}" alt="user-image" class="rounded-circle">
+                    @endif
+                    @if(Auth::check())
                     <span class="pro-user-name ms-1">
-                        {{ Auth::user()->username }}<i class="mdi mdi-chevron-down"></i>
+                        {{ Auth::user()->username }} <i class="mdi mdi-chevron-down"></i>
                     </span>
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown " style="
                     min-width: 250px;">
-                    UniKoop
+                    item
                     <div class="dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Welcome !</h6>
                     </div>
                     <div class="d-flex text-center"  class="dropdown-item notify-item" >
+                        @if($modules['GenerateInvoice']->isEnabled())
                         <div class="col-6">
-                                <a href="{{route('getinvoice')}}" class="">
-
-
-                                    {{-- <span>Get Invoice</span> --}}
-
-                                    <button type="submit" class="fs-6 btn btn-dark underline text-sm text-gray-600 hover:text-gray-900 ml-2">
-
-                                        <i class="fa-solid fa-file-lines"></i>{{ __('Get Invoice') }}
-                                    </button>
-                                </a>
+                            <a href="" class="">
+                                <button type="submit" class="fs-6 btn btn-dark underline text-sm text-gray-600 hover:text-gray-900 ml-2">
+                                    <i class="fa-solid fa-file-lines"></i>{{ __('Get Invoice') }}
+                                </button>
+                            </a>
                         </div>
+                        @endif
+                        @if($modules['TrackOrder']->isEnabled())
                         <div class="col-7">
-                            <a href="{{route('trackorder')}}" class="">
-
-
+                            <a href="{{route('track.order')}}" class="">
                                 {{-- <span>Take Order</span> --}}
                                 <button type="submit" class="fs-6 btn btn-primary underline  text-sm text-gray-600 hover:text-gray-900 ml-2" style="margin-right:22px">
-
                                     <i class="fa-solid fa-cart-shopping"></i>
                                     {{ __('Track Order') }}
                                 </button>
                             </a>
                         </div>
+                        @endif
                    </div>
-                    <a href="javascript:void(0);" class="dropdown-item notify-item mt-2">
+                   <hr>
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-settings"></i>
                         <span>Settings</span>
                     </a>
@@ -163,8 +157,7 @@
                         {{-- <p type="submit" class="text-danger underline text-sm text-gray-600 hover:text-gray-900 ml-2">
                             {{ __('Log Out') }}
                         </p> --}}
-
-                        <button type="submit" class="btn btn-btn-logout text-sm text-gray-600 hover:text-gray-900 ml-2 mx-n3 m-lg-n4">
+                        <button type="submit" class="btn text-sm text-gray-600 hover:text-gray-900 ml-2 mx-n3 m-lg-n4 ">
                             <i class="fa-solid fa-right-from-bracket"></i>  {{ __('Log Out') }}
                         </button>
                     </form>
@@ -172,6 +165,7 @@
 
                 </div>
             </li>
+            @endif
             <li class="dropdown notification-list">
                 <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                     <i class="fe-settings noti-icon"></i>
@@ -181,29 +175,21 @@
 
         <!-- LOGO -->
         <div class="logo-box">
-            <a href="index.html" class="logo logo-dark text-center">
+            <a href="{{route('home')}}" class="logo logo-dark text-center">
                 <span class="logo-sm">
-                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" class="mx-2" alt="LeyWood" width="70" height="50">
-
-                    {{-- <img src="{{URL::asset('assets/images/logo-sm.png')}}" alt="" height="22"> --}}
+                    <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
                 </span>
                 <span class="logo-lg">
-                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" alt="LeyWood" width="100" height="50">
-
-                    {{-- <img src=" {{URL::asset('assets/images/logo-dark.png')}}"  alt="" height="20"> --}}
-                    <!-- <span class="logo-lg-text-light">U</span> -->
+                    <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                 </span>
             </a>
-            <a href="index.html" class="logo logo-light text-center">
+            <a href="{{route('home')}}" class="logo logo-light text-center">
                 <span class="logo-sm">
-                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg"  class="mx-2"  alt="LeyWood" width="70" height="50">
-
-                    {{-- <img src="{{URL::asset('assets/images/logo-sm.png')}}" alt="" height="22"> --}}
+                    <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                    <img src="https://portal.unikoop.com/images/LeyWood%20-%20Losse%20Logo's-01.jpg" alt="LeyWood" width="100" height="50">
-                    {{-- <img src="{{URL:: asset('assets/images/logo-light.png')}}" alt="" height="20"> --}}
+                    <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                 </span>
             </a>
         </div>

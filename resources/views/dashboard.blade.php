@@ -62,7 +62,8 @@
                 </div>
 
                 <div class="row">
-                    @if (isset($available_modules['Amazon']))
+                    @if (isset($modules['Amazon']))
+                    @if($modules['Amazon']->isEnabled())
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">
@@ -94,7 +95,8 @@
                         </div> <!-- end card -->
                     </div><!-- end col -->
                     @endif
-                    @if (isset($available_modules['Unikoop']))
+                    @endif
+                    @if (isset($modules['Unikoop']) ? $modules['Unikoop']->isEnabled() : 0)
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">
@@ -127,7 +129,7 @@
                         </div> <!-- end card -->
                     </div><!-- end col -->
                     @endif
-                    @if (isset($available_modules['Bestlist']))
+                    @if (isset($modules['Bestlist']) ? $modules['Bestlist']->isEnabled() : 0)
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">
@@ -164,7 +166,7 @@
                 <!-- end row -->
 
                 <div class="row">
-                    @if (isset($available_modules['Bol']))
+                    @if (isset($modules['Bol']) ? $modules['Bol']->isEnabled() : 0)
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">
@@ -173,7 +175,6 @@
                                     <h4 class="mb-1 font-20">Bol.com Inc.</h4>
                                     <p class="text-muted  font-14">San Francisco, California</p>
                                 </div>
-
                                 <p class="font-14 text-center text-muted">
                                     Bol.com is a company based in San Francisco that operates an online marketplace and hospitality service
                                     for people to lease or rent..
@@ -181,8 +182,7 @@
                                 <div class="text-center">
                                     <a href="@if(Route::has('bol')){{ route('all.orders') }}@endif" class="btn btn-sm btn-light">View more info</a>
                                 </div>
-
-                                <div class="row mt-4 text-center">
+                                <!-- <div class="row mt-4 text-center">
                                     <div class="col-6">
                                         <h5 class="fw-normal text-muted">Revenue (USD)</h5>
                                         <h4>260 cr</h4>
@@ -191,12 +191,12 @@
                                         <h5 class="fw-normal text-muted">Number of employees</h5>
                                         <h4>3.1k</h4>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div> <!-- end card -->
                     </div><!-- end col -->
                     @endif
-                    @if (isset($available_modules['Ebay']))
+                    @if (isset($available_modules['Ebay']) ? $modules['Ebay']->isEnabled() : 0)
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">
@@ -228,7 +228,7 @@
                         </div> <!-- end card -->
                     </div><!-- end col -->
                     @endif
-                    @if (isset($available_modules['Homee']))
+                    @if (isset($available_modules['Homee']) ? $modules['Homee']->isEnabled() : 0)
                     <div class="col-lg-4">
                         <div class="card bg-pattern">
                             <div class="card-body">

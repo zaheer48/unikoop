@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
 use Illuminate\Support\Facades\Schema;use Illuminate\Pagination\Paginator;
-
+use Nwidart\Modules\Facades\Module;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,5 +36,8 @@ class AppServiceProvider extends ServiceProvider
         if(Schema::hasTable('website_settings'))
             $settings = \DB::table('website_settings')->first();
         View::share('settings', $settings);
+        
+        $modules = Module::all();
+        View::share('modules', $modules);
     }
 }

@@ -10,45 +10,45 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::prefix('bol')->group(function() {
+Route::group(['middleware' => ['auth'], 'prefix' => 'bol'], function() {
     Route::get('/', 'BolController@index')->name('bol');
 
-    Route::get('/all_orders', 'OrderController@allOrders')
-        ->middleware('auth')->name('all.orders');
+    Route::get('/all_orders', 'OrderController@allOrders')->name('all.orders');
+    Route::get('/invoice', 'OrderController@invoice2')->name('invoice');
+    Route::get('/download-invoice-pdf/{id}', 'UserInvoiceTemplatesController@downloadInvoice')->name('download.invoice.pdf');
+    Route::get('/download-packinglist-pdf/{id}', 'UserPacklistTemplatesController@downloadInvoice')->name('download.packinglist.pdf');
+
+
+
+
+
+
     Route::get('/apidata/{site}', [
             'uses' => 'BolRetailerController@getOpenOrders',
             'as' => 'apidata'
-        ])
-        ->middleware('auth');
-    Route::get('/fetched/labels/{id}', 'OrderController@fetchedLabels')->name('fetched.labels')->middleware('auth');
-    Route::get('/invoice', 'OrderController@invoice2')->name('invoice');
-    Route::post('/check_invoice2/', 'OrderController@check_invoice2')->middleware('auth');
+        ]);
+    Route::get('/fetched/labels/{id}', 'OrderController@fetchedLabels')->name('fetched.labels');
+    
+    Route::post('/check_invoice2/', 'OrderController@check_invoice2');
 
     // Download PDF
     Route::get('/download-pdf/{type}/order/{id}', 'OrderController@labelDownload')->name('download.pdf.order');
-    Route::get('/download-packinglist-pdf/{id}', 'UserPacklistTemplatesController@downloadInvoice')->middleware('auth');
-    Route::get('/download-invoice-pdf/{id}', 'UserInvoiceTemplatesController@downloadInvoice')->name('download.invoice.pdf');
+    
+    
     Route::post('/invoice_submit2', 'OrderController@invoice_submit2');
     Route::get('/download', function(){
         return view('bol::download');
-    })->name('download.label')->middleware('auth');
+    })->name('download.label');
     Route::post('/label_download', 'OrderController@downloadLabel');
     Route::get('/orders_emails/{id}', 'OrderController@ordersEmails')->middleware('auth');
-    // PAyment
-    Route::get('/payment-history', function () {
-        return view('bol::payment-history.index');
-    })->name('payment.history');
-
-    Route::get('/account-report', 'NotificationController@accountReport')->name('account.report');
 
 
 
     Route::get('/orders/{id}', 'OrderController@orders')->middleware('auth')->name('bol.update');
     Route::post('/orders_emails_send', 'OrderController@ordersEmailsSend')->middleware('auth');
-    Route::post('/fetch/{id}', 'OrderController@fetch')->middleware('auth');
-    Route::get('/fetch/select/{id}', 'OrderController@fetchSelect')->middleware('auth');
-    Route::post('/fetch/select/next', 'OrderController@fetchSelectNext')->middleware('auth');
+    Route::post('/fetch/{id}', 'OrderController@fetch')->name('fetch')->middleware('auth');
+    Route::get('/fetch/select/{id}', 'OrderController@fetchSelect')->name('fetch.select')->middleware('auth');
+    Route::post('/fetch/select/next', 'OrderController@fetchSelectNext')->name('fetch.select.next')->middleware('auth');
 
     Route::post('/update_orders', 'OrderController@updateOrders')->middleware('auth');
     Route::get('/packing_list/{site}/{id}', 'OrderController@packing_list')->middleware('auth');
@@ -84,6 +84,9 @@ Route::prefix('bol')->group(function() {
 
     Route::get('/wallet-invoice/{id}', 'MollieController@walletInvoice')->middleware('auth');
     Route::get('/download-custom-label','CustomOrderController@downloadCustomLabel')->middleware('auth');
+
+
+    Route::post('/track-order-submit','OrderController@trackOrder')->name('track.order.submit');
     // Route::get('/unikoop/payment-invoice/{id}','UnikoopController@paymentInvoice');
 });
 

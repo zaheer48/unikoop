@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
-use App\Notification;
+
+use App\Models\User;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -31,6 +32,6 @@ class HomeController extends Controller
         $users = User::where('is_admin',0)->count();
         $subadmins = User::where('is_admin',2)->count();
         $user_requests = Notification::all()->count();
-        return view('template.gold.admin.admin_dashboard',compact('users','subadmins','user_requests'));
+        return view('admin.admin_dashboard',compact('users','subadmins','user_requests'));
     }
 }

@@ -137,7 +137,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <h4 class="text-primary">PO Box Number : <span
-                                                class="text-dark">{{ Auth::user()->pobox }}</span></h4>
+                                                class="text-dark">{{ Auth::user()->pobox_number }}</span></h4>
                                         </h4>
 
                                         {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
@@ -152,8 +152,11 @@
 
                                     </div>
                                     <div class="col-sm-6">
-                                        <h4 class="text-primary">Profile Picture :<span
-                                                class="text-dark">{{ Auth::user()->pic }}</span></h4>
+                                        <h4 class="text-primary">Profile Picture :                    @if (Auth::user()->profile_url)
+                                            <img class="ms-3 rounded-circle" style="width:80px" src="{{ asset('storage/images/'.Auth::user()->profile_url)}}" alt="user-image">
+                                          @else
+                                            <img class="ms-3 rounded-circle" style="width:80px" src="{{URL::asset('assets/images/users/avatar.png')}}" alt="user-image">
+                                            @endif</h4>
                                         </h4>
 
                                         {{-- <h4>Email :{{ Auth::user()->email }}</h4>                                    </h4> --}}
