@@ -73,6 +73,16 @@
     </style>
     <div class="content-page">
         <div class="content">
+            @if (session()->has('success'))
+            <div class="alert alert-dismissable alert-success mt-3">
+                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>
+                    {!! session()->get('success') !!}
+                </strong>
+            </div>
+        @endif
             <div class="card shadow">
                 <div class="card-body">
                     <div class="card-body">
@@ -86,16 +96,7 @@
                         </h3>
                         <hr>
                         <div class="table-responsive">
-                            @if (session()->has('success'))
-                                <div class="alert alert-dismissable alert-success">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <strong>
-                                        {!! session()->get('success') !!}
-                                    </strong>
-                                </div>
-                            @endif
+                           
 
                             <table class="table align-items-center table-flush" id="userTable">
                                 <thead class="theadmin-light">
@@ -130,10 +131,11 @@
                                             </td>
                                             <td>{{$subadmin->created_at->format('d/m/y')}}</td>
                                             <td>
+                                                <div class="btn-group mb-2">
                                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Action <i class="mdi mdi-chevron-down"></i>
                                                 </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-2" x-placement="bottom-start" style="position: absolute; transform: translate3d(-150px, 21px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-2" x-placement="" style="position: absolute; transform: translate3d(-150px, 21px, 0px); top: 0px; left: 0px; will-change: transform;">
                                                     @if (in_array('edit_sadmins',$privileges) || Auth::user()->is_admin == 1)
                                                         <a class="edit dropdown-item"
                                                             href="{{route('subadmins.edit',$subadmin->id)}}">Edit</a>
@@ -172,6 +174,7 @@
                                                         </form>
                                                     @endif
                                                     <a class="edit dropdown-item" href="{{route('subadmins.show',$subadmin->id)}}">View details</a>
+                                                </div>
                                                 </div>
 
                                                 <!-- <div class="action-dropdown custom-dropdown-icon">

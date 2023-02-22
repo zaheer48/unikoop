@@ -101,9 +101,13 @@
                                                         <td>
                                                             @if ($template->as_complete)
                                                                 @if ($template->as_default)
-                                                                    <a class="btn btn-sm btn-success"><i class="fa fa-check"></i>&nbsp;Default</a>
+                                                                    <a class="btn btn-sm btn-success"> <i class="fa-solid fa-check"></i>&nbsp;
+                                                                       
+                                                                        Default</a>
                                                                 @else
-                                                                    <a href="{{ route('packlist-templates.setDefault',$template->id) }}" class="btn btn-sm btn-info">Set Default</a>
+                                                                    <a href="{{ route('packlist-templates.setDefault',$template->id) }}" class="btn btn-sm btn-info">
+                                                                        <i class="fa-solid fa-check"></i>
+                                                                        Set Default</a>
                                                                 @endif
                                                             @else
                                                                 Not Configured
@@ -111,10 +115,11 @@
                                                         </td>
                                                         <td class=" " >
                                                             <div class="d-flex">
-                                                                <a href="{{ route('packinglist-templates.edit',$template->id) }}" class="btn btn-sm btn-primary d-flex mx-2 my-1">
-                                                                    Edit
+                                                                <a href="{{ route('packinglist-templates.edit',$template->id) }}" class="btn btn-sm btn-success d-flex mx-2 my-1">
+                                                                    <i class="fa fa-edit"></i>  Edit
                                                                 </a>
                                                                 <a href="{{ route('packinglist-templates.show',$template->id) }}" target="_blank" class="btn btn-sm btn-primary  d-flex mx-2 my-1">
+                                                                    <i class="fa fa-eye"></i>  
                                                                     Preview
                                                                 </a>
                                                             </div>

@@ -10,7 +10,7 @@
                                 <i class="fe-search"></i>
                             </button>
                         </div>
-                        <div class="dropdown-menu dropdown-lg" id="search-dropdown">
+                        {{-- <div class="dropdown-menu dropdown-lg" id="search-dropdown"> --}}
                             <!-- item-->
                             <!-- <div class="dropdown-header noti-title">
                                 <h5 class="text-overflow mb-2">Found 22 results</h5>
@@ -54,7 +54,7 @@
                                     </div>
                                 </a>
                             </div> -->
-                        </div>
+                        {{-- </div> --}}
                     </div>
                 </form>
             </li>
@@ -166,11 +166,11 @@
                 </div>
             </li>
             @endif
-            {{-- <li class="dropdown notification-list">
+            <li class="dropdown notification-list">
                 <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                     <i class="fe-settings noti-icon"></i>
                 </a>
-            </li> --}}
+            </li>
         </ul>
 
         <!-- LOGO -->

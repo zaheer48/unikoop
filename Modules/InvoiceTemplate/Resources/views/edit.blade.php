@@ -60,7 +60,7 @@
                         <div class="row" style="margin-top: 8px;">
                             <div class="col-md-12">
                                 <h3 style="padding: 20px;">Invoice Templates
-                                    <a href="{{ route('invoice-templates.index') }}" class="btn btn-primary" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+                                    <a href="{{ route('invoice-templates.index') }}" class="btn btn-secondary" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
                                 </h3>
                                 <hr>
                                 <div class="row" style="padding: 20px;">
@@ -105,14 +105,17 @@
                                             <div class="row">
                                                 <div class="col-md-12 form-group">
                                                     <button class="btn btn-md btn-primary">
+                                                        
+                         
                                                         Submit
+                                                      
                                                     </button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="col-md-5 form-group">
-                                        <h4 class="text-center">Template Sample</h4>
+                                        <h4 class="mx-3">Template Sample</h4>
                                         <img src="{{ URL::asset('portal/'.$preview->preview) }}" class="mx-3" style="border: 1px solid #999;height:420px">
                                     </div>
                                 </div>

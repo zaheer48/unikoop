@@ -175,7 +175,7 @@
                                                             @if ($servicebanks == null)
                                                                 <tr>
                                                                     <!-- <th>GOOG <span class="co-name">Google Inc.</span></th> -->
-                                                                    <td>
+                                                                    <td colspan="4">
                                                                         <p align="center">No record Found <br>
                                                                             <a href="{{ route('service-bank.create') }}"
                                                                                 class="btn btn-md btn-primary"
@@ -249,7 +249,7 @@
                                                             @if ($servicebanks == null)
                                                                 <tr>
                                                                     <!-- <th>GOOG <span class="co-name">Google Inc.</span></th> -->
-                                                                    <td>
+                                                                    <td colspan="4">
                                                                         <p align="center">No record Found <br>
                                                                             <a href="{{ route('service-bank.create') }}"
                                                                                 class="btn btn-md btn-primary"
