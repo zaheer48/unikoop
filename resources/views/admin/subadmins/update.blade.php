@@ -6,9 +6,11 @@
 @section('content')
 <div class="content-page">
     <div class="content">
-        <div class="row page-titles">
+        <div class="row page-titles mt-3">
             <div class="col-md-12">
-                <ol class="breadcrumb">
+                <ol class="breadcrumb p-2" style="
+                background: #fff;
+            ">
                     <li class="breadcrumb-item"><a href="{{ route('subadmins.index') }}">SubAdmins</a></li>
                     <li class="breadcrumb-item"><a>Update Sub Admin</a></li>
                 </ol>
@@ -18,7 +20,7 @@
         <div class="card card-profile shadow">
             <div class="card-body">
                 <h3>Update Sub Admin
-                    <a href="{{route('subadmins.index')}}" class="btn btn-sm btn-primary" style="float: right;">
+                    <a href="{{route('subadmins.index')}}" class="btn btn-sm btn-secondary" style="float: right;">
                         <i class="fa fa-arrow-left"></i>
                         Back
                     </a>
@@ -64,7 +66,7 @@
                         <div class="col-md-1"></div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col-md-1"></div>
                         <div class="col-md-5">
                             <div class="form-group">
@@ -89,7 +91,8 @@
                         </div>
                         <div class="col-md-1"></div>
                     </div>
-                    <label for="category_name" style="margin-left: 84px;">Assign Priviliges</label>
+
+                    <label for="category_name" style="margin-left: 84px;" class="mt-3">Assign Priviliges</label>
                     <small style="color: red;"> *</small>
                     <br>
                     <br>
@@ -133,7 +136,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col-md-1"></div>
                         <div class="col-md-10">
                             <div class="form-group" id="adding-form">

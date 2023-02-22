@@ -11,9 +11,11 @@
     </style>
     <div class="content-page">
         <div class="content">
-            <div class="row page-titles">
+            <div class="row page-titles mt-3">
                 <div class="col-md-12">
-                    <ol class="breadcrumb">
+                    <ol class="breadcrumb p-2" style="
+                background: #fff;
+            ">
                         <li class="breadcrumb-item"><a href="{{ route('subadmins.index') }}">SubAdmins</a></li>
                         <li class="breadcrumb-item"><a>Sub Admin Details</a></li>
                     </ol>
@@ -23,7 +25,7 @@
             <div class="card card-profile shadow">
                 <div class="card-body">
                     <h3>Sub Admin Details
-                        <a href="{{route('subadmins.index')}}" class="btn btn-sm btn-primary" style="float: right;">
+                        <a href="{{route('subadmins.index')}}" class="btn btn-sm btn-secondary" style="float: right;">
                             <i class="fa fa-arrow-left"></i>
                             Back
                         </a>

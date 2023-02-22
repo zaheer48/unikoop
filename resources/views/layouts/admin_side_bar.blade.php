@@ -61,7 +61,7 @@
                 </li>
                 <li>
                     <a href="{{ route('label.pricing')}}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-wallet"></i>
+                        <i class="fe-dollar-sign"></i>
                         <span>Label Pricing</span>
                     </a>
                 </li>
@@ -70,7 +70,7 @@
 
                 <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                        <i data-feather="shopping-cart"></i>
+                        <i data-feather="user-plus"></i>
                         <span> User Management </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -95,7 +95,7 @@
                 @if($modules['EmailTemplate']->isEnabled())
                 <li>
                     <a href="{{ route('email-templates.index')}}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <i class="fe-mail"></i>
                         <span>Email Templates</span>
                     </a>
                 </li>
@@ -103,7 +103,7 @@
                 @if($modules['GenerateInvoice']->isEnabled())
                 <li>
                     <a href="{{ route('invoice-templates.index')}}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-file-invoice"></i>
+                        <i class="fe-file-text"></i>
                         <span>Invoice Templates</span>
                     </a>
                 </li>
@@ -111,14 +111,14 @@
                 @if($modules['PackingListTemplate']->isEnabled())
                 <li>
                     <a href="{{ route('packinglist-templates.index')}}" class="dropdown-item notify-item">
-                        <i class="fa-sharp fa-solid fa-list-ul"></i>
+                        <i class="fe-list"></i>
                         <span>Packing List Templates</span>
                     </a>
                 </li>
                 @endif
                 <li>
                     <a href="#sidebarCrm" data-bs-toggle="collapse">
-                        <i data-feather="shopping-cart"></i>
+                        <i data-feather="tv"></i>
                         <span>Adds Management </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -135,14 +135,14 @@
                 </li>
                 <li>
                     <a href="{{ route('payment.methods') }}" class="dropdown-item notify-item">
-                        <i class="fa-sharp fa-solid fa-list-ul"></i>
+                        <i class="fe-credit-card"></i>
                         <span>Payment Method</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('website.settings') }}" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <i class="fe-settings noti-icon"></i>
                         <span>Site Settings</span>
                     </a>
                 </li>

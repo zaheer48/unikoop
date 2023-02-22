@@ -6,10 +6,10 @@
 @section('css')
 @endsection
 @section('content')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
+{{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" /> --}}
 <style>
 
-.dropdown-toggle::after {
+/* .dropdown-toggle::after {
     display:none ;
 
 }
@@ -31,8 +31,8 @@
 
 .hr327brgtns108::before {
   filter: hue-rotate(327deg) brightness(108%);
-}
-.custom-control-label{
+} */
+.form-check-input{
     cursor: pointer;
 }
     </style>
@@ -44,22 +44,22 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
-                    
+
                     </div>
                 </div>
             </div>
             <!-- end page title -->
             <div class="col-xl-12">
-                <div class="mt-5">
-                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert" style="display:none">
-                        <span></span>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert" id="alert" style="display:none">
+                    <span></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <div class="card mt-3">
                     <div class="card-body" style="background-color: #fff;">
                         <h3 class="header-title mb-3">All Modules</h3>
                         <div class="table-responsive">
                             <table class="table table-borderless table-nowrap table-hover table-centered m-0">
-                                <thead class="" style="background-color: #6658dd">
+                                <thead class="text-light" style="background-color: #6658dd">
                                     <tr>
                                         <th>Modules</th>
                                         <th>Adons</th>
@@ -73,10 +73,15 @@
                                             <h6 class="m-0 fw-normal ">{{ $module->getName() }}</h6>
                                         </td>
                                         <td>
-                                            <div class="custom-control custom-switch ">
-                                                <input type="checkbox" class="custom-control-input" module="{{ $module->getName() }}" id="customSwitch{{ $loop->index }}" (click)="changeState($event)" @if($module->isEnabled()) checked @endif>
-                                                <label class="custom-control-label text-yb hr327brgtns108" for="customSwitch{{ $loop->index }}">Activate </label>
+                                         <div class="d-flex gap-1">
+                                           <p>Deactivate</p>
+                                            <div class="form-check form-switch ">
+
+                                                <input type="checkbox" class="form-check-input" module="{{ $module->getName() }}" id="customSwitch{{ $loop->index }}" (click)="changeState($event)" @if($module->isEnabled()) checked @endif>
+
+                                                <label class="form-check-label text-yb hr327brgtns108" for="customSwitch{{ $loop->index }}">Activate </label>
                                               </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -96,7 +101,7 @@
 @section('js')
     <script>
         $(document).ready(function () {
-            $('.custom-control-input').on('change', function() {
+            $('.form-check-input').on('change', function() {
                 var status1 = $(this).is(':checked');
                 var name1 = $(this).attr('module');
                 $.ajax({

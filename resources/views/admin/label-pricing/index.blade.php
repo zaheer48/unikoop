@@ -4,13 +4,13 @@
     @include('layouts.admin_side_bar', ['modules' => $modules])
 @endsection
 @section('content')
-<style>
+{{-- <style>
       #sidebar-menu>ul>li>a {
             transition: none;
 
             font-size: inherit;
         }
-    </style>
+    </style> --}}
 
     @php
         $privileges = explode(",",\Auth::user()->privilages);

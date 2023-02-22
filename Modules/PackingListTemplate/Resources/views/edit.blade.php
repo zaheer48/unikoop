@@ -61,7 +61,7 @@
                     <div class="row" style="margin-top: 8px;">
                         <div class="col-md-12">
                             <h3 style="padding: 20px;">Packing List Templates
-                            <a href="{{route('packinglist-templates.index')}}" class="btn btn-primary" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+                            <a href="{{route('packinglist-templates.index')}}" class="btn btn-secondary" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
                             </h3>
                             <hr>
                             <div class="row" style="padding: 20px;">
@@ -126,7 +126,7 @@
                                     </form>
                                 </div>
                                 <div class="col-md-5 form-group">
-                                    <h4 class="text-center">Template Sample</h4>
+                                    <h4 class="">Template Sample</h4>
                                     <img src="{{ asset('portal/'.$preview->preview) }}" style="border: 1px solid #999;height:420px">
                                 </div>
                             </div>

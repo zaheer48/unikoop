@@ -11,7 +11,9 @@
 
     function hideURLbar() {
         window.scrollTo(0, 1);
-    } </script>
+    } 
+    
+</script>
 <!-- bootstarp-css -->
 {{-- <link href="/css/bootstrap.css?1564436599" rel="stylesheet" type="text/css" media="all"/>
 <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"/>
@@ -87,7 +89,9 @@ if ($user1 ?? '') {
     <div class="content">
         <div class="row page-titles">
             <div class="col-md-12 mt-3">
-                <ol class="breadcrumb">
+                <ol class="breadcrumb p-2" style="
+                background: #fff;
+            ">
                     <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
                     <li class="breadcrumb-item"><a>Create User</a></li>
                 </ol>
@@ -142,7 +146,7 @@ if ($user1 ?? '') {
                         <div class="col-md-1"></div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col-md-1"></div>
                         <div class="col-md-5">
 
@@ -1051,17 +1055,134 @@ width: 300px;
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-3">
                             <div class="col-md-12">
-                                {{-- <ul class="nav nav-tabs">
-                                    <li class="active" style="display: contents;">
-                                        <a href="#dhl" data-toggle="tab">DHL</a>
+                              
+
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                      <button class="nav-link active" id="dpd-tab" data-bs-toggle="tab" data-bs-target="#dpd" type="button" role="tab" aria-controls="dpd" aria-selected="true">DPD</button>
                                     </li>
-                                    <li style="display: contents;">
-                                        <a href="#dpd" data-toggle="tab">DPD</a>
+                                    <li class="nav-item" role="presentation">
+                                      <button class="nav-link" id="dhl-tab" data-bs-toggle="tab" data-bs-target="#dhl" type="button" role="tab" aria-controls="dhl" aria-selected="false">DHL</button>
                                     </li>
-                                </ul> --}}
-                                <div class="tab-content">
+                                    
+                                  </ul>
+                                  <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="dpd" role="tabpanel" aria-labelledby="dpd-tab"><h3>DHL</h3>
+                                        <br>
+                                        <input type="hidden" name="Logistiek" value="DHL">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">Price Per Label</label>
+                                                    <small style="color: red;"> *</small>
+                                                    <br>
+                                                    @php
+                                                        $label_exist = ($userrecord->price_per_label) ?? '';
+                                                    @endphp
+                                                    @if($label_exist)
+                                                        <input class="form-control" type="text"  value="{{$userrecord->price_per_label}}" disabled name="price_limit" placeholder="Price Per Limit">
+                                                    @else
+                                                        @if ($dhl->is_active == 'Unikoop')
+                                                            <input type="radio" name="dhl_price_label" onclick="dhlCustom('0')" value="{{ $dhl->dhl_unikoop_price }}">
+                                                            Unikoop Price (&euro;{{ $dhl->dhl_unikoop_price }})
+                                                        @else
+                                                            <input type="radio" name="dhl_price_label" onclick="dhlCustom('0')" value="{{ $dhl->dhl_discount_price }}">
+                                                            Discount Price (&euro;{{ $dhl->dhl_discount_price }})
+                                                        @endif
+                                                        <input type="radio" name="dhl_price_label" value="custom" onclick="dhlCustom('1')"> Custom Value
+                                                            <br>
+                                                            <input type="text" name="price_limit" value="0" class="form-control" style="display: none" id="dhl-custom-input" placeholder="Price Per Label">
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">DHL Client Id</label>
+                                                    <small style="color: red;"> *</small>
+                                                    <input class="form-control" type="text" @if($settings ??'')
+                                                    value="{{$settings->client_id}}" disabled @endif name="client_id"
+                                                    placeholder="Client Id">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">DHL Account Id</label>
+                                                    <small style="color: red;"> *</small>
+                                                    <input class="form-control" type="text" @if($settings ??'')
+                                                    value="{{$settings->account_id}}" disabled @endif name="account_id"
+                                                    placeholder="Account Id">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">DHL Key</label>
+                                                    <small style="color: red;"> *</small>
+                                                    <input class="form-control" type="text" @if($settings ??'')
+                                                    value="{{$settings->dhlkey}}" disabled @endif name="dhlkey"
+                                                    placeholder="Dhl Key">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="dhl" role="tabpanel" aria-labelledby="dhl-tab"><h3>DPD</h3>
+                                        <br>
+                                        <input type="hidden" name="dpd_logistiek" value="DPD">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">Price Per Label</label>
+                                                    <small style="color: red;"> *</small>
+                                                    <br>
+                                                    @php
+                                                        $label_exist = ($userrecord->price_per_label_dpd) ?? '';
+                                                    @endphp
+                                                    @if($label_exist)
+                                                        <input class="form-control" type="text"  value="{{$userrecord->price_per_label_dpd}}" disabled name="dpd_price_limit" placeholder="Price Per Limit">
+                                                    @else
+                                                        @if ($dpd->is_active == 'Unikoop')
+                                                            <input type="radio" name="dpd_price_label" onclick="dpdCustom('0')" value="{{ $dpd->dpd_unikoop_price }}">
+                                                            Unikoop Price (&euro;{{ $dpd->dpd_unikoop_price }})
+                                                        @else
+                                                            <input type="radio" name="dpd_price_label" onclick="dpdCustom('0')" value="{{ $dpd->dpd_discount_price }}">
+                                                            Discount Price (&euro;{{ $dpd->dpd_discount_price }})
+                                                        @endif
+                                                        <input type="radio" name="dpd_price_label" value="custom" onclick="dpdCustom('1')"> Custom Value
+                                                        <br>
+                                                        <input type="text" name="dpd_price_limit" value="0" class="form-control" style="display: none" id="dpd-custom-input" placeholder="Price Per Label">
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">DPD Delisid</label>
+                                                    <small style="color: red;"> *</small>
+                                                    <input class="form-control" type="text" @if($settings ??'') value="{{$settings->dpd_delisid}}" disabled @endif name="dpd_delisid" placeholder="API DelisId">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">DPD Username</label>
+                                                    <small style="color: red;"> *</small>
+                                                    <input class="form-control" type="text" @if($settings ??'') value="{{$settings->dpd_username}}" disabled @endif name="dpd_username" placeholder="API Username">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">DPD Password</label>
+                                                    <small style="color: red;"> *</small>
+                                                    <input class="form-control" type="text" @if($settings ??'') value="{{$settings->dpd_password}}" disabled @endif name="dpd_password" placeholder="API Password">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                {{-- <div class="tab-content">
                                     <div id="dhl" class="tab-pane active">
                                         <h3>DHL</h3>
                                         <br>
@@ -1176,7 +1297,7 @@ width: 300px;
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     @if($userrecord->credit_limit ?? '')
                                     <button name="" type="button" class="btn btn btn-primary" id="button" value=""

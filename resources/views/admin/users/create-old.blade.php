@@ -13,7 +13,7 @@
         window.scrollTo(0, 1);
     } </script>
 <!-- bootstarp-css -->
-<link href="/css/bootstrap.css?1564436599" rel="stylesheet" type="text/css" media="all"/>
+{{-- <link href="/css/bootstrap.css?1564436599" rel="stylesheet" type="text/css" media="all"/>
 <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="/js/jquery.min.js"></script>
@@ -21,7 +21,7 @@
 
 <script src="/js/nav.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
 
 <!--// bootstarp-css -->
 <!-- css -->

@@ -13,7 +13,7 @@
             window.scrollTo(0, 1);
         } </script>
     <!-- bootstarp-css -->
-    <link href="/css/bootstrap.css?1564436599" rel="stylesheet" type="text/css" media="all"/>
+    {{-- <link href="/css/bootstrap.css?1564436599" rel="stylesheet" type="text/css" media="all"/>
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="/js/jquery.min.js"></script>
@@ -21,7 +21,7 @@
 
     <script src="/js/nav.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
 
     <!--// bootstarp-css -->
     <!-- css -->
@@ -44,6 +44,15 @@
     <script src="/js/seller_regist/script.js?1564436599" type="text/javascript"></script>
     <script src="/js/seller_regist/return_shipping.js?1564436599" type="text/javascript"></script>
     <style>
+        /* .nav-second-level li a {
+    padding: 8px 20px;
+    color: var(--ct-menu-item);
+    display: block;
+    position: relative;
+    -webkit-transition: all .4s;
+    transition: none;
+    font-size: 11px;
+}
         #sidebar-menu>ul>li>a {
             transition: none;
 
@@ -52,13 +61,19 @@
         #sidebar-menu .menu-title{
             font-size: 12px;
         }
+        #sidebar-menu>ul>li>a :hover{
+
+            transition: none;
+            text-decoration: none;
+            font-size: inherit;
+        }
         .navbar-custom .app-search .app-search-box {
     display: none;
         }
         a:hover {
 
     text-decoration: none;
-}
+} */
         </style>
     <div class="row page-titles">
                 <div class="col-md-12">
@@ -71,22 +86,25 @@
     <div class="content-page">
         <div class="content">
 
-            <div class="card card-profile shadow border">
+            <div class="card card-profile">
                 <div class="card-body">
                     <h3>Label Pricing</h3>
                     <hr class="my-4">
                     <div class="row">
                         <div class="col-md-12">
-                            <ul class="nav nav-tabs">
-                                <li class="active" style="display: contents;">
-                                    <a href="#dhl" data-toggle="tab">DHL</a>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="dhl-tab" data-bs-toggle="tab" data-bs-target="#dhl" type="button" role="tab" aria-controls="dhl" aria-selected="true">DHL</button>
                                 </li>
-                                <li style="display: contents;">
-                                    <a href="#dpd" data-toggle="tab">DPD</a>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="dpd-tab" data-bs-toggle="tab" data-bs-target="#dpd" type="button" role="tab" aria-controls="dpd" aria-selected="false">DPD</button>
                                 </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div id="dhl" class="tab-pane fade in active">
+                               
+                              </ul>
+                             
+                          
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="dhl" role="tabpanel" aria-labelledby="dhl-tab">
                                     <h3>DHL Pricing Label</h3>
                                     <br>
                                     <form id="first_form" method="post" action="{{url('/label-pricing')}}">
@@ -186,7 +204,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row mt-2">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-primary bg-primary">
@@ -196,8 +214,9 @@
                                             </div>
                                         </div>
                                     </form>
+
                                 </div>
-                                <div id="dpd" class="tab-pane fade">
+                                <div class="tab-pane fade" id="dpd" role="tabpanel" aria-labelledby="dpd-tab">
                                     <h3>DPD Pricing Label</h3>
                                     <br>
                                     <form id="first_form" method="post" action="{{url('/label-pricing')}}">
@@ -297,7 +316,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row mt-2">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-primary bg-primary">
@@ -308,7 +327,8 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                              </div>
+                           
                         </div>
                     </div>
                 </div>
