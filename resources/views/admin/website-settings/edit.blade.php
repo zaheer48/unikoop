@@ -38,7 +38,7 @@
                                     @endphp
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group mt-3">
                                                 <label for="">Site Title</label>
                                                 <small style="color: red;"> *</small>
                                                 <input type="text" name="site_title" value="@if($settings) {{ $settings->site_title }} @endif" class="form-control" required>
@@ -47,25 +47,25 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group mt-3">
                                                 <label for="">Site Logo</label>
                                                 <small style="color: red;"> *</small>
                                                 <input type="file" name="site_logo" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group mt-3">
                                                 <label for="">Fav Icon</label>
                                                 <small style="color: red;"> *</small>
                                                 <input type="file" name="site_fav_icon" class="form-control">
                                             </div>
                                         </div>
                                     </div>
-                                    <br>
+                                  
                                     <div class="row">
 
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group mt-3">
                                                 <label for="">Partners Logos</label>
                                                 <small style="color: red;"> Can be multiple</small>
                                                 <input type="file" name="files[]" class="form-control" multiple>
@@ -73,7 +73,7 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group mt-3">
                                                 <label for="">Services Logos</label>
                                                 <small style="color: red;"> Can be multiple</small>
                                                 <input type="file" name="services[]" class="form-control" multiple>
@@ -110,7 +110,7 @@
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="form-group">
+                                            <div class="form-group mt-3">
                                                 <button class="btn btn-primary mt-3">
                                                     Save
                                                 </button>

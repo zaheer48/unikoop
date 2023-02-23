@@ -7,6 +7,23 @@
 
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
     <style>
+              table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sorting_asc_disabled:before, table.dataTable thead>tr>th.sorting_desc:before, table.dataTable thead>tr>th.sorting_desc_disabled:before {
+    right: 1em;
+    left: auto;
+    content: "↑";
+    font-size: large;
+    color: blue;
+    font-weight: bolder;
+}
+
+table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_asc:after, table.dataTable thead>tr>th.sorting_asc_disabled:after, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>th.sorting_desc_disabled:after {
+    right: 0.5em;
+    left: auto;
+    font-size: large;
+    color: blue;
+
+    content: "↓";
+}
         input[type=text] {
             padding: 6px;
             margin-top: 8px;
@@ -35,9 +52,11 @@
                         <h3>
                             Users Requests List
                         </h3>
-                        <hr>
-                        <div class="table-responsive">
+                        
+                        {{-- <div class="table-responsive"> --}}
 
+                            <div class="responsive-table-plugin">
+                                <div class="table-rep-plugin">
                             @if (session()->has('success'))
                                 <div class="alert alert-dismissable alert-success">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -49,7 +68,7 @@
                                 </div>
                             @endif
 
-                            <table class="table align-items-center table-flush" id="userrequestsTable">
+                            <table class="table align-items-center table-flush table table-striped" id="userrequestsTable" >
                                 <thead class="theadmin-light">
                                 <tr>
                                     <th scope="col">Username</th>
@@ -102,7 +121,9 @@
                                 </tbody>
                             </table>
                             <br>
-                        </div>
+                        {{-- </div> --}}
+                            </div>
+                            </div>
                     </div>
                 </div>
             </div>

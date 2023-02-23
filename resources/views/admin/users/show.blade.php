@@ -6,9 +6,14 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
     <style>
-        .dataTables_wrapper {
+        .mark, mark {
+    padding: 7px;
+    background-color: var(--ct-highlight-bg);
+    border-radius: 5px;
+}
+        /* .dataTables_wrapper {
             overflow-x: scroll !important;
-        }
+        } */
 
         .text_less_more {
             font-weight: 400;
@@ -17,6 +22,23 @@
             display: block;
             font-size: 12px;
         }
+        table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sorting_asc_disabled:before, table.dataTable thead>tr>th.sorting_desc:before, table.dataTable thead>tr>th.sorting_desc_disabled:before {
+    right: 1em;
+    left: auto;
+    content: "↑";
+    font-size: large;
+    color: blue;
+    font-weight: bolder;
+}
+
+table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_asc:after, table.dataTable thead>tr>th.sorting_asc_disabled:after, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>th.sorting_desc_disabled:after {
+    right: 0.5em;
+    left: auto;
+    font-size: large;
+    color: blue;
+
+    content: "↓";
+}
     </style>
     <div class="content-page">
         <div class="content">
@@ -166,7 +188,8 @@
                                         aria-labelledby="recharged-tab">
                                         <div class="row" style="padding: 30px;">
                                             <div class="col-md-12">
-                                                <table class="table table-hover table-bordered" id="recharged_table" style="width:100%">
+                                              
+                                                <table class="table table-striped" id="recharged_table" style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th height="30">Payment ID</th>
@@ -216,6 +239,7 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+                                                      
                                             </div>
                                         </div>
                                     </div>
@@ -224,7 +248,7 @@
                                         aria-labelledby="payment-tab">
                                         <div class="row" style="padding: 30px;">
                                             <div class="col-md-12">
-                                                <table class="table table-hover table-bordered" id="payment_table" style="width:100%">
+                                                <table class="table table-striped" id="payment_table" style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th height="30">ID</th>
@@ -279,7 +303,7 @@
                                         aria-labelledby="labels-tab">
                                         <div class="row" style="padding: 30px;">
                                             <div class="col-md-12">
-                                                <table class="table table-hover table-bordered" id="label_table" style="width:100%">
+                                                <table class="table table-striped" id="label_table" style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th height="30">Id</th>
@@ -329,7 +353,7 @@
                                     <div class="tab-pane fade" id="dhl" role="tabpanel" aria-labelledby="dhl-tab">
                                         <div class="row" style="padding: 30px;">
                                             <div class="col-md-12">
-                                                <table class="table table-hover table-bordered" id="dhl_table" style="width:100%">
+                                                <table class="table table-striped" id="dhl_table" style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th height="30">Id</th>
@@ -380,7 +404,7 @@
                                     <div class="tab-pane fade" id="dpd" role="tabpanel" aria-labelledby="dhl-tab">
                                         <div class="row" style="padding: 30px;">
                                             <div class="col-md-12">
-                                                <table class="table table-hover table-bordered" id="dpd_table" style="width:100%">
+                                                <table class="table table-striped" id="dpd_table" style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th height="30">Id</th>
@@ -433,7 +457,7 @@
                                         <div class="row" style="padding: 30px;">
                                             <div class="col-md-12">
                                                 <table  >
-                                                <table  class="table table-hover table-bordered" id="custom_table" style="width:100%">
+                                                <table  class="table table-striped" id="custom_table" style="width:100%">
                                                     <thead>
                                                         <tr>
                                                             <th height="30">EAN</th>
@@ -530,7 +554,7 @@
                                 <div id="recharged" class="tab-pane fade">
                                     <div class="row" style="padding: 30px;">
                                         <div class="col-md-12">
-                                            <table class="table table-hover table-bordered" id="recharged_table">
+                                            <table class="table table-striped" id="recharged_table">
                                                 <thead>
                                                 <tr>
                                                     <th height="30">Payment ID</th>
@@ -584,7 +608,7 @@
                                 <div id="payment" class="tab-pane fade">
                                     <div class="row" style="padding: 30px;">
                                         <div class="col-md-12">
-                                            <table class="table table-hover table-bordered" id="payment_table">
+                                            <table class="table table-striped" id="payment_table">
                                                 <thead>
                                                 <tr>
                                                     <th height="30">ID</th>
@@ -635,7 +659,7 @@
                                 <div id="labels" class="tab-pane fade">
                                     <div class="row" style="padding: 30px;">
                                         <div class="col-md-12">
-                                            <table class="table table-hover table-bordered" id="label_table">
+                                            <table class="table table-striped" id="label_table">
                                                 <thead>
                                                 <tr>
                                                     <th height="30">Id</th>
@@ -682,7 +706,7 @@
                                 <div id="dhl" class="tab-pane fade">
                                     <div class="row" style="padding: 30px;">
                                         <div class="col-md-12">
-                                            <table class="table table-hover table-bordered" id="dhl_table">
+                                            <table class="table table-striped" id="dhl_table">
                                                 <thead>
                                                 <tr>
                                                     <th height="30">Id</th>
@@ -729,7 +753,7 @@
                                 <div id="dpd" class="tab-pane fade">
                                     <div class="row" style="padding: 30px;">
                                         <div class="col-md-12">
-                                            <table class="table table-hover table-bordered" id="dpd_table">
+                                            <table class="table table-striped" id="dpd_table">
                                                 <thead>
                                                 <tr>
                                                     <th height="30">Id</th>
@@ -776,7 +800,7 @@
                                 <div id="custom" class="tab-pane fade">
                                     <div class="row" style="padding: 30px;">
                                         <div class="col-md-12">
-                                            <table class="table table-hover table-bordered" id="custom_table">
+                                            <table class="table table-striped" id="custom_table">
                                                 <thead>
                                                 <tr>
                                                     <th height="30">EAN</th>

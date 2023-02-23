@@ -79,7 +79,16 @@
         <div class="content">
 
 
-
+            @if (session()->has('success'))
+            <div class="alert alert-dismissable alert-success mt-3">
+                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>
+                    {!! session()->get('success') !!}
+                </strong>
+            </div>
+        @endif
             <div class="card shadow">
                 <div class="">
                     <div class="card-body">
@@ -91,23 +100,10 @@
                                 </a>
                             @endif
                         </h3>
-                        <hr>
-
-                        @if (session()->has('success'))
-                            <div class="alert alert-dismissable alert-success">
-                                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <strong>
-                                    {!! session()->get('success') !!}
-                                </strong>
-                            </div>
-                        @endif
                         <div class="responsive-table-plugin">
                             <div class="table-rep-plugin">
                                 <div class="table-responsive">
-                                    <table id="tech-companies-1"
-                                        class="table table-striped mb-5 align-items-center table-flush" id="userTable">
+                                    <table  class="table table-striped mb-5 align-items-center table-flush" id="">
                                         <thead class="theadmin-light">
                                             <tr>
                                                 <th scope="col">Email</th>

@@ -24,7 +24,7 @@
     <link href=" {{ URL::asset('assets/libs/images/favicon.ico') }}" rel="stylesheet"  />
     <!-- Plugins css -->
     <link href=" {{ URL::asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href=" {{ URL::asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
+    {{-- <link href=" {{ URL::asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" /> --}}
 
     <!-- Bootstrap css -->
     <link href=" {{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -38,6 +38,11 @@
     <!-- Head js -->
     <script src="{{URL::asset('assets/js/head.js')}}"></script>
     <style>
+     @media (min-width: 768px){
+body[data-leftbar-size=condensed]:not([data-layout=compact]) {
+    min-height: auto;
+}
+}
         .table-responsive {
             overflow-x: scroll;
         }
@@ -63,11 +68,16 @@
       .btn-btn-logout:hover{
         border-color:#ffffff00;
     }
+   
+
     </style>
+     
     @yield('css')
     </head>
     <!-- body start -->
-    <body data-layout-mode="default" data-theme="light" data-layout-width="fluid" data-topbar-color="dark" data-menu-position="fixed" data-leftbar-color="light" data-leftbar-size='default' data-sidebar-user='false'>
+    <body data-layout-mode="default" data-theme="light" data-layout-width="fluid" 
+    data-topbar-color="dark" data-menu-position="fixed" data-leftbar-color="light" 
+    data-leftbar-size='default' data-sidebar-user='false'>
         <!-- Begin page -->
         <div id="wrapper">
             <!-- Topbar Start -->
