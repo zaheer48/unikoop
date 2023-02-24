@@ -14,46 +14,50 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'bol'], function() {
     Route::get('/', 'BolController@index')->name('bol');
 
     Route::get('/all_orders', 'OrderController@allOrders')->name('all.orders');
+    Route::get('/orders/{id}', 'OrderController@orders')->name('bol.update');
     Route::get('/invoice', 'OrderController@invoice2')->name('invoice');
+    Route::post('/check_invoice2/', 'OrderController@check_invoice2')->name('check.invoice2');
     Route::get('/download-invoice-pdf/{id}', 'UserInvoiceTemplatesController@downloadInvoice')->name('download.invoice.pdf');
     Route::get('/download-packinglist-pdf/{id}', 'UserPacklistTemplatesController@downloadInvoice')->name('download.packinglist.pdf');
-
-
-
-
-
-
     Route::get('/apidata/{site}', [
-            'uses' => 'BolRetailerController@getOpenOrders',
-            'as' => 'apidata'
-        ]);
+        'uses' => 'BolRetailerController@getOpenOrders',
+        'as' => 'apidata'
+    ]);
     Route::get('/fetched/labels/{id}', 'OrderController@fetchedLabels')->name('fetched.labels');
-    
-    Route::post('/check_invoice2/', 'OrderController@check_invoice2');
-
-    // Download PDF
+    Route::get('/bolexport/{recid}',[
+        "uses" => 'CustomerController@getExport',
+        "as" => 'bolexport'
+    ]);
+    Route::get('/Exportqty/{recid}',[
+        "uses" => 'ExportqtyController@getExport',
+        "as" => 'Exportqty'
+    ]);
+    Route::get('/dhl_csv/{site}/{id}', 'OrderController@dhl_csv');
+    Route::get('/packing_list/{site}/{id}', 'OrderController@packing_list');
+    Route::get('/orders_emails/{id}', 'OrderController@ordersEmails');
+    Route::post('/orders_emails_send', 'OrderController@ordersEmailsSend');
+    Route::get('/delete/{site}/{id}', 'OrderController@delete');
     Route::get('/download-pdf/{type}/order/{id}', 'OrderController@labelDownload')->name('download.pdf.order');
-    
-    
-    Route::post('/invoice_submit2', 'OrderController@invoice_submit2');
+    Route::get('/fetch/select/{id}', 'OrderController@fetchSelect')->name('fetch.select');
+    Route::post('/fetch/select/next', 'OrderController@fetchSelectNext')->name('fetch.select.next');
+    Route::post('/fetch/{id}', 'OrderController@fetch')->name('fetch');
+    Route::post('/invoice_submit2', 'OrderController@invoice_submit2')->name('invoice.submit2');
     Route::get('/download', function(){
         return view('bol::download');
     })->name('download.label');
     Route::post('/label_download', 'OrderController@downloadLabel');
-    Route::get('/orders_emails/{id}', 'OrderController@ordersEmails')->middleware('auth');
+
+    // Above all verified
 
 
+    // Download PDF
 
-    Route::get('/orders/{id}', 'OrderController@orders')->middleware('auth')->name('bol.update');
-    Route::post('/orders_emails_send', 'OrderController@ordersEmailsSend')->middleware('auth');
-    Route::post('/fetch/{id}', 'OrderController@fetch')->name('fetch')->middleware('auth');
-    Route::get('/fetch/select/{id}', 'OrderController@fetchSelect')->name('fetch.select')->middleware('auth');
-    Route::post('/fetch/select/next', 'OrderController@fetchSelectNext')->name('fetch.select.next')->middleware('auth');
+    
+    
 
     Route::post('/update_orders', 'OrderController@updateOrders')->middleware('auth');
-    Route::get('/packing_list/{site}/{id}', 'OrderController@packing_list')->middleware('auth');
-    Route::get('/dhl_csv/{site}/{id}', 'OrderController@dhl_csv')->middleware('auth');
-    Route::get('/delete/{site}/{id}', 'OrderController@delete')->middleware('auth');
+    
+    
     Route::get('/create_invoice/{site}/{id}', 'OrderController@create_invoice')->middleware('auth');
     Route::post('/check_invoice/', 'OrderController@check_invoice')->middleware('auth');
     Route::post('/check_in1/{id}', 'OrderController@check_in1')->middleware('auth');
@@ -68,17 +72,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'bol'], function() {
 
 
 
-    Route::get('/bolexport/{recid}',[
-        "uses" => 'CustomerController@getExport',
-        "as" => 'bolexport'])->middleware('auth');
-
     // Not confirmed
-    Route::get('/Exportqty/{recid}',[
-        "uses" => 'ExportqtyController@getExport',
-        "as" => 'Exportqty'])->middleware('auth');
     Route::get('/Exportcsv/{recid}',[
         "uses" => 'CsvexportController@getExport',
-        "as" => 'Exportcsv'])->middleware('auth');
+        "as" => 'Exportcsv'
+    ]);
 
 
 

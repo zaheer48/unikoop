@@ -72,7 +72,7 @@
                         <span>My Profile</span>
                     </a>
                 </li>                
-                {{-- <li>
+                <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                         <i data-feather="shopping-cart"></i>
                         <span> Ecommerce </span>
@@ -81,22 +81,11 @@
                     <div class="collapse" id="sidebarEcommerce">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="Companies.html">Companies</a>
+                                <a href="{{ route('companies') }}">Companies</a>
                             </li>
-                            <li>
-                                <a href="All-Lists.html">All-Lists</a>
-                            </li>
-
-                            <li>
-                                <a href="All-Orders.html">All-Orders</a>
-                            </li>
-                            <li>
-                                <a href="Orders.html">Orders</a>
-                            </li>
-
                         </ul>
                     </div>
-                </li> --}}
+                </li>
                 {{-- <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                         <i data-feather="shopping-cart"></i>
@@ -120,32 +109,6 @@
                         </ul>
                     </div>
                 </li> --}}
-                <!-- <li>
-                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
-                        <span> Transaction Report</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEcommerce">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('account.report') }}">See All</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="{{ route('invoice') }}">
-                        <i class="fa-solid fa-file-invoice"></i>
-                        <span>Create Invoice</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('download.label')}}">
-                        <i class="fa-solid fa-download"></i>
-                        <span> Download Label </span>
-                    </a>
-                </li>                 -->
             </ul>
         </div>
         <!-- End Sidebar -->

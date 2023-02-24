@@ -45,6 +45,8 @@ Route::middleware(['usertype'])->group(function(){
         return view('payment-history.index');
     })->name('payment.history');
 
+    Route::get('/companies', 'UserController@companies')->name('companies');
+
     // Verified Above
 
 

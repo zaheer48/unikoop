@@ -157,7 +157,7 @@ class InvoiceTemplateController extends Controller
         ]);
 
         Session::flash('success', 'Invoice template configured.');
-        return redirect()->route('invoice-templates.index');
+        // return redirect()->route('invoice-templates.index');
     }
 
     /**
@@ -182,90 +182,6 @@ class InvoiceTemplateController extends Controller
         ]);
 
         Session::flash('success', 'Invoice template set to default.');
-        return redirect()->route('invoice-templates.index');
-    }
-
-    // Service
-    public function downloadInvoice($id)
-    {
-        $preview = DB::table('user_invoice_previews')
-            ->select('*')
-            ->join('invoice_previews', 'invoice_previews.id', '=', 'user_invoice_previews.invoice_preview_id')
-            ->where('user_invoice_previews.user_id', Auth::id())
-            ->where('user_invoice_previews.as_default', 1)
-            ->first();
-        if (!$preview) {
-            Session::flash('danger','Please configure Invoice template in Settings tab area.');
-            return redirect('/bol/invoice');
-        }
-
-        $servicebanks = DB::table('servicebank')->where('user_id', Auth::id())->first();
-        $record = DB::table('bol_data')->where('bestelnummer', $id)->first();
-        // return View('template.gold.dhl.invoice-templates.download_invoice', compact('record','servicebanks','preview'));
-        $pdf = \PDF::loadView('invoice.download_invoice', compact('record','servicebanks','preview'));
-        $file = $record->voornaam_verzending.' '.$record->achternaam_verzending.' Invoice bestelnummer #'.$id.'.pdf';
-        return $pdf->download($file);
-    }
-
-    public function serviceCreate()
-    {
-        return view('invoicetemplate::service-bank.create');
-    }
-
-    public function serviceStore(Request $request)
-    {
-        $request->validate([
-            'bank_name' => 'required',
-            'iban' => 'required',
-            'bic' => 'required'
-        ],
-        [ 
-            'iban.required' => 'Bank IBAN Required', 
-            'bank_name.required' => 'Bank Name is Required', 
-            'bic.required' => 'Bank BIC Required', 
-        ]);
-        ServiceBank::create([
-            'user_id' => Auth::id(),
-            'slug' =>  1 . mt_rand(1000, 9999),
-            'bank_name' => $request->bank_name,
-            'bic' => $request->bic,
-            'iban' => $request->iban,
-            'bank_name_2' => $request->bank_name_2,
-            'bic_2' => $request->bic_2,
-            'iban_2' => $request->iban_2,
-        ]);
-        return redirect()->route('invoice-templates.index');
-    }
-
-    public function serviceedit($slug)
-    {    
-        $details = ServiceBank::where('slug', $slug)->first();
-        return view('invoicetemplate::service-bank.edit',compact('details'));
-    }
-
-    public function serviceupdate($id, Request $request)
-    {
-        $this->validate($request, [
-            'bank_name' => 'required',
-            'iban' => 'required',
-            'bic' => 'required'
-        ],
-        [
-            'iban.required' => 'Bank IBAN Required', 
-            'bank_name.required' => 'Bank Name is Required', 
-            'bic.required' => 'Bank BIC Required', 
-        ]);
-
-        ServiceBank::where('id',$request->id)->update([
-            'user_id' => Auth::id(),
-            'slug' =>  1 . mt_rand(1000, 9999),
-            'bank_name' => $request->bank_name,
-            'bic' => $request->bic,
-            'iban' => $request->iban,
-            'bank_name_2' => $request->bank_name_2,
-            'bic_2' => $request->bic_2,
-            'iban_2' => $request->iban_2,
-        ]);
         return redirect()->route('invoice-templates.index');
     }
 }

@@ -6,7 +6,8 @@
 @section('content')
     <div class="col-md-10 bg-blue middlecontainer">
         <p class="alert alert-info">
-            You can set templates for <a href="{{ route('invoice-templates.index') }}" style="text-decoration: underline;">Invoice</a>, 
+            You can set templates for 
+            <!-- <a href="{{ route('invoice-templates.index') }}" style="text-decoration: underline;">Invoice</a>,  -->
             <a href="{{ route('email-templates.index') }}" style="text-decoration: underline;">Email</a>, 
             <a href="{{ route('packinglist-templates.index') }}" style="text-decoration: underline;">Packing List</a> by going to settings tab.
         </p>
@@ -176,7 +177,7 @@
             var formdata = $("#check_invoice_form2").serialize();
             $.ajax({
                 type: "post",
-                url: "/bol/check_invoice2",
+                url: "{{ route('check.invoice2') }}",
                 data: formdata,
                 dataType: "json",
                 success: function (data) {

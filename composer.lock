@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6926d192b45505ffa4e4bbf0ce2e658c",
+    "content-hash": "f521c766d9a5a87ee2dee8d7ad5f86ce",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -136,6 +136,50 @@
                 }
             ],
             "time": "2023-01-12T15:12:49+00:00"
+        },
+        {
+            "name": "bernhardk/laravel-dpd",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BernhardK91/laravel-dpd.git",
+                "reference": "b40761f09bc57a75e5fb966cf382261bee388bfa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BernhardK91/laravel-dpd/zipball/b40761f09bc57a75e5fb966cf382261bee388bfa",
+                "reference": "b40761f09bc57a75e5fb966cf382261bee388bfa",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BernhardK\\Dpd\\DpdServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BernhardK\\Dpd\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Kraemer",
+                    "email": "mail@bernhard-kraemer.com"
+                }
+            ],
+            "description": "Laravel package for using DPD Webservices to submit shipment to dpd und retrieve its label and tracking information.",
+            "support": {
+                "issues": "https://github.com/BernhardK91/laravel-dpd/issues",
+                "source": "https://github.com/BernhardK91/laravel-dpd/tree/master"
+            },
+            "time": "2018-12-05T16:30:08+00:00"
         },
         {
             "name": "brick/math",

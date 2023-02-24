@@ -22,7 +22,8 @@
                         <i class="fa-solid fa-money-check-dollar"></i>
                         <span>Payment History</span>
                     </a>
-                </li> -->                
+                </li> --> 
+                @if($modules['InvoiceTemplate']->isEnabled())               
                 <li>
                     <a href="{{ route('invoice') }}">
                         <i class="fa-solid fa-file-invoice"></i>
@@ -30,6 +31,7 @@
                         {{-- <span class="menu-arrow"></span> --}}
                     </a>
                 </li>
+                @endif
                 <li>
                     <a href="{{route('download.label')}}">
                         <i class="fa-solid fa-download"></i>

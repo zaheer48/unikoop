@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Nwidart\Modules\Facades\Module;
 use App\Models\User;
+use App\Models\Bol_data;
+use App\Models\Bol_rec;
 use Auth;
 use DB;
+use Carbon\Carbon;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -239,7 +242,58 @@ class UserController extends Controller
 
     public function dashboard()
     {
+        $revenue = DB::table('bol_data')
+            ->selectRaw('SUM(bol_data.prijs) AS total')
+            ->selectRaw('count(bol_data.id) AS totalOrders')
+            ->addSelect(DB::raw('sum(case when lable_pdf IS NOT NULL then 1 else 0 end) as deliveredOrders'))
+            ->addSelect(DB::raw('sum(case when lable_pdf IS NOT NULL then bol_data.price_charged end) as deliveredAmount'))
+            ->addSelect(DB::raw('sum(case when lable_pdf IS NULL then 1 else 0 end) as pendingOrders'))
+            ->addSelect(DB::raw('sum(case when lable_pdf IS NULL then bol_data.prijs end) as pending'))
+            ->addSelect(DB::raw('sum(case when bol_update_status = "FAILURE" then 1 else 0 end) as failedOrders'))
+            ->addSelect(DB::raw('sum(case when bol_update_status = "FAILURE" then bol_data.prijs end) as failure'))
+            ->addSelect(DB::raw('sum(case when bol_update_status = "Not Updated" then 1 else 0 end) as notUpdatedOrders'))
+            ->addSelect(DB::raw('sum(case when bol_update_status = "Not Updated" then bol_data.prijs end) as notupdated'))
+            ->addSelect(DB::raw('sum(case when bol_update_status = "Bol Order Not found" then 1 else 0 end) as notFoundOrders'))
+            ->addSelect(DB::raw('sum(case when bol_update_status = "Bol Order Not found" then bol_data.prijs end) as notfound'))
+            ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
+            ->where('bol_rec.user_id', '=', Auth::id())
+            ->first();
+        // dd($revenue);
+
+        $today_delivered_orders = DB::table('bol_data')
+            ->selectRaw('SUM(bol_data.price_charged) AS total')
+            ->whereDate('fetched_date', DB::raw('CURDATE()'))
+            ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
+            ->where('bol_rec.user_id', '=', Auth::id())
+            ->first();
+
+        // Today 24 Jan 2023
+        $startWeek = Carbon::now()->subWeek()->startOfWeek(); // 13 Jan 2023
+        $endWeek   = Carbon::now()->subWeek()->endOfWeek();  // 19 Jan 2023
+
+        $last_week_delivered_orders = DB::table('bol_data')
+            ->selectRaw('SUM(bol_data.price_charged) AS total')
+            ->whereBetween('fetched_date',[ $startWeek,$endWeek ])
+            ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
+            ->where('bol_rec.user_id', '=', Auth::id())
+            ->first();
+
+        $last_month_delivered_orders = DB::table('bol_data')
+            ->selectRaw('SUM(bol_data.price_charged) AS total')
+            ->whereMonth('fetched_date', '=', Carbon::now()->subMonth()->month)
+            ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
+            ->where('bol_rec.user_id', '=', Auth::id())
+            ->first();
+
+        $latestOrders = Bol_data::orderBy('id', 'desc')->take(5)->get();
+        $deliveredOrders = Bol_data::orderBy('fetched_date', 'desc')->take(5)->get();
+
+        return view('dashboard', compact('revenue', 'today_delivered_orders', 'last_week_delivered_orders', 'last_month_delivered_orders', 'latestOrders', 'deliveredOrders'));
+    }
+
+    public function companies()
+    {
         $available_modules = Module::all();
-        return view('dashboard', compact('available_modules'));
+        return view('companies', compact('available_modules'));
     }
 }

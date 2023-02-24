@@ -1,7 +1,9 @@
 @extends('layouts.service_dashboard')
 @section('title','Service Bank')
+@section('sidebar')
+    @include('layouts.admin_side_bar', ['modules' => $modules])
+@endsection
 @section('content')
-
     <div class="col-md-10 bg-blue middlecontainer">
         @if(Session::has('success'))
             <p class="alert alert-success">{{ Session::get('success') }}
@@ -14,7 +16,6 @@
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             </p>
         @endif
-
         <div class="panel panel-info">
             <div class="row" style="margin-top: 8px;">
                 <div class="col-md-12">

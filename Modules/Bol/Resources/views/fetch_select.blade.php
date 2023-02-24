@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title', 'All Orders | Unikoop')
+@section('sidebar')
+    @include('bol::layouts.side_bar')
+@endsection
 @section('content')
-
-
-
     <!-- order list start -->
     <script language="javascript">
         function dellcheck() {
@@ -100,7 +100,7 @@
         //$this->load->view($theme_path.'dhl/assets/sidebar');
         ?>
         <div class="col-md-12 card middlecontainer">
-            <h3> All Orders </h3>
+            <h3> Fetch Order </h3>
             <div class="row">
                 <div class="col-md-12">
                     @if (session()->has('warning'))

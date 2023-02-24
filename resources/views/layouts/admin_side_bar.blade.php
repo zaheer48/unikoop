@@ -100,7 +100,7 @@
                     </a>
                 </li>
                 @endif
-                @if($modules['GenerateInvoice']->isEnabled())
+                @if($modules['InvoiceTemplate']->isEnabled())
                 <li>
                     <a href="{{ route('invoice-templates.index')}}" class="dropdown-item notify-item">
                         <i class="fe-file-text"></i>

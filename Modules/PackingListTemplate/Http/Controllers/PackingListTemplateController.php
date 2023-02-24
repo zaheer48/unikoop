@@ -5,6 +5,7 @@ namespace Modules\PackingListTemplate\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Nwidart\Modules\Facades\Module;
 use Session;
 use Image;
 use Auth;
@@ -183,23 +184,5 @@ class PackingListTemplateController extends Controller
 
         Session::flash('success', 'Packing List template set to default.');
         return redirect()->route('packinglist-templates.index');
-    }
-    
-    public function downloadInvoice($id)
-    {
-        $preview = DB::table('user_packlist_previews')
-            ->select('*')
-            ->join('packinglist_previews', 'packinglist_previews.id', '=', 'user_packlist_previews.packlist_preview_id')
-            ->where('user_packlist_previews.user_id', Auth::id())
-            ->where('user_packlist_previews.as_default', 1)
-            ->first();
-        if (!$preview) {
-            Session::flash('danger','Please configure packing list template in Settings tab area.');
-            return redirect()->route('invoice-templates.index');
-        }
-        $record = DB::table('bol_data')->where('bestelnummer', $id)->first();
-        $pdf = \PDF::loadView('packinglist.templates.download_packlist', compact('record','preview'));
-        $file = $record->voornaam_verzending.' '.$record->achternaam_verzending.' Invoice bestelnummer #'.$id.'.pdf';
-        return $pdf->download($file);
     }
 }

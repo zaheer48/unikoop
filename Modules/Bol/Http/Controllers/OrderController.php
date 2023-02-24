@@ -47,7 +47,7 @@ class OrderController extends Controller
                 $pdf_file = $bol_data->lable_pdf;
             } else {
                 $pdf = $request->bestelnummer . '_1.pdf';
-                if (file_exists(public_path('pdf_files/' . $pdf))) {
+                if (file_exists(Module::asset('bol:pdf_files/' . $pdf))) {
                     $pdf_file = $pdf;
                 } else {
                     $pdf_file = '';
@@ -760,7 +760,8 @@ class OrderController extends Controller
         return $pdf->download('Invoice BOL ' . date("d-m-Y", strtotime($bol_rec->date)) . '.pdf');
     }
 
-    public function money_format($formato, $valor) {
+    public function money_format($formato, $valor) 
+    {
         if (setlocale(LC_MONETARY, 0) == 'C') {
             return number_format($valor, 2);
         }
@@ -2442,20 +2443,17 @@ class OrderController extends Controller
             ->get();
         $type = str_replace(' ', '-', $type);
         $mzip_name = "myOrders_" . $type . '-' . $id . ".pdf";
-        $name = "public/" . $mzip_name;
+        $name = Module::assetPath('bol') . "/pdf_zip/". $mzip_name;
         if (file_exists($name))
             unlink($name);
 
-        $datadir = public_path() . "/pdf_zip/";
-        $outputName = $datadir . $mzip_name;
-
-        $cmd = "gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$outputName ";
+        $cmd = "gswin64 -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$name ";
         foreach ($array as $file) {
             $cmd .= public_path() . "/modules/bol/pdf_files/" . $file->lable_pdf . " ";
         }
-        // return $cmd;
+
         $result = shell_exec($cmd);
-        // $file = public_path() . "/pdf_zip/" . $mzip_name;
+
         $file = Module::assetPath('bol').'/pdf_zip/' . $mzip_name;
         $headers = array(
             'Content-Type: application/pdf',
@@ -3099,31 +3097,21 @@ class OrderController extends Controller
 		return $pdf->download($name.' Packing_list BOL bestelnummer '.$bol_data->bestelnummer.' '.date("d-m-Y", strtotime($bol_rec->date)).'.pdf');
 	}
 
-    public function download_packing_list($bestelnummer){
-
-	$paths = public_path()."/";
-
+    public function download_packing_list($bestelnummer)
+    {
+	    $paths = public_path()."/";
 		$str_html=$this->viewpdf2($bestelnummer);
-
 		$data = array(
 			);
-
 		$bol_data = DB::table('bol_data')->select("bestelnummer", "voornaam_verzending", "achternaam_verzending", "bedrijfsnaam_verzending", "bol_rec_id")->where('bestelnummer', $bestelnummer)->first();
-
 		$bol_rec = DB::table('bol_rec')->select("date")->where('id', $bol_data->bol_rec_id)->first();
-
 		if($bol_data->bedrijfsnaam_verzending != "")
 			$name = $bol_data->bedrijfsnaam_verzending;
 		else
 			$name = $bol_data->voornaam_verzending." ".$bol_data->achternaam_verzending;
-
 		$pdf = PDF::loadHTML($str_html)->setPaper('a4', 'portrait');
-
 		return $pdf->download($name.' Packing_list BOL bestelnummer '.$bol_data->bestelnummer.' '.date("d-m-Y", strtotime($bol_rec->date)).'.pdf');
-
-
-
-   }
+    }
 
 	public function invoice_submit(Request $request)
 	{

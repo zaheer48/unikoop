@@ -1,302 +1,425 @@
 @extends('layouts.app')
 @section('title','Dashboard | Unikoop')
 @section('content')
-    <div class="content-page">
-        <div class="content">
-
-            <!-- Start Content-->
-            <div class="container-fluid">
-
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box">
-                            <!-- <div class="page-title-right">
-                                <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
-                                    <li class="breadcrumb-item active">Companies</li>
-                                </ol>
-                            </div> -->
-                            <h4 class="page-title">Companies</h4>
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <form class="d-flex align-items-center mb-3">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control border" id="dash-daterange">
+                                    <span class="input-group-text bg-blue border-blue text-white">
+                                        <i class="mdi mdi-calendar-range"></i>
+                                    </span>
+                                </div>
+                                <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-2">
+                                    <i class="mdi mdi-autorenew"></i>
+                                </a>
+                                <a href="javascript: void(0);" class="btn btn-blue btn-sm ms-1">
+                                    <i class="mdi mdi-filter-variant"></i>
+                                </a>
+                            </form>
                         </div>
+                        <h4 class="page-title">Dashboard</h4>
                     </div>
                 </div>
-                <!-- end page title -->
+            </div>
+            <!-- end page title -->
 
+            <div class="row">
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
+                                        <i class="fe-heart font-22 avatar-title text-primary"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1">&euro;<span data-plugin="counterup">{{ number_format($revenue->total, 2) }}</span></h3>
+                                        <p class="text-muted mb-1 text-truncate">Total Orders Amount</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-soft-success border-success border">
+                                        <i class="fe-shopping-cart font-22 avatar-title text-success"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1">&euro;<span data-plugin="counterup">{{ number_format($revenue->deliveredAmount, 2) }}</span></h3>
+                                        <p class="text-muted mb-1 text-truncate">Delivered Orders Amount</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
 
-                                <!-- < class="row justify-content-between">
-                                    <div class="col-md-8">
-                                        <form class="d-flex flex-wrap align-items-center">
-                                            <label for="inputPassword2" class="visually-hidden">Search</label>
-                                            <div class="me-3">
-                                                <input type="search" class="form-control my-1 my-md-0" id="inputPassword2" placeholder="Search...">
-                                            </div>
-                                            <label for="status-select" class="me-2">Sort By</label>
-                                            <div class="me-sm-3">
-                                                <select class="form-select my-1 my-md-0" id="status-select">
-                                                    <option>Select</option>
-                                                    <option>Date</option>
-                                                    <option selected>Name</option>
-                                                    <option>Revenue</option>
-                                                    <option>Employees</option>
-                                                </select>
-                                            </div>
-                                        </form>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <div class="text-md-end mt-3 mt-md-0">
-                                            <button type="button" class="btn btn-success waves-effect waves-light me-1"><i class="mdi mdi-cog"></i></button>
-                                            <button type="button" class="btn btn-danger waves-effect waves-light me-1"><i class="mdi mdi-plus-circle me-1"></i> Add New</button>
-                                        </div>
-                                    </div><!-- end col-->
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
+                                        <i class="fe-eye font-22 avatar-title text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1">&euro;<span data-plugin="counterup">{{ number_format($revenue->pending, 2) }}</span></h3>
+                                        <p class="text-muted mb-1 text-truncate">Pending Orders Amount</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-soft-info border-info border">
+                                        <i class="fe-bar-chart-line- font-22 avatar-title text-info"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ number_format($revenue->deliveredAmount * 100 / $revenue->total, 2) }}</span>%</h3>
+                                        <p class="text-muted mb-1 text-truncate">Conversion</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+            </div>
+            <!-- end row-->
+
+            <div class="row">
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
+                                        <i class="fe-heart font-22 avatar-title text-primary"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ $revenue->totalOrders }}</span></h3>
+                                        <p class="text-muted mb-1 text-truncate">Total Orders</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-soft-success border-success border">
+                                        <i class="fe-shopping-cart font-22 avatar-title text-success"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ $revenue->deliveredOrders }}</span></h3>
+                                        <p class="text-muted mb-1 text-truncate">Delivered Orders</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-soft-info border-info border">
+                                        <i class="fe-bar-chart-line- font-22 avatar-title text-info"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ $revenue->pendingOrders }}</span></h3>
+                                        <p class="text-muted mb-1 text-truncate">Pending Orders</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
+                                        <i class="fe-eye font-22 avatar-title text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ number_format($revenue->deliveredOrders * 100 / $revenue->totalOrders, 2) }}</span>%</h3>
+                                        <p class="text-muted mb-1 text-truncate">Conversion</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+            </div>
+            <!-- end row-->
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-end">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Profit</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                </div>
+                            </div>
+
+                            <h4 class="header-title mb-0">Total Revenue</h4>
+
+                            <div class="widget-chart text-center" dir="ltr">
+
+                                <div id="total-revenue" class="mt-0" data-colors="#f1556c"></div>
+
+                                <h5 class="text-muted mt-0">Total sales made today</h5>
+                                <h2>&euro;{{ $today_delivered_orders->total }}</h2>
+
+                                <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed
+                                    to work best in the meat of your page content.</p>
+
+                                <div class="row mt-3">
+                                    <div class="col-4">
+                                        <p class="text-muted font-15 mb-1 text-truncate">Target</p>
+                                        <h4><i class="fe-arrow-down text-danger me-1"></i>$7.8k</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="text-muted font-15 mb-1 text-truncate">Last week</p>
+                                        <h4><i class="fe-arrow-up text-success me-1"></i>&euro;{{ $last_week_delivered_orders->total }}</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="text-muted font-15 mb-1 text-truncate">Last Month</p>
+                                        <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $last_month_delivered_orders->total }}</h4>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
-                            <!-- end card -->
-                    </div>
-                </div>
+                    </div> <!-- end card -->
+                </div> <!-- end col-->
 
-                <div class="row">
-                    @if (isset($modules['Amazon']))
-                    @if($modules['Amazon']->isEnabled())
-                    <div class="col-lg-4">
-                        <div class="card bg-pattern">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img src="{{ URL::asset('assets/images/companies/amazon.png') }}" alt="logo" class="avatar-xl rounded-circle mb-3">
-                                    <h4 class="mb-1 font-20">Amazon.de Inc.</h4>
-                                    <p class="text-muted  font-14">Seattle, Washington</p>
-                                </div>
-
-                                <p class="font-14 text-center text-muted">
-                                    Amazon.de, Inc., doing business as Amazon, is an American electronic commerce and cloud computing company based in Seattle..
-                                </p>
-
-                                <div class="text-center">
-                                    <a href="@if(Route::has('amazon')){{ route('amazon') }}@endif" class="btn btn-sm btn-light">View more info</a>
-                                </div>
-
-                                <div class="row mt-4 text-center">
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Revenue (USD)</h5>
-                                        <h4>17,786 cr</h4>
-                                    </div>
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Number of employees</h5>
-                                        <h4>566k</h4>
-                                    </div>
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body pb-2">
+                            <div class="float-end d-none d-md-inline-block">
+                                <div class="btn-group mb-2">
+                                    <button type="button" class="btn btn-xs btn-light">Today</button>
+                                    <button type="button" class="btn btn-xs btn-light">Weekly</button>
+                                    <button type="button" class="btn btn-xs btn-secondary">Monthly</button>
                                 </div>
                             </div>
-                        </div> <!-- end card -->
-                    </div><!-- end col -->
-                    @endif
-                    @endif
-                    @if (isset($modules['Unikoop']) ? $modules['Unikoop']->isEnabled() : 0)
-                    <div class="col-lg-4">
-                        <div class="card bg-pattern">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img src="{{ URL::asset('assets/images/companies/unikoop.jpg') }}" alt="logo" class="avatar-xl rounded-circle mb-3">
-                                    <h4 class="mb-1 font-20">UniKoop Inc.</h4>
-                                    <p class="text-muted  font-14">Cupertino, California</p>
-                                </div>
 
-                                <p class="font-14 text-center text-muted">
-                                    UniKoop Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, develops,
-                                    and sells..
-                                </p>
+                            <h4 class="header-title mb-3">Sales Analytics</h4>
 
-                                <div class="text-center">
-                                    <a href="@if(Route::has('unikoop')){{ route('unikoop') }}@endif" class="btn btn-sm btn-light">View more info</a>
-                                </div>
+                            <div dir="ltr">
+                                <div id="sales-analytics" class="mt-4" data-colors="#1abc9c,#4a81d4"></div>
+                            </div>
+                        </div>
+                    </div> <!-- end card -->
+                </div> <!-- end col-->
+            </div>
+            <!-- end row -->
 
-                                <div class="row mt-4 text-center">
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Revenue (USD)</h5>
-                                        <h4>22,923.4 cr</h4>
-                                    </div>
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Number of employees</h5>
-                                        <h4>47k</h4>
-                                    </div>
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-end">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Edit Report</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
                                 </div>
                             </div>
-                        </div> <!-- end card -->
-                    </div><!-- end col -->
-                    @endif
-                    @if (isset($modules['Bestlist']) ? $modules['Bestlist']->isEnabled() : 0)
-                    <div class="col-lg-4">
-                        <div class="card bg-pattern">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img src="{{ URL::asset('assets/images/companies/google.png') }}" alt="logo" class="avatar-xl rounded-circle mb-3">
-                                    <h4 class="mb-1 font-20">Bestlist.ni LLC</h4>
-                                    <p class="text-muted  font-14">Menlo Park, California</p>
-                                </div>
 
-                                <p class="font-14 text-center text-muted">
-                                    Bestlist.ni LLC is an American multinational technology company that specializes in Internet-related services and products, which
-                                    include..
-                                </p>
+                            <h4 class="header-title mb-3">Latest 5 Orders</h4>
 
-                                <div class="text-center">
-                                    <a href="@if(Route::has('bestlist')){{ route('bestlist') }}@endif" class="btn btn-sm btn-light">View more info</a>
-                                </div>
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-hover table-nowrap table-centered m-0">
 
-                                <div class="row mt-4 text-center">
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Revenue (USD)</h5>
-                                        <h4>110 bn</h4>
-                                    </div>
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Number of employees</h5>
-                                        <h4>72k</h4>
-                                    </div>
-                                </div>
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Bestelnummer</th>
+                                            <th>Profile</th>
+                                            <th>Company</th>
+                                            <th>Address</th>
+                                            <th>Residence</th>
+                                            <th>Product</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($latestOrders as $latestOrder)
+                                        <tr>
+                                            <td style="width: 36px;">
+                                                {{ $latestOrder->bestelnummer }}
+                                            </td>
+
+                                            <td>
+                                                {{ $latestOrder->voornaam_verzending }} {{ $latestOrder->achternaam_verzending }}
+                                                <p class="mb-0 text-muted"><small>Fetched At {{ $latestOrder->fetched_date }}</small></p>
+                                            </td>
+
+                                            <td>
+                                                {{ $latestOrder->bedrijfsnaam_verzending }}
+                                            </td>
+
+                                            <td>
+                                                {{ $latestOrder->adres_verz_straat }}
+                                            </td>
+
+                                            <td>
+                                                {{ $latestOrder->woonplaats_facturatie }}
+                                            </td>
+
+                                            <td>
+                                                {{ $latestOrder->producttitel }}
+                                            </td>
+                                        </tr>
+
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
                             </div>
-                        </div> <!-- end card -->
-                    </div><!-- end col -->
-                    @endif
-                </div>
-                <!-- end row -->
-
-                <div class="row">
-                    @if (isset($modules['Bol']) ? $modules['Bol']->isEnabled() : 0)
-                    <div class="col-lg-4">
-                        <div class="card bg-pattern">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img src="{{ URL::asset('assets/images/companies/bol.jpeg') }}" alt="logo" class="avatar-xl rounded-circle mb-3">
-                                    <h4 class="mb-1 font-20">Bol.com Inc.</h4>
-                                    <p class="text-muted  font-14">San Francisco, California</p>
-                                </div>
-                                <p class="font-14 text-center text-muted">
-                                    Bol.com is a company based in San Francisco that operates an online marketplace and hospitality service
-                                    for people to lease or rent..
-                                </p>
-                                <div class="text-center">
-                                    <a href="@if(Route::has('bol')){{ route('all.orders') }}@endif" class="btn btn-sm btn-light">View more info</a>
-                                </div>
-                                <!-- <div class="row mt-4 text-center">
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Revenue (USD)</h5>
-                                        <h4>260 cr</h4>
-                                    </div>
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Number of employees</h5>
-                                        <h4>3.1k</h4>
-                                    </div>
-                                </div> -->
-                            </div>
-                        </div> <!-- end card -->
-                    </div><!-- end col -->
-                    @endif
-                    @if (isset($available_modules['Ebay']) ? $modules['Ebay']->isEnabled() : 0)
-                    <div class="col-lg-4">
-                        <div class="card bg-pattern">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img src="{{ URL::asset('assets/images/companies/EBay1.png') }}" alt="logo" class="avatar-xl rounded-circle mb-3">
-                                    <h4 class="mb-1 font-20">ebay.</h4>
-                                    <p class="text-muted  font-14">Cambridge, Massachusetts</p>
-                                </div>
-
-                                <p class="font-14 text-center text-muted">
-                                    ebay is an American online social media and social networking service company based in Menlo Park, California..
-                                </p>
-
-                                <div class="text-center">
-                                    <a href="@if(Route::has('ebay')){{ route('ebay') }}@endif" class="btn btn-sm btn-light">View more info</a>
-                                </div>
-
-                                <div class="row mt-4 text-center">
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Revenue (USD)</h5>
-                                        <h4>9.16 bn</h4>
-                                    </div>
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Number of employees</h5>
-                                        <h4>25.1k</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end card -->
-                    </div><!-- end col -->
-                    @endif
-                    @if (isset($available_modules['Homee']) ? $modules['Homee']->isEnabled() : 0)
-                    <div class="col-lg-4">
-                        <div class="card bg-pattern">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img src="{{ URL::asset('assets/images/companies/homee.png') }}" alt="logo" class="avatar-xl rounded-circle mb-3">
-                                    <h4 class="mb-1 font-20">Homee</h4>
-                                    <p class="text-muted  font-14">San Jose, California</p>
-                                </div>
-
-                                <p class="font-14 text-center text-muted">
-                                    Homee Systems, Inc. is an American multinational technology conglomerate headquartered in San Jose, California..
-                                </p>
-
-                                <div class="text-center">
-                                    <a href="@if(Route::has('homee')){{ route('homee') }}@endif" class="btn btn-sm btn-light">View more info</a>
-                                </div>
-
-                                <div class="row mt-4 text-center">
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Revenue (USD)</h5>
-                                        <h4>4,800.5 cr</h4>
-                                    </div>
-                                    <div class="col-6">
-                                        <h5 class="fw-normal text-muted">Number of employees</h5>
-                                        <h4>73.4k</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end card -->
-                    </div><!-- end col -->
-                    @endif
-                </div>
-                <!-- end row -->
-
-                {{-- <div class="row">
-                    <div class="col-12">
-                        <div class="text-end">
-                            <ul class="pagination pagination-rounded justify-content-end">
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-                                        <span aria-hidden="true">«</span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="javascript: void(0);">1</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript: void(0);" aria-label="Next">
-                                        <span aria-hidden="true">»</span>
-                                        <span class="visually-hidden">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
-                </div> --}}
-                <!-- end row -->
+                </div> <!-- end col -->
 
-            </div> <!-- container -->
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-end">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Edit Report</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                </div>
+                            </div>
 
-        </div>
+                            <h4 class="header-title mb-3">Revenue History</h4>
+
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-nowrap table-hover table-centered m-0">
+
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Marketplaces</th>
+                                            <th>Date</th>
+                                            <th>Payouts</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($deliveredOrders as $deliveredOrder)
+                                        <tr>
+                                            <td style="width: 36px;">
+                                                {{ $deliveredOrder->bestelnummer }}
+                                            </td>
+
+                                            <td>
+                                                {{ $deliveredOrder->voornaam_verzending }} {{ $deliveredOrder->achternaam_verzending }}
+                                                <p class="mb-0 text-muted"><small>Fetched At {{ $deliveredOrder->fetched_date }}</small></p>
+                                            </td>
+
+                                            <td>
+                                                {{ $deliveredOrder->bedrijfsnaam_verzending }}
+                                            </td>
+
+                                            <td>
+                                                {{ $deliveredOrder->adres_verz_straat }}
+                                            </td>
+
+                                            <td>
+                                                {{ $deliveredOrder->woonplaats_facturatie }}
+                                            </td>
+
+                                            <td>
+                                                {{ $deliveredOrder->producttitel }}
+                                            </td>
+                                        </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div> <!-- end .table-responsive-->
+                        </div>
+                    </div> <!-- end card-->
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+
+        </div> <!-- container -->
+
+    </div>
 
     <!-- ============================================================== -->
     <!-- End Page content -->
     <!-- ============================================================== -->
-@endsection
-
-
+    @endsection

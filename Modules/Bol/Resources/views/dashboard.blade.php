@@ -116,7 +116,6 @@
                                                 //echo $bol_rec_id."<br/>";
                                                 $bol_data = DB::table('bol_data')->select('logistiek')->where('bol_rec_id', $bol_rec_id)->get();
                                         ?>
-                                        {{-- <tbody> --}}
                                         <tr>
                                             <td> <?= $bol_rec_id_sr?> </td>
                                             <td><?= date('d-m-Y H:i:s', strtotime($bol_rec_date)) ?></td>

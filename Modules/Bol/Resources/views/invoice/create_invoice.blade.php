@@ -1,7 +1,7 @@
 @extends('layouts/app')
 @section('title','Create Invoice | Unikoop')
 @section('sidebar')
-@include('bol::layouts.side_bar')
+    @include('bol::layouts.side_bar')
 @endsection
 @section('content')
 <!-- Start Page Content here -->
@@ -51,7 +51,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <form name="register" method="post" id="my_form"
-                                                action="/bol/invoice_submit2" enctype="multipart/form-data"
+                                                action="{{ route('invoice.submit2') }}" enctype="multipart/form-data"
                                                 style="display:none;">
                                                 @csrf
                                                 <br>
@@ -138,8 +138,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <button class="btn btn-primary btn-block" id="s_email"
-                                                                style="padding: 9px;">
+                                                            <button class="btn btn-primary btn-block" id="s_email" style="padding: 9px;">
                                                                 Send Email
                                                             </button>
                                                         </div>
@@ -220,7 +219,7 @@ $("#check_invoice").click(function() {
     var formdata = $("#check_invoice_form2").serialize();
     $.ajax({
         type: "post",
-        url: "/bol/check_invoice2",
+        url: "{{ route('check.invoice2') }}",
         data: formdata,
         dataType: "json",
         success: function(data) {

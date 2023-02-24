@@ -125,7 +125,7 @@
                             <div class="col-md-12" style="margin-left:-7%">
                                 @if ($pdf_file ?? '')
                                     @if ($exists)
-                                        <a href="{{ asset('pdf_files/' . $pdf_file) }}" download="{{ $pdf_file }}">
+                                        <a href="{{ Module::asset('bol:pdf_files/' . $pdf_file) }}" download="{{ $pdf_file }}">
                                             <button class="btn btn-sm btn-primary mb_size" type="button"
                                                 style="height: 47px;">
                                                 <i class="fa fa-file-pdf-o"></i>&nbsp; Download PDF File
