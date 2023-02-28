@@ -172,16 +172,14 @@ class TrackOrderController extends Controller
             $buaddr = DB::table('bussiness_address')->where('register_id', $uid)->first();
             $setting = DB::table('setting')->where('userid', $uid)->first();
             
-            
-            
             // Setting configurations
             $i = 1;
             \Config::set('dpd.delisId', $setting->dpd_delisid);
             \Config::set('dpd.password', $setting->dpd_password);
 
-            $landcode = $this->get_country_code($buaddr->county);
-            $array = DB::table('bol_data')->distinct()->select("bestelnummer", "id")->where('id', $dpd_orders)->orderBy('id', 'ASC')->get()->toArray();
-
+            // $landcode = $this->get_country_code($buaddr->county);
+            // $array = DB::table('bol_data')->distinct()->select("bestelnummer", "id")->where('id', $dpd_orders)->orderBy('id', 'ASC')->get()->toArray();
+            dd(app()->dpdTracking->getStatus('1548946903'));
             $temp = array_unique(array_column($array, 'bestelnummer'));
             $resp = array_intersect_key($array, $temp);
             $ret_str = array();

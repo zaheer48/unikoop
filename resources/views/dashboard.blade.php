@@ -38,7 +38,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
-                                        <i class="fe-heart font-22 avatar-title text-primary"></i>
+                                        <i class="fa-solid fa-euro-sign font-22 avatar-title text-primary"></i>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -58,7 +58,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="avatar-lg rounded-circle bg-soft-success border-success border">
-                                        <i class="fe-shopping-cart font-22 avatar-title text-success"></i>
+                                        <i class="fa-solid fa-money-bill-1 font-22 avatar-title text-success"></i>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -77,8 +77,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
-                                        <i class="fe-eye font-22 avatar-title text-warning"></i>
+                                    <div class="avatar-lg rounded-circle bg-soft-info border-info border">
+                                        <i class="fa-solid fa-money-bill-transfer font-22 avatar-title text-info"></i>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -97,13 +97,17 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="avatar-lg rounded-circle bg-soft-info border-info border">
-                                        <i class="fe-bar-chart-line- font-22 avatar-title text-info"></i>
+                                    <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
+                                        <i class="fe-bar-chart-line- font-22 avatar-title text-warning"></i>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="text-end">
-                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ number_format($revenue->deliveredAmount * 100 / $revenue->total, 2) }}</span>%</h3>
+                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">
+                                        @if($revenue->total != 0)
+                                            {{ number_format($revenue->deliveredAmount * 100 / $revenue->total, 2) }}</span>%
+                                        @endif
+                                        </h3>
                                         <p class="text-muted mb-1 text-truncate">Conversion</p>
                                     </div>
                                 </div>
@@ -121,7 +125,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
-                                        <i class="fe-heart font-22 avatar-title text-primary"></i>
+                                    <i class="fe-shopping-cart font-22 avatar-title text-primary"></i>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -141,7 +145,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="avatar-lg rounded-circle bg-soft-success border-success border">
-                                        <i class="fe-shopping-cart font-22 avatar-title text-success"></i>
+                                        <i class="fe-truck font-22 avatar-title text-success"></i>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -161,7 +165,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="avatar-lg rounded-circle bg-soft-info border-info border">
-                                        <i class="fe-bar-chart-line- font-22 avatar-title text-info"></i>
+                                        <i class="fe-clock font-22 avatar-title text-info"></i>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -181,12 +185,16 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
-                                        <i class="fe-eye font-22 avatar-title text-warning"></i>
+                                        <i class="fe-message-square font-22 avatar-title text-warning"></i>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="text-end">
-                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ number_format($revenue->deliveredOrders * 100 / $revenue->totalOrders, 2) }}</span>%</h3>
+                                    <div class="text-end">                                        
+                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">
+                                            @if($revenue->totalOrders != 0)
+                                                {{ number_format($revenue->deliveredOrders * 100 / $revenue->totalOrders, 2) }}</span>%
+                                            @endif
+                                        </h3>
                                         <p class="text-muted mb-1 text-truncate">Conversion</p>
                                     </div>
                                 </div>
@@ -219,17 +227,12 @@
                             </div>
 
                             <h4 class="header-title mb-0">Total Revenue</h4>
-
                             <div class="widget-chart text-center" dir="ltr">
-
                                 <div id="total-revenue" class="mt-0" data-colors="#f1556c"></div>
-
                                 <h5 class="text-muted mt-0">Total sales made today</h5>
                                 <h2>&euro;{{ $today_delivered_orders->total }}</h2>
-
                                 <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed
                                     to work best in the meat of your page content.</p>
-
                                 <div class="row mt-3">
                                     <div class="col-4">
                                         <p class="text-muted font-15 mb-1 text-truncate">Target</p>
@@ -244,7 +247,6 @@
                                         <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $last_month_delivered_orders->total }}</h4>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div> <!-- end card -->
@@ -260,9 +262,7 @@
                                     <button type="button" class="btn btn-xs btn-secondary">Monthly</button>
                                 </div>
                             </div>
-
                             <h4 class="header-title mb-3">Sales Analytics</h4>
-
                             <div dir="ltr">
                                 <div id="sales-analytics" class="mt-4" data-colors="#1abc9c,#4a81d4"></div>
                             </div>
@@ -271,7 +271,6 @@
                 </div> <!-- end col-->
             </div>
             <!-- end row -->
-
             <div class="row">
                 <div class="col-xl-6">
                     <div class="card">
@@ -292,10 +291,8 @@
                             </div>
 
                             <h4 class="header-title mb-3">Latest 5 Orders</h4>
-
                             <div class="table-responsive">
                                 <table class="table table-borderless table-hover table-nowrap table-centered m-0">
-
                                     <thead class="table-light">
                                         <tr>
                                             <th>Bestelnummer</th>
@@ -312,31 +309,24 @@
                                             <td style="width: 36px;">
                                                 {{ $latestOrder->bestelnummer }}
                                             </td>
-
                                             <td>
                                                 {{ $latestOrder->voornaam_verzending }} {{ $latestOrder->achternaam_verzending }}
                                                 <p class="mb-0 text-muted"><small>Fetched At {{ $latestOrder->fetched_date }}</small></p>
                                             </td>
-
                                             <td>
                                                 {{ $latestOrder->bedrijfsnaam_verzending }}
                                             </td>
-
                                             <td>
                                                 {{ $latestOrder->adres_verz_straat }}
                                             </td>
-
                                             <td>
                                                 {{ $latestOrder->woonplaats_facturatie }}
                                             </td>
-
                                             <td>
                                                 {{ $latestOrder->producttitel }}
                                             </td>
                                         </tr>
-
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>
@@ -363,17 +353,16 @@
                             </div>
 
                             <h4 class="header-title mb-3">Revenue History</h4>
-
                             <div class="table-responsive">
                                 <table class="table table-borderless table-nowrap table-hover table-centered m-0">
-
                                     <thead class="table-light">
                                         <tr>
-                                            <th>Marketplaces</th>
-                                            <th>Date</th>
-                                            <th>Payouts</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Bestelnummer</th>
+                                            <th>Profile</th>
+                                            <th>Company</th>
+                                            <th>Address</th>
+                                            <th>Residence</th>
+                                            <th>Product</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -405,7 +394,6 @@
                                             </td>
                                         </tr>
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div> <!-- end .table-responsive-->
@@ -414,12 +402,7 @@
                 </div> <!-- end col -->
             </div>
             <!-- end row -->
-
         </div> <!-- container -->
-
     </div>
-
-    <!-- ============================================================== -->
     <!-- End Page content -->
-    <!-- ============================================================== -->
     @endsection
