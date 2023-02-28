@@ -115,11 +115,11 @@
                                                         </td>
                                                         <td class=" " >
                                                             <div class="d-flex">
-                                                                <a href="{{ route('packinglist-templates.edit',$template->id) }}" class="btn btn-sm btn-success d-flex mx-2 my-1">
-                                                                    <i class="fa fa-edit"></i>  Edit
+                                                                <a href="{{ route('packinglist-templates.edit',$template->id) }}" class="btn btn-sm btn-success align-items-center d-flex mx-2 my-1">
+                                                                    <i class="fa fa-edit me-1"></i>  Edit
                                                                 </a>
-                                                                <a href="{{ route('packinglist-templates.show',$template->id) }}" target="_blank" class="btn btn-sm btn-primary  d-flex mx-2 my-1">
-                                                                    <i class="fa fa-eye"></i>  
+                                                                <a href="{{ route('packinglist-templates.show',$template->id) }}" target="_blank" class="btn btn-sm btn-primary align-items-center d-flex mx-2 my-1">
+                                                                    <i class="fa fa-eye me-1"></i>  
                                                                     Preview
                                                                 </a>
                                                             </div>
