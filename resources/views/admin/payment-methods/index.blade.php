@@ -10,8 +10,8 @@
     <div class="content-page">
         <div class="content">
         @if (session()->has('success'))
-            <div class="alert alert-dismissable alert-success">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <div class="alert alert-dismissable alert-success mt-3">
+                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <strong>

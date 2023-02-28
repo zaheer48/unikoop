@@ -23,7 +23,7 @@
                         <h3>
                             Label Pricing
                             @if (in_array('add_edit_labprice',$privileges) || Auth::user()->is_admin == 1)
-                                <a href="{{url('/label-pricing/create')}}" class="btn btn-sm btn-primary" style="float: right;">
+                                <a href="{{url('/label-pricing/create')}}" class="btn btn-primary" style="float: right;">
                                     Add/Edit Label Pricing
                                 </a>
                             @endif
@@ -40,7 +40,7 @@
                                 </strong>
                             </div>
                         @endif
-                        <div class="row">
+                        <div class="card-body rounded row shadow-lg">
                             <div class="col-md-6">
                                 <h3>DHL</h3>
                                 @if($dhl)

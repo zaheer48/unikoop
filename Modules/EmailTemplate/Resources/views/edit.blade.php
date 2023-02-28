@@ -50,7 +50,7 @@
                             <div class="col-md-12">
                                 <h3 style="padding: 20px;">
                                     Template Details
-                                    <a href="{{ route('email-templates.index') }}" class="btn btn-md btn-primary" style="float: right; margin-top: -10px;">Email Templates</a>
+                                    <a href="{{ route('email-templates.index') }}" class="btn btn-md btn-secondary" style="float: right; margin-top: -10px;">Email Templates</a>
                                 </h3>
                                 <hr>
                                 <form class="form-horizontal mx-5 " action="{{ route('email-templates.update',$template->id) }}" method="POST" enctype="multipart/form-data">

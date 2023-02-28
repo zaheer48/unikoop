@@ -6,7 +6,9 @@
 @section('content')
     <style>
         .strong {
+            padding: 7px;
             background: lightgoldenrodyellow;
+            border-radius:5px; 
         }
     </style>
     <div class="content-page">
@@ -56,7 +58,7 @@
                     </div>
 
                     <h4>Assigned Priviliges:</h4>
-                    <br>
+                  
                     @php
                         $privileges = array(
                                 'view_user' => 'View Users',
@@ -93,7 +95,7 @@
                         @foreach ($privileges as $key => $value)
                             @if(in_array($key,$arr))
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="form-group mt-3">
                                         <i class="fa fa-arrow-right strong"></i>
                                         <label>{{ $value }}</label>
                                     </div>

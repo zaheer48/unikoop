@@ -5,6 +5,23 @@
 @endsection
 @section('content')
     <style>
+              table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sorting_asc_disabled:before, table.dataTable thead>tr>th.sorting_desc:before, table.dataTable thead>tr>th.sorting_desc_disabled:before {
+    right: 1em;
+    left: auto;
+    content: "↑";
+    font-size: large;
+    color: blue;
+    font-weight: bolder;
+}
+
+table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_asc:after, table.dataTable thead>tr>th.sorting_asc_disabled:after, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>th.sorting_desc_disabled:after {
+    right: 0.5em;
+    left: auto;
+    font-size: large;
+    color: blue;
+
+    content: "↓";
+}
         .badge {
             padding: 7px 10px !important;
         }
@@ -94,11 +111,13 @@
                                 </a>
                             @endif
                         </h3>
-                        <hr>
+                       
+                        <div class="responsive-table-plugin">
+                            <div class="table-rep-plugin">
                         <div class="table-responsive">
                            
 
-                            <table class="table align-items-center table-flush" id="userTable">
+                            <table class="table align-items-center table-flush table table-striped" id="userTable">
                                 <thead class="theadmin-light">
                                 <tr>
                                     <th scope="col">Email</th>
@@ -246,6 +265,8 @@
                                 </tbody>
                             </table>
                             <br>
+                        </div>
+                            </div>
                         </div>
                     </div>
                 </div>

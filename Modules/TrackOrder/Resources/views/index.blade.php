@@ -4,6 +4,18 @@
 @section('sidebar')
 @endsection
 @section('content')
+<style>
+    .footer{
+        left:0px;
+    }
+      .navbar-custom .button-menu-mobile{
+        display: none;
+    }
+    .logo-box .logo {
+    width: 65px;
+    line-height: 70px;
+}
+    </style>
     <!-- Start Page Content here -->
     <div class="content-page m-auto mt-5">
         <div class="content">
@@ -152,28 +164,7 @@
                 </div>
                 <!-- end row -->
 
-                @section('footer')
-
-                <!-- Footer Start -->
-                <footer class="footer" style="left:0px">
-                  <div class="container-fluid">
-                      <div class="row">
-                          <div class="col-md-6">
-                              <script>document.write(new Date().getFullYear())</script> &copy; <a href="">KeyDevs </a>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="text-md-end footer-links d-none d-sm-block">
-                                  <a href="javascript:void(0);">About Us</a>
-                                  <a href="javascript:void(0);">Help</a>
-                                  <a href="javascript:void(0);">Contact Us</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </footer>
-              </div>
-              <!-- end Footer -->
-              @endsection
+             
             </div> <!-- container -->
         </div> <!-- content -->
     </div>

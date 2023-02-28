@@ -16,6 +16,11 @@
         h4 {
             font-weight: bolder;
         }
+        .mark, mark {
+    padding: 10px;
+    background-color: var(--ct-highlight-bg);
+    border-radius: 5px;
+}
     </style>
     <div class="content-page">
         <div class="content">
@@ -264,8 +269,8 @@
                                     <mark>User Details:</mark>
                                 </h4>
                                 <br>
-                                <p>Username: <strong style="{{ ($username->username != $data->username) ? 'background: yellow;' : 'background: transparent' }}">{{ $username->username }}</strong></p>
-                                <p>E-Mail: <strong style="{{ ($username->email != $data->email) ? 'background: yellow;' : 'background: transparent' }}">{{ $username->email }}</strong></p>
+                                <p>Username: <strong style="{{ ($username->username != $data->username) ? 'background: yellow;padding:5px;border-radius:5px;' : 'background: transparent' }}">{{ $username->username }}</strong></p>
+                                <p>E-Mail: <strong style="{{ ($username->email != $data->email) ? 'background: yellow;padding:5px;border-radius:5px;' : 'background: transparent' }}">{{ $username->email }}</strong></p>
                             </div>
                             <div class="col-md-6">
                                 <h4>
@@ -273,10 +278,10 @@
                                 </h4>
                                 <br>
                                 <p>User: <strong>
-                                        <mark style="{{ ($username->username != $data->username) ? 'background: #d9534f; color: #fff;' : 'background: transparent' }}">{{ $data->username }}</mark>
+                                        <mark style="{{ ($username->username != $data->username) ? 'background: #d9534f; color: #fff;padding:5px;border-radius:5px;' : 'background: transparent' }}">{{ $data->username }}</mark>
                                     </strong></p>
                                 <p>E-Mail: <strong>
-                                    <mark style="{{ ($username->email != $data->email) ? 'background: #d9534f; color: #fff;' : 'background: transparent' }}">{{ $data->email }}</mark>
+                                    <mark style="{{ ($username->email != $data->email) ? 'background: #d9534f; color: #fff;padding:5px;border-radius:5px;' : 'background: transparent' }}">{{ $data->email }}</mark>
                                     </strong></p>
                             </div>
                         </div>

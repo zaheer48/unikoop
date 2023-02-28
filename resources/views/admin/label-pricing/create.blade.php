@@ -112,7 +112,7 @@
                                         <input type="hidden" name="service_type" value="dhl">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DHL Original Price</label>
                                                     <small style="color: red;"> *</small>
                                                     <input type="" name="dhl_original_price" value="{{ ($dhl) ? $dhl->dhl_original_price : old('dhl_original_price')}}" class="form-control {{ $errors->has('dhl_original_price') ? ' is-invalid' : '' }}" required>
@@ -124,7 +124,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DHL Unikoop Price</label>
                                                     <small style="color: red;"> *</small>
                                                     <input type="" name="dhl_unikoop_price" value="{{ ($dhl) ? $dhl->dhl_unikoop_price : old('dhl_unikoop_price')}}" class="form-control {{ $errors->has('dhl_unikoop_price') ? ' is-invalid' : '' }}" required>
@@ -138,7 +138,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DHL Discount Price</label>
                                                     <small style="color: red;"> *</small>
                                                     <input type="" name="dhl_discount_price" value="{{ ($dhl) ? $dhl->dhl_discount_price : old('dhl_discount_price')}}" class="form-control {{ $errors->has('dhl_discount_price') ? ' is-invalid' : '' }}" required>
@@ -150,7 +150,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DHL Active Price Status</label>
                                                     <small style="color: red;"> *</small>
                                                     <br>
@@ -166,7 +166,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DHL Discount Note</label>
                                                     <small style="color: red;"> *</small>
                                                     <input type="" name="dhl_discount_note" value="{{ ($dhl) ? $dhl->dhl_discount_note : old('dhl_discount_note')}}" class="form-control {{ $errors->has('dhl_discount_note') ? ' is-invalid' : '' }}" required>
@@ -180,7 +180,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">Max Size</label>
                                                     <small style="color: red;"> * e.g. 80 x 50 x 35cm</small>
                                                     <input type="" name="box_size" value="{{ ($dhl) ? $dhl->box_size : old('box_size')}}" class="form-control {{ $errors->has('box_size') ? ' is-invalid' : '' }}" required>
@@ -192,7 +192,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">Levering</label>
                                                     <small style="color: red;"> * e.g. 24 uur</small>
                                                     <input type="" name="delivery" value="{{ ($dhl) ? $dhl->delivery : old('delivery')}}" class="form-control {{ $errors->has('delivery') ? ' is-invalid' : '' }}" required>
@@ -206,7 +206,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-12">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <button type="submit" class="btn btn-primary bg-primary">
                                                         Submit
                                                     </button>
@@ -224,7 +224,7 @@
                                         <input type="hidden" name="service_type" value="dpd">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DPD Original Price</label>
                                                     <small style="color: red;"> *</small>
                                                     <input type="" name="dpd_original_price" value="{{ ($dpd) ? $dpd->dpd_original_price : old('dpd_original_price')}}" class="form-control {{ $errors->has('dpd_original_price') ? ' is-invalid' : '' }}" required>
@@ -236,7 +236,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DPD Unikoop Price</label>
                                                     <small style="color: red;"> *</small>
                                                     <input type="" name="dpd_unikoop_price" value="{{ ($dpd) ? $dpd->dpd_unikoop_price : old('dpd_unikoop_price')}}" class="form-control {{ $errors->has('dpd_unikoop_price') ? ' is-invalid' : '' }}" required>
@@ -250,7 +250,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DPD Discount Price</label>
                                                     <small style="color: red;"> *</small>
                                                     <input type="" name="dpd_discount_price" value="{{ ($dpd) ? $dpd->dpd_discount_price : old('dpd_discount_price')}}" class="form-control {{ $errors->has('dpd_discount_price') ? ' is-invalid' : '' }}" required>
@@ -262,7 +262,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DPD Active Price Status</label>
                                                     <small style="color: red;"> *</small>
                                                     <br>
@@ -278,7 +278,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DPD Discount Note</label>
                                                     <small style="color: red;"> *</small>
                                                     <input type="" name="dpd_discount_note" value="{{ ($dpd) ? $dpd->dpd_discount_note : old('dpd_discount_note')}}" class="form-control {{ $errors->has('dpd_discount_note') ? ' is-invalid' : '' }}" required>
@@ -292,7 +292,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">Max Size</label>
                                                     <small style="color: red;"> * e.g. 80 x 50 x 35cm</small>
                                                     <input type="" name="box_size" value="{{ ($dpd) ? $dpd->box_size : old('box_size')}}" class="form-control {{ $errors->has('box_size') ? ' is-invalid' : '' }}" required>
@@ -304,7 +304,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">Levering</label>
                                                     <small style="color: red;"> * e.g. 24 uur</small>
                                                     <input type="" name="delivery" value="{{ ($dpd) ? $dpd->delivery : old('delivery')}}" class="form-control {{ $errors->has('delivery') ? ' is-invalid' : '' }}" required>
@@ -318,7 +318,7 @@
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-12">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <button type="submit" class="btn btn-primary bg-primary">
                                                         Submit
                                                     </button>

@@ -105,13 +105,13 @@ if ($user1 ?? '') {
                         Finish User Settings
                     </a>
                 </h3>
-                <hr class="my-4">
+               
                 <form id="first_form" method="post" action="{{url('/store')}}">
                     @csrf
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-5">
-                            <div class="form-group">
+                            <div class="form-group mt-3">
                                 <label for="category_name">User Email</label>
                                 <small style="color: red;"> *</small>
                                 <input type="email" name="email" @if($userrecord) value="{{$userrecord->email}}"  @else
@@ -129,7 +129,7 @@ if ($user1 ?? '') {
                         </div>
                         <div class="col-md-5">
 
-                            <div class="form-group">
+                            <div class="form-group mt-3">
                                 <label for="category_name">User Password</label>
                                 <small style="color: red;"> *</small>
                                 <input type="text" id="pass" min="8" @if($userrecord) value="{{$userrecord->password_hint}}"
@@ -146,12 +146,12 @@ if ($user1 ?? '') {
                         <div class="col-md-1"></div>
                     </div>
 
-                    <div class="row mt-3">
+                    <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-5">
 
 
-                            <div class="form-group">
+                            <div class="form-group mt-3">
                                 <label for="category_name">Username</label>
                                 <small style="color: red;"> *</small>
                                 <input type="text" id="username" @if($userrecord) value="{{$userrecord->username}}"
@@ -172,7 +172,7 @@ if ($user1 ?? '') {
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-10">
-                            <div class="form-group mt-3" id="adding-form">
+                            <div class="form-group  mt-3" id="adding-form">
                                 <button type="submit" @if($userrecord)  @endif class="btn btn-md btn-primary">
                                     Create User
                                 </button>
@@ -454,7 +454,7 @@ if ($user1 ?? '') {
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Bedrijfs wettelijke naam:</span>
                         <?php if (isset($business_register_contact->legal_name)) { ?>
                             <input type="text" class="form-control" name="lename"
@@ -475,7 +475,7 @@ if ($user1 ?? '') {
 
 
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Business Entity Type</span>
                         <?php if (isset($business_register_contact->b_enti_type)) { ?>
                             <input type="text" name="entype" value="<?= $business_register_contact->b_enti_type ?>"
@@ -491,7 +491,7 @@ if ($user1 ?? '') {
                 </div>
 
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>K.V.K nummer:</span>
                         <?php if (isset($business_register_contact->b_reg_number)) { ?>
                             <input type="number" name="creg_num" value="<?= $business_register_contact->b_reg_number ?>"
@@ -512,7 +512,7 @@ if ($user1 ?? '') {
                 <div class="clearfix"></div>
 
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Datum Business was geregistreerd:</span>
                         <?php if (isset($business_register_contact->b_reg_date)) { ?>
                             <input id="demo1" name="da_bregiste" class="form-control" type="date" size="25"
@@ -524,7 +524,7 @@ if ($user1 ?? '') {
                 </div>
 
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>K.V.K. Uittreksel: <small>(only pdf file is allowed)</small></span>
                         <input name="pdf_file" type="file" class="form-control{{ $errors->has('pdf_file') ? ' is-invalid' : '' }}">
                         @if ($errors->has('pdf_file'))
@@ -542,7 +542,7 @@ if ($user1 ?? '') {
                 <div class="col-md-4 padding-botom" style="
 width: 300px;
 ">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Aantal Aandeelhouders / eigenaren:</span>
                         <input type="hidden" id="contact_total" value="0">
                         <select name="NumBeneficiaryOwners" id="NumBeneficiaryOwners" value="" class="form-control"
@@ -578,7 +578,7 @@ width: 300px;
             <div class="row">
 
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Bedrijfs wettelijke naam:</span>
                         <input type="text" class="form-control" value="" name="clname2">
                     </div>
@@ -586,7 +586,7 @@ width: 300px;
 
 
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>UTR nummer</span>
                         <input type="text" name="urtnum" value="" class="form-control"
                                placeholder="Unique Taxpayer Reference number">
@@ -594,7 +594,7 @@ width: 300px;
                 </div>
                 <div class="clearfix"></div>
                 <div class="col-md-10">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Bedrijfsregistratie</span><br/>
                         <input type="checkbox" name="isBusinessRegistered" value="agree" class="onRegisteredChange"
                                id="isBusinessRegistered_id">
@@ -603,12 +603,12 @@ width: 300px;
                     </div>
                 </div>
                 <div class="col-md-4" id="dbreg">
-                    <div class="form-group">
+                    <div class="form-group d-flex ">
                         <span></span>
-                        <input id="dateb" name="dateregister" value="" type="text" size="25"><a
+                        <input class="form-control" id="dateb" name="dateregister" value="" type="text" size="25"><a
                                 href="javascript:NewCal('dateb','ddmmyyyy')"><img
                                     src="https://unikoop.nl/templates/default//images/cal.gif" width="16" height="16"
-                                    border="0" alt="Pick a date"></a>
+                                    border="0" alt="Pick a date" class="mx-1"></a>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -638,7 +638,7 @@ width: 300px;
                     <span>Contact info:</span>
                     <br>
                     <div class="col-md-2">
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <span>Gender</span>
                             <select class="form-control" name="gender<?= $i ?>" style="height: 34px;">
                                 <option value="Mr">Mr</option>
@@ -650,7 +650,7 @@ width: 300px;
                     <div class="col-md-3">
                         <div class="row">
                             <span> First name</span>
-                            <div class="form-group">
+                            <div class="form-group mt-3">
                                 <input type="text"
                                        class="form-control{{ $errors->has('first_name'.$i) ? ' is-invalid' : '' }}"
                                        name="firstName<?= $i ?>" @if($first_name) value="<?= $first_name ?>" disabled
@@ -666,7 +666,7 @@ width: 300px;
                     <div class="col-md-3">
                         <div class="row">
                             <span>Mid name</span>
-                            <div class="form-group">
+                            <div class="form-group mt-3">
                                 <input type="text" @if($mid_name) value="<?= $mid_name ?>" disabled @else
                                        value="{{ old('MidName'.$i) }}" @endif
                                        class="form-control{{ $errors->has('MidName'.$i) ? ' is-invalid' : '' }}"
@@ -684,7 +684,7 @@ width: 300px;
                     <div class="col-md-3">
                         <div class="row">
                             <span>Last name</span>
-                            <div class="form-group">
+                            <div class="form-group mt-3">
 
                                 <input type="text" @if($lastname) value="<?= $lastname ?>" disabled @else
                                        value="{{ old('lastname'.$i) }}" @endif
@@ -723,7 +723,7 @@ width: 300px;
 
                 <div class="col-md-9">
 
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Straat <small style="color:red;">*</small></span>
                         <?php if (isset($user->street)) { ?>
                             <input type="text" class="form-control" required="" value="<?= $user->street ?>"
@@ -742,7 +742,7 @@ width: 300px;
                 </div>
                 <div class="col-md-3">
 
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Huisnummer <small style="color:red;">*</small></span>
 
                         <?php if (isset($user->h_b_number)) { ?>
@@ -765,7 +765,7 @@ width: 300px;
                 <div class="clearfix"></div>
 
                 <div class="col-md-5">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Postcode <small style="color:red;">*</small></span>
                         <?php if (isset($user->postcode)) { ?>
                             <input type="text" class="form-control" name="postcode" value="<?= $user->postcode ?>"
@@ -783,7 +783,7 @@ width: 300px;
                 </div>
 
                 <div class="col-md-7">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Stad / plaats: <small style="color:red;">*</small></span>
                         <?php if (isset($user->city_town)) { ?>
                             <input type="text" class="form-control" name="citytown" value="<?= $user->city_town ?>"
@@ -803,7 +803,7 @@ width: 300px;
                 <div class="clearfix"></div>
 
                 <div class="col-md-5">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Provincie <small style="color:red;">*</small></span>
                         <?php if (isset($user->county)) { ?>
                             <input type="text" class="form-control" name="county" value="<?= $user->county ?>" disabled>
@@ -822,7 +822,7 @@ width: 300px;
 
 
                 <div class="col-md-7">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span> land <small style="color:red;">*</small></span>
                         <select class="form-control" id="kycBusinessInfo_Country" name="kycBusinessInfo_Country"
                                 required>
@@ -848,7 +848,7 @@ width: 300px;
             <div class="row">
 
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Telefoonnummer <small style="color:red;">*</small></span>
                         <?php if (isset($user->phonenumber)) { ?>
                             <input type="text" class="form-control" name="pnumber" value="<?= $user->phonenumber ?>"
@@ -866,7 +866,7 @@ width: 300px;
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Work Phone: <small style="color:red;">*</small></span>
                         <?php if (isset($user->workphone)) { ?>
                             <input type="text" class="form-control" name="wnumber" value="<?= $user->workphone ?>"
@@ -883,7 +883,7 @@ width: 300px;
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Mobile number: <small style="color:red;">*</small></span>
                         <?php if (isset($user->mobilephone)) { ?>
                             <input type="text" class="form-control" name="mnumber" value="<?= $user->mobilephone ?>"
@@ -903,7 +903,7 @@ width: 300px;
                 <div class="clearfix"></div>
 
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Email admin: <small style="color:red;">*</small></span>
                         <?php if (isset($user->email_admin)) { ?>
                             <input type="text" class="form-control" name="emailadmin" value="<?= $user->email_admin ?>"
@@ -921,7 +921,7 @@ width: 300px;
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Email sales: <small style="color:red;">*</small></span>
                         <?php if (isset($user->email_sales)) { ?>
                             <input type="text" class="form-control" name="email_sale" value="<?= $user->email_sales ?>"
@@ -941,7 +941,7 @@ width: 300px;
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <span>Weergavenaam <small style="color:red;">*</small></span>
                         <?php if (isset($reg_business->display_name)) { ?>
                         <input type="text" class="form-control" name="dname"
@@ -971,10 +971,10 @@ width: 300px;
 </div>
 </form>
 <style>
-    .input {
+    /* .input {
         margin-bottom: 3px;
         width: 391px;
-    }
+    } */
 </style>
 <br>
 <div class="about-left sting" id="product_selection" style="display:block;">
@@ -1003,20 +1003,50 @@ width: 300px;
                                 </div>
 
                                 <br>
-                                <label>Bol Secrets (NL)</label>
-                                <input class="form-control input" type="text" @if($userrecord->bol_client_id ?? '')
-                                value="{{$userrecord->bol_client_id}}" disabled @endif name="bol_client_id" placeholder="Bol client id (NL)">
-                                <input class="form-control input" type="text" @if($userrecord->bol_client_secret ?? '')
-                                value="{{$userrecord->bol_client_secret}}" disabled @endif name="bol_client_secret"
-                                placeholder="Bol client secret (NL)">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-3">
+                                            <label>Bol Secrets (NL)</label>
+                                            <input class="form-control input" type="text" @if($userrecord->bol_client_id ?? '')
+                                            value="{{$userrecord->bol_client_id}}" disabled @endif name="bol_client_id" placeholder="Bol client id (NL)">
+                                           
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-3">
+                                            <hr>
+                                            <input class="form-control input" type="text" @if($userrecord->bol_client_secret ?? '')
+                                            value="{{$userrecord->bol_client_secret}}" disabled @endif name="bol_client_secret"
+                                            placeholder="Bol client secret (NL)">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-3">
+                                            <label>Bol Secrets (BE)</label>
+                                        <input class="form-control input" type="text" @if($userrecord->bol_be_client_id ?? '')
+                                        value="{{$userrecord->bol_be_client_id}}" disabled @endif name="bol_be_client_id"
+                                        placeholder="Bol client id (BE)">
+                               
+                                        </div>
+                                    </div>
+                 
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-3">
+                                            <hr>
+                                        <input class="form-control input" @if($userrecord->bol_be_client_secret ?? '')
+                                        value="{{$userrecord->bol_be_client_secret}}" disabled @endif type="text"
+                                        name="bol_be_client_secret" placeholder="Bol client secret (BE)">
+                                        </div>
+                                    </div>
+                                </div>
+                              
                                 <br>
-                                <label>Bol Secrets (BE)</label>
-                                <input class="form-control input" type="text" @if($userrecord->bol_be_client_id ?? '')
-                                value="{{$userrecord->bol_be_client_id}}" disabled @endif name="bol_be_client_id"
-                                placeholder="Bol client id (BE)">
-                                <input class="form-control input" @if($userrecord->bol_be_client_secret ?? '')
-                                value="{{$userrecord->bol_be_client_secret}}" disabled @endif type="text"
-                                name="bol_be_client_secret" placeholder="Bol client secret (BE)">
+                                
 
 
                              <div class="card-body">
@@ -1046,7 +1076,7 @@ width: 300px;
                         <?php echo csrf_field(); ?>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group mt-3">
                                     <label for="">Credit Limit</label>
                                     <small style="color: red;"> *</small>
                                     <input class="form-control" type="text" @if($userrecord->credit_limit ?? '')
@@ -1074,7 +1104,7 @@ width: 300px;
                                         <input type="hidden" name="Logistiek" value="DHL">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">Price Per Label</label>
                                                     <small style="color: red;"> *</small>
                                                     <br>
@@ -1098,7 +1128,7 @@ width: 300px;
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DHL Client Id</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'')
@@ -1109,7 +1139,7 @@ width: 300px;
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DHL Account Id</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'')
@@ -1118,7 +1148,7 @@ width: 300px;
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DHL Key</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'')
@@ -1133,7 +1163,7 @@ width: 300px;
                                         <input type="hidden" name="dpd_logistiek" value="DPD">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">Price Per Label</label>
                                                     <small style="color: red;"> *</small>
                                                     <br>
@@ -1157,7 +1187,7 @@ width: 300px;
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DPD Delisid</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'') value="{{$settings->dpd_delisid}}" disabled @endif name="dpd_delisid" placeholder="API DelisId">
@@ -1166,14 +1196,14 @@ width: 300px;
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DPD Username</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'') value="{{$settings->dpd_username}}" disabled @endif name="dpd_username" placeholder="API Username">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DPD Password</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'') value="{{$settings->dpd_password}}" disabled @endif name="dpd_password" placeholder="API Password">
@@ -1189,7 +1219,7 @@ width: 300px;
                                         <input type="hidden" name="Logistiek" value="DHL">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">Price Per Label</label>
                                                     <small style="color: red;"> *</small>
                                                     <br>
@@ -1213,7 +1243,7 @@ width: 300px;
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DHL Client Id</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'')
@@ -1224,7 +1254,7 @@ width: 300px;
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DHL Account Id</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'')
@@ -1233,7 +1263,7 @@ width: 300px;
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DHL Key</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'')
@@ -1249,7 +1279,7 @@ width: 300px;
                                         <input type="hidden" name="dpd_logistiek" value="DPD">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">Price Per Label</label>
                                                     <small style="color: red;"> *</small>
                                                     <br>
@@ -1273,7 +1303,7 @@ width: 300px;
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DPD Delisid</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'') value="{{$settings->dpd_delisid}}" disabled @endif name="dpd_delisid" placeholder="API DelisId">
@@ -1282,14 +1312,14 @@ width: 300px;
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DPD Username</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'') value="{{$settings->dpd_username}}" disabled @endif name="dpd_username" placeholder="API Username">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group mt-3">
                                                     <label for="">DPD Password</label>
                                                     <small style="color: red;"> *</small>
                                                     <input class="form-control" type="text" @if($settings ??'') value="{{$settings->dpd_password}}" disabled @endif name="dpd_password" placeholder="API Password">
@@ -1298,7 +1328,7 @@ width: 300px;
                                         </div>
                                     </div>
                                 </div> --}}
-                                <div class="form-group">
+                                <div class="form-group mt-3">
                                     @if($userrecord->credit_limit ?? '')
                                     <button name="" type="button" class="btn btn btn-primary" id="button" value=""
                                             disabled>

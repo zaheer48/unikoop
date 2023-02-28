@@ -101,13 +101,13 @@
                     </span>
                     @endif
                 </a>
-                <div class="dropdown-menu dropdown-menu-end profile-dropdown " style="
+                <div class="dropdown-menu dropdown-menu-end profile-dropdown mx-1" style="
                     min-width: 250px;">
-                    item
+                    Unikoop
                     <div class="dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Welcome !</h6>
                     </div>
-                    <div class="d-flex text-center"  class="dropdown-item notify-item" >
+                    <div class="d-flex text-center mb-2"  class="dropdown-item notify-item" >
                         @if($modules['GenerateInvoice']->isEnabled())
                         <div class="col-6">
                             <a href="" class="">
@@ -118,7 +118,7 @@
                         </div>
                         @endif
                         @if($modules['TrackOrder']->isEnabled())
-                        <div class="col-7">
+                        <div class="col-8 mx-n1">
                             <a href="{{route('track.order')}}" class="">
                                 {{-- <span>Take Order</span> --}}
                                 <button type="submit" class="fs-6 btn btn-primary underline  text-sm text-gray-600 hover:text-gray-900 ml-2" style="margin-right:22px">
@@ -129,7 +129,7 @@
                         </div>
                         @endif
                    </div>
-                   <hr>
+                 
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-settings"></i>
                         <span>Settings</span>
@@ -150,7 +150,7 @@
                         <i class="fe-log-out"></i>
                         <span>Logout</span>
                     </a> --}}
-                    <div class=" dropdown-item notify-item">
+                    <div class=" dropdown-item notify-item btn-light">
                     <form method="POST" action="{{ route('logout') }}" class="inline mx-3 ">
                         @csrf
 
