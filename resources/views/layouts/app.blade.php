@@ -109,8 +109,7 @@ body[data-leftbar-size=condensed]:not([data-layout=compact]) {
         <script src="{{URL::asset('assets/libs/flatpickr/flatpickr.min.js')}}"></script>
         <script src="{{URL::asset('assets/libs/apexcharts/apexcharts.min.js')}}"></script>
         <script src="{{URL::asset('assets/libs/selectize/js/standalone/selectize.min.js')}}"></script>
-        <!-- Dashboar 1 init js-->
-        <script src="{{URL::asset('assets/js/pages/dashboard-1.init.js')}}"></script>
+        
         <!-- Init js -->
         <script src="{{URL::asset('assets/js/pages/responsive-table.init.js')}}"></script>
         <!-- Datatables init -->

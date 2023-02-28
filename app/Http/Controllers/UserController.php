@@ -9,6 +9,7 @@ use App\Models\Bol_data;
 use App\Models\Bol_rec;
 use Auth;
 use DB;
+use DateTime;
 use Carbon\Carbon;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Session;
@@ -246,7 +247,7 @@ class UserController extends Controller
             ->selectRaw('SUM(bol_data.prijs) AS total')
             ->selectRaw('count(bol_data.id) AS totalOrders')
             ->addSelect(DB::raw('sum(case when lable_pdf IS NOT NULL then 1 else 0 end) as deliveredOrders'))
-            ->addSelect(DB::raw('sum(case when lable_pdf IS NOT NULL then bol_data.price_charged end) as deliveredAmount'))
+            ->addSelect(DB::raw('sum(case when lable_pdf IS NOT NULL then bol_data.prijs end) as deliveredAmount'))
             ->addSelect(DB::raw('sum(case when lable_pdf IS NULL then 1 else 0 end) as pendingOrders'))
             ->addSelect(DB::raw('sum(case when lable_pdf IS NULL then bol_data.prijs end) as pending'))
             ->addSelect(DB::raw('sum(case when bol_update_status = "FAILURE" then 1 else 0 end) as failedOrders'))
@@ -255,12 +256,17 @@ class UserController extends Controller
             ->addSelect(DB::raw('sum(case when bol_update_status = "Not Updated" then bol_data.prijs end) as notupdated'))
             ->addSelect(DB::raw('sum(case when bol_update_status = "Bol Order Not found" then 1 else 0 end) as notFoundOrders'))
             ->addSelect(DB::raw('sum(case when bol_update_status = "Bol Order Not found" then bol_data.prijs end) as notfound'))
+            
+            ->addSelect(DB::raw('sum(case when logistiek = "DHL" then 1 else 0 end) as dhlLabels'))
+            ->addSelect(DB::raw('sum(case when logistiek = "DHL Today" then 1 else 0 end) as dhlTodayLabels'))
+            ->addSelect(DB::raw('sum(case when logistiek = "DPD" then 1 else 0 end) as dpdLabels'))
+
             ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
             ->where('bol_rec.user_id', '=', Auth::id())
             ->first();
-        // dd($revenue);
+        // dd($revenue);    
 
-        $today_delivered_orders = DB::table('bol_data')
+        $today_delivered_orders_shipping_amount = DB::table('bol_data')
             ->selectRaw('SUM(bol_data.price_charged) AS total')
             ->whereDate('fetched_date', DB::raw('CURDATE()'))
             ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
@@ -271,24 +277,97 @@ class UserController extends Controller
         $startWeek = Carbon::now()->subWeek()->startOfWeek(); // 13 Jan 2023
         $endWeek   = Carbon::now()->subWeek()->endOfWeek();  // 19 Jan 2023
 
-        $last_week_delivered_orders = DB::table('bol_data')
+        $total_delivered_orders_shipping_amount = DB::table('bol_data')
+            ->selectRaw('SUM(bol_data.price_charged) AS total')
+            ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
+            ->where('bol_rec.user_id', '=', Auth::id())
+            ->first();
+
+        $last_week_delivered_orders_shipping_amount = DB::table('bol_data')
             ->selectRaw('SUM(bol_data.price_charged) AS total')
             ->whereBetween('fetched_date',[ $startWeek,$endWeek ])
             ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
             ->where('bol_rec.user_id', '=', Auth::id())
             ->first();
 
-        $last_month_delivered_orders = DB::table('bol_data')
+        $last_month_delivered_orders_shipping_amount = DB::table('bol_data')
             ->selectRaw('SUM(bol_data.price_charged) AS total')
             ->whereMonth('fetched_date', '=', Carbon::now()->subMonth()->month)
             ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
             ->where('bol_rec.user_id', '=', Auth::id())
             ->first();
 
-        $latestOrders = Bol_data::orderBy('id', 'desc')->take(5)->get();
-        $deliveredOrders = Bol_data::orderBy('fetched_date', 'desc')->take(5)->get();
+        // $latestOrders = Bol_data::orderBy('id', 'desc')->take(5)->get();
+        $latestOrders = DB::table('bol_data')
+            ->select('*')
+            ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
+            ->where('bol_rec.user_id', '=', Auth::id())
+            ->whereNull('bol_data.lable_pdf')
+            ->orderBy('bol_data.id', 'desc')
+            ->take(5)
+            ->get();
 
-        return view('dashboard', compact('revenue', 'today_delivered_orders', 'last_week_delivered_orders', 'last_month_delivered_orders', 'latestOrders', 'deliveredOrders'));
+
+        // $deliveredOrders = Bol_data::orderBy('fetched_date', 'desc')->take(5)->get();
+        $deliveredOrders = DB::table('bol_data')
+            ->select('*')
+            ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
+            ->where('bol_rec.user_id', '=', Auth::id())
+            ->whereNotNull('bol_data.lable_pdf')
+            ->orderBy('bol_data.id', 'desc')
+            ->take(5)
+            ->get();
+
+        $revenueMonth = Bol_data::whereMonth(
+            'fetched_date', '=', Carbon::now()->subMonth()->month
+        )->get();
+
+        $dates = collect();
+        foreach( range( -13, 0 ) AS $i ) {
+            $date = Carbon::now()->addDays( $i )->format( 'Y-m-d' );
+            $dates->put( $date, 0);
+        }
+
+        // Get the post counts
+        $added = Bol_data::where( 'date_added', '>=', $dates->keys()->first() )
+                    ->groupBy( 'date' )
+                    ->orderBy( 'date' )
+                    ->get( [
+                        DB::raw( 'DATE( date_added ) as date' ),
+                        DB::raw( 'COUNT( * ) as "count"' )
+                    ] )
+                    ->pluck( 'count', 'date' );
+        $graph_data['added'] = $dates->merge( $added );
+        
+        $fetched = Bol_data::where( 'fetched_date', '>=', $dates->keys()->first() )
+                    ->groupBy( 'date' )
+                    ->orderBy( 'date' )
+                    ->get( [
+                        DB::raw( 'DATE( fetched_date ) as date' ),
+                        DB::raw( 'COUNT( * ) as "count"' )
+                    ] )
+                    ->pluck( 'count', 'date' );
+
+        // Merge the two collections; any results in `$posts` will overwrite the zero-value in `$dates`
+        $graph_data['fetched'] = $dates->merge( $fetched );
+
+
+        $revenueMonth = DB::table('bol_data')
+            ->select('*')
+            ->whereMonth('fetched_date', '=', Carbon::now()->subMonth(15))
+            ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
+            ->where('bol_rec.user_id', '=', Auth::id())
+            ->groupBy('bol_data.fetched_date')
+            ->get();
+
+
+
+
+
+
+
+
+        return view('dashboard', compact('revenue', 'total_delivered_orders_shipping_amount', 'today_delivered_orders_shipping_amount', 'last_week_delivered_orders_shipping_amount', 'last_month_delivered_orders_shipping_amount', 'latestOrders', 'deliveredOrders', 'graph_data'));
     }
 
     public function companies()
