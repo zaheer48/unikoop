@@ -309,28 +309,68 @@
                                 </div>
                             </div>
 
-                            <h4 class="header-title mb-0">Total Revenue</h4>
-                            <div class="widget-chart text-center" dir="ltr">
-                                <div id="total-revenue" class="mt-0" data-colors="#f1556c"></div>
-                                <h5 class="text-muted mt-0">Total sales made today</h5>
-                                <h2>&euro;{{ $today_delivered_orders_shipping_amount->total ?? 0 }}</h2>
-                                <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed
-                                    to work best in the meat of your page content.</p>
-                                <div class="row mt-3">
-                                    <div class="col-4">
-                                        <p class="text-muted font-15 mb-1 text-truncate">Total</p>
-                                        <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $total_delivered_orders_shipping_amount->total ?? 0 }}</h4>
-                                    </div>
-                                    <div class="col-4">
-                                        <p class="text-muted font-15 mb-1 text-truncate">Last week</p>
-                                        <h4><i class="fe-arrow-up text-success me-1"></i>&euro;{{ $last_week_delivered_orders_shipping_amount->total ?? 0 }}</h4>
-                                    </div>
-                                    <div class="col-4">
-                                        <p class="text-muted font-15 mb-1 text-truncate">Last Month</p>
-                                        <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $last_month_delivered_orders_shipping_amount->total ?? 0 }}</h4>
-                                    </div>
-                                </div>
-                            </div>
+
+
+
+
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="dhl-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">DHL</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="dpd-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">DPD</button>
+                                </li>
+                              </ul>
+                              <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="dhl-tab">
+                                    <h4 class="header-title mb-0">Total Revenue</h4>
+                                    <div class="widget-chart text-center" dir="ltr">
+                                        <div id="total-revenue" class="mt-0" data-colors="#f1556c"></div>
+                                        <h5 class="text-muted mt-0">Total sales made today</h5>
+                                        <h2>&euro;{{ $today_delivered_orders_shipping_amount->total ?? 0 }}</h2>
+                                        <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed
+                                            to work best in the meat of your page content.</p>
+                                        <div class="row mt-3">
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Total</p>
+                                                <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $total_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Last week</p>
+                                                <h4><i class="fe-arrow-up text-success me-1"></i>&euro;{{ $last_week_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Last Month</p>
+                                                <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $last_month_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                        </div>
+                                    </div></div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="dpd-tab">
+                                    <h4 class="header-title mb-0">Total Revenue</h4>
+                                    <div class="widget-chart text-center" dir="ltr">
+                                        <div id="total-revenue" class="mt-0" data-colors="#f1556c"></div>
+                                        <h5 class="text-muted mt-0">Total sales made today</h5>
+                                        <h2>&euro;{{ $today_delivered_orders_shipping_amount->total ?? 0 }}</h2>
+                                        <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed
+                                            to work best in the meat of your page content.</p>
+                                        <div class="row mt-3">
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Total</p>
+                                                <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $total_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Last week</p>
+                                                <h4><i class="fe-arrow-up text-success me-1"></i>&euro;{{ $last_week_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Last Month</p>
+                                                <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $last_month_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                        </div>
+                                    </div></div>
+                              </div>
+
+                            
                         </div>
                     </div> <!-- end card -->
                 </div> <!-- end col-->
@@ -487,6 +527,10 @@
             <!-- end row -->
         </div> <!-- container -->
     </div>
+    @php
+        print_r($graph_data['added']);
+        print_r($graph_data['fetched']);
+    @endphp
     <!-- End Page content -->    
     @endsection
     @section('js')
@@ -517,7 +561,7 @@
                 series:[{
                     name:"Revenue",
                     type:"column",
-                    data:[440,505,414,671,227,413,201,352,752,320,257,160]
+                    data:[$graph_data['fetched']]
                 },
                 {
                     name:"Sales",
@@ -539,7 +583,7 @@
                 dataLabels:{
                     enabled:!0,
                     enabledOnSeries:[1]},
-                    labels:["01 Jan 2001","02 Jan 2001","03 Jan 2001","04 Jan 2001","05 Jan 2001","06 Jan 2001","07 Jan 2001","08 Jan 2001","09 Jan 2001","10 Jan 2001","11 Jan 2001","12 Jan 2001","13 Jan 2001","14 Jan 2001","15 Jan 2001","16 Jan 2001","17 Jan 2001","18 Jan 2001","19 Jan 2001","20 Jan 2001"],
+                    labels:[$graph_data['added'],],
                     xaxis:{
                         type:"datetime"
                     },
