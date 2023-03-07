@@ -487,10 +487,13 @@
             <!-- end row -->
         </div> <!-- container -->
     </div>
+
     <!-- End Page content -->    
     @endsection
+
     @section('js')
     <script>
+        // var data:[440,505,414,671,227,413,201,352,752,320,257,160];
         var colors=["#f1556c"],
         dataColors=$("#total-revenue").data("colors");
         dataColors&&(colors=dataColors.split(","));
@@ -515,14 +518,14 @@
             (dataColors=$("#sales-analytics").data("colors"))&&(colors=dataColors.split(","));
             options={
                 series:[{
-                    name:"Revenue",
+                    name:"Orders",
                     type:"column",
-                    data:[440,505,414,671,227,413,201,352,752,320,257,160]
+                    data:@json($graph_data['added'])
                 },
                 {
-                    name:"Sales",
+                    name:"Labels Fetched",
                     type:"line",
-                    data:[23,42,35,27,43,22,17,31,22,22,12,16]
+                    data:@json($graph_data['fetched'])
                 }],
                 chart:{
                     height:378,
@@ -539,7 +542,7 @@
                 dataLabels:{
                     enabled:!0,
                     enabledOnSeries:[1]},
-                    labels:["01 Jan 2001","02 Jan 2001","03 Jan 2001","04 Jan 2001","05 Jan 2001","06 Jan 2001","07 Jan 2001","08 Jan 2001","09 Jan 2001","10 Jan 2001","11 Jan 2001","12 Jan 2001","13 Jan 2001","14 Jan 2001","15 Jan 2001","16 Jan 2001","17 Jan 2001","18 Jan 2001","19 Jan 2001","20 Jan 2001"],
+                    labels:@json($graph_data['date']),
                     xaxis:{
                         type:"datetime"
                     },
@@ -566,13 +569,13 @@
                     },
                     yaxis:[{
                         title:{
-                            text:"Net Revenue"
+                            text:"Orders"
                         }
                     },
                     {
                         opposite:!0,
                         title:{
-                            text:"Number of Sales"
+                            text:"Number of Labels"
                         }
                     }]
             };

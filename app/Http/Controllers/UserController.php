@@ -337,7 +337,7 @@ class UserController extends Controller
                         DB::raw( 'COUNT( * ) as "count"' )
                     ] )
                     ->pluck( 'count', 'date' );
-        $graph_data['added'] = $dates->merge( $added );
+        $added_order = $dates->merge( $added );
         
         $fetched = Bol_data::where( 'fetched_date', '>=', $dates->keys()->first() )
                     ->groupBy( 'date' )
@@ -349,23 +349,17 @@ class UserController extends Controller
                     ->pluck( 'count', 'date' );
 
         // Merge the two collections; any results in `$posts` will overwrite the zero-value in `$dates`
-        $graph_data['fetched'] = $dates->merge( $fetched );
+        $fetched_label = $dates->merge( $fetched );
+        $graph_data_added = $graph_data_fetched = $graph_data_date = [];
+        foreach($fetched_label as $key => $value){
+            array_push($graph_data_fetched, $value);
+            array_push($graph_data_added, $added_order[$key]);
+            array_push($graph_data_date, $key);
 
-
-        $revenueMonth = DB::table('bol_data')
-            ->select('*')
-            ->whereMonth('fetched_date', '=', Carbon::now()->subMonth(15))
-            ->join('bol_rec', 'bol_rec.id', '=', 'bol_data.bol_rec_id')
-            ->where('bol_rec.user_id', '=', Auth::id())
-            ->groupBy('bol_data.fetched_date')
-            ->get();
-
-
-
-
-
-
-
+        }
+        $graph_data['added'] = $graph_data_added;
+        $graph_data['fetched'] = $graph_data_fetched;
+        $graph_data['date'] = $graph_data_date;
 
         return view('dashboard', compact('revenue', 'total_delivered_orders_shipping_amount', 'today_delivered_orders_shipping_amount', 'last_week_delivered_orders_shipping_amount', 'last_month_delivered_orders_shipping_amount', 'latestOrders', 'deliveredOrders', 'graph_data'));
     }
