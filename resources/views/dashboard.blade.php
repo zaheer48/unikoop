@@ -292,22 +292,22 @@
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="dropdown float-end">
+                            <!-- <div class="dropdown float-end">
                                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <i class="mdi mdi-dots-vertical"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
+
                                     <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
-                                    <!-- item-->
+
                                     <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
-                                    <!-- item-->
+
                                     <a href="javascript:void(0);" class="dropdown-item">Profit</a>
-                                    <!-- item-->
+
                                     <a href="javascript:void(0);" class="dropdown-item">Action</a>
                                 </div>
-                            </div>
+                            </div> -->
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                   <button class="nav-link active" id="dhl-tab" data-bs-toggle="tab" data-bs-target="#dhl" type="button" role="tab" aria-controls="home" aria-selected="true">DHL</button>
@@ -516,6 +516,7 @@
     @section('js')
     <script>
         // var data:[440,505,414,671,227,413,201,352,752,320,257,160];
+        var deliveredOrders = $revenue->deliveredOrders;
         var colors=["#f1556c"],
         dataColors=$("#total-revenue").data("colors");
         dataColorsDpd=$("#total-dpd-revenue").data("colors");
@@ -524,7 +525,7 @@
         dataColorsDpd&&(colors=dataColorsDpd.split(","));
         dataColorsToday&&(colors=dataColorsToday.split(","));
         var options={
-                series:[{{ number_format($revenue->dhlLabels * 100 / $revenue->deliveredOrders, 2) }}],
+                series:[{{ number_format($revenue->dhlLabels * 100 / $revenue->deliveredOrders, 2) }}],                
                 chart:{
                     height:242,type:"radialBar"
                 },
