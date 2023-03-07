@@ -515,8 +515,6 @@
 
     @section('js')
     <script>
-        // var data:[440,505,414,671,227,413,201,352,752,320,257,160];
-        var deliveredOrders = $revenue->deliveredOrders;
         var colors=["#f1556c"],
         dataColors=$("#total-revenue").data("colors");
         dataColorsDpd=$("#total-dpd-revenue").data("colors");
@@ -525,7 +523,13 @@
         dataColorsDpd&&(colors=dataColorsDpd.split(","));
         dataColorsToday&&(colors=dataColorsToday.split(","));
         var options={
-                series:[{{ number_format($revenue->dhlLabels * 100 / $revenue->deliveredOrders, 2) }}],                
+            series:[
+                    @If($revenue->deliveredOrders != 0)
+                        {{ number_format($revenue->dhlLabels * 100 / $revenue->deliveredOrders, 2) }}
+                      @else
+                        {{0}}
+                    @endif
+                ],               
                 chart:{
                     height:242,type:"radialBar"
                 },
@@ -540,7 +544,13 @@
                 labels:["DHL Labels"]
             };
             var optionsToday={
-                    series:[{{ number_format( $revenue->dhlTodayLabels * 100 / $revenue->deliveredOrders, 2) }}],
+                    series:[
+                        @If($revenue->deliveredOrders != 0)
+                           {{ number_format( $revenue->dhlTodayLabels * 100 / $revenue->deliveredOrders, 2) }}
+                        @else
+                            {{0}}
+                        @endif    
+                          ],
                     chart:{
                         height:242,type:"radialBar"
                     },
@@ -555,7 +565,13 @@
                     labels:["DHL Today Labels"]
                 };
         var optionsDpd={
-                series:[{{ number_format($revenue->dpdLabels * 100 / $revenue->deliveredOrders, 2) }}],
+                series:[
+                    @If($revenue->deliveredOrders != 0)
+                        {{ number_format($revenue->dpdLabels * 100 / $revenue->deliveredOrders, 2) }}
+                      @else
+                        {{0}}
+                    @endif
+                ],
                 chart:{
                     height:242,type:"radialBar"
                 },
