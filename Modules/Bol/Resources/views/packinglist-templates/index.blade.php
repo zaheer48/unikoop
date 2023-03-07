@@ -76,14 +76,14 @@
                                                 Not Configured
                                             @endif
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             <a href="{{ route('packinglist-templates.edit',$template->id) }}" class="btn btn-sm btn-primary">
                                                 Edit
                                             </a>
                                             <a href="{{ url('/packlist-template-preview',$template->id) }}" target="_blank" class="btn btn-sm btn-primary">
                                                 Preview
                                             </a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                                 </tbody>

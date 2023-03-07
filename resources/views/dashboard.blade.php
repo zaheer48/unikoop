@@ -309,28 +309,94 @@
                                 </div>
                             </div>
 
-                            <h4 class="header-title mb-0">Total Revenue</h4>
-                            <div class="widget-chart text-center" dir="ltr">
-                                <div id="total-revenue" class="mt-0" data-colors="#f1556c"></div>
-                                <h5 class="text-muted mt-0">Total sales made today</h5>
-                                <h2>&euro;{{ $today_delivered_orders_shipping_amount->total ?? 0 }}</h2>
-                                <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed
-                                    to work best in the meat of your page content.</p>
-                                <div class="row mt-3">
-                                    <div class="col-4">
-                                        <p class="text-muted font-15 mb-1 text-truncate">Total</p>
-                                        <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $total_delivered_orders_shipping_amount->total ?? 0 }}</h4>
-                                    </div>
-                                    <div class="col-4">
-                                        <p class="text-muted font-15 mb-1 text-truncate">Last week</p>
-                                        <h4><i class="fe-arrow-up text-success me-1"></i>&euro;{{ $last_week_delivered_orders_shipping_amount->total ?? 0 }}</h4>
-                                    </div>
-                                    <div class="col-4">
-                                        <p class="text-muted font-15 mb-1 text-truncate">Last Month</p>
-                                        <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $last_month_delivered_orders_shipping_amount->total ?? 0 }}</h4>
-                                    </div>
-                                </div>
-                            </div>
+
+
+
+
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="dhl-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">DHL</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="dpd-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">DPD</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="dhl-today-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">DHL Today</button>
+                                </li>
+                              </ul>
+                              <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="dhl-tab">
+                                    <h4 class="header-title mb-0">Total Revenue</h4>
+                                    <div class="widget-chart text-center" dir="ltr">
+                                        <div id="total-revenue" class="mt-0" data-colors="#f1556c"></div>
+                                        <h5 class="text-muted mt-0">Total sales made today</h5>
+                                        <h2>&euro;{{ $today_delivered_orders_shipping_amount->total ?? 0 }}</h2>
+                                        <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed
+                                            to work best in the meat of your page content.</p>
+                                        <div class="row mt-3">
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Total</p>
+                                                <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $total_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Last week</p>
+                                                <h4><i class="fe-arrow-up text-success me-1"></i>&euro;{{ $last_week_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Last Month</p>
+                                                <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $last_month_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                        </div>
+                                    </div></div>
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="dhl-today-tab">
+                                        <h4 class="header-title mb-0">Total Revenue</h4>
+                                        <div class="widget-chart text-center" dir="ltr">
+                                            <div id="total-today-revenue" class="mt-0" data-colors="#f1556c"></div>
+                                            <h5 class="text-muted mt-0">Total sales made today</h5>
+                                            <h2>&euro;{{ $today_delivered_orders_shipping_amount->total ?? 0 }}</h2>
+                                            <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed
+                                                to work best in the meat of your page content.</p>
+                                            <div class="row mt-3">
+                                                <div class="col-4">
+                                                    <p class="text-muted font-15 mb-1 text-truncate">Total</p>
+                                                    <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $total_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="text-muted font-15 mb-1 text-truncate">Last week</p>
+                                                    <h4><i class="fe-arrow-up text-success me-1"></i>&euro;{{ $last_week_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                                </div>
+                                                <div class="col-4">
+                                                    <p class="text-muted font-15 mb-1 text-truncate">Last Month</p>
+                                                    <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $last_month_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                                </div>
+                                            </div>
+                                        </div></div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="dpd-tab">
+                                    <h4 class="header-title mb-0">Total Revenue</h4>
+                                    <div class="widget-chart text-center" dir="ltr">
+                                        <div id="total-dpd-revenue" class="mt-0" data-colors="#f1556c"></div>
+                                        <h5 class="text-muted mt-0">Total sales made today</h5>
+                                        <h2>&euro;{{ $today_delivered_orders_shipping_amount->total ?? 0 }}</h2>
+                                        <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed
+                                            to work best in the meat of your page content.</p>
+                                        <div class="row mt-3">
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Total</p>
+                                                <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $total_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Last week</p>
+                                                <h4><i class="fe-arrow-up text-success me-1"></i>&euro;{{ $last_week_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-muted font-15 mb-1 text-truncate">Last Month</p>
+                                                <h4><i class="fe-arrow-down text-danger me-1"></i>&euro;{{ $last_month_delivered_orders_shipping_amount->total ?? 0 }}</h4>
+                                            </div>
+                                        </div>
+                                    </div></div>
+                              </div>
+
+                            
                         </div>
                     </div> <!-- end card -->
                 </div> <!-- end col-->
@@ -487,7 +553,6 @@
             <!-- end row -->
         </div> <!-- container -->
     </div>
-
     <!-- End Page content -->    
     @endsection
 
@@ -496,7 +561,11 @@
         // var data:[440,505,414,671,227,413,201,352,752,320,257,160];
         var colors=["#f1556c"],
         dataColors=$("#total-revenue").data("colors");
+        dataColorsDpd=$("#total-dpd-revenue").data("colors");
+        dataColorsToday=$("#total-today-revenue").data("colors");
         dataColors&&(colors=dataColors.split(","));
+        dataColorsDpd&&(colors=dataColorsDpd.split(","));
+        dataColorsToday&&(colors=dataColorsToday.split(","));
         var options={
                 series:[{{ number_format($revenue->dhlLabels * 100 / $revenue->deliveredOrders, 2) }}],
                 chart:{
@@ -511,9 +580,43 @@
                 },
                 colors:colors,
                 labels:["DHL Labels"]
+            }
+        var optionsDpd={
+                series:[{{ number_format($revenue->dpdLabels * 100 / $revenue->deliveredOrders, 2) }}],
+                chart:{
+                    height:242,type:"radialBar"
+                },
+                plotOptions:{
+                    radialBar:{
+                        hollow:{
+                            size:"68%"
+                        }
+                    }
+                },
+                colors:colors,
+                labels:["DPD Labels"]
+            }
+        var optionsToday={
+                series:[{{ number_format( $revenue->dhlTodayLabels * 100 / $revenue->deliveredOrders, 2) }}],
+                chart:{
+                    height:242,type:"radialBar"
+                },
+                plotOptions:{
+                    radialBar:{
+                        hollow:{
+                            size:"68%"
+                        }
+                    }
+                },
+                colors:colors,
+                labels:["DHL Today Labels"]
             },
             chart=new ApexCharts(document.querySelector("#total-revenue"),options);
+            chartDpd=new ApexCharts(document.querySelector("#total-dpd-revenue"),optionsDpd);
+            chartToday=new ApexCharts(document.querySelector("#total-today-revenue"),optionsToday);
             chart.render();
+            chartDpd.render();
+            chartToday.render();
             colors=["#1abc9c","#4a81d4"];
             (dataColors=$("#sales-analytics").data("colors"))&&(colors=dataColors.split(","));
             options={
