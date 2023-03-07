@@ -348,7 +348,7 @@
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="dpd-tab">
                                     <h4 class="header-title mb-0">Total Revenue</h4>
                                     <div class="widget-chart text-center" dir="ltr">
-                                        <div id="total-revenue" class="mt-0" data-colors="#f1556c"></div>
+                                        <div id="total-dpd-revenue" class="mt-0" data-colors="#f1556c"></div>
                                         <h5 class="text-muted mt-0">Total sales made today</h5>
                                         <h2>&euro;{{ $today_delivered_orders_shipping_amount->total ?? 0 }}</h2>
                                         <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed
@@ -537,7 +537,9 @@
     <script>
         var colors=["#f1556c"],
         dataColors=$("#total-revenue").data("colors");
+        dataColorsDpd=$("#total-dpd-revenue").data("colors");
         dataColors&&(colors=dataColors.split(","));
+        dataColorsDpd&&(colors=dataColorsDpd.split(","));
         var options={
                 series:[{{ number_format($revenue->dhlLabels * 100 / $revenue->deliveredOrders, 2) }}],
                 chart:{
@@ -552,9 +554,26 @@
                 },
                 colors:colors,
                 labels:["DHL Labels"]
+            }
+        var optionsDpd={
+                series:[{{ number_format($revenue->dhlLabels * 100 / $revenue->deliveredOrders, 2) }}],
+                chart:{
+                    height:242,type:"radialBar"
+                },
+                plotOptions:{
+                    radialBar:{
+                        hollow:{
+                            size:"68%"
+                        }
+                    }
+                },
+                colors:colors,
+                labels:["DPD Labels"]
             },
             chart=new ApexCharts(document.querySelector("#total-revenue"),options);
+            chartDpd=new ApexCharts(document.querySelector("#total-dpd-revenue"),optionsDpd);
             chart.render();
+            chartDpd.render();
             colors=["#1abc9c","#4a81d4"];
             (dataColors=$("#sales-analytics").data("colors"))&&(colors=dataColors.split(","));
             options={
