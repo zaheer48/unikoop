@@ -553,14 +553,12 @@
             <!-- end row -->
         </div> <!-- container -->
     </div>
-    @php
-        print_r($graph_data['added']);
-        print_r($graph_data['fetched']);
-    @endphp
     <!-- End Page content -->    
     @endsection
+
     @section('js')
     <script>
+        // var data:[440,505,414,671,227,413,201,352,752,320,257,160];
         var colors=["#f1556c"],
         dataColors=$("#total-revenue").data("colors");
         dataColorsDpd=$("#total-dpd-revenue").data("colors");
@@ -623,14 +621,14 @@
             (dataColors=$("#sales-analytics").data("colors"))&&(colors=dataColors.split(","));
             options={
                 series:[{
-                    name:"Revenue",
+                    name:"Orders",
                     type:"column",
-                    data:[$graph_data['fetched']]
+                    data:@json($graph_data['added'])
                 },
                 {
-                    name:"Sales",
+                    name:"Labels Fetched",
                     type:"line",
-                    data:[23,42,35,27,43,22,17,31,22,22,12,16]
+                    data:@json($graph_data['fetched'])
                 }],
                 chart:{
                     height:378,
@@ -647,7 +645,7 @@
                 dataLabels:{
                     enabled:!0,
                     enabledOnSeries:[1]},
-                    labels:[$graph_data['added'],],
+                    labels:@json($graph_data['date']),
                     xaxis:{
                         type:"datetime"
                     },
@@ -674,13 +672,13 @@
                     },
                     yaxis:[{
                         title:{
-                            text:"Net Revenue"
+                            text:"Orders"
                         }
                     },
                     {
                         opposite:!0,
                         title:{
-                            text:"Number of Sales"
+                            text:"Number of Labels"
                         }
                     }]
             };
