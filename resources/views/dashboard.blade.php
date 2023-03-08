@@ -1,4 +1,12 @@
 @extends('layouts.app')
+<style>
+.apexcharts-toolbar{
+    margin-top: -9%
+}
+#wrapper{
+    height: auto!important;
+}
+</style>
 @section('title','Dashboard | Unikoop')
 @section('content')
 <div class="content-page">
@@ -361,13 +369,13 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body pb-2">
-                            <div class="float-end d-none d-md-inline-block">
+                            {{-- <div class="float-end d-none d-md-inline-block">
                                 <div class="btn-group mb-2">
                                     <button type="button" class="btn btn-xs btn-light">Today</button>
                                     <button type="button" class="btn btn-xs btn-light">Weekly</button>
                                     <button type="button" class="btn btn-xs btn-secondary">Monthly</button>
                                 </div>
-                            </div>
+                            </div> --}}
                             <h4 class="header-title mb-3">Sales Analytics</h4>
                             <div dir="ltr">
                                 <div id="sales-analytics" class="mt-4" data-colors="#1abc9c,#4a81d4"></div>
@@ -381,7 +389,7 @@
                 <div class="col-xl-6">
                     <div class="card">
                         <div class="card-body">
-                            <div class="dropdown float-end">
+                            {{-- <div class="dropdown float-end">
                                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <i class="mdi mdi-dots-vertical"></i>
@@ -394,7 +402,7 @@
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item">Action</a>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <h4 class="header-title mb-3">Latest 5 Orders</h4>
                             <div class="table-responsive">
@@ -443,7 +451,7 @@
                 <div class="col-xl-6">
                     <div class="card">
                         <div class="card-body">
-                            <div class="dropdown float-end">
+                            {{-- <div class="dropdown float-end">
                                 <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <i class="mdi mdi-dots-vertical"></i>
@@ -456,7 +464,7 @@
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item">Action</a>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <h4 class="header-title mb-3">Revenue History</h4>
                             <div class="table-responsive">
