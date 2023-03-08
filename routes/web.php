@@ -29,6 +29,10 @@ Route::get('/see-you', function () {
 /** Guest Routes **/
 Route::get('/searching', 'SiteController@searching')->name('site.search');
 
+Route::get('/user-order-history', 'UserController@userHistory')->name('user.order.history');
+
+Route::get('/order-history-view/{bestelnummer}', 'UserController@userHistoryView')->name('order.history.view');
+
 Route::middleware(['usertype'])->group(function(){
     Route::get('/test', [Controllers\TestController::class, 'test']
         )->name('test');
@@ -46,7 +50,6 @@ Route::middleware(['usertype'])->group(function(){
     })->name('payment.history');
 
     Route::get('/companies', 'UserController@companies')->name('companies');
-
     // Verified Above
 
 
@@ -127,10 +130,10 @@ Route::group(['middleware' => 'superadmin'], function () {
     // Payment Methods
     Route::get('/payment-methods', 'Admin\PaymentMethodsController@index')->name('payment.methods');
     Route::post('/payment-methods', 'Admin\PaymentMethodsController@store');
-
+    
     Route::get('/activation', 'Admin\ActivationController@index')->name('activate.settings');
     Route::post('/switch-activation', 'Admin\ActivationController@switchOperation');
-
+    
     Route::get('/site-settings', 'Admin\SettingController@index')->name('website.settings');
     Route::get('/update-site-settings', 'Admin\SettingController@edit');
     Route::post('/update-site-settings', 'Admin\SettingController@update');
@@ -143,6 +146,11 @@ Route::group(['middleware' => 'superadmin'], function () {
 
     // Verified Above Super Admin
 
+    // Contacr Lists
+    Route::get('/contact-list', 'UserController@contactsList')->name('contact.list');
+
+    // Contacr Lists
+    
 
     
 

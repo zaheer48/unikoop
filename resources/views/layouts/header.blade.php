@@ -110,7 +110,7 @@
                     <div class="d-flex text-center mb-2"  class="dropdown-item notify-item" >
                         @if($modules['GenerateInvoice']->isEnabled())
                         <div class="col-6">
-                            <a href="" class="">
+                            <a href="{{route('get.invoice')}}" class="">
                                 <button type="submit" class="fs-6 btn btn-dark underline text-sm text-gray-600 hover:text-gray-900 ml-2">
                                     <i class="fa-solid fa-file-lines"></i>{{ __('Get Invoice') }}
                                 </button>
@@ -188,7 +188,7 @@
                 <span class="logo-sm">
                     <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                 </span>
-                <span class="logo-lg">
+                <span class="logo-lg mt-3">
                     <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                 </span>
             </a>

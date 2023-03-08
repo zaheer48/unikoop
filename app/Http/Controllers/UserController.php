@@ -369,4 +369,28 @@ class UserController extends Controller
         $available_modules = Module::all();
         return view('companies', compact('available_modules'));
     }
+    public function contactsList()
+    {
+        $all_users = DB::table('users')->where('user_type', '=', 'user')->get();
+        // dd($all_users);
+        return view('admin.contact_list', compact('all_users'));
+    }
+    public function userHistory()
+    {
+        $user_bol_data = DB::table('bol_data')
+                ->select('*')
+                ->join('users_orders', 'bol_data.bestelnummer', '=', 'users_orders.order_id')
+                ->where('users_orders.user_id', \Auth::id())
+                ->paginate(10);
+        return view('user.user_order_history', compact('user_bol_data'));
+    }
+
+    public function userHistoryView($bestelnummer)
+    {
+        $user_bol_data = DB::table('bol_data')
+                ->select('*')                
+                ->where('bestelnummer', $bestelnummer)
+                ->get();
+        return view('user.user_order_history_view', compact('user_bol_data'));
+    }
 }
