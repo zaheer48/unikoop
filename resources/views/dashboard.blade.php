@@ -3,7 +3,9 @@
 .apexcharts-toolbar{
     margin-top: -9%
 }
-
+#wrapper{
+    height: auto!important;
+}
 </style>
 @section('title','Dashboard | Unikoop')
 @section('content')

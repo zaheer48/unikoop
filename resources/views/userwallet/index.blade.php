@@ -311,11 +311,11 @@
                                 <div class="responsive-table-plugin">
                                     <div class="table-rep-plugin">
                                         <div class="table-responsive">
-                                            <div class="row">
+                                            {{-- <div class="row">
                                                 <div class="col-4  "></div>
                                                 <div class="col-3  "></div>
                                                 <div class="col-lg-5 col-md-6">
-                                                    <div class="input-group">
+                                                    <div class="input-group justify-content-end">
                                                         <div class="form-outline" style="margin-left: 70px;">
                                                             <input type="search" id="form1" class="form-control" placeholder="Search" />
                                                         </div>
@@ -325,8 +325,8 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <table id="tech-companies-1" class="table table-striped">
+                                            </div> --}}
+                                            <table id="userWallet" class="table table-striped">
                                                 <thead>
                                                     <tr>
                                                         <th>Payment ID</th>
@@ -438,8 +438,19 @@
     <script src="{{ asset('css/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
+            $('#userWallet').DataTable();
         });
+    </script>
+    <script>
+        // $('.form-control-sm').remove();
+        $(document).ready(function(){
+    // var input = $('#userWallet_filter label input');
+    // $("#userWallet_filter label").html('');
+    // $("#userWallet_filter label").append(input);
+    $("#userWallet_filter input").removeClass("form-control-sm");
+    $("#userWallet_filter input").after('<button type="button" class="btn btn-primary" style="float: right;"><i class="fas fa-search"></i></button>');
+    // $("#userWallet_filter input").attr("placeholder", "Search");
+});
     </script>
 
 @endsection

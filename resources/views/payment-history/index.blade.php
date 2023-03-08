@@ -125,7 +125,7 @@
                                         <div class="responsive-table-plugin">
                                             <div class="table-rep-plugin">
                                                 <div class="table-responsive">
-                                                    <div class="row" >
+                                                    {{-- <div class="row" >
                                                         <div class="col-lg-4"></div>
                                                         <div class="col-lg-3"></div>
                                                         <div class="col-lg-5 col-md-6" >
@@ -139,8 +139,8 @@
                                                                 </button>
                                                               </div>
                                                         </div>
-                                                    </div>
-                                                    <table id="tech-companies-1" class="table table-striped">
+                                                    </div> --}}
+                                                    <table id="paymenyHistory" class="table table-striped">
                                                         <thead>
                                                         <tr>
                                                             <th> ID</th>
@@ -227,8 +227,13 @@
     <script src="{{ URL::asset('css/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-            $('#myTable').DataTable();
+            $('#paymenyHistory').DataTable();
         });
     </script>
-
+    <script>
+        $(document).ready(function(){
+    $("#paymenyHistory_filter input").removeClass("form-control-sm");
+    $("#paymenyHistory_filter input").after('<button type="button" class="btn btn-primary" style="float: right;"><i class="fas fa-search"></i></button>');
+});
+    </script>
 @endsection
