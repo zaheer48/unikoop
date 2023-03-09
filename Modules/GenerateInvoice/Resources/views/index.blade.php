@@ -1,6 +1,9 @@
 @extends('layouts/app')
 @section('title','Get Invoice | Unikoop')
 @section('sidebar')
+    @include('layouts.user_side_bar')
+@endsection
+@section('sidebar')
 @endsection
 @section('content')
 <style>

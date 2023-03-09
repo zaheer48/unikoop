@@ -2,6 +2,7 @@
 
 @section('title','Track Order | Unikoop')
 @section('sidebar')
+    @include('layouts.user_side_bar')
 @endsection
 @section('content')
 <style>

@@ -139,6 +139,12 @@
                         <span>Payment Method</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('contact.list') }}" class="dropdown-item notify-item">
+                        <i class="fe-credit-card"></i>
+                        <span>Contact List</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="{{ route('website.settings') }}" class="dropdown-item notify-item">
