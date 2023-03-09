@@ -24,8 +24,8 @@
 
             <!-- Start Content-->
             <div class="container-fluid col-10">
-                <div class="row">
-                    <div class="col-md-12 mt-5">
+                <div class="row justify-content-end">
+                    <div class="col-10 mt-5">
                         <div class="card">
                             <div class="card-body mb-4">
                                 <h4 class="page-title" style="color: blue";>Create Invoice</h4>

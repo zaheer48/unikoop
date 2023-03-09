@@ -18,8 +18,8 @@
             <div class="row justify-content-end">
                 <div class="col-10">
                     <div class="card">
-                        <div class="card-header mt-5">
-                            <h5 class="h5 text-black mb-0">Order Summary</h5>
+                        <div class="card-header bg-white mt-5">
+                            <h5 class="fs-4 text-black mb-0">Order Summary</h5>
                         </div>
                         <div class="card-body">
                                     <div class="row">
@@ -27,20 +27,20 @@
                                         <table id="contactList" class="table-borderless table">
                                             @foreach ($user_bol_data as $list)
                                             <tr>
-                                                <td> Bestellnummer</td>
-                                                <td>{{$list->bestelnummer}} </td>
+                                                <td class="fw-bold"> Bestellnummer</td>
+                                                <td class="fs-5">{{$list->bestelnummer}} </td>
                                             </tr>
                                             <tr>
-                                                <td> Customer</td>
-                                                <td>{{ Auth::user()->username }} </td>
+                                                <td class="fw-bold"> Customer</td>
+                                                <td class="fs-5">{{ Auth::user()->username }} </td>
                                             </tr>
                                             <tr>
-                                                <td>Email</td>
-                                                <td>{{ Auth::user()->email }} </td>
+                                                <td class="fw-bold">Email</td>
+                                                <td class="fs-5">{{ Auth::user()->email }} </td>
                                             </tr>
                                             <tr>
-                                                <td> Shipping address</td>
-                                                <td>House No # {{$list->adres_verz_huisnummer}}
+                                                <td class="fw-bold"> Shipping address</td>
+                                                <td class="fs-5">House No # {{$list->adres_verz_huisnummer}}
                                                     Street No # {{$list->adres_verz_straat}}
                                                     Street No Addition # {{$list->adres_verz_huisnummer_toevoeging}}
                                                     Addition Address # {{$list->adres_verz_toevoeging}}
@@ -54,16 +54,16 @@
                                         <table id="contactList" class="table-borderless table">
                                             @foreach ($user_bol_data as $list)
                                             <tr>
-                                                <td> Order date</td>
-                                                <td>{{$list->besteldatum}} </td>
+                                                <td class="fw-bold"> Order date</td>
+                                                <td class="fs-5">{{$list->besteldatum}} </td>
                                             </tr>
                                             <tr>
-                                                <td> Order status</td>
-                                                <td>{{$list->bol_update_status}} </td>
+                                                <td class="fw-bold"> Order status</td>
+                                                <td class="fs-5">{{$list->bol_update_status}} </td>
                                             </tr>
                                             <tr>
-                                                <td> Total order amount:</td>
-                                                <td>{{$list->prijs}} </td>
+                                                <td class="fw-bold"> Total order amount:</td>
+                                                <td class="fs-5">{{$list->prijs}} </td>
                                             </tr>
                                             {{-- <tr>
                                                 <td>Shipping method</td>
