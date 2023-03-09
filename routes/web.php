@@ -148,6 +148,8 @@ Route::group(['middleware' => 'superadmin'], function () {
 
     // Contacr Lists
     Route::get('/contact-list', 'UserController@contactsList')->name('contact.list');
+    Route::get('/user-orders/{id}', 'UserController@user_orders')->name('user.orders');
+    Route::get('/order-detail/{bestelnummer}', 'UserController@order_detail')->name('order.detail');
 
     // Contacr Lists
     

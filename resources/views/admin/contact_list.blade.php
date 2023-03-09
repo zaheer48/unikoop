@@ -37,8 +37,8 @@
                                                 <td>{{$list->phone}}</td>
                                                 <td>{{$list->email}}</td>
                                                 <td>{{$list->address}}</td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{$list->total_orsers}}</td>
+                                                <td><a href="{{ route('user.orders', $list->id) }}"><button class="btn btn-info"><i class="fa-regular fa-eye"></i></button></a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>

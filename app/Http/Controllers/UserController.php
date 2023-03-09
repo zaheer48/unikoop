@@ -371,9 +371,34 @@ class UserController extends Controller
     }
     public function contactsList()
     {
-        $all_users = DB::table('users')->where('user_type', '=', 'user')->get();
+        $all_users = User::leftJoin('users_orders', 'users_orders.user_id',"=", 'users.id')
+                ->select('users.*',DB::raw('count(users_orders.id) as total_orsers'))
+                ->where('users.user_type', '=', 'user')
+                ->groupBy('users_orders.user_id')  
+                ->get();
         // dd($all_users);
         return view('admin.contact_list', compact('all_users'));
+    }
+    public function user_orders($id)
+    {
+        $all_users = DB::table('bol_data')
+        ->select('*')
+        ->join('users_orders', 'bol_data.bestelnummer', '=', 'users_orders.order_id')
+        ->where('users_orders.user_id', $id)
+        ->paginate(10);
+        // dd($all_users);
+        return view('admin.user_orders', compact('all_users'));
+    }
+    public function order_detail($bestelnummer)
+    {
+        $all_users = DB::table('bol_data')
+        ->select('bol_data.*', 'users.username', 'users.email')                
+        ->where('bestelnummer', $bestelnummer)
+        ->join('users_orders', 'users_orders.order_id', '=', 'bol_data.bestelnummer')
+        ->join('users', 'users_orders.user_id', '=', 'users.id')
+        ->get();
+        // dd($all_users);
+        return view('admin.order_detail', compact('all_users'));
     }
     public function userHistory()
     {

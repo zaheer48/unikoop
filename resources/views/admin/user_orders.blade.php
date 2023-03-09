@@ -9,9 +9,6 @@
         </style>
 @endsection
 @section('sidebar')
-    @include('layouts.user_side_bar')
-@endsection
-@section('sidebar')
     @include('layouts.admin_side_bar', ['modules' => $modules])
 @endsection
 @section('content')
@@ -23,26 +20,26 @@
                                 <div class="table-rep-plugin">
                                     <div class="table-responsive">
                                         <table id="contactList" class="table table-striped mt-5">
-                                        <thead>
-                                            <tr>
-                                                <th>Bestellnummer</th>
-                                                <th>Date</th>
-                                                <th>Amount</th>
-                                                <th>Delivery Status</th>
-                                                <th>Options</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($user_bol_data as $list)
-                                            <tr>
-                                                <td>{{$list->bestelnummer}}</td>
-                                                <td>{{$list->date_added}}</td>
-                                                <td>{{$list->prijs}}</td>
-                                                <td>{{$list->bol_update_status}}</td>
-                                                <td><a href="/order-history-view/{{$list->bestelnummer}}"><i class="fa-regular fa-eye"></i></a></td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
+                                            <thead>
+                                                <tr>
+                                                    <th>Bestellnummer</th>
+                                                    <th>Date</th>
+                                                    <th>Amount</th>
+                                                    <th>Delivery Status</th>
+                                                    <th>Options</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($all_users as $list)
+                                                <tr>
+                                                    <td>{{$list->bestelnummer}}</td>
+                                                    <td>{{$list->date_added}}</td>
+                                                    <td>{{$list->prijs}}</td>
+                                                    <td>{{$list->bol_update_status}}</td>
+                                                    <td><a href="{{route('order.detail',$list->bestelnummer)}}"><button class="btn btn-info"><i class="fa-regular fa-eye"></i></button></a></td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>

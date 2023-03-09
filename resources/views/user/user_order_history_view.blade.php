@@ -32,12 +32,21 @@
                                             </tr>
                                             <tr>
                                                 <td> Customer</td>
-                                                <td>{{$list->bestelnummer}} </td>
+                                                <td>{{ Auth::user()->username }} </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email</td>
+                                                <td>{{ Auth::user()->email }} </td>
                                             </tr>
                                             <tr>
                                                 <td> Shipping address</td>
-                                                <td>{{$list->bestelnummer}} </td>
-                                            </tr>
+                                                <td>House No # {{$list->adres_verz_huisnummer}}
+                                                    Street No # {{$list->adres_verz_straat}}
+                                                    Street No Addition # {{$list->adres_verz_huisnummer_toevoeging}}
+                                                    Addition Address # {{$list->adres_verz_toevoeging}}
+                                                    Postal Code # {{$list->postcode_verzending}}
+                                                  </td>
+                                            </tr> 
                                             @endforeach
                                         </table>
                                     </div>
@@ -46,17 +55,17 @@
                                             @foreach ($user_bol_data as $list)
                                             <tr>
                                                 <td> Order date</td>
-                                                <td>{{$list->bestelnummer}} </td>
+                                                <td>{{$list->besteldatum}} </td>
                                             </tr>
                                             <tr>
                                                 <td> Order status</td>
-                                                <td>{{$list->bestelnummer}} </td>
+                                                <td>{{$list->bol_update_status}} </td>
                                             </tr>
                                             <tr>
                                                 <td> Total order amount:</td>
-                                                <td>{{$list->bestelnummer}} </td>
+                                                <td>{{$list->prijs}} </td>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <td>Shipping method</td>
                                                 <td>{{$list->bestelnummer}} </td>
                                             </tr>
@@ -64,7 +73,7 @@
                                             <tr>
                                                 <td>Payment method</td>
                                                 <td>{{$list->bestelnummer}} </td>
-                                            </tr>
+                                            </tr> --}}
                                             @endforeach
                                         </table>
                                     </div>
