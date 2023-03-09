@@ -16,9 +16,9 @@
                 <div class="col-10">
                     <div class="card">
                         <div class="card-body">
-                            <div class="responsive-table-plugin mt-5">
+                            <div class="responsive-table-plugin">
                                 <div class="table-rep-plugin">
-                                    <div class="table-responsive">
+                                    {{-- <div class="table-responsive"> --}}
                                         <table id="contactList" class="table table-striped mt-5">
                                         <thead>
                                             <tr>
@@ -33,19 +33,19 @@
                                         <tbody>
                                             @foreach ($all_users as $list)
                                             <tr>
-                                                <td>{{$list->username}}</td>
-                                                <td>{{$list->phone}}</td>
-                                                <td>{{$list->email}}</td>
-                                                <td>{{$list->address}}</td>
-                                                <td>{{$list->total_orsers}}</td>
-                                                <td><a href="{{ route('user.orders', $list->id) }}"><button class="btn btn-info"><i class="fa-regular fa-eye"></i></button></a></td>
+                                                <td class="fs-5">{{$list->username}}</td>
+                                                <td class="fs-5">{{$list->phone}}</td>
+                                                <td class="fs-5">{{$list->email}}</td>
+                                                <td class="fs-5">{{$list->address}}</td>
+                                                <td class="fs-5">{{$list->total_orsers}}</td>
+                                                <td class="fs-5"><a href="{{ route('user.orders', $list->id) }}"><button class="btn btn-info"><i class="fa-regular fa-eye"></i></button></a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>

@@ -16,9 +16,9 @@
                 <div class="col-10">
                     <div class="card">
                         <div class="card-body">
-                            <div class="responsive-table-plugin mt-5">
+                            <div class="responsive-table-plugin">
                                 <div class="table-rep-plugin">
-                                    <div class="table-responsive">
+                                    {{-- <div class="table-responsive"> --}}
                                         <table id="contactList" class="table table-striped mt-5">
                                             <thead>
                                                 <tr>
@@ -32,18 +32,18 @@
                                             <tbody>
                                                 @foreach ($all_users as $list)
                                                 <tr>
-                                                    <td>{{$list->bestelnummer}}</td>
-                                                    <td>{{$list->date_added}}</td>
-                                                    <td>{{$list->prijs}}</td>
-                                                    <td>{{$list->bol_update_status}}</td>
-                                                    <td><a href="{{route('order.detail',$list->bestelnummer)}}"><button class="btn btn-info"><i class="fa-regular fa-eye"></i></button></a></td>
+                                                    <td class="fs-5">{{$list->bestelnummer}}</td>
+                                                    <td class="fs-5">{{$list->date_added}}</td>
+                                                    <td class="fs-5">{{$list->prijs}}</td>
+                                                    <td class="fs-5">{{$list->bol_update_status}}</td>
+                                                    <td class="fs-5"><a href="{{route('order.detail',$list->bestelnummer)}}"><button class="btn btn-info"><i class="fa-regular fa-eye"></i></button></a></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>

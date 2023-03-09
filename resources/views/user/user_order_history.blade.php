@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <div class="responsive-table-plugin mt-5">
                                 <div class="table-rep-plugin">
-                                    <div class="table-responsive">
+                                    {{-- <div class="table-responsive"> --}}
                                         <table id="contactList" class="table table-striped mt-5">
                                         <thead>
                                             <tr>
@@ -35,18 +35,18 @@
                                         <tbody>
                                             @foreach ($user_bol_data as $list)
                                             <tr>
-                                                <td>{{$list->bestelnummer}}</td>
-                                                <td>{{$list->date_added}}</td>
-                                                <td>{{$list->prijs}}</td>
-                                                <td>{{$list->bol_update_status}}</td>
-                                                <td><a href="/order-history-view/{{$list->bestelnummer}}"><i class="fa-regular fa-eye"></i></a></td>
+                                                <td class="fs-5">{{$list->bestelnummer}}</td>
+                                                <td class="fs-5">{{$list->date_added}}</td>
+                                                <td class="fs-5">{{$list->prijs}}</td>
+                                                <td class="fs-5">{{$list->bol_update_status}}</td>
+                                                <td class="fs-5"><a href="/order-history-view/{{$list->bestelnummer}}"><i class="fa-regular fa-eye"></i></a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>

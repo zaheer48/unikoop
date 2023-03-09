@@ -188,7 +188,7 @@
                 <span class="logo-sm">
                     <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                 </span>
-                <span class="logo-lg mt-3">
+                <span class="logo-lg">
                     <img src="{{ isset($settings->site_logo) ? asset('portal/'.$settings->site_logo) : '' }}" alt="" height="22">
                 </span>
             </a>
