@@ -2588,13 +2588,13 @@ class OrderController extends Controller
             $check_invoice_orderID = $bestelnummer;
             $check_invoice_message = '1-2';
 
-        } else if ($str_html == "") {
-            $check_invoice_orderID = $bestelnummer;
-            $check_invoice_message = 2;
-        } else {
-            $check_invoice_orderID = $bestelnummer;
-            $check_invoice_message = 1;
-        }
+            } else if ($str_html == "") {
+                $check_invoice_orderID = $bestelnummer;
+                $check_invoice_message = 2;
+            } else {
+                $check_invoice_orderID = $bestelnummer;
+                $check_invoice_message = 1;
+            }
 
             $bastenumber = $baseln->bestelnummer;
             $bol_data = DB::table('bol_data')->select("bestelnummer", "voornaam_verzending", "achternaam_verzending", "bedrijfsnaam_verzending", "bol_rec_id")->where('bestelnummer', $bestelnummer)->first();

@@ -37,30 +37,29 @@ class InvoiceController extends Controller
         if ($str_html != "" and $str_html2 != "") {
             $check_invoice_orderID = $bestelnummer;
             $check_invoice_message = '1-2';
-            if ($str_html == "") {
-                $check_invoice_orderID = $bestelnummer;
-                $check_invoice_message = 2;
-            } else {
-                $check_invoice_orderID = $bestelnummer;
-                $check_invoice_message = 1;
-            }
 
-            // $bol_data = DB::table('bol_data')->select("bestelnummer", "voornaam_verzending", "achternaam_verzending", "bedrijfsnaam_verzending", "bol_rec_id")->where('bestelnummer', $bestelnummer)->first();
-
-            if ($bol_data->bedrijfsnaam_verzending != "") {
-                $name = $bol_data->bedrijfsnaam_verzending;
-            } else {
-                $name = $bol_data->voornaam_verzending . " " . $bol_data->achternaam_verzending;
-            }
-            return [
-                'o_no' => $bestelnummer,
-                'email' => $email,
-                'check_invoice_orderID' => $check_invoice_orderID,
-                'check_invoice_message' => $check_invoice_message,
-                'name' => $name,
-            ];
-
+        } else if ($str_html == "") {
+            $check_invoice_orderID = $bestelnummer;
+            $check_invoice_message = 2;
+        } else {
+            $check_invoice_orderID = $bestelnummer;
+            $check_invoice_message = 1;
         }
+
+        // $bol_data = DB::table('bol_data')->select("bestelnummer", "voornaam_verzending", "achternaam_verzending", "bedrijfsnaam_verzending", "bol_rec_id")->where('bestelnummer', $bestelnummer)->first();
+
+        if ($bol_data->bedrijfsnaam_verzending != "") {
+            $name = $bol_data->bedrijfsnaam_verzending;
+        } else {
+            $name = $bol_data->voornaam_verzending . " " . $bol_data->achternaam_verzending;
+        }
+        return [
+            'o_no' => $bestelnummer,
+            'email' => $email,
+            'check_invoice_orderID' => $check_invoice_orderID,
+            'check_invoice_message' => $check_invoice_message,
+            'name' => $name,
+        ];
     }
 
     public function viewInivoice($bestelnummer)

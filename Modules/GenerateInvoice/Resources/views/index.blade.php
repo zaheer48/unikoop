@@ -29,7 +29,6 @@
                         <div class="card">
                             <div class="card-body mb-4">
                                 <h4 class="page-title" style="color: blue";>Create Invoice</h4>
-
                                 <hr>
                                 <div class="row">
                                     <div class="col-12 col-sm-3 ">
@@ -43,9 +42,9 @@
                                             <div class="d-flex gap-3">
                                                 <!-- <span><button type="button" class="btn btn-primary">Fetch Info</button></span> -->
                                                 <select class="col-lg col-md col-sm-2 form-select" name="" id="">
-                                                            <option value="bol">Bol</option>
-                                                            <option value="amazon">Amazon</option>
-                                                            <option value="unikoop">Unikoop</option>
+                                                    <option value="bol">Bol</option>
+                                                    <option value="amazon">Amazon</option>
+                                                    <option value="unikoop">Unikoop</option>
                                                 </select>
                                             </div>
                                             <input type="button" id="check_invoice" value="Fetch Info" class="btn btn-primary">
@@ -116,9 +115,7 @@
                                                         <input type="hidden" name="sinvoice_input" id="sinvoice_input" value="">
                                                         <input type="hidden" name="tpackinglist_input" id="tpackinglist_input" value="">
                                                         <a style="display:none" href="" id="f_anchor">Invoice</a>
-                                                        <a style="display:none" href="" id="sf_anchor">Packing List</a>
                                                         <a style="display:none" href="" id="second_anchor">Invoice</a>
-                                                        <a style="display:none" href="" id="third_anchor">Packing List</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -225,32 +222,24 @@
                             $("#second_anchor").css("display", "none");
                         }
                         if (data.check_invoice_message == '2') {
-                            $("#third_anchor").css("display", "block");
                             var check_invoice_orderID = data.check_invoice_orderID;
-                            // $("#third_anchor").attr("href", "/bol/create_packing_list/" + check_invoice_orderID);
-                            $("#third_anchor").attr("href", "/download-packinglist-pdf/" + check_invoice_orderID);
                             $("#finvoice_input").attr("value", "");
                             $("#fpackinglist_input").attr("value", "");
                             $("#sinvoice_input").attr("value", "");
                             $("#tpackinglist_input").attr("value", "yes");
-                        } else {
-                            $("#third_anchor").css("display", "none");
                         }
                         if (data.check_invoice_message == '1-2') {
                             $("#f_anchor").css("display", "block");
-                            $("#sf_anchor").css("display", "block");
                             var check_invoice_orderID = data.check_invoice_orderID;
                             // $("#f_anchor").attr("href", "/bol/create_invoice_2/" + check_invoice_orderID);
-                            $("#f_anchor").attr("href", "/bol/download-invoice-pdf/" + check_invoice_orderID);
-                            $("#sf_anchor").attr("href", "/bol/download-packinglist-pdf/" + check_invoice_orderID);
+                            $("#f_anchor").attr("href", "{{ route('invoice.download.pdf', '') }}"+"/"+check_invoice_orderID);                            
+
                             $("#tpackinglist_input").attr("value", "");
                             $("#sinvoice_input").attr("value", "");
                             $("#finvoice_input").attr("value", "yes");
                             $("#fpackinglist_input").attr("value", "yes");
-                            // $("#sf_anchor").attr("href", "/bol/create_packing_list/" + check_invoice_orderID);
                         } else {
                             $("#f_anchor").css("display", "none");
-                            $("#sf_anchor").css("display", "none");
                         }
                     }
 

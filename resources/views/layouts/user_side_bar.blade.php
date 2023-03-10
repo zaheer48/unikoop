@@ -53,24 +53,24 @@
         <div id="sidebar-menu">
             <ul id="side-menu">
                 <li class="menu-title">Navigation</li>
-                
+                @if(Auth::check())
                 <li>
                     <a href="{{ route('user.order.history')}}" class="dropdown-item notify-item">
-                    <i data-feather="airplay"></i>
+                        <i data-feather="airplay"></i>
                         <span>Order History</span>
                     </a>
                 </li>
-                
+                @endif
                 <li>
                     <a href="{{ route('get.invoice')}}" class="dropdown-item notify-item">
-                    <i data-feather="airplay"></i>
+                        <i class="fa-solid fa-file-invoice"></i>
                         <span>Get Invoice</span>
                     </a>
                 </li>
                 
                 <li>
                     <a href="{{route('track.order')}}" class="dropdown-item notify-item">
-                    <i data-feather="airplay"></i>
+                    <i class="fa fa-automobile"></i>
                         <span>Track Order</span>
                     </a>
                 </li>

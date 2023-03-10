@@ -193,81 +193,14 @@ class TrackOrderController extends Controller
             $rowpe = DB::table('bol_data')->where('bol_rec_id', $id)->whereIn('id', $dist_number)->get()->toArray();
 
             if (count($rowpe) > 0) {
-                foreach ($rowpe as $row) {
+                app()->dpdShipment->setGeneralShipmentData([
+                    'product' => 'CL',
+                    'mpsCustomerReferenceNumber1' => $rowpe->bestelnummer
+                ]);
 
-                    array_push($orders_key, $row->id);
-                    $bol_data_id = $row->id;
-
-                    app()->dpdShipment->setGeneralShipmentData([
-                        'product' => 'CL',
-                        'mpsCustomerReferenceNumber1' => $row->bestelnummer
-                    ]);
-
-                    app()->dpdShipment->setSender([
-                        'name1' => $display_name,
-                        'street' => $buaddr->street,
-                        'country' => $buaddr->country,
-                        'zipCode' => $buaddr->postcode,
-                        'city' => $buaddr->city_town,
-                        'email' => $buaddr->email_admin,
-                        'phone' => $buaddr->phonenumber
-                    ]);
-
-                    app()->dpdShipment->setReceiver([
-                        'name1' => $row->voornaam_verzending,
-                        'name2' => $row->achternaam_verzending,
-                        'street' => $row->adres_verz_straat,
-                        'houseNo' => $row->adres_verz_huisnummer,
-                        'zipCode' => $row->postcode_verzending,
-                        'city' => $row->woonplaats_verzending,
-                        'country' => $row->land_verzending,
-                        'contact' => $row->telnummerbezorging,
-                        'phone' => $row->telnummerbezorging,
-                        'email' => $row->emailadres,
-                        'comment' => null
-                    ]);
-
-                    app()->dpdShipment->addParcel([
-                        'weight' => 3000,
-                        'height' => 15,
-                        'width' => 10,
-                        'length' => 10
-                    ]);
-
-                    app()->dpdShipment->submit();
-
-                    $trackinglinks = app()->dpdShipment->getParcelResponses();
-                    $trackerCode = $trackinglinks[0]['airWayBill'];
-                    $trackerLink = $trackinglinks[0]['trackingLink'];
-
-                    header('Content-Type: application/pdf');
-                    $resp = app()->dpdShipment->getLabels();
-                    $today_dt = date("Y-m-d H:i:s");
-
-                    DB::table('dpd_entries')->insert(
-                        array(
-                            'user_id' => $uid,
-                            'dpdcode' => $trackerCode,
-                            'trackingLink' => $trackerLink,
-                            'date_time' => $today_dt
-                        )
-                    );
-
-                    // $path = public_path() . "/modules/bol/pdf_files/" . $bol_data_id . "_dpd.pdf";
-                    $path = Module::assetPath('bol').'/pdf_files/' . $bol_data_id . "_dpd.pdf";
-                    file_put_contents($path, $resp);
-                    $name = $bol_data_id . "_dpd.pdf";
-
-                    DB::table('bol_data')
-                        ->where('id', $bol_data_id)
-                        ->update([
-                            'trackerCode' => $trackerCode,
-                            'lable_pdf' => $name,
-                            'logistiek' => 'DPD',
-                            'price_charged' => $dpd_total_price,
-                            'fetched_date' => now()
-                        ]);
-                }
+                $trackinglinks = app()->dpdShipment->getParcelResponses();
+                $trackerCode = $trackinglinks[0]['airWayBill'];
+                $trackerLink = $trackinglinks[0]['trackingLink'];
             }
         }
     }

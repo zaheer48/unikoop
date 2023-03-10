@@ -23,7 +23,6 @@ class UserInvoiceTemplatesController extends Controller
             ->first();
         if (!$preview) {
             Session::flash('danger','Please configure Invoice template in Settings tab area.');
-            
             return to_route('invoice');
         }
 

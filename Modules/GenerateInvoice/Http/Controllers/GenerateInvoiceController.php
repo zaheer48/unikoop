@@ -9,6 +9,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Models\EmailTemplate;
 use Auth;
 use DB;
+use Session;
 
 class GenerateInvoiceController extends Controller
 {
@@ -92,7 +93,6 @@ class GenerateInvoiceController extends Controller
                             ->where('bol_data.trackerCode', $trackerCode_bestel)
                             ->orWhere('bol_data.bestelnummer', $trackerCode_bestel)
                             ->first();
-
         if($bol_data){
             $user_order = DB::table('users_orders')
                                 ->select('*')
@@ -113,9 +113,9 @@ class GenerateInvoiceController extends Controller
                 ]);
             }
 
-                $order = new InvoiceController;
-                $email = Auth::check() ? Auth::user()->email : DB::table('users')->where('id', $user_order->user_id)->pluck("email");
-                return $order->checkInvoice($bol_data, $email);
+            $order = new InvoiceController;
+            $email = Auth::check() ? Auth::user()->email : DB::table('users')->where('id', $user_order->user_id)->pluck("email");
+            return $order->checkInvoice($bol_data, $email);
             
             $response = [
                 'message' => 'success',
@@ -132,5 +132,28 @@ class GenerateInvoiceController extends Controller
             ];
             return json_encode($response);
         }
+    }
+
+    public function downloadInvoice($id)
+    {        
+        $preview = DB::table('user_invoice_previews')
+            ->select('*')
+            ->join('invoice_previews', 'invoice_previews.id', '=', 'user_invoice_previews.invoice_preview_id')
+            ->where('user_invoice_previews.as_default', 1)
+            ->first();
+        
+        if (!$preview) {
+            Session::flash('danger','Please configure Invoice template in Settings tab area.');
+            return to_route('invoice');
+        }
+
+        $servicebanks = DB::table('servicebank')->where('user_id', Auth::id())->first();
+        $record = DB::table('bol_data')->where('bestelnummer', $id)->first();
+        $file = $record->voornaam_verzending.' '.$record->achternaam_verzending.' Invoice bestelnummer #'.$id.'.pdf';
+        $pdf = \PDF::loadView('generateinvoice::download_invoice', compact('record','servicebanks','preview'));
+        if($pdf){
+            $file = $record->voornaam_verzending.' '.$record->achternaam_verzending.' Invoice bestelnummer #'.$id.'.pdf';        
+            return $pdf->download($file);
+        }        
     }
 }

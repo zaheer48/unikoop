@@ -12,20 +12,21 @@
       .navbar-custom .button-menu-mobile{
         display: none;
     }
-    .logo-box .logo {
-    width: 65px;
-    line-height: 70px;
-}
-    </style>
+        .logo-box .logo {
+        width: 65px;
+        line-height: 70px;
+    }
+</style>
     <!-- Start Page Content here -->
     <div class="content-page m-auto mt-5">
         <div class="content">
             <!-- Start Content-->
-            <div class="container-fluid col-10">
+            <div class="container-fluid">
                 <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
+                            <div class="my-3">
                             <!-- <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
@@ -33,7 +34,7 @@
                                     <li class="breadcrumb-item active">Responsive Table</li>
                                 </ol>
                             </div> -->
-
+                            </div>
                         </div>
                     </div>
                 </div>
